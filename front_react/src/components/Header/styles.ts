@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  height: 80px;
+  height: 5rem;
   background: #f8f8f8;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 
   &,
   section {
@@ -16,8 +16,8 @@ export const StyledHeader = styled.header`
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 1.875rem;
+    line-height: 2.188rem;
 
     color: #cecfd0;
 
@@ -25,13 +25,13 @@ export const StyledHeader = styled.header`
   }
 
   img {
-    height: 50px;
-    width: 50px;
+    height: 3.125rem;
+    width: 3.125rem;
     padding: 0 10px;
 
     &.logo {
-      height: 40px;
-      width: 230px;
+      height: 2.5rem;
+      width: 14.375rem;
     }
   }
 `;
