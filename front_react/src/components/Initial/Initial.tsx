@@ -1,30 +1,34 @@
 import React from "react";
 import {StyledInitial} from "./styles";
 
-import Input from "../Input/input";
+import Input from "../Input/Input";
 
 const Initial = () => {
   return(
-    
     <StyledInitial>
       <div className="Initial">
         <h1>ATA de Reunião</h1>
         <form action="">
           <Input 
-            name="Local"
-            data="teste"
-            width={100}
+            title="Local"
+            styleWidth="large"
             type="text"
           />
 
-          <input type="text"/>
-          <input type="date"/>
-          <input type="time"/>
+          <Input 
+            title="Data de Inicio"
+            styleWidth="medium"
+            type="date"
+          />
 
+          <Input
+            title="Horário de Inicio"
+            styleWidth="medium"
+            type="time"
+          />
         </form>
       </div>
     </StyledInitial>
-    
   )
 }
 

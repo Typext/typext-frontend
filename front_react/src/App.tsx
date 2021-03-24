@@ -1,9 +1,9 @@
 import React from "react";
 
-import Header from "./components/Header/header";
+import Header from "./components/Header/Header";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
-import Initial from "./components/Initial/initial";
+import Initial from "./components/Initial/Initial";
 
 
 function App() {

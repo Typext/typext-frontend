@@ -1,34 +1,33 @@
 import styled from "styled-components";
 
 export const StyledInitial = styled.div`
+  display: flex;
+  justify-content: center;
+
   .Initial {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    justify-content: center;
+    max-width: 102.125rem;
+    width: 100%;
+
+    padding-top: 4rem;
+
     h1 {
       color: var(--red-pink);
+      font-size: 3.125rem;
     }
 
-    input {
-    
-    display: flex;
-    align-items: center;
-    justify-contents: center;
+    form {
+      display: flex;
+      width: 100%;
 
-    gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
 
-    padding-left: 10px;
-    height: 65px;
-    background-color: var(--soft-gray);
-    opacity: 80%
-
-    outline: none;
-    border: 0;
-    border-radius: 20px;
-    
+      margin-top: 4rem;
     }
-
   }
-
 `;
