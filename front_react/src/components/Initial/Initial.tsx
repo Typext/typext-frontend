@@ -11,18 +11,24 @@ const Initial = () => {
         <form action="">
           <Input 
             title="Local"
+            color="black"
+            size="large"
             styleWidth="large"
             type="text"
           />
 
           <Input 
             title="Data de Inicio"
+            color="black"
+            size="large"
             styleWidth="medium"
             type="date"
           />
 
           <Input
             title="Horário de Inicio"
+            color="black"
+            size="large"
             styleWidth="medium"
             type="time"
           />

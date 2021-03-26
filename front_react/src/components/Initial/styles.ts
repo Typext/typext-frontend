@@ -14,6 +14,8 @@ export const StyledInitial = styled.div`
     width: 100%;
 
     padding-top: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 2px solid var(--red-pink);
 
     h1 {
       color: var(--red-pink);
