@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledInput } from "./styles";
+import React from 'react';
+import { StyledInput } from './styles';
 
 interface Props {
   title: string;
@@ -14,19 +14,15 @@ const Input: React.FC<Props> = ({
   color,
   size,
   styleWidth,
-  type,  
+  type,
 }: Props) => {
-  return(
-    <StyledInput
-      InputWidth={styleWidth}
-      Color={color}
-      Size={size}
-    >
+  return (
+    <StyledInput InputWidth={styleWidth} Color={color} Size={size}>
       <h3>{title}</h3>
 
-      <input type={type}/>
+      <input type={type} />
     </StyledInput>
   );
-}
+};
 
 export default Input;

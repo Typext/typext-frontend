@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import addIcon from "../../assets/add_icon.svg";
-import homeIcon from "../../assets/home_icon.svg";
-import shortLogo from "../../assets/short_logo.svg";
-import logoutIcon from "../../assets/logout_icon.svg";
+import addIcon from '../../assets/add_icon.svg';
+import homeIcon from '../../assets/home_icon.svg';
+import shortLogo from '../../assets/short_logo.svg';
+import logoutIcon from '../../assets/logout_icon.svg';
 
-import { StyledHeader } from "./styles";
+import { StyledHeader } from './styles';
 
 const Header = () => {
   return (

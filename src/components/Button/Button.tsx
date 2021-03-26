@@ -1,5 +1,5 @@
-import React, { ButtonHTMLAttributes } from "react";
-import StyledButton from "./styles";
+import React, { ButtonHTMLAttributes } from 'react';
+import StyledButton from './styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
@@ -15,22 +15,19 @@ const Button: React.FC<Props> = ({
   figure,
   children,
   ...rest
-}) => {
-
-  return(
-    <StyledButton
-      color={color}
-      colorText={colorText}
-      size={size}
-      {...rest}
-    >
+}: Props) => {
+  return (
+    <StyledButton color={color} colorText={colorText} size={size} {...rest}>
       {children}
+      {figure && figure}
     </StyledButton>
-  );  
-}
+  );
+};
 
 Button.defaultProps = {
   colorText: '#fff',
-}
+  size: '',
+  figure: '',
+};
 
 export default Button;

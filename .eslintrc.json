@@ -6,7 +6,6 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
     "airbnb"
   ],
@@ -20,8 +19,10 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
+    "indent":"off",
     "import/no-unresolved": "off",
     "arrow-parens": "off",
+    "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "implicit-arrow-linebreak": "off",
     "no-confusing-arrow": "off",

@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 // import Button from "../Button/Button";
-import Input from "components/Input/Input";
-import ScrollBox from "components/ScrollBox/ScrollBox";
-import StyledProjectInformation from "./styles";
+import Input from 'components/Input/Input';
+import ScrollBox from 'components/ScrollBox/ScrollBox';
+import StyledProjectInformation from './styles';
 
 const ProjectInformation = () => {
-  return(
+  return (
     <StyledProjectInformation>
       <div className="ProjectInformation">
         <h1>INFORMAÇÕES DO PROJETO</h1>
 
-        <Input 
+        <Input
           title="Nome do Projeto"
           size="large"
           color="red-pink"
@@ -19,12 +19,11 @@ const ProjectInformation = () => {
         />
 
         <div className="AddUsers">
-
           <div className="DataUser">
             <h1>Adicionar Participantes</h1>
 
             <div className="NameTitle">
-              <Input 
+              <Input
                 title="Nome completo do Participante"
                 size="medium"
                 color="black"
@@ -32,7 +31,7 @@ const ProjectInformation = () => {
                 type="text"
               />
 
-              <Input 
+              <Input
                 title="Título / Cargo"
                 size="medium"
                 color="black"
@@ -42,7 +41,7 @@ const ProjectInformation = () => {
             </div>
 
             <div className="CompanyPhoneEmail">
-              <Input 
+              <Input
                 title="Empresa"
                 size="medium"
                 color="black"
@@ -50,7 +49,7 @@ const ProjectInformation = () => {
                 type="text"
               />
 
-              <Input 
+              <Input
                 title="Telefone"
                 size="medium"
                 color="black"
@@ -58,7 +57,7 @@ const ProjectInformation = () => {
                 type="number"
               />
 
-              <Input 
+              <Input
                 title="E-mail"
                 size="medium"
                 color="black"
@@ -107,6 +106,6 @@ const ProjectInformation = () => {
       </div>
     </StyledProjectInformation>
   );
-}
+};
 
 export default ProjectInformation;

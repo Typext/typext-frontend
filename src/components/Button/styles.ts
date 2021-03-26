@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface StyledButtonProps {
   color: string;
@@ -24,7 +24,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   line-height: 28px;
 
   color: ${props => props.colorText || '#fff'};
-  background: ${props => props.color}
+  background: ${props => props.color};
 `;
 
 export default StyledButton;

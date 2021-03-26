@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledScrollBox = styled.div`
   display: flex;
@@ -7,7 +7,6 @@ const StyledScrollBox = styled.div`
 
   max-height: 18.75rem;
   height: 100%;
-
 
   ::-webkit-scrollbar {
     width: 12px;

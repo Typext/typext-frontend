@@ -1,15 +1,14 @@
-import React from "react";
-import {StyledInitial} from "./styles";
-
-import Input from "components/Input/Input";
+import React from 'react';
+import Input from 'components/Input/Input';
+import { StyledInitial } from './styles';
 
 const Initial = () => {
-  return(
+  return (
     <StyledInitial>
       <div className="Initial">
         <h1>ATA de Reunião</h1>
         <form action="">
-          <Input 
+          <Input
             title="Local"
             color="black"
             size="large"
@@ -17,7 +16,7 @@ const Initial = () => {
             type="text"
           />
 
-          <Input 
+          <Input
             title="Data de Inicio"
             color="black"
             size="large"
@@ -35,7 +34,7 @@ const Initial = () => {
         </form>
       </div>
     </StyledInitial>
-  )
-}
+  );
+};
 
 export default Initial;

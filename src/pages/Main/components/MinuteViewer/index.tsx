@@ -1,30 +1,26 @@
-import Button from 'components/Button/Button'
-import React from 'react'
+import Button from 'components/Button/Button';
+import React from 'react';
 
-import { Container } from './styles'
+import { Container } from './styles';
 
 interface MinuteViewerProps {
   setShowMinute: Function;
 }
 
-const MinuteViewer: React.FC<MinuteViewerProps> = ({ setShowMinute }) => {
+const MinuteViewer: React.FC<MinuteViewerProps> = ({
+  setShowMinute,
+}: MinuteViewerProps) => {
   const handleCloseModal = () => {
     if (setShowMinute) setShowMinute(false);
-  }
-  
+  };
+
   return (
     <Container>
       Just Testing Minute Modal
-      <Button color="#ff0042" onClick={handleCloseModal}>Voltar</Button>
+      <Button color="#ff0042" onClick={handleCloseModal}>
+        Voltar
+      </Button>
     </Container>
-  )
-}
-
-MinuteViewer.defaultProps = {
-  setShowMinute: () => {
-    return ''
-  }
-}
-
-
-export default MinuteViewer
+  );
+};
+export default MinuteViewer;

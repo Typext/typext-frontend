@@ -1,16 +1,14 @@
-import React from "react";
-import StyledScrollBox from "./styles";
+import React from 'react';
+import StyledScrollBox from './styles';
 
 interface Props {
-  children: JSX.Element | JSX.Element[];
+  // eslint-disable-next-line
+  children: any;
+  // depois precisa corrigir esse type any
 }
 
-const ScrollBox: React.FC<Props> = ({ children }) => {
-  return(
-    <StyledScrollBox>
-      {children}
-    </StyledScrollBox>
-  );
-}
+const ScrollBox: React.FC<Props> = ({ children }: Props) => {
+  return <StyledScrollBox>{children}</StyledScrollBox>;
+};
 
 export default ScrollBox;

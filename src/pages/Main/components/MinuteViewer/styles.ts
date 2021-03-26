@@ -10,8 +10,8 @@ export const Container = styled.div`
 
   background: #eeeeeeaa;
   backdrop-filter: blur(6px);
- 
+
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 `;

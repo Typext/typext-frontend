@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledProjectInformation = styled.div`
   display: flex;
@@ -26,7 +26,6 @@ const StyledProjectInformation = styled.div`
       grid-template-columns: 75rem 25.625rem;
       gap: 1.875rem;
 
-      
       width: 100%;
 
       margin-top: 3.125rem;
@@ -36,10 +35,10 @@ const StyledProjectInformation = styled.div`
         flex-direction: column;
 
         h1 {
-        color: var(--red-pink);
-        font-size: 2rem;
+          color: var(--red-pink);
+          font-size: 2rem;
 
-        margin-bottom: 2.5rem;
+          margin-bottom: 2.5rem;
         }
 
         .NameTitle {
@@ -67,8 +66,6 @@ const StyledProjectInformation = styled.div`
 
           margin-bottom: 14px;
         }
-
-        
       }
     }
   }
