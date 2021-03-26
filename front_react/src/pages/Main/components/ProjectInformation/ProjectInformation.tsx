@@ -1,7 +1,7 @@
 import React from "react";
 // import Button from "../Button/Button";
-import Input from "../Input/Input";
-import ScrollBox from "../ScrollBox/ScrollBox";
+import Input from "components/Input/Input";
+import ScrollBox from "components/ScrollBox/ScrollBox";
 import StyledProjectInformation from "./styles";
 
 const ProjectInformation = () => {

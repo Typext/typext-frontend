@@ -1,7 +1,7 @@
 import React from "react";
 import {StyledInitial} from "./styles";
 
-import Input from "../Input/Input";
+import Input from "components/Input/Input";
 
 const Initial = () => {
   return(
