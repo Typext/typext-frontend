@@ -19,11 +19,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --background: #e5e5e5;
+    --background: #ffffff;
     --black: #373435;
     --red-pink: #f60846;
     --soft-pink: #fce6ec;
-    --soft-gray: #cecfd0;
+    --soft-gray: #F5F5F6;
   }
 
   @media(max-width: 1980px) {
