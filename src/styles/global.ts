@@ -47,12 +47,14 @@ const GlobalStyle = createGlobalStyle`
   @media(max-width: 1280px) {
     html {
       font-size: 78.125%;
+      zoom: 90%;
     }
   }
 
   @media(max-width: 1024px) {
     html {
       font-size: 75%;
+      zoom: 85%;
     }
   }
 

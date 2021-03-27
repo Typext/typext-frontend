@@ -11,8 +11,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   align-items: center;
 
-  width: 277px;
-  height: 65px;
+  width: ${props => props.size || '17.313rem'};
+  height: 4.063rem;
   border-radius: 20px;
   border: none;
   outline: none;
@@ -25,6 +25,12 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   color: ${props => props.colorText || '#fff'};
   background: ${props => props.color};
+
+  img {
+    height: 1.875rem;
+    padding-left: 5rem;
+    margin-right: -5rem;
+  }
 `;
 
 export default StyledButton;

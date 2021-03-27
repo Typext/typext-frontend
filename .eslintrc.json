@@ -19,6 +19,11 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
+<<<<<<< HEAD
+    "linebreak-style":"off",
+=======
+    "linebreak-style": "off",
+>>>>>>> 41e3279a1ceed5e8baf2d6d863515f8bd5ca281f
     "indent":"off",
     "import/no-unresolved": "off",
     "arrow-parens": "off",
@@ -28,7 +33,9 @@
     "no-confusing-arrow": "off",
     "no-nested-ternary": "off",
     "operator-linebreak": "off",
-    "prettier/prettier": "warn",
+    "prettier/prettier": ["off",{
+        "endOfLine": "auto"}
+      ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-use-before-define": "off",
     "react-hooks/rules-of-hooks": "error",
@@ -55,4 +62,7 @@
       }
     }
   }
+  
 }
+
+
