@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
+import Subjects from './components/Subjects/Subjects';
 
 import Container from './styles';
 
@@ -17,6 +18,7 @@ const Main = () => {
       <Container>
         <Initial />
         <ProjectInformation />
+        <Subjects />
         <OptionButtons setShowMinute={setShowMinute} />
       </Container>
     </>
