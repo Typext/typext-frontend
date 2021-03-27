@@ -1,8 +1,12 @@
 import React from 'react';
-// import Button from "../Button/Button";
+import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
+import BoxInformation from 'components/BoxInformation/BoxInformation';
+
 import StyledProjectInformation from './styles';
+
+import addIcon from '../../../../assets/add_icon.svg';
 
 const ProjectInformation = () => {
   return (
@@ -66,40 +70,58 @@ const ProjectInformation = () => {
               />
             </div>
 
-            {/* <Button /> */}
+            <Button
+              color="var(--soft-pink)"
+              colorText="var(--red-pink)"
+              size="23.75rem"
+            >
+              Adicionar
+              <img src={addIcon} alt="" />
+            </Button>
           </div>
 
           <div className="Users">
             <h2>Participantes</h2>
 
             <ScrollBox>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
-              <h4>teste</h4>
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
+
+              <BoxInformation>
+                <h4>macaco</h4>
+              </BoxInformation>
             </ScrollBox>
           </div>
         </div>

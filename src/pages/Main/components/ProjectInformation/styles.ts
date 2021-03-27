@@ -52,6 +52,10 @@ const StyledProjectInformation = styled.div`
 
           margin-top: 12px;
         }
+
+        Button {
+          margin: 3.375rem 0 0 51.25rem;
+        }
       }
 
       .Users {
