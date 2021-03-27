@@ -18,7 +18,7 @@ const StyledDistributions = styled.div`
       color: var(--red-pink);
       font-size: 2.25rem;
 
-      margin-bottom: 1rem;
+      margin-bottom: 4rem;
     }
 
     .SectionDistributions {

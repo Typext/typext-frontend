@@ -26,42 +26,45 @@ const GlobalStyle = createGlobalStyle`
     --soft-gray: #cecfd0;
   }
 
-  @media(max-width: 1680px) {
-    html {
-    font-size: 93.75%;
-    }
-  }
-
-  @media(max-width: 1440px) {
-    html {
-    font-size: 87.5%;
-    }
-  }
-
-  @media(max-width: 1360px) {
+  @media(max-width: 1980px) {
     html {
       font-size: 81.25%;
     }
   }
 
-  @media(max-width: 1280px) {
+  @media(max-width: 1680px) {
     html {
       font-size: 78.125%;
-      zoom: 90%;
+    }
+  }
+
+  @media(max-width: 1440px) {
+    html {
+      font-size: 75%;
+    }
+  }
+
+  @media(max-width: 1360px) {
+    html {
+      font-size: 68.75%;
+    }
+  }
+
+  @media(max-width: 1280px) {
+    html {
+      font-size: 62.5%;
     }
   }
 
   @media(max-width: 1024px) {
     html {
-      font-size: 75%;
-      zoom: 85%;
+      font-size: 56.25%;
     }
   }
 
   @media(max-width: 960px) {
     html {
-      font-size: 68.75%;
-      zoom: 80%;
+      font-size: 50%;
     }
   }
 

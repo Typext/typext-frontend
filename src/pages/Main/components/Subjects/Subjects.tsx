@@ -4,10 +4,10 @@ import StyledSubjects from './styles';
 const Subjects = () => {
   return (
     <StyledSubjects>
-      <h1>macaco</h1>
+      <h1>Assuntos</h1>
 
       <div className="Subjects">
-        teste
+        Carlinhos macaco
       </div>
     </StyledSubjects>
   );

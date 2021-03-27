@@ -13,15 +13,14 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   width: ${props => props.size || '17.313rem'};
   height: 4.063rem;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border: none;
   outline: none;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: 900;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 1.5rem;
 
   color: ${props => props.colorText || '#fff'};
   background: ${props => props.color};

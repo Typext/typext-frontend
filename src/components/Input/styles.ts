@@ -47,13 +47,13 @@ export const StyledInput = styled.div<Props>`
   input {
     display: flex;
     align-items: center;
-    padding-left: 10px;
-    height: 65px;
+    padding-left: 0.625rem;
+    height: 4.063rem;
     background-color: var(--soft-gray);
 
     outline: none;
     border: 0;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 
     ${props =>
       props.InputWidth === 'large'

@@ -8,7 +8,7 @@ const StyledBoxInformation = styled.div`
   max-height: 4.063rem;
 
   background-color: var(--red-pink);
-  border-radius: 20px;
+  border-radius: 1.25rem;
 
   margin: 0.5rem 1rem 0.5rem 0;
 
@@ -40,6 +40,10 @@ const StyledBoxInformation = styled.div`
 
     margin-right: -7rem;
     padding-left: 6rem;
+
+    img {
+      height: 1.875rem; 
+    }
   }
 `;
 
