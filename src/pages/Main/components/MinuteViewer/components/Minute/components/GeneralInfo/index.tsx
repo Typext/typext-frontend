@@ -1,24 +1,35 @@
 import React from 'react';
 import moment from 'moment';
 
+import iacitLogo from 'assets/iacit_logo.jpg';
+
 import { Container } from './styles';
 
-const GeneralInfo = () => {
+import { IAddressAndHour } from '../../DTOs';
+
+interface IGeneralInfoProps {
+  addressAndHour: IAddressAndHour;
+}
+
+const GeneralInfo = ({ addressAndHour }: IGeneralInfoProps) => {
   return (
     <Container>
       <div className="minuteID">ATA N°</div>
       <div className="dateAndLocateInfo">
         <section className="date">
           <h4>Data:&nbsp;</h4>
-          INICIO 02/03/2021 - FIM
-          &nbsp;
+          INICIO
+          {' '}
+          {addressAndHour.startDate}
+          {' '}
+          - FIM &nbsp;
           {moment().format('l')}
         </section>
 
         <section className="hour">
           <div className="startHour">
             <h4>Inicio:&nbsp;</h4>
-            12h30
+            {addressAndHour.startHour}
           </div>
 
           <div>
@@ -29,11 +40,12 @@ const GeneralInfo = () => {
 
         <section className="meetingLocate">
           <h4>Local:&nbsp;</h4>
-          Avenida Cesare Monsueto Giulio Lattes, 1350 Distrito - Eugênio de
-          Melo, São José dos Campos - SP, 12247-014
+          {addressAndHour.local}
         </section>
       </div>
-      <div className="logo">LOGO EMPRESA</div>
+      <div className="logo">
+        <img src={iacitLogo} alt="enterprise_logo" />
+      </div>
     </Container>
   );
 };

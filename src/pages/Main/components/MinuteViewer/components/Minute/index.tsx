@@ -1,23 +1,32 @@
+/* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 
 import GeneralInfo from './components/GeneralInfo';
-import MembersInfo from './components/MembersInfo';
+import Project from './components/Project';
 import Subjects from './components/Subjects';
 import TopicsName from './components/TopicsName';
 
+import { minuteData } from '../../data.js';
+
 import { Container } from './styles';
 
-class ComponentToPrint extends PureComponent {
+import { IMinute } from './DTOs';
+
+interface IPrintProps {
+  data: IMinute;
+}
+
+class ComponentToPrint extends PureComponent<IPrintProps> {
   render() {
     return (
       <Container>
-        <GeneralInfo />
+        <GeneralInfo addressAndHour={minuteData.addressAndHour} />
 
         <h2>ATA DE REUNIÃO</h2>
 
-        <MembersInfo />
-        <Subjects />
-        <TopicsName />
+        <Project projectInfo={minuteData.projectInfo} />
+        <Subjects data={minuteData} />
+        <TopicsName data={minuteData} />
       </Container>
     );
   }

@@ -4,58 +4,76 @@ export const Container = styled.div`
   width: 100%;
   min-height: 400px;
 
-  border: 1px solid #1a1a1a;
-
-  .topicInfo {
-    border-bottom: 1px solid #1a1a1a;
-
-    span {
-      height: 100%;
-    }
-
-    span.topic {
-      border-right: 1px solid #1a1a1a;
-      border-left: 1px solid #1a1a1a;
+  .ant-table-wrapper {
+    &,
+    div {
+      margin: 0;
     }
   }
 
-  .topicInfo,
-  .titleExamples {
+  .ant-pagination {
+    display: none;
+  }
+
+  h4 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: 0;
 
-    h4 {
-      border-bottom: 1px solid #1a1a1a;
-      border-right: 1px solid #1a1a1a;
+    padding: 10px 0;
 
-      &:last-child {
+    border-right: 1px solid #1a1a1a;
+    border-left: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+
+    span {
+      margin-right: 5px;
+    }
+
+    span:last-child {
+      display: none;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .ant-table-tbody > tr > td,
+  .ant-table-thead > tr > th {
+    border-bottom: none;
+  }
+
+  table {
+    border: 1px solid #1a1a1a;
+  }
+
+  thead {
+    tr {
+      th {
+        background: none;
+        border-right: 1px solid #1a1a1a;
+
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      th:last-child {
         border-right: none;
       }
     }
+  }
 
-    .id {
-      width: 5%;
-    }
+  tbody {
+    tr {
+      td {
+        border-top: 1px solid #1a1a1a;
+        border-right: 1px solid #1a1a1a;
+      }
 
-    .topic {
-      width: 50%;
-    }
-
-    .responsible {
-      width: 25%;
-    }
-
-    .deadLine {
-      width: 20%;
-    }
-
-    span,
-    h4 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      td:last-child {
+        border-right: none;
+      }
     }
   }
 `;

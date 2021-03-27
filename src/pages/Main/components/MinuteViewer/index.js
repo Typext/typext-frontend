@@ -21,12 +21,14 @@ const MinuteViewer = ({ setShowMinute }) => {
   return (
     <Container>
       <Minute ref={componentRef} />
-      <Button color="#e02041" onClick={handleCloseModal}>
-        Voltar
-      </Button>
-      <Button color="#373435" onClick={handlePrint}>
-        Gerar ATA
-      </Button>
+      <div className="minuteButtons">
+        <Button color="#e02041" onClick={handleCloseModal}>
+          Voltar
+        </Button>
+        <Button color="#373435" onClick={handlePrint}>
+          Gerar ATA
+        </Button>
+      </div>
     </Container>
   );
 };

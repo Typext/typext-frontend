@@ -17,4 +17,15 @@ export const Container = styled.div`
   align-items: center;
 
   overflow-y: scroll;
+
+  div.minuteButtons {
+    display: flex;
+    justify-content: flex-end;
+    width: 1020px;
+    margin: 40px;
+
+    button {
+      margin-left: 10px;
+    }
+  }
 `;
