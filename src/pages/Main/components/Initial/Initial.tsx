@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import Input from 'components/Input/Input';
 import { StyledInitial } from './styles';
