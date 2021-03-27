@@ -14,6 +14,9 @@ const StyledProjectInformation = styled.div`
     max-width: 102.125rem;
     width: 100%;
 
+    padding-bottom: 6.25rem;
+    border-bottom: 2px solid var(--red-pink);
+
     h1 {
       color: var(--red-pink);
       font-size: 2.25rem;
@@ -54,7 +57,7 @@ const StyledProjectInformation = styled.div`
         }
 
         Button {
-          margin: 3.375rem 0 0 51.25rem;
+          margin: 3rem 0 0 51.25rem;
         }
       }
 
@@ -62,7 +65,7 @@ const StyledProjectInformation = styled.div`
         display: flex;
         flex-direction: column;
 
-        padding-top: 4.875rem;
+        padding-top: 4rem;
 
         h2 {
           color: var(--black);

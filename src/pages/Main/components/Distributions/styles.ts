@@ -24,7 +24,7 @@ const StyledDistributions = styled.div`
     .SectionDistributions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.875rem;
+      gap: 3.3rem;
 
       .DataDepartments {
         Button {

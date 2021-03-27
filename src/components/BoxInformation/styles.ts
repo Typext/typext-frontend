@@ -12,6 +12,14 @@ const StyledBoxInformation = styled.div`
 
   margin: 0.5rem 1rem 0.5rem 0;
 
+  :first-child {
+    margin-top: 0;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
   h4 {
     display: flex;
     align-items: center;
@@ -22,6 +30,16 @@ const StyledBoxInformation = styled.div`
     margin: 0;
 
     height: 4.063rem;
+  }
+
+  button {
+    border: none;
+    background: none;
+
+    height: 1.875rem;
+
+    margin-right: -7rem;
+    padding-left: 6rem;
   }
 `;
 
