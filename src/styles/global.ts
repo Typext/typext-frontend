@@ -7,6 +7,17 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   :root {
     --background: #e5e5e5;
     --black: #373435;
