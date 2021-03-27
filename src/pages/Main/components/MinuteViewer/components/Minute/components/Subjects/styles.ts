@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 80px;
+  min-height: 80px;
+  height: max-content;
 
   border: 1px solid #1a1a1a;
 
@@ -17,9 +18,11 @@ export const Container = styled.div`
 
   .description {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    height: 55%;
+    min-height: 55%;
+    height: max-content;
   }
 `;
