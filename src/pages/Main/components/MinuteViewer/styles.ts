@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
 
   position: fixed;
   z-index: 999;
@@ -12,6 +13,8 @@ export const Container = styled.div`
   backdrop-filter: blur(6px);
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+
+  overflow-y: scroll;
 `;

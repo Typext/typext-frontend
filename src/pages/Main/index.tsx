@@ -5,6 +5,8 @@ import OptionButtons from './components/OptionButtons';
 import Topics from './components/Topics/Topics';
 import Subjects from './components/Subjects/Subjects';
 import Distributions from './components/Distributions/Distributions';
+
+//eslint-disabled-next-line
 import MinuteViewer from './components/MinuteViewer';
 
 import Container from './styles';
@@ -20,6 +22,7 @@ const Main = () => {
         <Initial />
         <ProjectInformation />
         <Topics />
+
         <Subjects />
         <Distributions />
         <OptionButtons setShowMinute={setShowMinute} />
