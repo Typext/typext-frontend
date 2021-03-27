@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 800px;
   height: 1030px;
 
-  background: #43ffff;
+  background: #ffffff;
 
   padding: 60px;
 

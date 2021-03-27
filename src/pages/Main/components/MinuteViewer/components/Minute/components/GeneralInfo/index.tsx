@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import { Container } from './styles';
 
@@ -9,7 +10,9 @@ const GeneralInfo = () => {
       <div className="dateAndLocateInfo">
         <section className="date">
           <h4>Data:&nbsp;</h4>
-          INICIO 02/03/2021 - FIM 02/03/2021
+          INICIO 02/03/2021 - FIM
+          &nbsp;
+          {moment().format('l')}
         </section>
 
         <section className="hour">
@@ -20,7 +23,7 @@ const GeneralInfo = () => {
 
           <div>
             <h4>Fim:&nbsp;</h4>
-            14h32
+            {moment().format('HH:mm')}
           </div>
         </section>
 
