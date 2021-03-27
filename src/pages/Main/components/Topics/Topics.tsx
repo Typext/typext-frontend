@@ -11,6 +11,7 @@ import StyledTopics from './styles';
 const Topics = () => {
   return (
     <StyledTopics>
+      <h1>Pauta</h1>
 
       <div className="Topic">
 
