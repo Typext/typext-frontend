@@ -3,10 +3,10 @@ import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
 import Subjects from './components/Subjects/Subjects';
+import Distributions from './components/Distributions/Distributions';
+import MinuteViewer from './components/MinuteViewer';
 
 import Container from './styles';
-
-import MinuteViewer from './components/MinuteViewer';
 
 const Main = () => {
   const [showMinute, setShowMinute] = useState(false);
@@ -19,6 +19,7 @@ const Main = () => {
         <Initial />
         <ProjectInformation />
         <Subjects />
+        <Distributions />
         <OptionButtons setShowMinute={setShowMinute} />
       </Container>
     </>
