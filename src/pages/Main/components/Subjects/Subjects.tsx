@@ -5,6 +5,10 @@ const Subjects = () => {
   return (
     <StyledSubjects>
       <h1>macaco</h1>
+
+      <div className="Subjects">
+        teste
+      </div>
     </StyledSubjects>
   );
 };
