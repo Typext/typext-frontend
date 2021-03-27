@@ -12,15 +12,14 @@ const Initial = () => {
           <Input
             title="Local"
             color="black"
-            size="large"
+            Size="large"
             styleWidth="large"
-            type="text"
           />
 
           <Input
             title="Data de Inicio"
             color="black"
-            size="large"
+            Size="large"
             styleWidth="medium"
             type="date"
           />
@@ -28,7 +27,7 @@ const Initial = () => {
           <Input
             title="Horário de Inicio"
             color="black"
-            size="large"
+            Size="large"
             styleWidth="medium"
             type="time"
           />

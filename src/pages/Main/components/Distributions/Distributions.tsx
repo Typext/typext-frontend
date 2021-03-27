@@ -18,10 +18,9 @@ const Distributions = () => {
           <div className="DataDepartments">
             <Input
               title="Nome da área"
-              size="large"
+              Size="large"
               color="black"
               styleWidth="large"
-              type="text"
             />
 
             <Button

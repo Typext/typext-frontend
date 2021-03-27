@@ -33,17 +33,15 @@ const Subjects = () => {
           <Input
             title="Responsável"
             color="black"
-            size="large"
+            Size="large"
             styleWidth="medium"
-            type="text"
           />
 
           <Input
             title="Prazo"
             color="black"
-            size="large"
+            Size="large"
             styleWidth="medium"
-            type="text"
           />
 
           <Button

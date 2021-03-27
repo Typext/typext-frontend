@@ -18,10 +18,9 @@ const Topics = () => {
         <div className="AddTopic">
           <Input
             title="Pauta"
-            size="large"
+            Size="large"
             color="black"
             styleWidth="large"
-            type="text"
           />
 
           <Button
