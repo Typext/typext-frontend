@@ -6,7 +6,7 @@ import Topics from './components/Topics/Topics';
 import Subjects from './components/Subjects/Subjects';
 import Distributions from './components/Distributions/Distributions';
 
-//eslint-disabled-next-line
+// eslint-disable-next-line
 import MinuteViewer from './components/MinuteViewer';
 
 import Container from './styles';
