@@ -3,8 +3,8 @@ import React, { PureComponent } from 'react';
 
 import GeneralInfo from './components/GeneralInfo';
 import Project from './components/Project';
+import Topics from './components/Topics';
 import Subjects from './components/Subjects';
-import TopicsName from './components/TopicsName';
 
 import { minuteData } from '../../data.js';
 
@@ -25,8 +25,8 @@ class ComponentToPrint extends PureComponent<IPrintProps> {
         <h2>ATA DE REUNIÃO</h2>
 
         <Project projectInfo={minuteData.projectInfo} />
-        <Subjects data={minuteData} />
-        <TopicsName data={minuteData} />
+        <Topics topics={minuteData.topics} />
+        <Subjects subjects={minuteData.subjects} distributions={minuteData.distributions} />
       </Container>
     );
   }

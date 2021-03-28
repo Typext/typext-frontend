@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
+import { message } from 'antd';
+
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
@@ -8,25 +10,55 @@ import addIcon from '../../../../assets/add_icon.svg';
 
 import StyledTopics from './styles';
 
-const Topics = () => {
+import { ITopic } from '../MinuteViewer/components/Minute/DTOs';
+
+interface ITopicsProps {
+  setTopics: Function;
+  topics: Array<ITopic>;
+}
+
+const Topics = ({ setTopics, topics }: ITopicsProps) => {
+  const [topicName, setTopicName] = useState<string>('');
+
+  const handleCleanFields = () => {
+    setTopicName('');
+  };
+
+  const handleInsertTopic = () => {
+    if (!topicName) {
+      message.error('Todas os campos devem estar preenchidos');
+    } else {
+      setTopics([
+        ...topics,
+        {
+          topic: topicName,
+        },
+      ]);
+
+      handleCleanFields();
+    }
+  };
+
   return (
     <StyledTopics>
       <h1>Pauta</h1>
 
       <div className="Topic">
-
         <div className="AddTopic">
           <Input
             title="Pauta"
             Size="large"
             color="black"
             styleWidth="large"
+            value={topicName}
+            onChange={(e: any) => setTopicName(e.target.value)}
           />
 
           <Button
             color="var(--soft-pink)"
             colorText="var(--red-pink)"
             size="23.75rem"
+            onClick={handleInsertTopic}
           >
             Adicionar
             <img src={addIcon} alt="" />
@@ -34,34 +66,16 @@ const Topics = () => {
         </div>
 
         <div className="TopicList">
-
           <ScrollBox>
-            <BoxInformation>
-              <h4>Pauta 01</h4>
-            </BoxInformation>
-
-            <BoxInformation>
-              <h4>Pauta 02</h4>
-            </BoxInformation>
-
-            <BoxInformation>
-              <h4>Pauta 03</h4>
-            </BoxInformation>
-
-            <BoxInformation>
-              <h4>Pauta 04</h4>
-            </BoxInformation>
-
-            <BoxInformation>
-              <h4>Pauta 05</h4>
-            </BoxInformation>
-
+            {topics?.map(topic => (
+              <BoxInformation key={topic.topic}>
+                <h4>{topic.topic}</h4>
+              </BoxInformation>
+            ))}
           </ScrollBox>
         </div>
-
       </div>
     </StyledTopics>
-
   );
 };
 

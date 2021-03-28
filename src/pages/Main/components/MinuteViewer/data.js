@@ -6,7 +6,7 @@ export const minuteData = {
     startHour: '12:41',
   },
   projectInfo: {
-    name:
+    projectName:
       'Incidente com tentativa de incendio por partes dos funcionarios',
     members: [
       {
@@ -39,14 +39,14 @@ export const minuteData = {
       },
     ],
   },
-  subjects: [
-    { subject: 'Incendio' },
-    { subject: 'Depravação' },
-    { subject: 'Falta de deus' },
-  ],
   topics: [
+    { topic: 'Incendio' },
+    { topic: 'Depravação' },
+    { topic: 'Falta de deus' },
+  ],
+  subjects: [
     { id: 1,
-      topic: `Aqueça o óleo em uma panela.
+      subject: `Aqueça o óleo em uma panela.
         Acrescente o alho picado e deixe dourar.
         Em seguida, coloque a mesma quantidade de água indicada na embalagem para fazer o miojo.
         Deixe ferver.
@@ -56,13 +56,13 @@ export const minuteData = {
       deadLine: '30/10/24',
     },
     { id: 2,
-      topic:
+      subject:
         'O tempo é uma grandeza física presente não apenas no cotidiano como também em todas as áreas e cadeiras científicas. Uma definição do mesmo em âmbito científico é por tal não apenas essencial como também, em verdade, um requisito fundamental.',
       responsible: 'Siqueira Junior',
       deadLine: '30/12/2028',
     },
     { id: 3,
-      topic: `You went to school to learn girl
+      subject: `You went to school to learn girl
         Things you never knew before
         Like "I" before "E" except after "C"
         And why 2 plus 2 makes 4

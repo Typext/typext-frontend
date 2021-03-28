@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import TextArea from 'components/TextArea/TextArea';
 
@@ -8,22 +8,32 @@ import AddIcon from 'assets/add_icon.svg';
 
 import StyledSubjects from './styles';
 
-const Subjects = () => {
+interface ISubjectsProps {
+  setSubjects: Function;
+}
+
+const Subjects = ({ setSubjects }: ISubjectsProps) => {
+  const [subject, setSubject] = useState<string>('');
+  const [responsible, setResponsible] = useState<string>('');
+  const [deadLine, setDeadLine] = useState<string>('');
+
+  const handleInsertSubject = () => {
+    if (setSubjects) setSubjects([{ subject, responsible, deadLine }]);
+  };
+
   return (
     <StyledSubjects>
-
       <h1>Assuntos</h1>
 
       <div className="Subjects">
-
         <h3>Assunto 01</h3>
 
         <div className="Text">
-
           <TextArea
             title="SubjectText"
             cols={50}
             rows={4}
+            onChange={(e: any) => setSubject(e.target.value)}
           />
 
           <Button color="var(--red-pink)">Remover</Button>
@@ -35,6 +45,7 @@ const Subjects = () => {
             color="black"
             Size="large"
             styleWidth="medium"
+            onChange={(e: any) => setResponsible(e.target.value)}
           />
 
           <Input
@@ -42,21 +53,20 @@ const Subjects = () => {
             color="black"
             Size="large"
             styleWidth="medium"
+            onChange={(e: any) => setDeadLine(e.target.value)}
           />
 
           <Button
             color="var(--soft-pink)"
             colorText="var(--red-pink)"
             size="23.75rem"
+            onClick={handleInsertSubject}
           >
             Adicionar
             <img src={AddIcon} alt="Add" />
-
           </Button>
         </div>
-
       </div>
-
     </StyledSubjects>
   );
 };

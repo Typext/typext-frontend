@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
@@ -13,24 +13,30 @@ import addIcon from '../../../../assets/add_icon.svg';
 
 interface IMembers {
   name: string;
-  phone: string;
+  phone: number;
   email: string;
   role: string;
   enterprise: string;
 }
 
-const ProjectInformation = () => {
+interface ProjectProps {
+  setProjectInfo: Function;
+}
+
+const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
   const [members, setMembers] = useState<IMembers[]>([]);
 
+  const [projectName, setProjectName] = useState<string>('');
+
   const [name, setName] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
+  const [phone, setPhone] = useState<number>(0);
   const [email, setEmail] = useState<string>('');
   const [enterprise, setEnterprise] = useState<string>('');
   const [role, setRole] = useState<string>('');
 
   const handleCleanFields = () => {
     setName('');
-    setPhone('');
+    setPhone(0);
     setEmail('');
     setEnterprise('');
     setRole('');
@@ -55,6 +61,10 @@ const ProjectInformation = () => {
     }
   };
 
+  useEffect(() => {
+    if (setProjectInfo) setProjectInfo({ projectName, members });
+  }, [members, projectName, setProjectInfo]);
+
   return (
     <StyledProjectInformation>
       <div className="ProjectInformation">
@@ -65,6 +75,7 @@ const ProjectInformation = () => {
           Size="large"
           color="red-pink"
           styleWidth="large"
+          onChange={(e: any) => setProjectName(e.target.value)}
         />
 
         <div className="AddUsers">

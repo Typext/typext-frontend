@@ -1,11 +1,11 @@
 export interface ITopic {
-  topic: String;
-  responsible: String;
-  deadLine: String;
+  topic: string;
 }
 
 export interface ISubject {
   subject: String;
+  responsible: String;
+  deadLine: String;
 }
 
 export interface IMember {
@@ -17,7 +17,7 @@ export interface IMember {
 }
 
 export interface IProjectInfo {
-  name: String;
+  projectName: String;
   members: Array<IMember>;
 }
 

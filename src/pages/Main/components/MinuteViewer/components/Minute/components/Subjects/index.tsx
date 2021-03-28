@@ -1,25 +1,50 @@
 import React from 'react';
+import { Table } from 'antd';
 
 import { Container } from './styles';
 
-import { IMinute } from '../../DTOs';
+import { ISubject } from '../../DTOs';
 
-interface ISubjectsProps {
-  data: IMinute;
+interface ISubjectsProp {
+  subjects: Array<ISubject>;
+  distributions: Array<string>;
 }
 
-const Subjects = ({ data }: ISubjectsProps) => {
-  const { subjects } = data;
+const Subjects = ({ subjects, distributions }: ISubjectsProp) => {
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+    },
+    {
+      title: 'ASSUNTO',
+      dataIndex: 'topic',
+    },
+    {
+      title: 'RESPONSÁVEL',
+      dataIndex: 'responsible',
+    },
+    {
+      title: 'PRAZO',
+      dataIndex: 'deadLine',
+    },
+  ];
 
   return (
     <Container>
-      <h3>Pauta</h3>
-
-      <section className="description">
-        {subjects?.map(subject => (
-          <span>{subject.subject}</span>
+      <Table dataSource={subjects} columns={columns} />
+      <h4>
+        <span>
+          DISTRIBUIÇÃO:
+        </span>
+        {' '}
+        {distributions.map(distribution => (
+          <>
+            <p>{distribution}</p>
+            <span>,</span>
+          </>
         ))}
-      </section>
+      </h4>
     </Container>
   );
 };

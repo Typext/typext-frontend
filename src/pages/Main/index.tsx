@@ -11,8 +11,23 @@ import MinuteViewer from './components/MinuteViewer';
 
 import Container from './styles';
 
+import {
+  IProjectInfo,
+  ISubject,
+  ITopic,
+} from './components/MinuteViewer/components/Minute/DTOs';
+
 const Main = () => {
   const [showMinute, setShowMinute] = useState(false);
+
+  const [topics, setTopics] = useState<ITopic[]>([]);
+  const [projectInfo, setProjectInfo] = useState<IProjectInfo>();
+  const [subjects, setSubjects] = useState<ISubject[]>([]);
+  const [distributions, setDistributions] = useState<string[]>([]);
+
+  const handleGenerateMinute = () => {
+    console.log(projectInfo, subjects, distributions, topics);
+  };
 
   return (
     <>
@@ -20,12 +35,18 @@ const Main = () => {
 
       <Container>
         <Initial />
-        <ProjectInformation />
-        <Topics />
+        <ProjectInformation setProjectInfo={setProjectInfo} />
+        <Topics setTopics={setTopics} topics={topics} />
 
-        <Subjects />
-        <Distributions />
-        <OptionButtons setShowMinute={setShowMinute} />
+        <Subjects setSubjects={setSubjects} />
+        <Distributions
+          setDistributions={setDistributions}
+          distributions={distributions}
+        />
+        <OptionButtons
+          // setShowMinute={setShowMinute}
+          handleGenerateMinute={handleGenerateMinute}
+        />
       </Container>
     </>
   );

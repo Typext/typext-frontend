@@ -13,7 +13,7 @@ const Project = ({ projectInfo }: IProjectProps) => {
     <Container>
       <section className="projectName">
         <h4>Projeto:&nbsp;</h4>
-        {projectInfo.name}
+        {projectInfo.projectName}
       </section>
 
       <section className="meetingMembers">
