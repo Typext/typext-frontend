@@ -121,7 +121,6 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
                 title="Telefone"
                 color="black"
                 styleWidth="medium"
-                placeholder="XX 9XXXXXXXX"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
@@ -130,7 +129,6 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
                 title="E-mail"
                 color="black"
                 styleWidth="medium"
-                placeholder="email@email.com"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
