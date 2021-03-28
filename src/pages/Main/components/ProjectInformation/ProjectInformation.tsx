@@ -13,7 +13,7 @@ import addIcon from '../../../../assets/add_icon.svg';
 
 interface IMembers {
   name: string;
-  phone: number;
+  phone: string;
   email: string;
   role: string;
   enterprise: string;
@@ -29,14 +29,14 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
   const [projectName, setProjectName] = useState<string>('');
 
   const [name, setName] = useState<string>('');
-  const [phone, setPhone] = useState<number>(0);
+  const [phone, setPhone] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [enterprise, setEnterprise] = useState<string>('');
   const [role, setRole] = useState<string>('');
 
   const handleCleanFields = () => {
     setName('');
-    setPhone(0);
+    setPhone('');
     setEmail('');
     setEnterprise('');
     setRole('');
@@ -121,6 +121,7 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
                 title="Telefone"
                 color="black"
                 styleWidth="medium"
+                placeholder="XX 9XXXXXXXX"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
@@ -129,6 +130,7 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
                 title="E-mail"
                 color="black"
                 styleWidth="medium"
+                placeholder="email@email.com"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
