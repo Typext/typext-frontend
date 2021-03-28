@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { MainProvider } from 'contexts/MainContext';
+
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
@@ -48,8 +51,10 @@ const Main = () => {
   };
 
   return (
-    <>
-      {showMinute && <MinuteViewer setShowMinute={setShowMinute} minute={minute} />}
+    <MainProvider>
+      {showMinute && (
+        <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
+      )}
 
       <Container>
         <Initial setAddressAndHour={setAddressAndHour} />
@@ -66,7 +71,7 @@ const Main = () => {
           handleGenerateMinute={handleGenerateMinute}
         />
       </Container>
-    </>
+    </MainProvider>
   );
 };
 
