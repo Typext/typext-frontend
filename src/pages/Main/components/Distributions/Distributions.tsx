@@ -40,7 +40,7 @@ const Distributions = ({ setDistributions, distributions } : DistributionsProps)
         <div className="SectionDistributions">
           <div className="DataDepartments">
             <Input
-              title="Nome da área"
+              title="Área"
               Size="large"
               color="black"
               styleWidth="large"
@@ -54,7 +54,7 @@ const Distributions = ({ setDistributions, distributions } : DistributionsProps)
               size="23.75rem"
               onClick={handleInsertDistribution}
             >
-              Adicionada
+              Adicionar
               <img src={AddIcon} alt="" />
             </Button>
           </div>
