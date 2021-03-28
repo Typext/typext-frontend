@@ -8,6 +8,10 @@ export const Container = styled.div`
 
   display: flex;
 
+  img {
+    width: 150px;
+  }
+
   .minuteID,
   .logo {
     width: 20%;

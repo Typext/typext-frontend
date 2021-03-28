@@ -45,7 +45,7 @@ export const minuteData = {
     { topic: 'Falta de deus' },
   ],
   subjects: [
-    { id: 1,
+    {
       subject: `Aqueça o óleo em uma panela.
         Acrescente o alho picado e deixe dourar.
         Em seguida, coloque a mesma quantidade de água indicada na embalagem para fazer o miojo.
@@ -55,13 +55,13 @@ export const minuteData = {
       responsible: 'Matheus Fields',
       deadLine: '30/10/24',
     },
-    { id: 2,
+    {
       subject:
         'O tempo é uma grandeza física presente não apenas no cotidiano como também em todas as áreas e cadeiras científicas. Uma definição do mesmo em âmbito científico é por tal não apenas essencial como também, em verdade, um requisito fundamental.',
       responsible: 'Siqueira Junior',
       deadLine: '30/12/2028',
     },
-    { id: 3,
+    {
       subject: `You went to school to learn girl
         Things you never knew before
         Like "I" before "E" except after "C"
@@ -75,5 +75,5 @@ export const minuteData = {
       deadLine: '11/09/2054',
     },
   ],
-  distributions: ['Não sei que é isso', 'Pode crer', 'Daora' ],
+  distributions: ['Não sei que é isso', 'Pode crer', 'Daora'],
 };

@@ -18,42 +18,60 @@ import {
   IProjectInfo,
   ISubject,
   ITopic,
+  IAddressAndHour,
+  IMinute,
 } from './components/MinuteViewer/components/Minute/DTOs';
 
 const Main = () => {
   const [showMinute, setShowMinute] = useState(false);
 
+  const [minute, setMinute] = useState<IMinute>();
+  const [addressAndHour, setAddressAndHour] = useState<IAddressAndHour>({
+    local: '',
+    startDate: '',
+    startHour: '',
+  });
+  const [projectInfo, setProjectInfo] = useState<IProjectInfo>({
+    projectName: '',
+    members: [],
+  });
+
   const [topics, setTopics] = useState<ITopic[]>([]);
-  const [projectInfo, setProjectInfo] = useState<IProjectInfo>();
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [distributions, setDistributions] = useState<string[]>([]);
 
   const handleGenerateMinute = () => {
-    console.log(projectInfo, subjects, distributions, topics);
+    setMinute({
+      addressAndHour,
+      projectInfo,
+      topics,
+      subjects,
+      distributions,
+    });
   };
 
   return (
-    <>
-      <MainProvider>
-        {showMinute && <MinuteViewer setShowMinute={setShowMinute} />}
+    <MainProvider>
+      {showMinute && (
+        <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
+      )}
 
-        <Container>
-          <Initial />
-          <ProjectInformation setProjectInfo={setProjectInfo} />
-          <Topics setTopics={setTopics} topics={topics} />
+      <Container>
+        <Initial setAddressAndHour={setAddressAndHour} />
+        <ProjectInformation setProjectInfo={setProjectInfo} />
+        <Topics setTopics={setTopics} topics={topics} />
 
-          <Subjects setSubjects={setSubjects} />
-          <Distributions
-            setDistributions={setDistributions}
-            distributions={distributions}
-          />
-          <OptionButtons
-            // setShowMinute={setShowMinute}
-            handleGenerateMinute={handleGenerateMinute}
-          />
-        </Container>
-      </MainProvider>
-    </>
+        <Subjects subjects={subjects} setSubjects={setSubjects} />
+        <Distributions
+          setDistributions={setDistributions}
+          distributions={distributions}
+        />
+        <OptionButtons
+          setShowMinute={setShowMinute}
+          handleGenerateMinute={handleGenerateMinute}
+        />
+      </Container>
+    </MainProvider>
   );
 };
 

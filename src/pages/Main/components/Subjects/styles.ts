@@ -9,71 +9,104 @@ const StyledSubjects = styled.div`
   padding: 1.875rem;
 
   h1 {
-      color: var(--red-pink);
-      font-size: 2.25rem;
+    color: var(--red-pink);
+    font-size: 2.25rem;
 
-      margin-bottom: 6.25rem;
-    }
+    margin-bottom: 6.25rem;
+  }
 
-  .Subjects {
+  .subjects {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     max-width: 102.125rem;
     width: 100%;
 
-    padding-bottom: 5rem;
-    border-bottom: 2px solid var(--red-pink);
+    button {
+      margin: 10px 0;
+    }
 
-    h3 {
+    .content {
+      padding: 0 10px;
+
+      div {
+        margin: 10px 0;
+        display: flex;
         width: 100%;
-        text-align: left;
-        margin-bottom: 1rem;
+        justify-content: space-between;
       }
 
-    .Text {
-      display: flex;
-      align-items: top;
-      justify-content: space-between;
-      width: 100%;
+      .subject {
+        background: #f8f8f8;
+        padding: 1rem 0;
 
-      margin-bottom: 2rem;
+        font-family: Roboto;
+        font-weight: 900;
+        font-size: 2rem;
 
-      TextArea {
-        margin: 0px; 
-        
-        max-width: 80rem; 
-        max-height: 17.813rem;
-        min-width: 80rem; 
-        min-height: 17.813rem;
+        color: #373435;
 
-        outline: none;
+        span {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
-        padding: 1rem;
+        span:nth-child(1) {
+          text-align: center;
+          width: 35%;
+          border-radius: 20px 0 0 20px;
+        }
 
+        span:nth-child(2) {
+          text-align: center;
+          width: 30%;
+        }
+
+        span:nth-child(3) {
+          text-align: center;
+          width: 35%;
+          border-radius: 0 20px 20px 0;
+        }
       }
 
+      div.titles {
+        span {
+          text-align: center;
+          padding: 1rem 0;
+
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 2rem;
+          line-height: 28px;
+          text-align: center;
+
+          color: #ffffff;
+        }
+
+        span:nth-child(1) {
+          background: #f60846;
+          width: 35%;
+
+          border-radius: 20px 0 0 20px;
+        }
+
+        span:nth-child(2) {
+          background: rgba(246, 8, 70, 0.6);
+          width: 30%;
+        }
+
+        span:nth-child(3) {
+          background: #cecfd0;
+          width: 35%;
+          border-radius: 0 20px 20px 0;
+        }
+      }
     }
-
-    .Attributes {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      align-items: left;
-
-      button {
-        margin-left: 78rem;
-      }
-    }
-
-
-
-
-
-  } 
-
+  }
 `;
 
 export default StyledSubjects;
