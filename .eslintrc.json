@@ -20,7 +20,8 @@
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
     "linebreak-style": "off",
-    "indent":"off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "indent": "off",
     "import/no-unresolved": "off",
     "arrow-parens": "off",
     "react/jsx-props-no-spreading": "off",
@@ -29,9 +30,12 @@
     "no-confusing-arrow": "off",
     "no-nested-ternary": "off",
     "operator-linebreak": "off",
-    "prettier/prettier": ["off",{
-        "endOfLine": "auto"}
-      ],
+    "prettier/prettier": [
+      "off",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-use-before-define": "off",
     "react-hooks/rules-of-hooks": "error",
@@ -58,7 +62,4 @@
       }
     }
   }
-  
 }
-
-
