@@ -6,27 +6,30 @@ import Project from './components/Project';
 import Topics from './components/Topics';
 import Subjects from './components/Subjects';
 
-import { minuteData } from '../../data.js';
-
 import { Container } from './styles';
 
 import { IMinute } from './DTOs';
 
 interface IPrintProps {
-  data: IMinute;
+  minute: IMinute;
 }
 
 class ComponentToPrint extends PureComponent<IPrintProps> {
   render() {
+    const { minute } = this.props;
+
     return (
       <Container>
-        <GeneralInfo addressAndHour={minuteData.addressAndHour} />
+        <GeneralInfo addressAndHour={minute.addressAndHour} />
 
         <h2>ATA DE REUNIÃO</h2>
 
-        <Project projectInfo={minuteData.projectInfo} />
-        <Topics topics={minuteData.topics} />
-        <Subjects subjects={minuteData.subjects} distributions={minuteData.distributions} />
+        <Project projectInfo={minute.projectInfo} />
+        <Topics topics={minute.topics} />
+        <Subjects
+          subjects={minute.subjects}
+          distributions={minute.distributions}
+        />
       </Container>
     );
   }

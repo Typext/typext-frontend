@@ -7,7 +7,7 @@ import { ISubject } from '../../DTOs';
 
 interface ISubjectsProp {
   subjects: Array<ISubject>;
-  distributions: Array<string>;
+  distributions: Array<String>;
 }
 
 const Subjects = ({ subjects, distributions }: ISubjectsProp) => {
@@ -18,7 +18,7 @@ const Subjects = ({ subjects, distributions }: ISubjectsProp) => {
     },
     {
       title: 'ASSUNTO',
-      dataIndex: 'topic',
+      dataIndex: 'subject',
     },
     {
       title: 'RESPONSÁVEL',

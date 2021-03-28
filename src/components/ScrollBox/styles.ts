@@ -5,7 +5,7 @@ const StyledScrollBox = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  max-height: 18.1rem;
+  max-height: 30rem;
   height: 100%;
 
   ::-webkit-scrollbar {

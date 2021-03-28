@@ -1,73 +1,75 @@
 import React, { useState } from 'react';
-
-import TextArea from 'components/TextArea/TextArea';
+import ScrollBox from 'components/ScrollBox/ScrollBox';
 
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
-import AddIcon from 'assets/add_icon.svg';
-
 import StyledSubjects from './styles';
 
+import SubjectModal from './components/SubjectModal';
+
+import { ISubject } from '../MinuteViewer/components/Minute/DTOs';
+
 interface ISubjectsProps {
+  subjects: Array<ISubject>;
   setSubjects: Function;
 }
 
-const Subjects = ({ setSubjects }: ISubjectsProps) => {
-  const [subject, setSubject] = useState<string>('');
-  const [responsible, setResponsible] = useState<string>('');
-  const [deadLine, setDeadLine] = useState<string>('');
+const Subjects = ({ subjects, setSubjects }: ISubjectsProps) => {
+  const [openSubjectModal, setOpenSubjectModal] = useState(false);
 
-  const handleInsertSubject = () => {
-    if (setSubjects) setSubjects([{ subject, responsible, deadLine }]);
+  const handleOpenSubjectModal = () => {
+    setOpenSubjectModal(!openSubjectModal);
   };
 
   return (
-    <StyledSubjects>
-      <h1>Assuntos</h1>
+    <>
+      {openSubjectModal && (
+        <SubjectModal
+          setOpenSubjectModal={setOpenSubjectModal}
+          setSubjects={setSubjects}
+          subjects={subjects}
+        />
+      )}
 
-      <div className="Subjects">
-        <h3>Assunto 01</h3>
+      <StyledSubjects>
+        <h1>Assuntos</h1>
 
-        <div className="Text">
-          <TextArea
-            title="SubjectText"
-            cols={50}
-            rows={4}
-            onChange={(e: any) => setSubject(e.target.value)}
-          />
-
-          <Button color="var(--red-pink)">Remover</Button>
-        </div>
-
-        <div className="Attributes">
-          <Input
-            title="Responsável"
-            color="black"
-            Size="large"
-            styleWidth="medium"
-            onChange={(e: any) => setResponsible(e.target.value)}
-          />
-
-          <Input
-            title="Prazo"
-            color="black"
-            Size="large"
-            styleWidth="medium"
-            onChange={(e: any) => setDeadLine(e.target.value)}
-          />
-
+        <div className="subjects">
           <Button
             color="var(--soft-pink)"
             colorText="var(--red-pink)"
-            size="23.75rem"
-            onClick={handleInsertSubject}
+            onClick={handleOpenSubjectModal}
           >
             Adicionar
-            <img src={AddIcon} alt="Add" />
           </Button>
+
+          <ScrollBox>
+            <div className="content">
+              <div className="titles">
+                <span>Alteração</span>
+                <span>Prazo</span>
+                <span>Responsável</span>
+              </div>
+
+              {subjects.length > 0 ? (
+                subjects.map(subject => (
+                  <div className="subject">
+                    <span>{subject.subject}</span>
+                    <span>{subject.deadLine}</span>
+                    <span>{subject.responsible}</span>
+                  </div>
+                ))
+              ) : (
+                <div className="subject">
+                  <span>Assunto</span>
+                  <span>XX/XX/XXX</span>
+                  <span>Responsável</span>
+                </div>
+              )}
+            </div>
+          </ScrollBox>
         </div>
-      </div>
-    </StyledSubjects>
+      </StyledSubjects>
+    </>
   );
 };
 

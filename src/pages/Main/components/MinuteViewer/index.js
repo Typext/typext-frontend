@@ -8,7 +8,7 @@ import Minute from './components/Minute';
 
 import { Container } from './styles';
 
-const MinuteViewer = ({ setShowMinute }) => {
+const MinuteViewer = ({ setShowMinute, minute }) => {
   const componentRef = React.forwardRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -20,7 +20,7 @@ const MinuteViewer = ({ setShowMinute }) => {
 
   return (
     <Container>
-      <Minute ref={componentRef} />
+      <Minute ref={componentRef} minute={minute} />
       <div className="minuteButtons">
         <Button color="#e02041" onClick={handleCloseModal}>
           Voltar

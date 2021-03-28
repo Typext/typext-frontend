@@ -5,17 +5,17 @@ import Button from 'components/Button/Button';
 import { Container } from './styles';
 
 interface OptionButtonsProps {
-  // setShowMinute: Function;
+  setShowMinute: Function;
   handleGenerateMinute: Function;
 }
 
 const OptionButtons: React.FC<OptionButtonsProps> = ({
-  // setShowMinute,
+  setShowMinute,
   handleGenerateMinute,
 }: OptionButtonsProps) => {
   const handleOpenMinuteModal = () => {
     if (handleGenerateMinute) handleGenerateMinute(true);
-    // if (setShowMinute) setShowMinute(true);
+    if (setShowMinute) setShowMinute(true);
   };
   return (
     <Container>
