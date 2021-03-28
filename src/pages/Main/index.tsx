@@ -11,6 +11,7 @@ import Distributions from './components/Distributions/Distributions';
 
 // eslint-disable-next-line
 import MinuteViewer from './components/MinuteViewer';
+import ScheduleModal from './components/ScheduleModal';
 
 import Container from './styles';
 
@@ -24,6 +25,7 @@ import {
 
 const Main = () => {
   const [showMinute, setShowMinute] = useState(false);
+  const [showSchedule, setShowSchedule] = useState(false);
 
   const [minute, setMinute] = useState<IMinute>();
   const [addressAndHour, setAddressAndHour] = useState<IAddressAndHour>({
@@ -56,6 +58,8 @@ const Main = () => {
         <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
       )}
 
+      {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
+
       <Container>
         <Initial setAddressAndHour={setAddressAndHour} />
         <ProjectInformation setProjectInfo={setProjectInfo} />
@@ -69,6 +73,7 @@ const Main = () => {
         <OptionButtons
           setShowMinute={setShowMinute}
           handleGenerateMinute={handleGenerateMinute}
+          setShowSchedule={setShowSchedule}
         />
       </Container>
     </MainProvider>

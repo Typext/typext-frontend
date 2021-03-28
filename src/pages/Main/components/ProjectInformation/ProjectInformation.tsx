@@ -42,7 +42,15 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
     setRole('');
   };
 
+  // eslint-disable-next-line consistent-return
   const handleCreateMember = () => {
+    const pattern = /\S+@\S+\.\S+/;
+
+    if (!pattern.test(email)) {
+      message.error('Insira um email valido');
+      return null;
+    }
+
     if (!name || !phone || !email || !role || !enterprise) {
       message.error('Todas os campos devem estar preenchidos');
     } else {
@@ -113,7 +121,6 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
                 title="Telefone"
                 color="black"
                 styleWidth="medium"
-                type="number"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
