@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { MainProvider } from 'contexts/MainContext';
+
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
@@ -31,23 +34,25 @@ const Main = () => {
 
   return (
     <>
-      {showMinute && <MinuteViewer setShowMinute={setShowMinute} />}
+      <MainProvider>
+        {showMinute && <MinuteViewer setShowMinute={setShowMinute} />}
 
-      <Container>
-        <Initial />
-        <ProjectInformation setProjectInfo={setProjectInfo} />
-        <Topics setTopics={setTopics} topics={topics} />
+        <Container>
+          <Initial />
+          <ProjectInformation setProjectInfo={setProjectInfo} />
+          <Topics setTopics={setTopics} topics={topics} />
 
-        <Subjects setSubjects={setSubjects} />
-        <Distributions
-          setDistributions={setDistributions}
-          distributions={distributions}
-        />
-        <OptionButtons
-          // setShowMinute={setShowMinute}
-          handleGenerateMinute={handleGenerateMinute}
-        />
-      </Container>
+          <Subjects setSubjects={setSubjects} />
+          <Distributions
+            setDistributions={setDistributions}
+            distributions={distributions}
+          />
+          <OptionButtons
+            // setShowMinute={setShowMinute}
+            handleGenerateMinute={handleGenerateMinute}
+          />
+        </Container>
+      </MainProvider>
     </>
   );
 };
