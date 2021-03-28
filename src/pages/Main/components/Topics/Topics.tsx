@@ -39,6 +39,12 @@ const Topics = ({ setTopics, topics }: ITopicsProps) => {
     }
   };
 
+  const deleteTopics = (topicValue: ITopic) => {
+    setTopics(topics.filter(
+      topic => topic !== topicValue,
+    ));
+  };
+
   return (
     <StyledTopics>
       <h1>Pauta</h1>
@@ -68,7 +74,7 @@ const Topics = ({ setTopics, topics }: ITopicsProps) => {
         <div className="TopicList">
           <ScrollBox>
             {topics?.map(topic => (
-              <BoxInformation key={topic.topic}>
+              <BoxInformation key={topic.topic} deleteComponent={() => deleteTopics(topic)}>
                 <h4>{topic.topic}</h4>
               </BoxInformation>
             ))}

@@ -32,6 +32,12 @@ const Distributions = ({ setDistributions, distributions } : DistributionsProps)
     }
   };
 
+  const deleteDistributions = (value: string) => {
+    setDistributions(distributions.filter(
+      distributionValue => distributionValue !== value,
+    ));
+  };
+
   return (
     <StyledDistributions>
       <div className="Distributions">
@@ -62,7 +68,10 @@ const Distributions = ({ setDistributions, distributions } : DistributionsProps)
           <div className="Departments">
             <ScrollBox>
               {distributions.map(distributionValue => (
-                <BoxInformation key={distributionValue}>
+                <BoxInformation
+                  key={distributionValue}
+                  deleteComponent={() => deleteDistributions(distributionValue)}
+                >
                   <h4>{distributionValue}</h4>
                 </BoxInformation>
               ))}

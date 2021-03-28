@@ -69,6 +69,12 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
     }
   };
 
+  const deleteMember = (member: string) => {
+    setMembers(members.filter(
+      user => user.name !== member,
+    ));
+  };
+
   useEffect(() => {
     if (setProjectInfo) setProjectInfo({ projectName, members });
   }, [members, projectName, setProjectInfo]);
@@ -150,7 +156,7 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
 
             <ScrollBox>
               {members.map(member => (
-                <BoxInformation>
+                <BoxInformation deleteComponent={() => deleteMember(member.name)}>
                   <h4>{member.name}</h4>
                 </BoxInformation>
               ))}
