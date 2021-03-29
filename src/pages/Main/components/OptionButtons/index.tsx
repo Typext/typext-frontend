@@ -2,6 +2,8 @@ import React from 'react';
 
 import Button from 'components/Button/Button';
 
+import { getMode } from 'services/api';
+
 import { Container } from './styles';
 
 interface OptionButtonsProps {
@@ -15,6 +17,8 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   setShowMinute,
   handleGenerateMinute,
 }: OptionButtonsProps) => {
+  const isNotProduction = getMode();
+
   const handleOpenMinuteModal = () => {
     if (handleGenerateMinute) handleGenerateMinute(true);
     if (setShowMinute) setShowMinute(true);
@@ -33,7 +37,7 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
       <Button color="var(--red-pink)" onClick={handleOpenMinuteModal}>
         Visualizar Ata
       </Button>
-      <Button color="#0AAD74">Gerar Ata</Button>
+      {isNotProduction && <Button color="#0AAD74">Gerar Ata</Button>}
     </Container>
   );
 };
