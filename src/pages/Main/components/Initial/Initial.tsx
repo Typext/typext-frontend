@@ -21,7 +21,7 @@ const Initial = ({ setAddressAndHour }: IInitialProps) => {
   return (
     <StyledInitial>
       <div className="Initial">
-        <h1>ATA de Reunião</h1>
+        <h1>ATA de Reunião - DESENVOLVIMENTO</h1>
         <form action="">
           <Input
             title="Local"
