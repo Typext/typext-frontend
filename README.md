@@ -1,7 +1,8 @@
 ![typext_cover](https://user-images.githubusercontent.com/56441371/112768034-52dbed80-8ff0-11eb-8a72-5190c56f1090.png)
 
 
-O Typext nasceu através da necessidade de resolução de um problema do cliente parceiro com a Fatec São José dos Campos - Prof. Jessen Vidal.
+O Typext nasceu através da necessidade de resolução de um problema do nosso cliente: a falta de uma forma de criar e gerenciar atas digitais.
+O projeto está sendo desenvolvido a partir de uma parceria com a Fatec São José dos Campos - Prof. Jessen Vidal.
 
 ### - Disciplinas Integradas
 
@@ -36,7 +37,7 @@ Desenvolver um sistema de criação e gerenciamento de atas de reuniões
 
 ### O Projeto
 
-O Projeto consiste em um sistema web para criação e gerenciamento de atas de reunião, podendo convidar participantes não cadastrados para ingressar à ata, conta também com um sistema de assinatura digital para maior controle e segurança.
+O Projeto consiste em um sistema web para criação e gerenciamento de atas digitais. A plataforma possibilita a avaliação dos documentos para todos os participantes, sem a precisar estar cadastrado na ferramenta. O Typext conta também com um sistema de assinatura digital para maior controle e segurança.
 
 ### Requisitos funcionais
 
@@ -46,7 +47,7 @@ Para acessar a documentação de requisitos clique em: [Documentação geral](ht
 
 ![typext_tecs](https://user-images.githubusercontent.com/56441371/112768909-c122af00-8ff4-11eb-98b4-5c08e4501299.png)
 
-As principais tecnologias que utilizamos para o desenvolvumento do projeto foram: TypeScript - React - Node - Postgres
+As principais tecnologias que utilizamos para o desenvolvumento do projeto foram: TypeScript - React - Node.js - Postgres
 
 ### Backlog do Projeto
 
@@ -64,7 +65,7 @@ Sprint 4 - 23/11/2020 a 29/11/2020
 
 ### Requisitos necessários para o funcionamento do software
 
-- Para essa primeira sprint será necessário somente o node para rodar o protótipo funcinal
+- Para executar o protótipo entregue nessa primeira sprint, será necessário somente o Node para rodar o protótipo funcional
 
 ### Para instalar o node no linux
 
@@ -90,7 +91,7 @@ Entre no site do [node](https://nodejs.org/en/) e baixe a versão LTS
 
 ## Rodando o projeto
 
-Para rodar o projeto localmente basta clonar o repositório e inseriri o comando no terminal na pasta raiz do projeto
+Para rodar o projeto localmente basta clonar o repositório e inserir o comando no terminal na pasta raiz do projeto
 
 ```npm install``` ou ```yarn```
 
