@@ -49,9 +49,11 @@ export const Container = styled.div`
   }
 
   thead {
-    background: rgb(192 213 255);
+    display: contents;
 
     tr {
+      background: rgb(192 213 255);
+
       th {
         background: none;
         border-right: 1px solid #1a1a1a;
