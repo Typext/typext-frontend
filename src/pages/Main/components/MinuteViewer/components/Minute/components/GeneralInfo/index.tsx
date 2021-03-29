@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 import iacitLogo from 'assets/iacit_logo.jpg';
@@ -12,9 +12,24 @@ interface IGeneralInfoProps {
 }
 
 const GeneralInfo = ({ addressAndHour }: IGeneralInfoProps) => {
+  const [minuteId, setMinuteId] = useState(1);
+
+  useEffect(() => {
+    const minutesGenerated = localStorage.getItem('minuteID');
+
+    if (minutesGenerated) {
+      setMinuteId(Number(minutesGenerated) + 1);
+    }
+  }, []);
+
   return (
     <Container>
-      <div className="minuteID">ATA N°</div>
+      <div className="minuteID">
+        ATA N°
+        {' '}
+        {minuteId}
+        2021
+      </div>
       <div className="dateAndLocateInfo">
         <section className="date">
           <h4>Data:&nbsp;</h4>

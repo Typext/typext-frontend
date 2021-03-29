@@ -10,10 +10,8 @@ const StyledBoxInformation = styled.div`
   background-color: var(--red-pink);
   border-radius: 1.25rem;
 
-  padding: 0.625rem;
   margin: 0.5rem 1rem 0.5rem 0;
-
-
+  padding: 0 15px;
 
   :first-child {
     margin-top: 0;
@@ -43,10 +41,9 @@ const StyledBoxInformation = styled.div`
     height: 1.875rem;
 
     img {
-      height: 1.875rem; 
+      height: 1.875rem;
     }
   }
-
 `;
 
 export default StyledBoxInformation;

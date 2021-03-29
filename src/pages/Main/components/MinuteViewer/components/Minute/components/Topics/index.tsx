@@ -11,7 +11,7 @@ interface ITopicsProps {
 const Topics = ({ topics }: ITopicsProps) => {
   return (
     <Container>
-      <h3>Pauta</h3>
+      <h3>PAUTA</h3>
 
       <section className="description">
         {topics?.map(topic => (

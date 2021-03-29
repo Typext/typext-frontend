@@ -18,6 +18,18 @@ const MinuteViewer = ({ setShowMinute, minute }) => {
     if (setShowMinute) setShowMinute(false);
   };
 
+  const handleGenerateMinute = () => {
+    const minuteId = localStorage.getItem('minuteID')
+
+    if(minuteId) {
+      localStorage.setItem('minuteID', Number(minuteId) + 1)
+    } else {
+      localStorage.setItem('minuteID', 1)
+    }
+
+    handlePrint()
+  }
+
   return (
     <Container>
       <Minute ref={componentRef} minute={minute} />
@@ -25,7 +37,7 @@ const MinuteViewer = ({ setShowMinute, minute }) => {
         <Button color="#e02041" onClick={handleCloseModal}>
           Voltar
         </Button>
-        <Button color="#373435" onClick={handlePrint}>
+        <Button color="#373435" onClick={handleGenerateMinute}>
           Gerar ATA
         </Button>
       </div>

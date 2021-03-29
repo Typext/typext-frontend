@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: center;
 
   min-width: 1020px;
-  min-height: 1320px;
   width: 1020px;
   height: max-content;
 
@@ -20,5 +19,6 @@ export const Container = styled.div`
 
   h2, h3 {
     margin: 0;
+    font-weight: bolder;
   }
 `;

@@ -48,7 +48,10 @@ const StyledSubjects = styled.div`
 
         span {
           display: -webkit-box;
-          -webkit-line-clamp: 3;
+
+          padding: 4px 10px;
+
+          -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;

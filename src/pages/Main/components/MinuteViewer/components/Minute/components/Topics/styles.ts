@@ -11,8 +11,10 @@ export const Container = styled.div`
     width: 100%;
     height: max-content;
     padding: 5px 0;
+    font-weight: bolder;
 
     text-align: center;
+    background: rgb(192 213 255);
     border-bottom: 1px solid #1a1a1a;
   }
 

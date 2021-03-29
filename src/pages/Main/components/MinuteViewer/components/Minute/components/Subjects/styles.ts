@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
 
   .ant-table-wrapper {
     &,
@@ -49,6 +49,8 @@ export const Container = styled.div`
   }
 
   thead {
+    background: rgb(192 213 255);
+
     tr {
       th {
         background: none;
