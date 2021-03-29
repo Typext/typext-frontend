@@ -2,15 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 
-  width: 100%;
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
 
-  margin: 200px 0;
+    width: 100%;
+    max-width: 102.125rem;
 
-  button {
-    margin: 10px;
+    margin: 200px 0;
+
+    button {
+      margin: 10px;
+    }
   }
 `;
