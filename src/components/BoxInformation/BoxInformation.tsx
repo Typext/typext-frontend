@@ -5,7 +5,6 @@ import ExitIcon from 'assets/exit_icon.svg';
 import StyledBoxInformation from './styles';
 
 interface BoxInformationProps {
-  // eslint-disable-next-line react/require-default-props
   deleteComponent?: Function;
   children: React.ReactNode;
 }
@@ -28,6 +27,12 @@ const BoxInformation: React.FC<BoxInformationProps> = ({
       </div>
     </StyledBoxInformation>
   );
+};
+
+BoxInformation.defaultProps = {
+  deleteComponent: () => {
+    return '';
+  },
 };
 
 export default BoxInformation;
