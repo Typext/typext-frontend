@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledProjectInformation = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 1.875rem;
+  padding-top: 3rem;
 
   .ProjectInformation {
     display: flex;
@@ -18,8 +18,9 @@ const StyledProjectInformation = styled.div`
     border-bottom: 2px solid var(--red-pink);
 
     h1 {
-      color: var(--red-pink);
+      color: var(--gray);
       font-size: 2.25rem;
+      font-weight: bold;
 
       margin-bottom: 6.25rem;
     }
@@ -53,7 +54,7 @@ const StyledProjectInformation = styled.div`
           display: flex;
           justify-content: space-between;
 
-          margin-top: 12px;
+          margin-top: 0.75rem;
         }
 
         Button {
@@ -70,8 +71,9 @@ const StyledProjectInformation = styled.div`
         h2 {
           color: var(--black);
           font-size: 1.5ren;
+          font-weight: bold;
 
-          margin-bottom: 14px;
+          margin-bottom: 0.875rem;
         }
       }
     }

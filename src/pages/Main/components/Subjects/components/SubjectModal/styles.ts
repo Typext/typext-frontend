@@ -16,31 +16,37 @@ export const Container = styled.div`
     width: 90rem;
     height: 55rem;
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding: 30px 20px;
+    padding: 1.875rem 1.25rem;
 
     textarea {
-      padding: 20px;
+      padding: 1.25rem;
     }
 
     .textArea,
     textarea {
       width: 100%;
       height: 100%;
+
+      font-family: Roboto;
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: bold;
+
     }
 
     .inputs {
       display: flex;
       width: 100%;
-      margin: 30px 0;
+      margin: 1.875rem 0;
 
       div {
-        margin-right: 30px;
+        margin-right: 1.875rem;
       }
     }
 

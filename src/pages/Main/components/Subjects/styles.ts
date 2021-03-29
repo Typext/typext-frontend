@@ -6,11 +6,13 @@ const StyledSubjects = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.875rem;
+  padding: 3rem;
+
 
   h1 {
-    color: var(--red-pink);
+    color: var(--gray);
     font-size: 2.25rem;
+    font-weight: bold;
 
     margin-bottom: 6.25rem;
   }
@@ -22,15 +24,18 @@ const StyledSubjects = styled.div`
     max-width: 102.125rem;
     width: 100%;
 
+    padding-bottom: 5rem;
+    border-bottom: 2px solid var(--red-pink);
+
     button {
-      margin: 10px 0;
+      margin: 0.625rem 0;
     }
 
     .content {
-      padding: 0 10px;
+      padding: 0 0.625rem 0 0;
 
       div {
-        margin: 10px 0;
+        margin: 0.625rem 0;
         display: flex;
         width: 100%;
         justify-content: space-between;
@@ -41,8 +46,8 @@ const StyledSubjects = styled.div`
         padding: 1rem 0;
 
         font-family: Roboto;
-        font-weight: 900;
-        font-size: 2rem;
+        font-weight: bold;
+        font-size: 1.3rem;
 
         color: #373435;
 
@@ -57,7 +62,7 @@ const StyledSubjects = styled.div`
         span:nth-child(1) {
           text-align: center;
           width: 35%;
-          border-radius: 20px 0 0 20px;
+          border-radius: 1.25rem 0 0 1.25rem;
         }
 
         span:nth-child(2) {
@@ -68,7 +73,7 @@ const StyledSubjects = styled.div`
         span:nth-child(3) {
           text-align: center;
           width: 35%;
-          border-radius: 0 20px 20px 0;
+          border-radius: 0 1.25rem 1.25rem 0;
         }
       }
 
@@ -79,9 +84,8 @@ const StyledSubjects = styled.div`
 
           font-family: Roboto;
           font-style: normal;
-          font-weight: 900;
-          font-size: 2rem;
-          line-height: 28px;
+          font-weight: bold;
+          font-size: 1.5rem;
           text-align: center;
 
           color: #ffffff;
@@ -91,7 +95,7 @@ const StyledSubjects = styled.div`
           background: #f60846;
           width: 35%;
 
-          border-radius: 20px 0 0 20px;
+          border-radius: 1.25rem 0 0 1.25rem;
         }
 
         span:nth-child(2) {
@@ -102,7 +106,7 @@ const StyledSubjects = styled.div`
         span:nth-child(3) {
           background: #cecfd0;
           width: 35%;
-          border-radius: 0 20px 20px 0;
+          border-radius: 0 1.25rem 1.25rem 0;
         }
       }
     }

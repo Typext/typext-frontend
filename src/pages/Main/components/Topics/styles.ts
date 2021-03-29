@@ -10,8 +10,9 @@ const StyledTopics = styled.div`
   justify-content: center;
 
   h1 {
-    color: var(--red-pink);
+    color: var(--gray);
     font-size: 2.25rem;
+    font-weight: bold;
 
     margin-bottom: 4rem;
   }

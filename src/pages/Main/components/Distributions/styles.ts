@@ -15,8 +15,9 @@ const StyledDistributions = styled.div`
     width: 100%;
 
     h1 {
-      color: var(--red-pink);
+      color: var(--gray);
       font-size: 2.25rem;
+      font-weight: bold;
 
       margin-bottom: 4rem;
     }
