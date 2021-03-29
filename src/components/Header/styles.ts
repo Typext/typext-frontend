@@ -15,19 +15,18 @@ export const StyledHeader = styled.header`
   h1 {
     font-family: Roboto;
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 1.875rem;
-    line-height: 2.188rem;
 
     color: #cecfd0;
 
-    margin-right: 20px;
+    margin: 0 1.25rem 0 0;
   }
 
   img {
-    height: 3.125rem;
-    width: 3.125rem;
-    padding: 0 10px;
+    height: 3.5rem;
+    width: 3.5rem;
+    padding: 0 0.625rem;
 
     &.logo {
       height: 2.5rem;

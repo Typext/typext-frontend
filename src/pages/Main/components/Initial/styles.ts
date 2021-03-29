@@ -20,6 +20,7 @@ export const StyledInitial = styled.div`
     h1 {
       color: var(--red-pink);
       font-size: 3.125rem;
+      font-weight: bold;
     }
 
     form {

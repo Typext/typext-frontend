@@ -82,13 +82,13 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
   return (
     <StyledProjectInformation>
       <div className="ProjectInformation">
-        <h1>INFORMAÇÕES DO PROJETO</h1>
+        <h1>Informações do Projeto</h1>
 
         <Input
           title="Nome do Projeto"
-          Size="large"
-          color="red-pink"
-          styleWidth="large"
+          Size="2rem"
+          color="var(--red-pink)"
+          styleWidth="102.1rem"
           onChange={(e: any) => setProjectName(e.target.value)}
         />
 
@@ -99,16 +99,14 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
             <div className="NameTitle">
               <Input
                 title="Nome completo do Participante"
-                color="black"
-                styleWidth="large"
+                styleWidth="49.375rem"
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 title="Título / Cargo"
-                color="black"
-                styleWidth="medium"
+                styleWidth="23.75rem"
                 value={role}
                 onChange={(e: any) => setRole(e.target.value)}
               />
@@ -117,24 +115,21 @@ const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
             <div className="CompanyPhoneEmail">
               <Input
                 title="Empresa"
-                color="black"
-                styleWidth="medium"
+                styleWidth="23.75rem"
                 value={enterprise}
                 onChange={(e: any) => setEnterprise(e.target.value)}
               />
 
               <Input
                 title="Telefone"
-                color="black"
-                styleWidth="medium"
+                styleWidth="23.75rem"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
 
               <Input
                 title="E-mail"
-                color="black"
-                styleWidth="medium"
+                styleWidth="23.75rem"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />

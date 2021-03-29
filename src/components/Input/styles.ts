@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface Props {
   InputWidth: string;
@@ -10,38 +10,16 @@ export const StyledInput = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
+  width: ${props => props.InputWidth || '23.75rem'};
+
   margin: 0;
 
-  ${props =>
-    props.InputWidth === 'large'
-      ? css`
-          width: 49.375rem;
-        `
-      : css`
-          width: 23.75rem;
-        `}
-
   h3 {
-    font-weight: 900;
+    font-weight: bold;
+    font-size: ${props => props.Size || '1.5rem'};
+    color: ${props => props.Color || 'var(--black)'};
+
     margin-bottom: 5px;
-
-    ${props =>
-      props.Color === 'black'
-        ? css`
-            color: var(--black);
-          `
-        : css`
-            color: var(--red-pink);
-          `}
-
-    ${props =>
-      props.Size === 'large'
-        ? css`
-            font-size: 2rem;
-          `
-        : css`
-            font-size: 1.5rem;
-          `}
   }
 
   input {
@@ -51,17 +29,15 @@ export const StyledInput = styled.div<Props>`
     height: 4.063rem;
     background-color: var(--soft-gray);
 
+    font-family: Roboto;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: bold;
+
     outline: none;
     border: 0;
     border-radius: 1.25rem;
 
-    ${props =>
-      props.InputWidth === 'large'
-        ? css`
-            width: 49.375rem;
-          `
-        : css`
-            width: 23.75rem;
-          `}
+    width: ${props => props.InputWidth || '23.75rem'}
   }
 `;

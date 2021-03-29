@@ -19,9 +19,9 @@ const Input: React.FC<InputProps> = ({
 }: InputProps) => {
   return (
     <StyledInput
-      InputWidth={styleWidth || 'medium'}
-      Color={color || 'black'}
-      Size={Size || 'medium'}
+      InputWidth={styleWidth || '23.75rem'}
+      Color={color || 'var(--black)'}
+      Size={Size || '1.5rem'}
     >
       <h3>{title}</h3>
 
@@ -33,7 +33,7 @@ const Input: React.FC<InputProps> = ({
 Input.defaultProps = {
   Type: '',
   Size: '',
-  styleWidth: '',
+  styleWidth: '23.75rem',
   color: '',
 };
 
