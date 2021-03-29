@@ -8,7 +8,7 @@ A primeira sprint contemplará os seguintes incrementos previamente propostos:
 
 ## Acesso aos incrementos contemplados na sprint 1:
 
-1º - O protótipo funcional pode ser acessado [clicando aqui.](https://typext-iacit-frontend.vercel.app/)
+1º - O protótipo funcional pode ser acessado [clicando aqui.](https://typext.vercel.app/)
 
 Nele você poderá criar atas e exportá-las como PDF. Uma amostra do que nossa plataforma entregará.
 
