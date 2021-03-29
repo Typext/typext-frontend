@@ -55,7 +55,7 @@ As principais tecnologias que utilizamos para o desenvolvumento do projeto foram
 
 ### Entregas
 
-Sprint 1 -  08/03/2021 a 28/03/2021
+[Sprint 1](https://github.com/MatheusCampos-450/typext-frontend/tree/main/Sprint%201) -  08/03/2021 a 28/03/2021
 
 Sprint 2 -  29/03/2021 a 18/04/2020
 
