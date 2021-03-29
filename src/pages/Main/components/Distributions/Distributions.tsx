@@ -47,9 +47,7 @@ const Distributions = ({ setDistributions, distributions } : DistributionsProps)
           <div className="DataDepartments">
             <Input
               title="Área"
-              Size="large"
-              color="black"
-              styleWidth="large"
+              styleWidth="49.375rem"
               value={distribution}
               onChange={(e: any) => setDistribution(e.target.value)}
             />

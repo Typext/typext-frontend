@@ -53,9 +53,7 @@ const Topics = ({ setTopics, topics }: ITopicsProps) => {
         <div className="AddTopic">
           <Input
             title="Pauta"
-            Size="large"
-            color="black"
-            styleWidth="large"
+            styleWidth="49.375rem"
             value={topicName}
             onChange={(e: any) => setTopicName(e.target.value)}
           />

@@ -24,7 +24,9 @@ const GlobalStyle = createGlobalStyle`
     --black: #373435;
     --red-pink: #f60846;
     --soft-pink: #fce6ec;
+    --gray: #a0a0a0;
     --soft-gray: #F5F5F6;
+    --green: #0AAD74;
   }
 
   @media(max-width: 1980px) {

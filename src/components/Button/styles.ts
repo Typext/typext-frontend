@@ -19,7 +19,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   font-family: Roboto;
   font-style: normal;
-  font-weight: 900;
+  font-weight: bold;
   font-size: 1.5rem;
 
   color: ${props => props.colorText || '#fff'};
