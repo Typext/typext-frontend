@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { MainContext } from 'contexts/MainContext';
 
 import scheduleImage from 'assets/calendar.svg';
 import exit_icon from 'assets/exit_logo_red.svg';
 
 import { Container } from './styles';
 
-interface IScheduleModalProps {
-  setShowSchedule: Function;
-}
+const ScheduleModal = () => {
+  const { setShowSchedule } = useContext(MainContext);
 
-const ScheduleModal = ({ setShowSchedule }: IScheduleModalProps) => {
   const handleCloseModal = () => {
     if (setShowSchedule) setShowSchedule();
   };

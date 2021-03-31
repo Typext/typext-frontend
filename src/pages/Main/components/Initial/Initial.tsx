@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { MainContext } from 'contexts/MainContext';
+
 import Input from 'components/Input/Input';
 import { StyledInitial } from './styles';
 
-interface IInitialProps {
-  setAddressAndHour: Function
-}
+const Initial = () => {
+  const { setAddressAndHour } = useContext(MainContext);
 
-const Initial = ({ setAddressAndHour }: IInitialProps) => {
   const [local, setLocal] = useState<string>('');
   const [startHour, setStartHour] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');

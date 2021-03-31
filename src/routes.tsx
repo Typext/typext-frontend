@@ -1,5 +1,5 @@
-import RecoveryPassword from 'pages/RecoveryPassword';
 import React from 'react';
+import RecoveryPassword from 'pages/RecoveryPassword';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import NewPassword from 'pages/NewPassword';
