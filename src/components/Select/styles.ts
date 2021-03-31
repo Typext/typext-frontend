@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-    InputWidth: string;
+    SelectWidth: string;
     Color: string;
     Size: string;
   }
@@ -10,7 +10,7 @@ export const StyledSelect = styled.div<Props>`
   display: flex;
   flex-direction: column;
   
-  width: ${props => props.InputWidth || '23.75rem'};
+  width: ${props => props.SelectWidth || '23.75rem'};
 
   margin: 0;
 
@@ -30,7 +30,7 @@ export const StyledSelect = styled.div<Props>`
     border: 0;
     border-radius: 1.25rem;
 
-    width: ${props => props.InputWidth || '23.75rem'}
+    width: ${props => props.SelectWidth || '23.75rem'}
   }
   
 `;

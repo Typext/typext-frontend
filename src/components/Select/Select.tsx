@@ -18,7 +18,7 @@ const Select: React.FC<SelectProps> = ({
   }: SelectProps) => {
     return (
       <StyledSelect
-        InputWidth={styleWidth || '23.75rem'}
+        SelectWidth={styleWidth || '23.75rem'}
         Color={color || 'var(--black)'}
         Size={Size || '1.5rem'}
       >
