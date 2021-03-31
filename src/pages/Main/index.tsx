@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { MainProvider } from 'contexts/MainContext';
 
+import Header from 'components/Header/Header';
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
@@ -53,30 +54,33 @@ const Main = () => {
   };
 
   return (
-    <MainProvider>
-      {showMinute && (
-        <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
-      )}
+    <>
+      <Header />
+      <MainProvider>
+        {showMinute && (
+          <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
+        )}
 
-      {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
+        {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
 
-      <Container>
-        <Initial setAddressAndHour={setAddressAndHour} />
-        <ProjectInformation setProjectInfo={setProjectInfo} />
-        <Topics setTopics={setTopics} topics={topics} />
+        <Container>
+          <Initial setAddressAndHour={setAddressAndHour} />
+          <ProjectInformation setProjectInfo={setProjectInfo} />
+          <Topics setTopics={setTopics} topics={topics} />
 
-        <Subjects subjects={subjects} setSubjects={setSubjects} />
-        <Distributions
-          setDistributions={setDistributions}
-          distributions={distributions}
-        />
-        <OptionButtons
-          setShowMinute={setShowMinute}
-          handleGenerateMinute={handleGenerateMinute}
-          setShowSchedule={setShowSchedule}
-        />
-      </Container>
-    </MainProvider>
+          <Subjects subjects={subjects} setSubjects={setSubjects} />
+          <Distributions
+            setDistributions={setDistributions}
+            distributions={distributions}
+          />
+          <OptionButtons
+            setShowMinute={setShowMinute}
+            handleGenerateMinute={handleGenerateMinute}
+            setShowSchedule={setShowSchedule}
+          />
+        </Container>
+      </MainProvider>
+    </>
   );
 };
 

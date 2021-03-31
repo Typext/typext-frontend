@@ -1,3 +1,4 @@
+import RecoveryPassword from 'pages/RecoveryPassword';
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ export default function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Main} />
+        <Route path="/recovery-password" exact component={RecoveryPassword} />
       </Switch>
     </BrowserRouter>
   );
