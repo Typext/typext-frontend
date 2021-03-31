@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import { MainContext } from 'contexts/MainContext';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
@@ -19,11 +21,9 @@ interface IMembers {
   enterprise: string;
 }
 
-interface ProjectProps {
-  setProjectInfo: Function;
-}
+const ProjectInformation = () => {
+  const { setProjectInfo } = useContext(MainContext);
 
-const ProjectInformation = ({ setProjectInfo }: ProjectProps) => {
   const [members, setMembers] = useState<IMembers[]>([]);
 
   const [projectName, setProjectName] = useState<string>('');

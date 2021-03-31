@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
-import { MainProvider } from 'contexts/MainContext';
+import { MainContext, MainProvider } from 'contexts/MainContext';
 
 import Header from 'components/Header/Header';
 import Initial from './components/Initial/Initial';
@@ -17,31 +17,22 @@ import ScheduleModal from './components/ScheduleModal';
 import Container from './styles';
 
 import {
-  IProjectInfo,
-  ISubject,
-  ITopic,
-  IAddressAndHour,
   IMinute,
 } from './components/MinuteViewer/components/Minute/DTOs';
 
 const Main = () => {
+  const {
+    topics,
+    showSchedule,
+    addressAndHour,
+    projectInfo,
+    subjects,
+    distributions,
+  } = useContext(MainContext);
+
   const [showMinute, setShowMinute] = useState(false);
-  const [showSchedule, setShowSchedule] = useState(false);
 
   const [minute, setMinute] = useState<IMinute>();
-  const [addressAndHour, setAddressAndHour] = useState<IAddressAndHour>({
-    local: '',
-    startDate: '',
-    startHour: '',
-  });
-  const [projectInfo, setProjectInfo] = useState<IProjectInfo>({
-    projectName: '',
-    members: [],
-  });
-
-  const [topics, setTopics] = useState<ITopic[]>([]);
-  const [subjects, setSubjects] = useState<ISubject[]>([]);
-  const [distributions, setDistributions] = useState<string[]>([]);
 
   const handleGenerateMinute = () => {
     setMinute({
@@ -61,22 +52,19 @@ const Main = () => {
           <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
         )}
 
-        {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
+        {showSchedule && <ScheduleModal />}
 
         <Container>
-          <Initial setAddressAndHour={setAddressAndHour} />
-          <ProjectInformation setProjectInfo={setProjectInfo} />
-          <Topics setTopics={setTopics} topics={topics} />
+          <Initial />
+          <ProjectInformation />
 
-          <Subjects subjects={subjects} setSubjects={setSubjects} />
-          <Distributions
-            setDistributions={setDistributions}
-            distributions={distributions}
-          />
+          <Topics />
+
+          <Subjects />
+          <Distributions />
           <OptionButtons
             setShowMinute={setShowMinute}
             handleGenerateMinute={handleGenerateMinute}
-            setShowSchedule={setShowSchedule}
           />
         </Container>
       </MainProvider>

@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { message } from 'antd';
+
+import { MainContext } from 'contexts/MainContext';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -10,12 +12,9 @@ import ScrollBox from 'components/ScrollBox/ScrollBox';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
 import StyledDistributions from './styles';
 
-interface DistributionsProps {
-  setDistributions: Function
-  distributions: Array<string>
-}
+const Distributions = () => {
+  const { distributions, setDistributions } = useContext(MainContext);
 
-const Distributions = ({ setDistributions, distributions } : DistributionsProps) => {
   const [distribution, setDistribution] = useState<string>('');
 
   const handleCleanFields = () => {

@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { message } from 'antd';
+
+import { MainContext } from 'contexts/MainContext';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -12,12 +14,9 @@ import StyledTopics from './styles';
 
 import { ITopic } from '../MinuteViewer/components/Minute/DTOs';
 
-interface ITopicsProps {
-  setTopics: Function;
-  topics: Array<ITopic>;
-}
+const Topics = () => {
+  const { topics, setTopics } = useContext(MainContext);
 
-const Topics = ({ setTopics, topics }: ITopicsProps) => {
   const [topicName, setTopicName] = useState<string>('');
 
   const handleCleanFields = () => {
