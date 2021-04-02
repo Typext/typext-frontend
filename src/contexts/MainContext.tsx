@@ -5,7 +5,7 @@ import {
   IAddressAndHour,
   IProjectInfo,
   ISubject,
-} from 'pages/Main/components/MinuteViewer/components/Minute/DTOs';
+} from 'DTOs';
 
 interface IMainProvider {
   children: React.ReactNode;

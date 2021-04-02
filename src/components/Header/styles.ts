@@ -33,4 +33,9 @@ export const StyledHeader = styled.header`
       width: 14.375rem;
     }
   }
+
+  button {
+    border: none;
+    background: none;
+  }
 `;

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { MainContext, MainProvider } from 'contexts/MainContext';
 
-import Header from 'components/Header/Header';
+import { IMinute } from 'DTOs';
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
@@ -15,10 +15,6 @@ import MinuteViewer from './components/MinuteViewer';
 import ScheduleModal from './components/ScheduleModal';
 
 import Container from './styles';
-
-import {
-  IMinute,
-} from './components/MinuteViewer/components/Minute/DTOs';
 
 const Main = () => {
   const {
@@ -46,7 +42,6 @@ const Main = () => {
 
   return (
     <>
-      <Header />
       <MainProvider>
         {showMinute && (
           <MinuteViewer setShowMinute={setShowMinute} minute={minute} />

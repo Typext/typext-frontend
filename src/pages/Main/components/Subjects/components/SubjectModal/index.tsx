@@ -4,9 +4,8 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import TextArea from 'components/TextArea/TextArea';
 
+import { ISubject } from 'DTOs';
 import { Container } from './styles';
-
-import { ISubject } from '../../../MinuteViewer/components/Minute/DTOs';
 
 interface ISubjectModalProps {
   setOpenSubjectModal: Function;
