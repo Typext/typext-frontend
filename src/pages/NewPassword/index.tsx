@@ -6,7 +6,7 @@ import Logo from 'assets/logo.svg';
 
 import StyledNewPassword from './styles';
 
-const index = () => {
+const NewPassword = () => {
     return (
       <StyledNewPassword>
         <img src={Logo} alt="Logo Typext" />
@@ -38,4 +38,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default NewPassword;

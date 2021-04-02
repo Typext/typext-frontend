@@ -8,11 +8,12 @@ import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
+
+import { ITopic } from 'DTOs';
+
 import addIcon from '../../../../assets/add_icon.svg';
 
 import StyledTopics from './styles';
-
-import { ITopic } from '../MinuteViewer/components/Minute/DTOs';
 
 const Topics = () => {
   const { topics, setTopics } = useContext(MainContext);

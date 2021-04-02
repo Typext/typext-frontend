@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { IProjectInfo } from 'DTOs';
 import { Container } from './styles';
-
-import { IProjectInfo } from '../../DTOs';
 
 interface IProjectProps {
   projectInfo: IProjectInfo;
