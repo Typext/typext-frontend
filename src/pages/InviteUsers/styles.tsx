@@ -25,7 +25,7 @@ export const StyleInviteUsers = styled.div`
     justify-content: center;
     flex-direction: column;
 
-    margin: 13rem 0;
+    margin: 6rem 0;
 
     input {
       margin-bottom: 2rem;
