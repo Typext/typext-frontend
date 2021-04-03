@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import ScrollBox from 'components/ScrollBox/ScrollBox';
+import React, { useContext, useState } from 'react';
 
+import { MainContext } from 'contexts/MainContext';
+
+import ScrollBox from 'components/ScrollBox/ScrollBox';
 import Button from 'components/Button/Button';
 import StyledSubjects from './styles';
 
 import SubjectModal from './components/SubjectModal';
 
-import { ISubject } from '../MinuteViewer/components/Minute/DTOs';
+const Subjects = () => {
+  const { subjects, setSubjects } = useContext(MainContext);
 
-interface ISubjectsProps {
-  subjects: Array<ISubject>;
-  setSubjects: Function;
-}
-
-const Subjects = ({ subjects, setSubjects }: ISubjectsProps) => {
   const [openSubjectModal, setOpenSubjectModal] = useState(false);
 
   const handleOpenSubjectModal = () => {

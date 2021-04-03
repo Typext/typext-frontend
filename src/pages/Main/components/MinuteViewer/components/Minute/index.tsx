@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 
+import { IMinute } from 'DTOs';
 import GeneralInfo from './components/GeneralInfo';
 import Project from './components/Project';
 import Topics from './components/Topics';
 import Subjects from './components/Subjects';
 
 import { Container } from './styles';
-
-import { IMinute } from './DTOs';
 
 interface IPrintProps {
   minute: IMinute;

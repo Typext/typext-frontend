@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { ITopic } from 'DTOs';
 import { Container } from './styles';
-
-import { ITopic } from '../../DTOs';
 
 interface ITopicsProps {
   topics: Array<ITopic>;

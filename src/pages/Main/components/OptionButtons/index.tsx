@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { MainContext } from 'contexts/MainContext';
 
 import Button from 'components/Button/Button';
 
@@ -7,16 +9,16 @@ import { getMode } from 'services/api';
 import { Container } from './styles';
 
 interface OptionButtonsProps {
-  setShowSchedule: Function;
   setShowMinute: Function;
   handleGenerateMinute: Function;
 }
 
 const OptionButtons: React.FC<OptionButtonsProps> = ({
-  setShowSchedule,
   setShowMinute,
   handleGenerateMinute,
 }: OptionButtonsProps) => {
+  const { setShowSchedule } = useContext(MainContext);
+
   const isNotProduction = getMode();
 
   const handleOpenMinuteModal = () => {

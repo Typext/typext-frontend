@@ -3,9 +3,8 @@ import moment from 'moment';
 
 import iacitLogo from 'assets/iacit_logo.jpg';
 
+import { IAddressAndHour } from 'DTOs';
 import { Container } from './styles';
-
-import { IAddressAndHour } from '../../DTOs';
 
 interface IGeneralInfoProps {
   addressAndHour: IAddressAndHour;

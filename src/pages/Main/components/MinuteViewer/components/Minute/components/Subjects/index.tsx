@@ -1,9 +1,8 @@
 import React from 'react';
 import { Table } from 'antd';
 
+import { ISubject } from 'DTOs';
 import { Container } from './styles';
-
-import { ISubject } from '../../DTOs';
 
 interface ISubjectsProp {
   subjects: Array<ISubject>;

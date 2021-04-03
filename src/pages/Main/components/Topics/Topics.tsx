@@ -1,23 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { message } from 'antd';
+
+import { MainContext } from 'contexts/MainContext';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
+
+import { ITopic } from 'DTOs';
+
 import addIcon from '../../../../assets/add_icon.svg';
 
 import StyledTopics from './styles';
 
-import { ITopic } from '../MinuteViewer/components/Minute/DTOs';
+const Topics = () => {
+  const { topics, setTopics } = useContext(MainContext);
 
-interface ITopicsProps {
-  setTopics: Function;
-  topics: Array<ITopic>;
-}
-
-const Topics = ({ setTopics, topics }: ITopicsProps) => {
   const [topicName, setTopicName] = useState<string>('');
 
   const handleCleanFields = () => {

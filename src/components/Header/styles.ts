@@ -33,4 +33,15 @@ export const StyledHeader = styled.header`
       width: 14.375rem;
     }
   }
+
+  button {
+    border: none;
+    background: none;
+  }
+
+  .shortOptions {
+    max-width: 150px;
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
