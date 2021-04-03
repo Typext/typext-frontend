@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-
-import { MainContext } from 'contexts/MainContext';
+import React, { useCallback } from 'react';
 
 import Button from 'components/Button/Button';
 
@@ -10,25 +8,25 @@ import { Container } from './styles';
 
 interface OptionButtonsProps {
   setShowMinute: Function;
+  setShowSchedule: Function;
   handleGenerateMinute: Function;
 }
 
 const OptionButtons: React.FC<OptionButtonsProps> = ({
   setShowMinute,
+  setShowSchedule,
   handleGenerateMinute,
 }: OptionButtonsProps) => {
-  const { setShowSchedule } = useContext(MainContext);
-
   const isNotProduction = getMode();
 
-  const handleOpenMinuteModal = () => {
+  const handleOpenMinuteModal = useCallback(() => {
     if (handleGenerateMinute) handleGenerateMinute(true);
     if (setShowMinute) setShowMinute(true);
-  };
+  }, [setShowMinute, handleGenerateMinute]);
 
-  const handleOpenSchedule = () => {
+  const handleOpenSchedule = useCallback(() => {
     if (setShowSchedule) setShowSchedule(true);
-  };
+  }, [setShowSchedule]);
 
   return (
     <Container>

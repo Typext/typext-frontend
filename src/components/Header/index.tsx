@@ -1,21 +1,22 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import addIcon from '../../assets/add_icon.svg';
-import homeIcon from '../../assets/home_icon.svg';
-import shortLogo from '../../assets/short_logo.svg';
-import logoutIcon from '../../assets/logout_icon.svg';
+import { useAuth } from 'contexts';
+
+import addIcon from 'assets/add_icon.svg';
+import homeIcon from 'assets/home_icon.svg';
+import shortLogo from 'assets/short_logo.svg';
+import logoutIcon from 'assets/logout_icon.svg';
 
 import { StyledHeader } from './styles';
 
 const Header = () => {
   const history = useHistory();
+  const { signOut } = useAuth();
 
   const handleLogout = useCallback(() => {
-    history.push('/');
-    localStorage.removeItem('tpxt_user');
-    localStorage.removeItem('tpxt_tkn');
-  }, [history]);
+    signOut();
+  }, [signOut]);
 
   const handleNavigateToHome = useCallback(() => {
     history.push('/');

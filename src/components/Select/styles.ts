@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
 interface Props {
-    SelectWidth: string;
-    Color: string;
-    Size: string;
-  }
+  SelectWidth: string;
+  Color: string;
+  Size: string;
+}
 
 export const StyledSelect = styled.div<Props>`
   display: flex;
   flex-direction: column;
-  
-  width: ${props => props.SelectWidth || '23.75rem'};
+
+  max-width: ${props => props.SelectWidth || '23.75rem'};
+  width: 100%;
 
   margin: 0;
 
@@ -30,7 +31,8 @@ export const StyledSelect = styled.div<Props>`
     border: 0;
     border-radius: 1.25rem;
 
-    width: ${props => props.SelectWidth || '23.75rem'}
+    max-width: ${props => props.SelectWidth || '23.75rem'};
+    width: 100%;
   }
-  
+
 `;

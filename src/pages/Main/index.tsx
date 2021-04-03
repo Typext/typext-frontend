@@ -19,7 +19,6 @@ import Container from './styles';
 const Main = () => {
   const {
     topics,
-    showSchedule,
     addressAndHour,
     projectInfo,
     subjects,
@@ -27,6 +26,7 @@ const Main = () => {
   } = useContext(MainContext);
 
   const [showMinute, setShowMinute] = useState(false);
+  const [showSchedule, setShowSchedule] = useState(false);
 
   const [minute, setMinute] = useState<IMinute>();
 
@@ -47,7 +47,7 @@ const Main = () => {
           <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
         )}
 
-        {showSchedule && <ScheduleModal />}
+        {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
 
         <Container>
           <Initial />
@@ -58,6 +58,7 @@ const Main = () => {
           <Subjects />
           <Distributions />
           <OptionButtons
+            setShowSchedule={setShowSchedule}
             setShowMinute={setShowMinute}
             handleGenerateMinute={handleGenerateMinute}
           />
