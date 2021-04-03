@@ -55,4 +55,10 @@ export const StyledHeader = styled.header`
     border: none;
     background: none;
   }
+
+  .shortOptions {
+    max-width: 150px;
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
