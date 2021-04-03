@@ -10,7 +10,8 @@ export const StyledInput = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
-  width: ${props => props.InputWidth || '23.75rem'};
+  max-width: ${props => props.InputWidth || '23.75rem'};
+  width: 100%;
 
   margin: 0;
 
@@ -25,7 +26,7 @@ export const StyledInput = styled.div<Props>`
   input {
     display: flex;
     align-items: center;
-    padding-left: 0.625rem;
+    padding: 0.2rem 1rem;
     height: 4.063rem;
     background-color: var(--soft-gray);
 
@@ -38,6 +39,7 @@ export const StyledInput = styled.div<Props>`
     border: 0;
     border-radius: 1.25rem;
 
-    width: ${props => props.InputWidth || '23.75rem'}
+    max-width: ${props => props.InputWidth || '23.75rem'};
+    width: 100%;
   }
 `;
