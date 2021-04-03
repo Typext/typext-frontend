@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 const StyledRegisterNewUser = styled.div`
+  height: 100%;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4.375rem;
+
+  padding: 30px;
 
   a {
     width: 18.125rem;
@@ -16,26 +20,45 @@ const StyledRegisterNewUser = styled.div`
     }
   }
 
-  .RegisterNewUser{
+  .RegisterNewUser {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 
     .Content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 6rem 0;
 
-      margin-top: 8.75rem;
+      .inputContent {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 
-      Input {
-        margin-bottom: 1.25rem;
+        width: 100%;
+        max-width: 145rem;
+      }
+
+      .input-styled {
+        margin: 1.25rem;
+      }
+
+      button {
+        margin-top: 6rem;
       }
     }
+  }
 
-    Button {
-      margin-top: 5.625rem;
-    }
+  @media (max-width: 840px) {
+    justify-content: flex-start;
+    padding: 30px 10px;
   }
 `;
 

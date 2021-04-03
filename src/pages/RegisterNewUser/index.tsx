@@ -13,7 +13,7 @@ const RegisterNewUser = () => {
 
       <div className="RegisterNewUser">
         <div className="Content">
-          <div className="LeftContent">
+          <div className="inputContent">
             <Input
               title="Nome completo"
               color="var(--black)"
@@ -41,9 +41,7 @@ const RegisterNewUser = () => {
               styleWidth="41.875rem"
               Type="text"
             />
-          </div>
 
-          <div className="RightContent">
             <Input
               title="E-mail"
               color="var(--black)"
@@ -72,13 +70,9 @@ const RegisterNewUser = () => {
               Type="text"
             />
           </div>
-        </div>
 
-        <Button
-          color="var(--green)"
-        >
-          Cadastrar
-        </Button>
+          <Button color="var(--green)">Cadastrar</Button>
+        </div>
       </div>
     </StyledRegisterNewUser>
   );
