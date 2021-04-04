@@ -1,43 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback, createContext, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import api from 'services/api';
 
-interface AuthState {
-  token: string;
-  user: object;
-}
-
-interface SignInCredentials {
-  email: string;
-  password: string;
-}
-
-interface InviteUserCredentials {
-  email: string;
-  name: string;
-  type: string;
-}
-
-interface AuthContextData {
-  user: object;
-  invitation: { error: string; loader: boolean; success: boolean };
-  signIn(crendentials: SignInCredentials): Promise<void>;
-  inviteUser(crendentials: InviteUserCredentials): Promise<void>;
-  signOut(): void;
-}
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
+import { AuthContextData, AuthProviderProps, AuthState } from 'DTOs/Auth';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const history = useHistory();
-
-  const [invitationError, setInvitationError] = useState<string>('');
-  const [invitationSuccess, setInvitationSuccess] = useState<boolean>(false);
-  const [invitationLoader, setInvitationLoader] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(false);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
@@ -67,32 +39,61 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ token, user });
   }, []);
 
+  const signUp = useCallback(
+    async credentials => {
+      try {
+        const response = await api.post('/users', credentials);
+
+        setSuccess(true);
+        localStorage.setItem('@Typext:user', JSON.stringify(response.data));
+        localStorage.setItem('@Typext:token', credentials.token);
+      } catch (err) {
+        const errorStatus = err.response?.status;
+
+        if (errorStatus === 401) {
+          setError(err.response?.data.message);
+          setSuccess(false);
+        }
+      }
+    },
+    [],
+  );
+
   const signOut = useCallback(() => {
     localStorage.removeItem('@Typext:token');
     localStorage.removeItem('@Typext:user');
 
     setData({} as AuthState);
-
-    history.push('/');
-  }, [history]);
+  }, []);
 
   const inviteUser = useCallback(async ({ name, email, type }) => {
-    setInvitationLoader(true);
+    setLoader(true);
 
     try {
-      const response = await api.post('/invite-users', { name, email, type });
+      const response = await api.post('/invite-users', {
+        name,
+        email,
+        type,
+      });
 
-      setInvitationSuccess(!!response.data);
+      const inviteData = response.data;
+
+      localStorage.set(
+        '@Typext:invite_data',
+        JSON.stringify({ name: inviteData.name, email: inviteData.email }),
+      );
+
+      setSuccess(true);
     } catch (err) {
-      const errorStatus = err.response.status;
+      const errorStatus = err.response?.status;
 
       if (errorStatus === 401) {
-        setInvitationError(err.response.data.message);
-        setInvitationSuccess(false);
+        setError(err.response.data.message);
+        setSuccess(false);
       }
     }
 
-    setInvitationLoader(false);
+    setLoader(false);
   }, []);
 
   return (
@@ -100,11 +101,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         user: data.user,
         invitation: {
-          error: invitationError,
-          success: invitationSuccess,
-          loader: invitationLoader,
+          error,
+          success,
+          loader,
+        },
+        register: {
+          error,
+          success,
+          loader,
         },
         signIn,
+        signUp,
         signOut,
         inviteUser,
       }}
