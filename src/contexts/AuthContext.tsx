@@ -39,25 +39,22 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ token, user });
   }, []);
 
-  const signUp = useCallback(
-    async credentials => {
-      try {
-        const response = await api.post('/users', credentials);
+  const signUp = useCallback(async credentials => {
+    try {
+      const response = await api.post('/users', credentials);
 
-        setSuccess(true);
-        localStorage.setItem('@Typext:user', JSON.stringify(response.data));
-        localStorage.setItem('@Typext:token', credentials.token);
-      } catch (err) {
-        const errorStatus = err.response?.status;
+      setSuccess(true);
+      localStorage.setItem('@Typext:user', JSON.stringify(response.data));
+      localStorage.setItem('@Typext:token', credentials.token);
+    } catch (err) {
+      const errorStatus = err.response?.status;
 
-        if (errorStatus === 401) {
-          setError(err.response?.data.message);
-          setSuccess(false);
-        }
+      if (errorStatus === 401) {
+        setError(err.response?.data.message);
+        setSuccess(false);
       }
-    },
-    [],
-  );
+    }
+  }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@Typext:token');
@@ -78,7 +75,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
       const inviteData = response.data;
 
-      localStorage.set(
+      localStorage.setItem(
         '@Typext:invite_data',
         JSON.stringify({ name: inviteData.name, email: inviteData.email }),
       );
@@ -88,7 +85,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       const errorStatus = err.response?.status;
 
       if (errorStatus === 401) {
-        setError(err.response.data.message);
+        setError(err.response?.data.message);
         setSuccess(false);
       }
     }

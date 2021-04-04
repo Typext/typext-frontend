@@ -45,8 +45,7 @@ function Login() {
 
               <a href="/recovery-password">
                 Esqueceu a senha?
-                {' '}
-                <strong> Clique aqui.</strong>
+                <strong>Clique aqui.</strong>
               </a>
 
             </div>
