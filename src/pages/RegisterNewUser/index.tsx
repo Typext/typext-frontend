@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
+import * as Yup from 'yup';
+
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+
 import LogoIcon from 'assets/logo.svg';
-import Input from 'components/Input/Input';
+import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
+
+import getValidationErrors from 'utils/getValidationErrors';
+import registerSchemaValidation from 'utils/registerSchemaValidation';
+
 import StyledRegisterNewUser from './styles';
 
 const RegisterNewUser = () => {
+  const formRef = useRef<FormHandles>(null);
+
+  const handleSubmit = useCallback(async (data: any) => {
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape(registerSchemaValidation);
+
+      await schema.validate(data, { abortEarly: false });
+    } catch (err) {
+      const errors = getValidationErrors(err);
+
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
+
   return (
     <StyledRegisterNewUser>
       <a href="/recovery-password">
@@ -12,67 +37,27 @@ const RegisterNewUser = () => {
       </a>
 
       <div className="RegisterNewUser">
-        <div className="Content">
+        <Form onSubmit={handleSubmit} ref={formRef} className="Content">
           <div className="inputContent">
-            <Input
-              title="Nome completo"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="name" title="Nome completo" />
 
-            <Input
-              title="Título / Cargo"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="role" title="Título / Cargo" />
 
-            <Input
-              title="Área"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="area" title="Área" />
 
-            <Input
-              title="Empresa"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="enterprise" title="Empresa" />
 
-            <Input
-              title="E-mail"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="email" title="E-mail" />
 
-            <Input
-              title="Telefone"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="phone" title="Telefone" />
 
-            <Input
-              title="Senha"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="password" title="Senha" />
 
-            <Input
-              title="Confirme a senha"
-              color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-            />
+            <InputForm name="passwordConfirmation" title="Confirme a senha" />
           </div>
 
           <Button color="var(--green)">Cadastrar</Button>
-        </div>
+        </Form>
       </div>
     </StyledRegisterNewUser>
   );

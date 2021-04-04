@@ -43,7 +43,11 @@ const StyledRegisterNewUser = styled.div`
         justify-content: center;
 
         width: 100%;
-        max-width: 145rem;
+        max-width: 80rem;
+
+        > div {
+          margin: 10px 15px;
+        }
       }
 
       .input-styled {
