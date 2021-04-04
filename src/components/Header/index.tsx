@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import { useAuth } from 'contexts';
 
+import { getUser } from 'services/auth';
+
 import addIcon from 'assets/add_icon.svg';
 import homeIcon from 'assets/home_icon.svg';
 import shortLogo from 'assets/short_logo.svg';
@@ -11,12 +13,17 @@ import logoutIcon from 'assets/logout_icon.svg';
 import { StyledHeader } from './styles';
 
 const Header = () => {
+  const user = getUser();
   const history = useHistory();
   const { signOut } = useAuth();
 
   const handleLogout = useCallback(() => {
     signOut();
-  }, [signOut]);
+
+    setTimeout(() => {
+      history.push('/');
+    }, 1000);
+  }, [signOut, history]);
 
   const handleNavigateToHome = useCallback(() => {
     history.push('/home');
@@ -43,7 +50,7 @@ const Header = () => {
       </figure>
 
       <section className="usernameAndLogout">
-        <h1>Nome do usuário</h1>
+        <h1>{user?.name || 'Nome do usuário'}</h1>
 
         <button type="button" onClick={handleLogout}>
           <img src={logoutIcon} alt="logout" />

@@ -26,18 +26,24 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0%
+    margin: 0%;
   }
 
   h1 {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 1.875rem;
+    font-size: 1.575rem;
 
     color: #cecfd0;
 
     margin: 0 1.25rem 0 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   img {

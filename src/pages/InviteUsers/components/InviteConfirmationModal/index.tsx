@@ -29,7 +29,7 @@ const InviteConfirmationModal = ({ onClose }: InviteConfirmationProps) => {
             <h3>SOLICITE A VERIFICAÇÃO</h3>
           </Content>
         ) : (
-          <Content>
+          <Content error>
             <EmailError />
             <h1>ERRO AO ENVIAR CONVITE</h1>
             <h3>{invitation.error?.toUpperCase()}</h3>
