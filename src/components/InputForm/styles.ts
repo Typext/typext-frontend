@@ -34,11 +34,14 @@ export const Container = styled.div<ContainerProps>`
     background-color: var(--soft-gray);
 
     border-radius: 1.25rem;
-    border: 1px solid rgba(206, 207, 208, 0.2);
+    border: 2px solid rgba(206, 207, 208, 0.2);
+
+    transition: border-color .3s;
 
     ${props =>
       props.isErrored &&
       css`
+        transition: border-color .3s;
         border-color: #c53030;
       `}
 
@@ -61,8 +64,6 @@ export const Container = styled.div<ContainerProps>`
         color: #adadad;
       }
     }
-
-
   }
 `;
 
@@ -72,14 +73,6 @@ export const Error = styled(Tooltip)`
 
   svg {
     margin: 0;
-  }
-
-  span {
-    background: #c53030;
-    color: #fff;
-
-    &::before {
-      border-color: #c53030 transparent;
-    }
+    cursor: info;
   }
 `;

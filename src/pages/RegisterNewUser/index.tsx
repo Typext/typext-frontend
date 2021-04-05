@@ -96,11 +96,12 @@ const RegisterNewUser = () => {
 
               <InputForm name="phone" title="Telefone" />
 
-              <InputForm name="password" title="Senha" />
+              <InputForm name="password" title="Senha" type="password" />
 
               <InputForm
                 name="password_confirmation"
                 title="Confirme a senha"
+                type="password"
               />
             </div>
 

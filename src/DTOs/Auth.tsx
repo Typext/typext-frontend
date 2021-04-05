@@ -29,10 +29,10 @@ export interface SignUpCredentials {
 
 export interface AuthContextData {
   user: object;
-  invitation: { error: string; loader: boolean; success: boolean };
-  register: { error: string; loader: boolean; success: boolean };
-  signIn(crendentials: SignInCredentials): Promise<void>;
-  signUp(crendentials: SignUpCredentials): Promise<void>;
+  invitation: { error: string; loader: boolean };
+  register: { error: string; loader: boolean };
+  signIn(crendentials: SignInCredentials): Promise<boolean>;
+  signUp(crendentials: SignUpCredentials): Promise<SignInCredentials | null>;
   inviteUser(crendentials: InviteUserCredentials): Promise<void>;
   signOut(): void;
 }
