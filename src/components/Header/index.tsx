@@ -20,9 +20,7 @@ const Header = () => {
   const handleLogout = useCallback(() => {
     signOut();
 
-    setTimeout(() => {
-      history.push('/');
-    }, 200);
+    history.push('/');
   }, [signOut, history]);
 
   const handleNavigateToHome = useCallback(() => {
