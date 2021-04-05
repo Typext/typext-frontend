@@ -9,6 +9,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [signUpError, setSignUpError] = useState<string>('');
   const [signUpLoader, setSignUpLoader] = useState<boolean>(false);
+  const [signUpSuccess, setSignUpSuccess] = useState<boolean>(false);
 
   const [inviteError, setInviteError] = useState<string>('');
   const [inviteLoader, setInviteLoader] = useState<boolean>(false);
@@ -53,28 +54,22 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signUp = useCallback(async credentials => {
+    setSignUpError('');
+    setSignUpSuccess(false);
+    setSignUpLoader(true);
+
     try {
-      setSignUpError('');
-
-      setSignUpLoader(true);
-      const { email, password } = credentials;
-
       await api.post('/users', credentials);
 
-      const returnData = {
-        email,
-        password,
-      };
-
       setSignUpLoader(false);
-      return returnData;
+      setSignUpSuccess(true);
     } catch (err) {
-      const errorStatus = err.response?.status;
+      const errorData = err.response?.data;
+      const validationError = errorData?.validation?.body?.message;
 
-      setSignUpError(errorStatus);
+      setSignUpError(validationError || err.response.validation?.body?.message);
       setSignUpLoader(false);
-
-      return null;
+      setSignUpSuccess(false);
     }
   }, []);
 
@@ -124,6 +119,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         register: {
           error: signUpError,
           loader: signUpLoader,
+          success: signUpSuccess,
         },
         signIn,
         signUp,

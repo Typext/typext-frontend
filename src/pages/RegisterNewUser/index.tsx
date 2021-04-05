@@ -51,9 +51,8 @@ const RegisterNewUser = () => {
         const schema = Yup.object().shape(registerSchemaValidation);
 
         await schema.validate(data, { abortEarly: false });
-
         setOpenRegisterModal(true);
-        signUp({ ...data, token: params.token });
+        await signUp({ ...data, token: params.token });
       } catch (err) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);

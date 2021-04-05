@@ -27,12 +27,22 @@ export interface SignUpCredentials {
   area: string;
 }
 
+interface InvitationData {
+  error: string;
+  loader: boolean;
+}
+interface RegisterData {
+  error: string;
+  loader: boolean;
+  success: boolean;
+}
+
 export interface AuthContextData {
   user: object;
-  invitation: { error: string; loader: boolean };
-  register: { error: string; loader: boolean };
+  invitation: InvitationData;
+  register: RegisterData;
   signIn(crendentials: SignInCredentials): Promise<boolean>;
-  signUp(crendentials: SignUpCredentials): Promise<SignInCredentials | null>;
+  signUp(crendentials: SignUpCredentials): Promise<void>;
   inviteUser(crendentials: InviteUserCredentials): Promise<void>;
   signOut(): void;
 }

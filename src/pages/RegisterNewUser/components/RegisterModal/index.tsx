@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useAuth } from 'contexts';
 
@@ -15,16 +16,26 @@ interface RegisterModalProps {
 }
 
 const RegisterModal = ({ onClose }: RegisterModalProps) => {
+  const history = useHistory();
+
   const {
-    register: { loader, error },
+    register: { loader, error, success },
   } = useAuth();
+
+  useEffect(() => {
+    if (!loader && !error && success) {
+      setTimeout(() => {
+        history.push('/login');
+      }, 1000);
+    }
+  }, [success, error, loader, history]);
 
   return (
     <Container>
       <DefaultModal onClose={onClose}>
         {loader ? (
           <Loader />
-        ) : error === '' ? (
+        ) : success ? (
           <Content>
             <Like />
             <h1>CADASTRADO!</h1>
