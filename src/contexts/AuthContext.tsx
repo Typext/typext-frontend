@@ -74,10 +74,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signOut = useCallback(() => {
+    setData({} as AuthState);
+
     localStorage.removeItem('@Typext:token');
     localStorage.removeItem('@Typext:user');
-
-    setData({} as AuthState);
   }, []);
 
   const inviteUser = useCallback(async ({ name, email, type }) => {
