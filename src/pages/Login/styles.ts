@@ -4,6 +4,8 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
 
+  width: 100%;
+  height: 100%;
   padding: 30px;
 
   .Login {
@@ -36,7 +38,7 @@ const Content = styled.div`
       flex-direction: column;
       align-items: flex-start;
 
-      Input {
+      > div {
         margin-bottom: 2rem;
       }
     }
@@ -70,8 +72,6 @@ const Content = styled.div`
 
   @media (max-width: 1024px) {
     align-items: center;
-    width: 100%;
-    height: 100%;
     margin: 0;
   }
 

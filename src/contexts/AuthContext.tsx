@@ -7,9 +7,11 @@ import { AuthContextData, AuthProviderProps, AuthState } from 'DTOs/Auth';
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [error, setError] = useState<string>('');
-  const [success, setSuccess] = useState<boolean>(false);
-  const [loader, setLoader] = useState<boolean>(false);
+  const [signUpError, setSignUpError] = useState<string>('');
+  const [signUpLoader, setSignUpLoader] = useState<boolean>(false);
+
+  const [inviteError, setInviteError] = useState<string>('');
+  const [inviteLoader, setInviteLoader] = useState<boolean>(false);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
@@ -26,33 +28,53 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('sessions', {
-      email,
-      password,
-    });
-
-    const { token, user } = response.data;
-
-    localStorage.setItem('@Typext:token', token);
-    localStorage.setItem('@Typext:user', JSON.stringify(user));
-
-    setData({ token, user });
-  }, []);
-
-  const signUp = useCallback(async credentials => {
     try {
-      const response = await api.post('/users', credentials);
+      const response = await api.post('sessions', {
+        email,
+        password,
+      });
 
-      setSuccess(true);
-      localStorage.setItem('@Typext:user', JSON.stringify(response.data));
-      localStorage.setItem('@Typext:token', credentials.token);
+      const { token, user } = response.data;
+
+      localStorage.setItem('@Typext:token', token);
+      localStorage.setItem('@Typext:user', JSON.stringify(user));
+
+      setData({ token, user });
+      return true;
     } catch (err) {
       const errorStatus = err.response?.status;
 
       if (errorStatus === 401) {
-        setError(err.response?.data.message);
-        setSuccess(false);
+        setInviteError(err.response?.data.message);
       }
+
+      return false;
+    }
+  }, []);
+
+  const signUp = useCallback(async credentials => {
+    try {
+      setSignUpError('');
+
+      setSignUpLoader(true);
+      const { email, password } = credentials;
+
+      await api.post('/users', credentials);
+
+      const returnData = {
+        email,
+        password,
+      };
+
+      setSignUpLoader(false);
+      return returnData;
+    } catch (err) {
+      const errorStatus = err.response?.status;
+
+      setSignUpError(errorStatus);
+      setSignUpLoader(false);
+
+      return null;
     }
   }, []);
 
@@ -64,9 +86,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const inviteUser = useCallback(async ({ name, email, type }) => {
-    setLoader(true);
+    setInviteLoader(true);
 
     try {
+      setInviteError('');
       const response = await api.post('/invite-users', {
         name,
         email,
@@ -79,18 +102,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         '@Typext:invite_data',
         JSON.stringify({ name: inviteData.name, email: inviteData.email }),
       );
-
-      setSuccess(true);
     } catch (err) {
       const errorStatus = err.response?.status;
 
       if (errorStatus === 401) {
-        setError(err.response?.data.message);
-        setSuccess(false);
+        setInviteError(err.response?.data.message);
       }
     }
 
-    setLoader(false);
+    setInviteLoader(false);
   }, []);
 
   return (
@@ -98,14 +118,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         user: data.user,
         invitation: {
-          error,
-          success,
-          loader,
+          error: inviteError,
+          loader: inviteLoader,
         },
         register: {
-          error,
-          success,
-          loader,
+          error: signUpError,
+          loader: signUpLoader,
         },
         signIn,
         signUp,

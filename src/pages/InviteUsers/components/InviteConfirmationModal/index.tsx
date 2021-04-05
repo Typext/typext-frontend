@@ -15,14 +15,16 @@ interface InviteConfirmationProps {
 }
 
 const InviteConfirmationModal = ({ onClose }: InviteConfirmationProps) => {
-  const { invitation } = useAuth();
+  const {
+    invitation: { error, loader },
+  } = useAuth();
 
   return (
     <Container>
       <DefaultModal onClose={onClose}>
-        {invitation.loader ? (
+        {loader ? (
           <Loader />
-        ) : invitation.success ? (
+        ) : error === '' ? (
           <Content>
             <Email />
             <h1>E-MAIL ENVIADO!</h1>
@@ -32,7 +34,7 @@ const InviteConfirmationModal = ({ onClose }: InviteConfirmationProps) => {
           <Content error>
             <EmailError />
             <h1>ERRO AO ENVIAR CONVITE</h1>
-            <h3>{invitation.error?.toUpperCase()}</h3>
+            <h3>{error?.toUpperCase()}</h3>
           </Content>
         )}
       </DefaultModal>

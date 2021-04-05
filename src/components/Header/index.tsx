@@ -22,7 +22,7 @@ const Header = () => {
 
     setTimeout(() => {
       history.push('/');
-    }, 1000);
+    }, 200);
   }, [signOut, history]);
 
   const handleNavigateToHome = useCallback(() => {

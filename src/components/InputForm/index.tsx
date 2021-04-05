@@ -1,10 +1,4 @@
-import React, {
-  InputHTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
+import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
@@ -18,21 +12,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ name, title, ...rest }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const [isFocused, setIsFocused] = useState(false);
-  const [isFilled, setIsFilled] = useState(false);
+  const [inputError, setInputError] = useState<string | undefined>('');
 
   const { fieldName, error, defaultValue, registerField } = useField(name);
-
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
-
-  const handleInputBlur = useCallback(() => {
-    setIsFocused(false);
-
-    setIsFilled(!!inputRef.current?.value);
-  }, []);
 
   useEffect(() => {
     registerField({
@@ -42,21 +24,24 @@ const Input = ({ name, title, ...rest }: InputProps) => {
     });
   }, [fieldName, registerField]);
 
+  useEffect(() => {
+    setInputError(error);
+  }, [error]);
+
   return (
-    <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
+    <Container isErrored={!!inputError}>
       <h3>{title}</h3>
 
       <section>
         <input
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
+          onChange={() => setInputError('')}
           defaultValue={defaultValue}
           ref={inputRef}
           {...rest}
         />
 
-        {error && (
-          <Error title={error}>
+        {inputError && (
+          <Error title={inputError}>
             <FiAlertCircle color="#c53030" size={20} />
           </Error>
         )}
