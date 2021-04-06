@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { ReactComponent as Logo } from 'assets/logo_complete.svg';
 import Button from 'components/Button/Button';
 
+import Warning from 'assets/warning.svg';
+
 import { Container } from './styles';
 
 function RequiredLogin() {
@@ -18,8 +20,9 @@ function RequiredLogin() {
       <Logo />
 
       <section>
-        <h1>LOGIN OBRIGATÓRIO</h1>
-        <h2>FAÇA LOGIN PARA ACESSAR ESSA TELA</h2>
+        <h1>Login Obrigatório</h1>
+        <img src={Warning} alt="Aviso" />
+        <h2>Faça login para acessar essa tela</h2>
       </section>
 
       <Button color="#F60846" onClick={handleNavigateToLogin}>

@@ -8,13 +8,14 @@ export const Container = styled.div`
   section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
 
   svg {
-    width: 300px;
+    width: 18.75rem;
     height: auto;
+    margin-top: 4.375rem;
+    margin-bottom: 4.375rem;
   }
 
   section {
@@ -22,11 +23,34 @@ export const Container = styled.div`
 
     h2 {
       margin: 10px 0 15px;
+      color: var(--red-pink);
+      font-size: 2rem;
+      margin-bottom: 6.25rem;
     }
   }
 
-  h1,
+  h1 {
+    color: var(--red-pink);
+    font-size: 3.125rem;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+  }
   button {
     margin: 0;
+    
   }
+
+  img {
+    height: 25rem;
+    width: 25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media(max: 845px){
+    svg {
+    width: 9.375rem;
+    height: auto;
+  }
+  }
+
 `;
