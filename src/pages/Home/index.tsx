@@ -4,11 +4,17 @@ import { Calendar } from 'antd';
 
 import { useHistory } from 'react-router-dom';
 
+import { getUser } from 'services/auth';
+
 import Button from 'components/Button/Button';
 import { Container } from './styles';
 
 const Home = () => {
+  const user = getUser();
+
   const history = useHistory();
+
+  const userIsNotAdmin = user.type === 'Usuário';
 
   const handleNavigateToMinute = useCallback(() => {
     history.push('/minute');
@@ -48,28 +54,32 @@ const Home = () => {
             color="var(--gray)"
             colorText="var(--black)"
             size="33.75rem"
-            onClick={handleNavigateToInvite}
-          >
-            Convidar
-          </Button>
-
-          <Button
-            color="var(--gray)"
-            colorText="var(--black)"
-            size="33.75rem"
             onClick={handleNavigateToSearchMinutes}
           >
             Buscar ATAS
           </Button>
 
-          <Button
-            color="var(--gray)"
-            colorText="var(--black)"
-            size="33.75rem"
-            onClick={handleNavigateToListUsers}
-          >
-            Lista de Usuários
-          </Button>
+          {!userIsNotAdmin && (
+            <>
+              <Button
+                color="var(--gray)"
+                colorText="var(--black)"
+                size="33.75rem"
+                onClick={handleNavigateToInvite}
+              >
+                Convidar
+              </Button>
+
+              <Button
+                color="var(--gray)"
+                colorText="var(--black)"
+                size="33.75rem"
+                onClick={handleNavigateToListUsers}
+              >
+                Lista de Usuários
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </Container>

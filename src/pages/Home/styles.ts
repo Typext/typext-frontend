@@ -53,4 +53,34 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media(max-width: 1600px) {
+    .Home {
+      padding: 0 2.5rem;
+    }
+  }
+
+  @media(max-width: 1100px) {
+    .Home {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+
+      .Calendar {
+        padding: 4rem 0;
+      }
+    }
+  }
+
+  @media(max-height: 910px) {
+    .Home {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+
+      .Calendar {
+        padding: 4rem 0;
+      }
+    }
+  }
 `;

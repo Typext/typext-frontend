@@ -10,6 +10,7 @@ interface UserProps {
   company: string;
   phone: string;
   area: string;
+  type: string;
 }
 
 export function getUser(): UserProps {
