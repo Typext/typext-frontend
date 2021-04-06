@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-import { Calendar, Badge } from 'antd';
+import { Calendar } from 'antd';
 
 import { useHistory } from 'react-router-dom';
 
@@ -10,9 +10,21 @@ import { Container } from './styles';
 const Home = () => {
   const history = useHistory();
 
-  const handleNavigate = () => {
+  const handleNavigateToMinute = useCallback(() => {
     history.push('/minute');
-  };
+  }, [history]);
+
+  const handleNavigateToInvite = useCallback(() => {
+    history.push('/invite');
+  }, [history]);
+
+  const handleNavigateToSearchMinutes = useCallback(() => {
+    history.push('/search-minutes');
+  }, [history]);
+
+  const handleNavigateToListUsers = useCallback(() => {
+    history.push('/list-users');
+  }, [history]);
 
   return (
     <Container>
@@ -27,6 +39,7 @@ const Home = () => {
             color="var(--red-pink)"
             colorText="white"
             size="33.75rem"
+            onClick={handleNavigateToMinute}
           >
             Criar ATA
           </Button>
@@ -35,6 +48,7 @@ const Home = () => {
             color="var(--gray)"
             colorText="var(--black)"
             size="33.75rem"
+            onClick={handleNavigateToInvite}
           >
             Convidar
           </Button>
@@ -43,6 +57,7 @@ const Home = () => {
             color="var(--gray)"
             colorText="var(--black)"
             size="33.75rem"
+            onClick={handleNavigateToSearchMinutes}
           >
             Buscar ATAS
           </Button>
@@ -51,6 +66,7 @@ const Home = () => {
             color="var(--gray)"
             colorText="var(--black)"
             size="33.75rem"
+            onClick={handleNavigateToListUsers}
           >
             Lista de Usuários
           </Button>
