@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyledButtonProps {
-  color: string;
+  color?: string;
   colorText?: string;
   size?: string;
 }
@@ -23,7 +23,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-size: 1.5rem;
 
   color: ${props => props.colorText || '#fff'};
-  background: ${props => props.color};
+  background: ${props => props.color || '#F60846'};
 
   img {
     height: 1.875rem;

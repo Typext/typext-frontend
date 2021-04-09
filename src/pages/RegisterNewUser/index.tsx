@@ -88,7 +88,7 @@ const RegisterNewUser = () => {
               <Input
                 name="email"
                 title="E-mail"
-                styleWidth="400px"
+                styleWidth="40rem"
                 defaultValue={inviteInfo?.email || ''}
                 readOnly={!!inviteInfo?.email}
               />

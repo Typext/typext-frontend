@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 import StyledButton from './styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  color: string;
+  color?: string;
   colorText?: string;
   size?: string;
 }
@@ -24,6 +24,7 @@ const Button: React.FC<Props> = ({
 Button.defaultProps = {
   colorText: '#fff',
   size: '17.313rem',
+  color: '#F60846',
 };
 
 export default Button;
