@@ -1,6 +1,6 @@
 import React from 'react';
 import RecoveryPassword from 'pages/RecoveryPassword';
-import { Switch, BrowserRouter } from 'react-router-dom';
+import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
 import { getMode } from 'services/api';
 
@@ -13,6 +13,7 @@ import Home from 'pages/Home';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import InviteUsers from './pages/InviteUsers';
+import NotFound from './pages/NotFound';
 
 export default function Routes() {
   const isNotProduction = getMode();
@@ -28,6 +29,8 @@ export default function Routes() {
         <Route path="/recovery" component={RecoveryPassword} />
         <Route path="/login" component={Login} />
         <Route path="/invite/:token" component={RegisterNewUser} />
+        <Route path="/404" component={NotFound} />
+        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );

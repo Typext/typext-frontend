@@ -18,7 +18,7 @@ const Content = styled.div`
     .EmailPassword,
     .LoginPassForgot {
       width: 100%;
-      max-width: 50rem;
+      max-width: 40rem;
     }
 
     a {

@@ -1,5 +1,6 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { message } from 'antd';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -10,6 +11,7 @@ import getValidationErrors from 'utils/getValidationErrors';
 import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
 import Logo from 'assets/logo.svg';
+import { getUserToken } from 'services/auth';
 
 import loginSchema from './loginSchema';
 import Content from './styles';
@@ -23,6 +25,12 @@ function Login() {
   const { signIn } = useAuth();
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
+
+  useLayoutEffect(() => {
+    const userToken = getUserToken();
+
+    if (userToken) history.push('/home');
+  }, [history]);
 
   const handleLoginDebug = useCallback(() => {
     const debugUser = {
@@ -47,10 +55,13 @@ function Login() {
   }, [history]);
 
   const handleLogin = useCallback(
-    (data: SignInData) => {
-      const isLoginSuccess = signIn(data);
+    async (data: SignInData) => {
+      const isLoginSuccess = await signIn(data);
 
       if (isLoginSuccess) history.push('/home');
+      message.error(
+        'Erro ao fazer login! se persistir contacte o administrador',
+      );
     },
     [signIn, history],
   );
