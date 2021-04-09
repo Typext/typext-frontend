@@ -15,7 +15,13 @@ const Button: React.FC<Props> = ({
   ...rest
 }: Props) => {
   return (
-    <StyledButton color={color} colorText={colorText} size={size} {...rest}>
+    <StyledButton
+      color={color}
+      colorText={colorText}
+      size={size}
+      {...rest}
+      className="styled-button"
+    >
       {children}
     </StyledButton>
   );

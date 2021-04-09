@@ -12,7 +12,7 @@ import RegisterNewUser from 'pages/RegisterNewUser';
 import Home from 'pages/Home';
 import Main from './pages/Main';
 import Login from './pages/Login';
-import InviteUsers from './pages/InviteUsers';
+import Invite from './pages/Invite';
 import NotFound from './pages/NotFound';
 
 export default function Routes() {
@@ -24,7 +24,7 @@ export default function Routes() {
         {isNotProduction && <Route path="/" exact component={LandingPage} />}
         <Route path="/home" exact isPrivate component={Home} />
         <Route path="/minute" isPrivate component={Main} />
-        <Route path="/invite" exact isPrivate component={InviteUsers} />
+        <Route path="/invite" exact isPrivate component={Invite} />
         <Route path="/reset" component={NewPassword} />
         <Route path="/recovery" component={RecoveryPassword} />
         <Route path="/login" component={Login} />

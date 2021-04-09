@@ -5,9 +5,9 @@ import { useAuth } from 'contexts';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
-import Select from 'components/Select/Select';
+import Select from './components/Select';
 
-import StyleInviteUsers from './styles';
+import { StyleInviteUsers } from './styles';
 
 import InviteConfirmationModal from './components/InviteConfirmationModal';
 
@@ -69,14 +69,9 @@ function InviteUsers() {
 
           <Select
             title="Nível de permissão"
-            color="black"
-            styleWidth="41.875rem"
-            onChange={event => setUserPermission(event.target.value)}
-          >
-            <option value="Usuário">Usuario</option>
-            <option value="Gerente">Gerente</option>
-            <option value="Admin">Administrador</option>
-          </Select>
+            values={['Usuário', 'Gerente', 'Admin']}
+            getValue={setUserPermission}
+          />
 
           <Button
             color="var(--black)"
