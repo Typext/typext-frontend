@@ -24,7 +24,6 @@ export const Container = styled.div`
 
       .ant-picker-calendar.ant-picker-calendar-full {
         width: 100%;
-        max-height: 75vh;
 
         padding: 0.5rem;
 
@@ -43,9 +42,15 @@ export const Container = styled.div`
 
     .Buttons {
       margin-top: 3.125rem;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      height: max-content;
+      max-width: 100rem;
 
       button {
-        margin-bottom: 2rem;
+        margin: 1rem;
 
         &:last-child {
           margin-bottom: 0;
@@ -54,13 +59,13 @@ export const Container = styled.div`
     }
   }
 
-  @media(max-width: 1600px) {
+  @media (max-width: 1600px) {
     .Home {
       padding: 0 2.5rem;
     }
   }
 
-  @media(max-width: 1100px) {
+  @media (max-width: 1100px) {
     .Home {
       display: flex;
       flex-direction: column-reverse;
@@ -72,7 +77,7 @@ export const Container = styled.div`
     }
   }
 
-  @media(max-height: 910px) {
+  @media (max-height: 910px) {
     .Home {
       display: flex;
       flex-direction: column-reverse;
