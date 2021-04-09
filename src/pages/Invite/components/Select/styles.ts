@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
-      font-size: 2.2rem;
+      font-size: 2rem;
 
       width: 100%;
       display: flex;

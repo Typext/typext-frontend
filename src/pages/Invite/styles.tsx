@@ -55,7 +55,7 @@ export const StyleInviteUsers = styled.div`
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
 
     button.styled-button {
