@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 
+export const Option = styled.li`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #373435;
+
+  cursor: pointer;
+
+  ::selection,
+  &::selection {
+    background: #373435;
+    color: #fff;
+  }
+`;
+
 export const StyleInviteUsers = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +51,14 @@ export const StyleInviteUsers = styled.div`
       margin-bottom: 2rem;
     }
 
-    button {
+    .input-styled h3 {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 2rem;
+    }
+
+    button.styled-button {
       margin-top: 4rem;
       width: 14.063rem;
     }

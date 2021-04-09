@@ -59,9 +59,11 @@ function Login() {
       const isLoginSuccess = await signIn(data);
 
       if (isLoginSuccess) history.push('/home');
-      message.error(
-        'Erro ao fazer login! se persistir contacte o administrador',
-      );
+      else {
+        message.error(
+          'Erro ao fazer login! se persistir contacte o administrador',
+        );
+      }
     },
     [signIn, history],
   );
