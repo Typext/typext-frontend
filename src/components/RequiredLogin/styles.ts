@@ -9,23 +9,22 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   svg {
     width: 18.75rem;
     height: auto;
-    margin-top: 4.375rem;
-    margin-bottom: 4.375rem;
   }
 
   section {
     margin: 50px;
 
     h2 {
-      margin: 10px 0 15px;
+      margin: 10px 0 0;
       color: var(--red-pink);
       font-size: 2rem;
-      margin-bottom: 6.25rem;
+      text-align: center;
     }
   }
 
@@ -37,7 +36,6 @@ export const Container = styled.div`
   }
   button {
     margin: 0;
-    
   }
 
   img {
@@ -46,11 +44,10 @@ export const Container = styled.div`
     margin-bottom: 2.5rem;
   }
 
-  @media(max: 845px){
+  @media (max: 845px) {
     svg {
-    width: 9.375rem;
-    height: auto;
+      width: 9.375rem;
+      height: auto;
+    }
   }
-  }
-
 `;
