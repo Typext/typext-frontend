@@ -31,7 +31,7 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/invite/:token" component={Register} />
         <Route path="/404" component={NotFound} />
-        <Route path="/users" component={Users} />
+        <Route path="/users" isPrivate component={Users} />
         <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
