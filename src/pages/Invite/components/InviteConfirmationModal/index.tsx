@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAuth } from 'contexts';
+import { useAuth } from 'contexts/AuthContext';
 
 import { ReactComponent as Email } from 'assets/email.svg';
 import { ReactComponent as EmailError } from 'assets/email_error.svg';
