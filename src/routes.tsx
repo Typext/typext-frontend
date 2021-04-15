@@ -14,6 +14,7 @@ import Minute from 'pages/Minute';
 import Login from 'pages/Login';
 import Invite from 'pages/Invite';
 import NotFound from 'pages/NotFound';
+import Users from 'pages/Users';
 
 export default function Routes() {
   const isNotProduction = getMode();
@@ -30,6 +31,7 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/invite/:token" component={Register} />
         <Route path="/404" component={NotFound} />
+        <Route path="/users" component={Users} />
         <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
