@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { message } from 'antd';
 
-import { useAuth } from 'contexts';
+import { useAuth } from 'contexts/AuthContext';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useAuth } from 'contexts';
+import { useAuth } from 'contexts/AuthContext';
 
 import { ReactComponent as Like } from 'assets/like.svg';
 import { ReactComponent as Dislike } from 'assets/dislike.svg';
