@@ -15,9 +15,9 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-  width: 600px;
-  height: 450px;
-  padding: 30px;
+  width: 60rem;
+  height: 45rem;
+  padding: 3rem;
   z-index: 998;
 
   background: #ffffff;

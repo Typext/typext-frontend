@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/auth';
 import { getInviteInfo } from 'services/auth';
 
 import LogoIcon from 'assets/logo.svg';

@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
 
   h1 {
     font-family: Roboto;
@@ -66,22 +67,6 @@ export const Container = styled.div`
       margin: 10px 0;
       border-radius: 20px;
       background: var(--soft-gray);
-
-      span {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 900;
-        font-size: 2rem;
-        line-height: 28px;
-        text-align: center;
-
-        color: #373435;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-      }
     }
   }
 `;

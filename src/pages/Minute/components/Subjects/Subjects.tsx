@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { MainContext } from 'contexts/MainContext';
+import { MainContext } from 'contexts/main';
 
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 import Button from 'components/Button/Button';

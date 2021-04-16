@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { MainContext } from 'contexts/MainContext';
+import { MainContext } from 'contexts/main';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';

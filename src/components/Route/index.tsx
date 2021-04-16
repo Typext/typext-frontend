@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route as ReactRoute } from 'react-router-dom';
 
-import { useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/auth';
 import Header from 'components/Header';
 import RequiredLogin from 'components/RequiredLogin';
 import { getUser, getUserToken } from 'services/auth';

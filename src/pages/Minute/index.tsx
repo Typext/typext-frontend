@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { MainContext, MainProvider } from 'contexts/MainContext';
+import { MainContext, MainProvider } from 'contexts/main';
 
 import { IMinute } from 'DTOs';
 import Initial from './components/Initial/Initial';
