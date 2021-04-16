@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface ModalProps {
+  modalIsOpen: boolean;
+}
 
 export const Container = styled.div`
   position: absolute;
@@ -14,7 +18,7 @@ export const Container = styled.div`
   backdrop-filter: blur(6px);
 `;
 
-export const Modal = styled.div`
+export const Modal = styled.div<ModalProps>`
   width: 60rem;
   height: 45rem;
   padding: 3rem;
@@ -26,6 +30,15 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${props =>
+    props.modalIsOpen
+      ? css`
+          animation: startModal 0.5s normal;
+        `
+      : css`
+          animation: closeModal 0.5s normal;
+        `}
 
   header {
     width: 100%;
@@ -47,5 +60,29 @@ export const Modal = styled.div`
     border-radius: 0;
     height: 100%;
     width: 100%;
+  }
+
+  @keyframes startModal {
+    0% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes closeModal {
+    0% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
   }
 `;
