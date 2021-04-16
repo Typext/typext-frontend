@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { message } from 'antd';
 
-import { MainContext } from 'contexts/MainContext';
+import { MainContext } from 'contexts/main';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';

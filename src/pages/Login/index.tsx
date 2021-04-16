@@ -5,7 +5,7 @@ import { message } from 'antd';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/auth';
 import getValidationErrors from 'utils/getValidationErrors';
 
 import InputForm from 'components/InputForm';

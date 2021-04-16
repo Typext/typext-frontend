@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { AuthProvider } from './AuthContext';
-import { MainProvider } from './MainContext';
+import { AuthProvider } from './auth';
+import { MainProvider } from './main';
+import { UsersProvider } from './users';
 
 interface ContextProps {
   children: React.ReactNode;
@@ -9,7 +10,9 @@ interface ContextProps {
 
 const ContextProvider = ({ children }: ContextProps) => (
   <AuthProvider>
-    <MainProvider>{children}</MainProvider>
+    <UsersProvider>
+      <MainProvider>{children}</MainProvider>
+    </UsersProvider>
   </AuthProvider>
 );
 

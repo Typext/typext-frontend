@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/auth';
 
 import { getUser } from 'services/auth';
 

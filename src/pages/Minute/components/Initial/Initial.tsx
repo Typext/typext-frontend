@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useContext, useEffect, useState } from 'react';
 
-import { MainContext } from 'contexts/MainContext';
+import { MainContext } from 'contexts/main';
 
 import Input from 'components/Input/Input';
 import { StyledInitial } from './styles';

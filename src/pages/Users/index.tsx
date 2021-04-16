@@ -1,49 +1,66 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
+import { useUsers } from 'contexts/users';
+
+import UserModal from './components/UserModal';
+import UserInfo from './components/UserInfo';
 import { Container } from './styles';
 
 const Users = () => {
+  const { getUsers, users } = useUsers();
+
+  const [selectedUser, setSelectedUser] = useState({
+    id: '',
+    name: '',
+    type: '',
+  });
+
+  const [showUserModal, setShowUserModal] = useState(false);
+
+  const handleToggleShowModal = useCallback(() => {
+    setShowUserModal(!showUserModal);
+  }, [showUserModal]);
+
+  const handleOpenUserModal = useCallback(
+    user => {
+      handleToggleShowModal();
+      setSelectedUser(user);
+    },
+    [handleToggleShowModal],
+  );
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
+
   return (
-    <Container>
-      <h1>Lista de Usuários</h1>
+    <>
+      {showUserModal && (
+        <UserModal
+          selectedUser={selectedUser}
+          onClose={handleToggleShowModal}
+        />
+      )}
 
-      <section className="info">
-        <button type="button">Nome do usuário</button>
-        <button type="button">Nível de permissão</button>
-      </section>
+      <Container>
+        <h1>Lista de Usuários</h1>
 
-      <section className="usersList">
-        <button type="button">
-          <span>Richie Sambora</span>
-          <span>Comum</span>
-        </button>
+        <section className="info">
+          <button type="button">Nome do usuário</button>
+          <button type="button">Nível de permissão</button>
+        </section>
 
-        <button type="button">
-          <span>Slash</span>
-          <span>Gerente</span>
-        </button>
-
-        <button type="button">
-          <span>John Lennon</span>
-          <span>Admin</span>
-        </button>
-
-        <button type="button">
-          <span>Richie Sambora</span>
-          <span>Comum</span>
-        </button>
-
-        <button type="button">
-          <span>Slash</span>
-          <span>Gerente</span>
-        </button>
-
-        <button type="button">
-          <span>John Lennon</span>
-          <span>Admin</span>
-        </button>
-      </section>
-    </Container>
+        <section className="usersList">
+          {users?.map(user => (
+            <UserInfo
+              key={user.id}
+              user={user}
+              onClick={() => handleOpenUserModal(user)}
+            />
+          ))}
+        </section>
+      </Container>
+    </>
   );
 };
 
