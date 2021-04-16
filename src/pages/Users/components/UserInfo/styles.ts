@@ -11,8 +11,8 @@ export const Container = styled.button`
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 2rem;
-    line-height: 28px;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
     text-align: center;
 
     color: #373435;

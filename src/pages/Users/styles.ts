@@ -26,7 +26,7 @@ export const Container = styled.div`
     max-width: 80rem;
     margin: 3rem 0;
 
-    button {
+    div {
       width: 100%;
       display: flex;
       align-items: center;

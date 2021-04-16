@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { ReactComponent as UserIcon } from 'assets/userIcon.svg';
+import { useUsers } from 'contexts/user';
 import DefaultModal from 'components/DefaultModal';
 
-import Button from 'components/Button/Button';
+import UpdateSuccess from './UpdateSuccess';
+import UserContent from './UserContent';
+import DeleteUser from './DeleteUser';
 import { Container } from './styles';
 
 interface UserModalProps {
@@ -12,77 +14,37 @@ interface UserModalProps {
 }
 
 const UserModal = ({ selectedUser, onClose }: UserModalProps) => {
-  const userIsAdmin = selectedUser.type === 'Admin';
-  const [userType, setUserType] = useState(selectedUser.type);
+  const { updateUserTypeSuccess, clearUpdateStatus, getUsers } = useUsers();
 
-  const handleClose = useCallback(() => {
-    if (onClose) onClose();
-  }, [onClose]);
+  const [showSuccessElement, setShowSuccessElement] = useState<boolean>(false);
+  const [showDeleteUser, setShowDeleteUser] = useState<boolean>(false);
 
-  const handleSelectUserType = (e: any) => {
-    setUserType(e.target.value);
-  };
+  useEffect(() => {
+    if (updateUserTypeSuccess) {
+      setShowSuccessElement(true);
 
-  const handleUpdateUserType = () => {
-    // eslint-disable-next-line no-console
-    console.log(userType);
-  };
+      setTimeout(() => {
+        if (onClose) onClose();
+        clearUpdateStatus();
+        getUsers();
+      }, 2000);
+    }
+  }, [updateUserTypeSuccess, clearUpdateStatus, onClose, getUsers]);
 
   return (
     <DefaultModal onClose={onClose}>
-      <Container userIsAdmin={userIsAdmin}>
-        <section className="userInfo">
-          <UserIcon />
-
-          <h1>{selectedUser.name}</h1>
-          {userIsAdmin ? (
-            <h2>{selectedUser.type}</h2>
-          ) : (
-            <form className="usertype">
-              <input
-                type="radio"
-                id="normal"
-                name="type"
-                value="Usuário"
-                onChange={handleSelectUserType}
-              />
-              <label htmlFor="normal">Comum</label>
-
-              <input
-                type="radio"
-                id="gerente"
-                name="type"
-                value="Gerente"
-                onChange={handleSelectUserType}
-              />
-              <label htmlFor="gerente">Gerente</label>
-
-              <input
-                type="radio"
-                id="admin"
-                name="type"
-                value="Admin"
-                onChange={handleSelectUserType}
-              />
-              <label htmlFor="admin">Admin</label>
-            </form>
-          )}
-        </section>
-
-        <section className="buttons">
-          <Button color="var(--gray)" onClick={handleClose}>
-            Voltar
-          </Button>
-
-          {!userIsAdmin && (
-            <>
-              <Button color="var(--red-pink)">Excluir</Button>
-              <Button color="var(--green)" onClick={handleUpdateUserType}>
-                Atualizar
-              </Button>
-            </>
-          )}
-        </section>
+      <Container>
+        {showDeleteUser ? (
+          <DeleteUser setShowDeleteUser={setShowDeleteUser} />
+        ) : showSuccessElement ? (
+          <UpdateSuccess />
+        ) : (
+          <UserContent
+            selectedUser={selectedUser}
+            onClose={onClose}
+            setShowDeleteUser={setShowDeleteUser}
+          />
+        )}
       </Container>
     </DefaultModal>
   );
