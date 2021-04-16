@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import exit_icon from 'assets/exit_logo_red.svg';
 
@@ -10,13 +10,18 @@ interface ModalProps {
 }
 
 const DefaultModal = ({ children, onClose }: ModalProps) => {
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+
   const handleCloseModal = useCallback(() => {
-    if (onClose) onClose();
+    setModalIsOpen(false);
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 450);
   }, [onClose]);
 
   return (
     <Container>
-      <Modal className="modal-content">
+      <Modal className="modal-content" modalIsOpen={modalIsOpen}>
         {onClose && (
           <header>
             <button type="button" onClick={handleCloseModal}>

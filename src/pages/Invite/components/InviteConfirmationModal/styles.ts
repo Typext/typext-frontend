@@ -25,6 +25,7 @@ export const Content = styled.div<ContentProps>`
 
   h1 {
     margin: 1rem 0 1.5rem;
+    text-align: center;
     font-family: 'Roboto';
     font-style: bold;
     font-size: 36px;
