@@ -2,7 +2,7 @@ import React from 'react';
 
 import { AuthProvider } from './auth';
 import { MainProvider } from './main';
-import { UsersProvider } from './users';
+import { UsersProvider } from './user';
 
 interface ContextProps {
   children: React.ReactNode;

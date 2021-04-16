@@ -16,6 +16,9 @@ const UsersProvider = ({ children }: UserProviderProps) => {
   const [users, setUsers] = useState<UserData[]>([
     { id: '', name: '', type: '' },
   ]);
+  const [updateUserTypeSuccess, setUpdateUserTypeSuccess] = useState<boolean>(
+    false,
+  );
 
   const getUsers = useCallback(async () => {
     const response = await api.get('/users');
@@ -23,11 +26,27 @@ const UsersProvider = ({ children }: UserProviderProps) => {
     setUsers(response.data);
   }, []);
 
+  const updateUserType = useCallback(async ({ id, userType }) => {
+    try {
+      await api.patch(`/users/${id}`, { type: userType });
+      setUpdateUserTypeSuccess(true);
+    } catch (error) {
+      setUpdateUserTypeSuccess(true);
+    }
+  }, []);
+
+  const clearUpdateStatus = useCallback(() => {
+    setUpdateUserTypeSuccess(false);
+  }, []);
+
   return (
     <UsersContext.Provider
       value={{
         users,
+        updateUserTypeSuccess,
         getUsers,
+        updateUserType,
+        clearUpdateStatus,
       }}
     >
       {children}

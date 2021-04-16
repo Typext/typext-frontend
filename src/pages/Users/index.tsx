@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 
-import { useUsers } from 'contexts/users';
+import { useUsers } from 'contexts/user';
 
 import UserModal from './components/UserModal';
 import UserInfo from './components/UserInfo';
@@ -46,8 +46,8 @@ const Users = () => {
         <h1>Lista de Usuários</h1>
 
         <section className="info">
-          <button type="button">Nome do usuário</button>
-          <button type="button">Nível de permissão</button>
+          <div>Nome do usuário</div>
+          <div>Nível de permissão</div>
         </section>
 
         <section className="usersList">

@@ -14,7 +14,10 @@ interface UserData {
 
 export interface UserContextData {
   users: Array<UserData>;
+  updateUserTypeSuccess: boolean;
   getUsers(): void;
+  clearUpdateStatus(): void;
+  updateUserType(credentials: { id: string; userType: string }): void;
 }
 
 export interface UserProviderProps {
