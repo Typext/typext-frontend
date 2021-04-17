@@ -6,6 +6,8 @@ import { getUser } from 'services/auth';
 
 import Route from 'components/Route';
 
+import { useAuth } from 'contexts/auth';
+
 import Recovery from 'pages/Recovery';
 import LandingPage from 'pages/LandingPage';
 import ResetPassword from 'pages/ResetPassword';
@@ -19,7 +21,7 @@ import Users from 'pages/Users';
 
 export default function Routes() {
   const isNotProduction = getMode();
-  const user = getUser();
+  const { user } = useAuth();
   const userIsAdmin = user?.type === 'Admin';
 
   return (
