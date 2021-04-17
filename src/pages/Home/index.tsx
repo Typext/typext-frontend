@@ -14,7 +14,7 @@ const Home = () => {
 
   const history = useHistory();
 
-  const userIsNotAdmin = user.type === 'Usuário';
+  const userIsNotAdmin = user?.type === 'Usuário';
 
   const handleNavigateToMinute = useCallback(() => {
     history.push('/minute');

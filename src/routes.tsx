@@ -20,7 +20,7 @@ import Users from 'pages/Users';
 export default function Routes() {
   const isNotProduction = getMode();
   const user = getUser();
-  const userIsAdmin = user.type === 'Admin';
+  const userIsAdmin = user?.type === 'Admin';
 
   return (
     <BrowserRouter>
