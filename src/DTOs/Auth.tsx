@@ -37,11 +37,21 @@ export interface SignUpCredentials {
   area: string;
 }
 
+export interface RecoveryCredentials {
+  email: string;
+}
+
 interface InvitationData {
   error: string;
   loader: boolean;
 }
 interface RegisterData {
+  error: string;
+  loader: boolean;
+  success: boolean;
+}
+
+interface RecoveryPassoword {
   error: string;
   loader: boolean;
   success: boolean;
@@ -61,10 +71,12 @@ export interface AuthContextData {
   };
   invitation: InvitationData;
   register: RegisterData;
+  recovery: RecoveryPassoword;
   signIn(crendentials: SignInCredentials): Promise<boolean>;
   signUp(crendentials: SignUpCredentials): Promise<void>;
-  inviteUser(crendentials: InviteUserCredentials): Promise<void>;
   signOut(): void;
+  inviteUser(crendentials: InviteUserCredentials): Promise<void>;
+  recoveryPassword(crendentials: RecoveryCredentials): Promise<void>;
 }
 export interface AuthProviderProps {
   children: ReactNode;

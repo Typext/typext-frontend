@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
@@ -6,10 +6,18 @@ import Input from 'components/Input/Input';
 import LogoIcon from 'assets/logo.svg';
 
 import StyledRecoveryPassword from './styles';
+import RecoveryModal from './components/RecoveryModal';
 
 const RecoveryPassword = () => {
+  const [showRecoveryModal, setShowRecoveryModal] = useState(false);
+
+  const handleOpenRecoveryModal = useCallback(() => {
+    setShowRecoveryModal(!showRecoveryModal);
+  }, [showRecoveryModal]);
+
   return (
     <>
+      {showRecoveryModal && <RecoveryModal />}
       <StyledRecoveryPassword>
         <div className="RecoveryPassword">
           <a href="/recovery-password">
@@ -24,9 +32,7 @@ const RecoveryPassword = () => {
               Type="text"
             />
 
-            <Button
-              color="var(--black)"
-            >
+            <Button color="var(--black)" onClick={handleOpenRecoveryModal}>
               Próximo
             </Button>
           </div>

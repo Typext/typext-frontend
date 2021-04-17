@@ -14,6 +14,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [inviteError, setInviteError] = useState<string>('');
   const [inviteLoader, setInviteLoader] = useState<boolean>(false);
 
+  const [recoveryError, setRecoveryError] = useState<string>('');
+  const [recoveryLoader, setRecoveryLoader] = useState<boolean>(false);
+  const [recoverySuccess, setRecoverySuccess] = useState<boolean>(false);
+
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
     const user = localStorage.getItem('@Typext:user');
@@ -108,6 +112,30 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setInviteLoader(false);
   }, []);
 
+  const recoveryPassword = useCallback(async ({ email }) => {
+    setRecoveryLoader(true);
+
+    try {
+      setRecoveryError('');
+
+      await api.post('/password/forgot', {
+        email,
+      });
+
+      setRecoverySuccess(true);
+      setRecoveryLoader(false);
+    } catch (err) {
+      const errorStatus = err.response?.status;
+
+      if (errorStatus === 401) {
+        setRecoveryError(err.response?.data.message);
+      }
+
+      setRecoverySuccess(false);
+      setRecoveryLoader(false);
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -121,10 +149,16 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           loader: signUpLoader,
           success: signUpSuccess,
         },
+        recovery: {
+          error: recoveryError,
+          loader: recoveryLoader,
+          success: recoverySuccess,
+        },
         signIn,
         signUp,
         signOut,
         inviteUser,
+        recoveryPassword,
       }}
     >
       {children}
@@ -143,3 +177,6 @@ function useAuth(): AuthContextData {
 }
 
 export { AuthProvider, useAuth };
+function async(arg0: { email: any }): any {
+  throw new Error('Function not implemented.');
+}
