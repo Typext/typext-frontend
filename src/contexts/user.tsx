@@ -16,6 +16,9 @@ const UsersProvider = ({ children }: UserProviderProps) => {
   const [users, setUsers] = useState<UserData[]>([
     { id: '', name: '', type: '' },
   ]);
+
+  const [deleteUserLoader, setDeleteUserLoader] = useState<boolean>(false);
+  const [deleteUserError, setDeleteUserError] = useState<string>('');
   const [updateUserTypeSuccess, setUpdateUserTypeSuccess] = useState<boolean>(
     false,
   );
@@ -35,8 +38,19 @@ const UsersProvider = ({ children }: UserProviderProps) => {
     }
   }, []);
 
-  const clearUpdateStatus = useCallback(() => {
+  const deleteUser = useCallback(async id => {
+    setDeleteUserLoader(true);
+    try {
+      await api.delete(`/users/${id}`);
+    } catch (error) {
+      setDeleteUserError(error?.response?.data?.message);
+    }
+    setDeleteUserLoader(false);
+  }, []);
+
+  const clearAllSuccessStatus = useCallback(() => {
     setUpdateUserTypeSuccess(false);
+    setDeleteUserError('');
   }, []);
 
   return (
@@ -44,9 +58,12 @@ const UsersProvider = ({ children }: UserProviderProps) => {
       value={{
         users,
         updateUserTypeSuccess,
+        deleteUserLoader,
+        deleteUserError,
         getUsers,
+        deleteUser,
         updateUserType,
-        clearUpdateStatus,
+        clearAllSuccessStatus,
       }}
     >
       {children}

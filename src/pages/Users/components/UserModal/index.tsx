@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useUsers } from 'contexts/user';
 import DefaultModal from 'components/DefaultModal';
@@ -14,34 +14,38 @@ interface UserModalProps {
 }
 
 const UserModal = ({ selectedUser, onClose }: UserModalProps) => {
-  const { updateUserTypeSuccess, clearUpdateStatus, getUsers } = useUsers();
+  const { updateUserTypeSuccess, clearAllSuccessStatus, getUsers } = useUsers();
 
-  const [showSuccessElement, setShowSuccessElement] = useState<boolean>(false);
   const [showDeleteUser, setShowDeleteUser] = useState<boolean>(false);
+
+  const handleCloseModal = useCallback(() => {
+    if (onClose) onClose();
+    clearAllSuccessStatus();
+    getUsers();
+  }, [getUsers, clearAllSuccessStatus, onClose]);
 
   useEffect(() => {
     if (updateUserTypeSuccess) {
-      setShowSuccessElement(true);
-
       setTimeout(() => {
-        if (onClose) onClose();
-        clearUpdateStatus();
-        getUsers();
+        handleCloseModal();
       }, 2000);
     }
-  }, [updateUserTypeSuccess, clearUpdateStatus, onClose, getUsers]);
+  }, [updateUserTypeSuccess, handleCloseModal]);
 
   return (
-    <DefaultModal onClose={onClose}>
+    <DefaultModal onClose={handleCloseModal}>
       <Container>
         {showDeleteUser ? (
-          <DeleteUser setShowDeleteUser={setShowDeleteUser} />
-        ) : showSuccessElement ? (
+          <DeleteUser
+            setShowDeleteUser={setShowDeleteUser}
+            user={selectedUser}
+          />
+        ) : updateUserTypeSuccess ? (
           <UpdateSuccess />
         ) : (
           <UserContent
             selectedUser={selectedUser}
-            onClose={onClose}
+            onClose={handleCloseModal}
             setShowDeleteUser={setShowDeleteUser}
           />
         )}
