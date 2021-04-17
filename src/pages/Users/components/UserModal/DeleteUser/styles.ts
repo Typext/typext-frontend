@@ -47,7 +47,7 @@ export const Container = styled.div`
       font-family: Roboto;
       font-style: normal;
       font-weight: bold;
-      font-size: 5rem;
+      font-size: 4rem;
       line-height: 5.9rem;
       text-align: center;
 

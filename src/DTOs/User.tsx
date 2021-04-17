@@ -15,8 +15,11 @@ interface UserData {
 export interface UserContextData {
   users: Array<UserData>;
   updateUserTypeSuccess: boolean;
+  deleteUserLoader: boolean;
+  deleteUserError: string;
   getUsers(): void;
-  clearUpdateStatus(): void;
+  clearAllSuccessStatus(): void;
+  deleteUser(id: string): void;
   updateUserType(credentials: { id: string; userType: string }): void;
 }
 
