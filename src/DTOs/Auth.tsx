@@ -2,7 +2,12 @@ import { ReactNode } from 'react';
 
 export interface AuthState {
   token: string;
-  user: object;
+  user: {
+    id: string;
+    type: string;
+    email: string;
+    name: string;
+  };
 }
 
 export interface SignInCredentials {
@@ -38,7 +43,12 @@ interface RegisterData {
 }
 
 export interface AuthContextData {
-  user: object;
+  user: {
+    id: string;
+    type: string;
+    email: string;
+    name: string;
+  };
   invitation: InvitationData;
   register: RegisterData;
   signIn(crendentials: SignInCredentials): Promise<boolean>;
