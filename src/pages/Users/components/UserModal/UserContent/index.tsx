@@ -19,8 +19,8 @@ const UserModal = ({
 }: UserModalProps) => {
   const { updateUserType } = useUsers();
 
-  const userIsAdmin = selectedUser.type === 'Admin';
-  const [userType, setUserType] = useState(selectedUser.type);
+  const userIsAdmin = selectedUser?.type === 'Admin';
+  const [userType, setUserType] = useState(selectedUser?.type);
 
   const handleClose = useCallback(() => {
     if (onClose) onClose();
@@ -43,9 +43,9 @@ const UserModal = ({
       <section className="userInfo">
         <UserIcon />
 
-        <h1>{selectedUser.name}</h1>
+        <h1>{selectedUser?.name}</h1>
         {userIsAdmin ? (
-          <h2>{selectedUser.type}</h2>
+          <h2>{selectedUser?.type}</h2>
         ) : (
           <form className="usertype">
             <input

@@ -13,8 +13,8 @@ interface UserInfoProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const UserInfo = ({ user, ...rest }: UserInfoProps) => {
   return (
     <Container {...rest}>
-      <span>{user.name}</span>
-      <span>{user.type}</span>
+      <span>{user?.name}</span>
+      <span>{user?.type}</span>
     </Container>
   );
 };
