@@ -22,7 +22,7 @@ const StyledProjectInformation = styled.div`
     padding: 3rem;
 
     h1 {
-      color: var(--gray);
+      color: var(--black);
       font-size: 3rem;
       font-weight: bold;
 
@@ -33,7 +33,7 @@ const StyledProjectInformation = styled.div`
     .AddUsers {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 1.875rem;
+      gap: 3rem;
 
       width: 100%;
 
@@ -42,9 +42,10 @@ const StyledProjectInformation = styled.div`
       .DataUser {
         display: flex;
         flex-direction: column;
+        gap: 1.5rem;
 
         h1 {
-          color: var(--gray);
+          color: var(--black);
           font-size: 2.375rem;
           font-weight: 500;
 
@@ -53,18 +54,16 @@ const StyledProjectInformation = styled.div`
 
         .NameTitle {
           display: flex;
+          gap: 1.5rem;
           justify-content: space-between;
         }
 
         .CompanyPhoneEmail {
           display: flex;
           justify-content: space-between;
+          gap: 1.5rem;
 
           margin-top: 0.75rem;
-        }
-
-        Button {
-          margin: 3rem 0 0 51.25rem;
         }
       }
 
@@ -75,13 +74,22 @@ const StyledProjectInformation = styled.div`
         padding-top: 4rem;
 
         h2 {
-          color: var(--gray);
-          font-size: 1.5ren;
+          color: var(--black);
+          font-size: 1.5rem;
           font-weight: bold;
 
           margin-bottom: 0.875rem;
         }
       }
+    }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+
+    .AddUsers {
+      display: flex !important;
+      flex-direction: column;
     }
   }
 `;

@@ -17,8 +17,13 @@ export const Container = styled.div`
     margin: 15px 0;
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     margin: 0;
     font-weight: bolder;
+  }
+
+  @media (max-width: 960px) {
+    zoom: 30%;
   }
 `;

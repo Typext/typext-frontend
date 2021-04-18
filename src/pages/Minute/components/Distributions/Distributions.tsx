@@ -32,9 +32,9 @@ const Distributions = () => {
   };
 
   const deleteDistributions = (value: string) => {
-    setDistributions(distributions.filter(
-      distributionValue => distributionValue !== value,
-    ));
+    setDistributions(
+      distributions.filter(distributionValue => distributionValue !== value),
+    );
   };
 
   return (
@@ -46,7 +46,7 @@ const Distributions = () => {
           <div className="DataDepartments">
             <Input
               title="Área"
-              styleWidth="49.375rem"
+              styleWidth="100%"
               value={distribution}
               onChange={(e: any) => setDistribution(e.target.value)}
             />
@@ -63,6 +63,7 @@ const Distributions = () => {
           </div>
 
           <div className="Departments">
+            <h3>Distribuições adicionadas:</h3>
             <ScrollBox>
               {distributions.map(distributionValue => (
                 <BoxInformation
@@ -72,7 +73,6 @@ const Distributions = () => {
                   <h4>{distributionValue}</h4>
                 </BoxInformation>
               ))}
-
             </ScrollBox>
           </div>
         </div>

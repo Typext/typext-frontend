@@ -16,4 +16,10 @@ export const Container = styled.div`
 
     margin-bottom: 5rem;
   }
+
+  @media (max-width: 960px) {
+    .buttons {
+      zoom: 100%;
+    }
+  }
 `;

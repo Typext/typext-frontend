@@ -18,7 +18,7 @@ export const StyledInput = styled.div<Props>`
   h3 {
     font-weight: 500;
     font-size: ${props => props.Size || '1.5rem'};
-    color: ${props => props.Color || 'var(--gray)'};
+    color: ${props => props.Color || 'var(--black)'};
 
     margin-bottom: 5px;
   }
