@@ -34,7 +34,7 @@ const RecoveryModal: React.FC<IRecoveryModalProps> = ({
           ) : (
             <StyledRecoveryModalContent>
               <img src={EmailErrorIcon} alt="" />
-              <h1>E-MAIL INVÁLIDO!</h1>
+              <h1>{error.toUpperCase()}</h1>
               <h3>REVISE-O E TENTE NOVAMENTE.</h3>
             </StyledRecoveryModalContent>
           )}

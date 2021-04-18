@@ -44,7 +44,6 @@ export default function Routes() {
             <Redirect to="/404" />
           </>
         )}
-        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );

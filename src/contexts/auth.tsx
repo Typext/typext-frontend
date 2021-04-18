@@ -17,6 +17,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [recoveryError, setRecoveryError] = useState<string>('');
   const [recoveryLoader, setRecoveryLoader] = useState<boolean>(false);
 
+  const [resetError, setResetError] = useState<string>('');
+  const [resetLoader, setResetLoader] = useState<boolean>(false);
+
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
     const user = localStorage.getItem('@Typext:user');
@@ -120,16 +123,28 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       await api.post('/password/forgot', {
         email,
       });
+    } catch (err) {
+      setRecoveryError(err.response?.data.message);
+    }
 
-      setRecoveryLoader(false);
+    setRecoveryLoader(false);
+  }, []);
+
+  const resetPassword = useCallback(async ({ password, confirmPassword }) => {
+    setResetLoader(true);
+
+    try {
+      setRecoveryError('');
+
+      await api.post('/password/reset', { password, confirmPassword });
     } catch (err) {
       const errorStatus = err.response?.status;
 
       if (errorStatus === 401) {
-        setRecoveryError(err.response?.data.message);
+        setResetError(err.response?.data.message);
       }
 
-      setRecoveryLoader(false);
+      setResetLoader(false);
     }
   }, []);
 
@@ -150,11 +165,16 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           error: recoveryError,
           loader: recoveryLoader,
         },
+        reset: {
+          error: resetError,
+          loader: resetLoader,
+        },
         signIn,
         signUp,
         signOut,
         inviteUser,
         recoveryPassword,
+        resetPassword,
       }}
     >
       {children}
