@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { FormHandles } from '@unform/core';
@@ -19,6 +18,7 @@ import StyledRegisterNewUser from './styles';
 
 interface SignUpData {
   name: string;
+  email: string;
   password: string;
   password_confirmation: string;
   office: string;
@@ -27,12 +27,7 @@ interface SignUpData {
   area: string;
 }
 
-interface ParamsProps {
-  token: string;
-}
-
 const RegisterNewUser = () => {
-  const params = useParams<ParamsProps>();
   const formRef = useRef<FormHandles>(null);
   const inviteInfo = getInviteInfo();
 
@@ -49,13 +44,13 @@ const RegisterNewUser = () => {
 
         await schema.validate(data, { abortEarly: false });
         setOpenRegisterModal(true);
-        await signUp({ ...data, token: params.token });
+        await signUp(data);
       } catch (err) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
       }
     },
-    [signUp, params],
+    [signUp],
   );
 
   return (

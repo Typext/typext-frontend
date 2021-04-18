@@ -34,14 +34,13 @@ export default function Routes() {
         <Route path="/reset" component={ResetPassword} />
         <Route path="/recovery" component={Recovery} />
         <Route path="/login" component={Login} />
-        <Route path="/invite/:token" component={Register} />
+        <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
 
         {userIsAdmin && (
           <>
             <Route path="/invite" exact isPrivate component={Invite} />
             <Route path="/users" isPrivate component={Users} />
-            <Redirect to="/404" />
           </>
         )}
       </Switch>
