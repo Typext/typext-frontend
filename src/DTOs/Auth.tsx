@@ -1,4 +1,3 @@
-import { StringifyOptions } from 'node:querystring';
 import { ReactNode } from 'react';
 
 export interface AuthState {
@@ -43,8 +42,9 @@ export interface RecoveryCredentials {
 }
 
 export interface ResetCredentials {
+  email: string;
   password: string;
-  confirmPassword: string;
+  password_confirmation: string;
 }
 
 interface InvitationData {
@@ -65,6 +65,7 @@ interface RecoveryPassowordData {
 interface ResetPasswordData {
   error: String;
   loader: boolean;
+  success: boolean;
 }
 
 export interface AuthContextData {
