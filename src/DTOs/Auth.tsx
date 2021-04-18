@@ -1,3 +1,4 @@
+import { StringifyOptions } from 'node:querystring';
 import { ReactNode } from 'react';
 
 export interface AuthState {
@@ -27,7 +28,7 @@ export interface InviteUserCredentials {
 }
 
 export interface SignUpCredentials {
-  token: string;
+  email: string;
   name: string;
   password: string;
   password_confirmation: string;
@@ -35,6 +36,15 @@ export interface SignUpCredentials {
   phone: string;
   company: string;
   area: string;
+}
+
+export interface RecoveryCredentials {
+  email: string;
+}
+
+export interface ResetCredentials {
+  password: string;
+  confirmPassword: string;
 }
 
 interface InvitationData {
@@ -45,6 +55,16 @@ interface RegisterData {
   error: string;
   loader: boolean;
   success: boolean;
+}
+
+interface RecoveryPassowordData {
+  error: string;
+  loader: boolean;
+}
+
+interface ResetPasswordData {
+  error: String;
+  loader: boolean;
 }
 
 export interface AuthContextData {
@@ -61,10 +81,14 @@ export interface AuthContextData {
   };
   invitation: InvitationData;
   register: RegisterData;
+  recovery: RecoveryPassowordData;
+  reset: ResetPasswordData;
   signIn(crendentials: SignInCredentials): Promise<boolean>;
   signUp(crendentials: SignUpCredentials): Promise<void>;
-  inviteUser(crendentials: InviteUserCredentials): Promise<void>;
   signOut(): void;
+  inviteUser(crendentials: InviteUserCredentials): Promise<void>;
+  recoveryPassword(crendentials: RecoveryCredentials): Promise<void>;
+  resetPassword(credentials: ResetCredentials): Promise<void>;
 }
 export interface AuthProviderProps {
   children: ReactNode;
