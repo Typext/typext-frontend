@@ -1,15 +1,12 @@
 import React from 'react';
 import { Switch, BrowserRouter } from 'react-router-dom';
 
-import { getMode } from 'services/api';
-
 import Route from 'components/Route';
 
 import { useAuth } from 'contexts/auth';
 
 import Recovery from 'pages/Recovery';
 import UserUpdate from 'pages/UserUpdate';
-import LandingPage from 'pages/LandingPage';
 import ResetPassword from 'pages/ResetPassword';
 import Register from 'pages/Register';
 import Home from 'pages/Home';
@@ -20,14 +17,13 @@ import NotFound from 'pages/NotFound';
 import Users from 'pages/Users';
 
 export default function Routes() {
-  const isNotProduction = getMode();
   const { user } = useAuth();
   const userIsAdmin = user?.type === 'Admin';
 
   return (
     <BrowserRouter>
       <Switch>
-        {isNotProduction && <Route path="/" exact component={LandingPage} />}
+        <Route path="/" exact component={Login} />
         <Route path="/user/update" isPrivate component={UserUpdate} />
         <Route path="/home" exact isPrivate component={Home} />
         <Route path="/minute" isPrivate component={Minute} />
