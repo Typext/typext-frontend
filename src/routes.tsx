@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import { Switch, BrowserRouter } from 'react-router-dom';
 
 import { getMode } from 'services/api';
 
@@ -43,7 +43,6 @@ export default function Routes() {
             <Route path="/users" isPrivate component={Users} />
           </>
         )}
-        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );
