@@ -1,23 +1,44 @@
 import React, { useCallback, useState } from 'react';
+import { message } from 'antd';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 
 import LogoIcon from 'assets/logo.svg';
 
+import { useAuth } from 'contexts/auth';
 import StyledRecoveryPassword from './styles';
 import RecoveryModal from './components/RecoveryModal';
 
 const RecoveryPassword = () => {
-  const [showRecoveryModal, setShowRecoveryModal] = useState(false);
+  const { recoveryPassword } = useAuth();
 
-  const handleOpenRecoveryModal = useCallback(() => {
-    setShowRecoveryModal(!showRecoveryModal);
-  }, [showRecoveryModal]);
+  const [showRecoveryModal, setShowRecoveryModal] = useState<boolean>(false);
+
+  const [userEmail, setUserEmail] = useState<string>('');
+
+  const handleCloseRecoveryModal = useCallback(() => {
+    setShowRecoveryModal(false);
+  }, []);
+
+  const handleRecoveryPassword = useCallback(() => {
+    if (!userEmail) {
+      message.error('Todos os campos devem estar preenchidos');
+      return;
+    }
+
+    setShowRecoveryModal(true);
+    recoveryPassword({
+      email: userEmail,
+    });
+  }, [recoveryPassword, userEmail]);
 
   return (
     <>
-      {showRecoveryModal && <RecoveryModal />}
+      {showRecoveryModal && (
+        <RecoveryModal onClose={handleCloseRecoveryModal} />
+      )}
+
       <StyledRecoveryPassword>
         <div className="RecoveryPassword">
           <a href="/recovery-password">
@@ -30,9 +51,10 @@ const RecoveryPassword = () => {
               color="var(--black)"
               styleWidth="41.875rem"
               Type="text"
+              onChange={event => setUserEmail(event.target.value)}
             />
 
-            <Button color="var(--black)" onClick={handleOpenRecoveryModal}>
+            <Button color="var(--black)" onClick={handleRecoveryPassword}>
               Próximo
             </Button>
           </div>

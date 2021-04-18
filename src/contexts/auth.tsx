@@ -16,7 +16,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [recoveryError, setRecoveryError] = useState<string>('');
   const [recoveryLoader, setRecoveryLoader] = useState<boolean>(false);
-  const [recoverySuccess, setRecoverySuccess] = useState<boolean>(false);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
@@ -122,7 +121,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         email,
       });
 
-      setRecoverySuccess(true);
       setRecoveryLoader(false);
     } catch (err) {
       const errorStatus = err.response?.status;
@@ -131,7 +129,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         setRecoveryError(err.response?.data.message);
       }
 
-      setRecoverySuccess(false);
       setRecoveryLoader(false);
     }
   }, []);
@@ -152,7 +149,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         recovery: {
           error: recoveryError,
           loader: recoveryLoader,
-          success: recoverySuccess,
         },
         signIn,
         signUp,
