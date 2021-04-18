@@ -2,16 +2,24 @@
 
 ### Rodando o projeto
 
-Primeiramente será necessário clonar o repositório do back-end que etá disponível no link abaxo, la tem todas as orientações de como rodar a API.
+Primeiramente será necessário clonar o repositório do back-end que está disponível no link abaixo. Neste repositório estão contidas todas as orientações para a execução da API que será consumida.
 
 [Back-end](https://github.com/Typext/typext-webservice)
 
-Para rodar o projeto localmente certifique-se que o servidor do back-end está rodando, feito isso basta clonar o repositório e inserir o comando no terminal na pasta raiz do projeto
+IMPORTANTE: Antes de iniciarmos a execução do app referente ao front-end da aplicação, certifique-se que o servidor do back-end está rodando. 
+
+Após isso, basta clonar o repositório e inserir o comando no terminal na pasta raiz do projeto
+
+Passo 1 - clonar o repositório, via terminal, na pasta desejada:
+
+```git clone https://github.com/Typext/typext-frontend.git```
+
+Passo 2 - Acessar a pasta do projeto e instalar todas as dependências com o gerenciador de pacotes da sua escolha:
+
+```cd typext-frontend```
 
 ```npm install``` ou ```yarn```
 
-para instalar todas as dependências
-
-Em seguida inseriri o comando no terminal
+Passo 3 - Execute o webapp com um dos comandos abaixo:
 
 ```npm run start``` ou ```yarn start```
