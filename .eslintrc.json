@@ -29,7 +29,9 @@
     "implicit-arrow-linebreak": "off",
     "no-confusing-arrow": "off",
     "no-nested-ternary": "off",
+    "object-curly-newline": "off",
     "operator-linebreak": "off",
+    "no-unused-vars": "warn",
     "prettier/prettier": [
       "off",
       {

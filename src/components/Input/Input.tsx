@@ -22,6 +22,7 @@ const Input: React.FC<InputProps> = ({
       InputWidth={styleWidth || '23.75rem'}
       Color={color || 'var(--black)'}
       Size={Size || '1.5rem'}
+      className="input-styled"
     >
       <h3>{title}</h3>
 
