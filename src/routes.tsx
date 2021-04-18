@@ -31,7 +31,7 @@ export default function Routes() {
         <Route path="/user/update" isPrivate component={UserUpdate} />
         <Route path="/home" exact isPrivate component={Home} />
         <Route path="/minute" isPrivate component={Minute} />
-        <Route path="/reset" component={ResetPassword} />
+        <Route path="/reset/:email" component={ResetPassword} />
         <Route path="/recovery" component={Recovery} />
         <Route path="/login" component={Login} />
         <Route path="/invite/:email" component={Register} />

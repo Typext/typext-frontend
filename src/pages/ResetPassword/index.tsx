@@ -7,10 +7,17 @@ import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 import Logo from 'assets/logo.svg';
 
+import { useParams } from 'react-router-dom';
 import ResetPasswordModal from './components/ResetPasswordModal';
 import StyledNewPassword from './styles';
 
+export interface ParamsData {
+  email: string;
+}
+
 const NewPassword = () => {
+  const params: ParamsData = useParams();
+
   const { resetPassword } = useAuth();
 
   const [showResetModal, setShowResetModal] = useState<boolean>(false);
@@ -23,6 +30,8 @@ const NewPassword = () => {
   }, []);
 
   const handleResetPassword = useCallback(() => {
+    const userEmail = params.email;
+
     if (!userPassword || !userConfirmPassword) {
       message.error('Todos os campos devem estar preenchidos');
       return;
@@ -30,10 +39,11 @@ const NewPassword = () => {
 
     setShowResetModal(true);
     resetPassword({
+      email: userEmail,
       password: userPassword,
-      confirmPassword: userConfirmPassword,
+      password_confirmation: userConfirmPassword,
     });
-  }, [resetPassword, userPassword, userConfirmPassword]);
+  }, [resetPassword, params, userPassword, userConfirmPassword]);
 
   return (
     <>
