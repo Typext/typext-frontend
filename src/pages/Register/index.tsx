@@ -2,20 +2,17 @@ import React, { useRef, useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 import { useAuth } from 'contexts/auth';
 import { getInviteInfo } from 'services/auth';
+import FormUpdate from 'components/FormUpdate';
 
 import LogoIcon from 'assets/logo.svg';
-import InputForm from 'components/InputForm';
-import Button from 'components/Button/Button';
 
 import getValidationErrors from 'utils/getValidationErrors';
 import registerSchemaValidation from 'utils/registerSchemaValidation';
 
-import Input from 'components/Input/Input';
 import RegisterModal from './components/RegisterModal';
 
 import StyledRegisterNewUser from './styles';
@@ -71,41 +68,12 @@ const RegisterNewUser = () => {
         </a>
 
         <div className="RegisterNewUser">
-          <Form onSubmit={handleSubmit} ref={formRef} className="Content">
-            <div className="inputContent">
-              <InputForm
-                name="name"
-                title="Nome completo"
-                defaultValue={inviteInfo?.name}
-              />
-
-              <InputForm name="office" title="Título / Cargo" />
-
-              <InputForm name="area" title="Área" />
-
-              <InputForm name="company" title="Empresa" />
-
-              <Input
-                name="email"
-                title="E-mail"
-                styleWidth="40rem"
-                defaultValue={inviteInfo?.email || ''}
-                readOnly={!!inviteInfo?.email}
-              />
-
-              <InputForm name="phone" title="Telefone" />
-
-              <InputForm name="password" title="Senha" type="password" />
-
-              <InputForm
-                name="password_confirmation"
-                title="Confirme a senha"
-                type="password"
-              />
-            </div>
-
-            <Button color="var(--green)">Cadastrar</Button>
-          </Form>
+          <FormUpdate
+            formRef={formRef}
+            hasPasswordField
+            inviteInfo={inviteInfo}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </StyledRegisterNewUser>
     </>

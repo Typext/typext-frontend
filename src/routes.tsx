@@ -2,13 +2,13 @@ import React from 'react';
 import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
 import { getMode } from 'services/api';
-import { getUser } from 'services/auth';
 
 import Route from 'components/Route';
 
 import { useAuth } from 'contexts/auth';
 
 import Recovery from 'pages/Recovery';
+import UserUpdate from 'pages/UserUpdate';
 import LandingPage from 'pages/LandingPage';
 import ResetPassword from 'pages/ResetPassword';
 import Register from 'pages/Register';
@@ -28,6 +28,7 @@ export default function Routes() {
     <BrowserRouter>
       <Switch>
         {isNotProduction && <Route path="/" exact component={LandingPage} />}
+        <Route path="/user/update" isPrivate component={UserUpdate} />
         <Route path="/home" exact isPrivate component={Home} />
         <Route path="/minute" isPrivate component={Minute} />
         <Route path="/reset" component={ResetPassword} />
@@ -40,6 +41,7 @@ export default function Routes() {
           <>
             <Route path="/invite" exact isPrivate component={Invite} />
             <Route path="/users" isPrivate component={Users} />
+            <Redirect to="/404" />
           </>
         )}
         <Redirect to="/404" />

@@ -2,23 +2,20 @@
 import React, { useCallback, createContext, useState, useContext } from 'react';
 import api from 'services/api';
 
-import { UserContextData, UserProviderProps } from 'DTOs/User';
+import { UserContextData, UserProviderProps, IUser } from 'DTOs/User';
 
 const UsersContext = createContext<UserContextData>({} as UserContextData);
 
-interface UserData {
-  id: string;
-  name: string;
-  type: string;
-}
-
 const UsersProvider = ({ children }: UserProviderProps) => {
-  const [users, setUsers] = useState<UserData[]>([
-    { id: '', name: '', type: '' },
-  ]);
+  const [users, setUsers] = useState<IUser[]>([{} as IUser]);
 
   const [deleteUserLoader, setDeleteUserLoader] = useState<boolean>(false);
   const [deleteUserError, setDeleteUserError] = useState<string>('');
+
+  const [updateUserInfoError, setUpdateUserInfoError] = useState<string>('');
+  const [updateUserInfoLoader, setUpdateUserInfoLoader] = useState<boolean>(
+    false,
+  );
   const [updateUserTypeSuccess, setUpdateUserTypeSuccess] = useState<boolean>(
     false,
   );
@@ -27,6 +24,16 @@ const UsersProvider = ({ children }: UserProviderProps) => {
     const response = await api.get('/users');
 
     setUsers(response.data);
+  }, []);
+
+  const updateUserInfo = useCallback(async data => {
+    setUpdateUserInfoLoader(true);
+    try {
+      await api.put('/users/logged', data);
+    } catch (error) {
+      setUpdateUserInfoError(error?.response?.data?.validation.body.message);
+    }
+    setUpdateUserInfoLoader(false);
   }, []);
 
   const updateUserType = useCallback(async ({ id, userType }) => {
@@ -60,9 +67,12 @@ const UsersProvider = ({ children }: UserProviderProps) => {
         updateUserTypeSuccess,
         deleteUserLoader,
         deleteUserError,
+        updateUserInfoError,
+        updateUserInfoLoader,
         getUsers,
         deleteUser,
         updateUserType,
+        updateUserInfo,
         clearAllSuccessStatus,
       }}
     >
