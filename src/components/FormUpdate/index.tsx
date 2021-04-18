@@ -1,10 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Form } from '@unform/web';
 
 import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
 
 import { Container } from './styles';
 
@@ -26,6 +26,9 @@ interface FormUpdateProps {
   };
 }
 
+interface ParamsProps {
+  email: string;
+}
 function FormUpdate({
   handleSubmit,
   formRef,
@@ -33,6 +36,10 @@ function FormUpdate({
   hasPasswordField,
   user,
 }: FormUpdateProps) {
+  const params = useParams<ParamsProps>();
+
+  const paramsEmail = params.email;
+
   return (
     <Container>
       <Form onSubmit={handleSubmit} ref={formRef} className="Content">
@@ -57,12 +64,11 @@ function FormUpdate({
             title="Empresa"
           />
 
-          <Input
+          <InputForm
             name="email"
             title="E-mail"
-            styleWidth="40rem"
-            defaultValue={inviteInfo?.email || user?.phone || ''}
-            readOnly={!!inviteInfo?.email}
+            defaultValue={paramsEmail || user?.email || ''}
+            readOnly={!!paramsEmail}
           />
 
           <InputForm defaultValue={user?.phone} name="phone" title="Telefone" />
