@@ -5,8 +5,13 @@ export interface AuthState {
   user: {
     id: string;
     type: string;
-    email: string;
     name: string;
+    email: string;
+    office: string;
+    area: string;
+    company: string;
+    phone: string;
+    password: string;
   };
 }
 
@@ -46,8 +51,13 @@ export interface AuthContextData {
   user: {
     id: string;
     type: string;
-    email: string;
     name: string;
+    email: string;
+    office: string;
+    area: string;
+    company: string;
+    phone: string;
+    password: string;
   };
   invitation: InvitationData;
   register: RegisterData;

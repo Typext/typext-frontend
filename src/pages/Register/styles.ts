@@ -26,38 +26,6 @@ const StyledRegisterNewUser = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    .Content {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin: 6rem 0;
-
-      .inputContent {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-
-        width: 100%;
-        max-width: 80rem;
-
-        > div {
-          margin: 10px 15px;
-        }
-      }
-
-      .input-styled {
-        margin: 1.25rem;
-      }
-
-      button {
-        margin-top: 6rem;
-      }
-    }
   }
 
   @media (max-width: 840px) {
