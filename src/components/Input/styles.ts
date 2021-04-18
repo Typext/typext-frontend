@@ -16,9 +16,9 @@ export const StyledInput = styled.div<Props>`
   margin: 0;
 
   h3 {
-    font-weight: bold;
+    font-weight: 500;
     font-size: ${props => props.Size || '1.5rem'};
-    color: ${props => props.Color || 'var(--black)'};
+    color: ${props => props.Color || 'var(--gray)'};
 
     margin-bottom: 5px;
   }
@@ -33,7 +33,7 @@ export const StyledInput = styled.div<Props>`
     font-family: Roboto;
     font-size: 1.3rem;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 400;
 
     outline: none;
     border: 0;

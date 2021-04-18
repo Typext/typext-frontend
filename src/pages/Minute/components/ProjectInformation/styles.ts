@@ -3,7 +3,9 @@ import styled from 'styled-components';
 const StyledProjectInformation = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 3rem;
+  align-items: center;
+
+  width: 100%;
 
   .ProjectInformation {
     display: flex;
@@ -14,20 +16,23 @@ const StyledProjectInformation = styled.div`
     max-width: 102.125rem;
     width: 100%;
 
-    padding-bottom: 6.25rem;
-    border-bottom: 2px solid var(--red-pink);
+    background-color: #ffffff;
+    border-radius: 20px;
+
+    padding: 3rem;
 
     h1 {
       color: var(--gray);
-      font-size: 2.25rem;
+      font-size: 3rem;
       font-weight: bold;
 
-      margin-bottom: 6.25rem;
+      width: 100%;
+      text-align: left;
     }
 
     .AddUsers {
       display: grid;
-      grid-template-columns: 75rem 25.625rem;
+      grid-template-columns: 2fr 1fr;
       gap: 1.875rem;
 
       width: 100%;
@@ -39,8 +44,9 @@ const StyledProjectInformation = styled.div`
         flex-direction: column;
 
         h1 {
-          color: var(--red-pink);
-          font-size: 2rem;
+          color: var(--gray);
+          font-size: 2.375rem;
+          font-weight: 500;
 
           margin-bottom: 2.5rem;
         }
@@ -69,7 +75,7 @@ const StyledProjectInformation = styled.div`
         padding-top: 4rem;
 
         h2 {
-          color: var(--black);
+          color: var(--gray);
           font-size: 1.5ren;
           font-weight: bold;
 

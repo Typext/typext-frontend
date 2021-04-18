@@ -11,11 +11,11 @@ const StyledScrollBox = styled.div`
   ::-webkit-scrollbar {
     width: 12px;
     border-radius: 20px;
-    background: var(--red-pink);
+    background: #ffe7ed;
   }
 
   ::-webkit-scrollbar-thumb {
-    border: 3px solid var(--red-pink);
+    border: 3px solid #ffe7ed;
     border-radius: 20px;
     background: white;
   }

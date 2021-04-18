@@ -27,7 +27,7 @@ const StyledBoxInformation = styled.div`
     justify-content: flex-end;
 
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 900;
     margin: 0;
 

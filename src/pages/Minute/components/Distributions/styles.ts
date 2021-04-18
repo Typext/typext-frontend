@@ -3,7 +3,15 @@ import styled from 'styled-components';
 const StyledDistributions = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 1.875rem;
+  align-items: center;
+
+  width: 100%;
+  max-width: 102.125rem;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+
+  padding: 3rem;
 
   .Distributions {
     display: flex;

@@ -40,9 +40,7 @@ const Topics = () => {
   };
 
   const deleteTopics = (topicValue: ITopic) => {
-    setTopics(topics.filter(
-      topic => topic !== topicValue,
-    ));
+    setTopics(topics.filter(topic => topic !== topicValue));
   };
 
   return (
@@ -72,7 +70,10 @@ const Topics = () => {
         <div className="TopicList">
           <ScrollBox>
             {topics?.map(topic => (
-              <BoxInformation key={topic.topic} deleteComponent={() => deleteTopics(topic)}>
+              <BoxInformation
+                key={topic.topic}
+                deleteComponent={() => deleteTopics(topic)}
+              >
                 <h4>{topic.topic}</h4>
               </BoxInformation>
             ))}

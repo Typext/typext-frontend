@@ -26,14 +26,14 @@ const Initial = () => {
         <form action="">
           <Input
             title="Local"
-            color="var(--black)"
+            color="var(--gray)"
             styleWidth="49.375rem"
             onChange={(e: any) => setLocal(e.target.value)}
           />
 
           <Input
             title="Data de Inicio"
-            color="var(--black)"
+            color="var(--gray)"
             styleWidth="23.75rem"
             type="date"
             onChange={(e: any) => setStartDate(e.target.value)}
@@ -41,7 +41,7 @@ const Initial = () => {
 
           <Input
             title="Horário de Inicio"
-            color="var(--black)"
+            color="var(--gray)"
             styleWidth="23.75rem"
             type="time"
             onChange={(e: any) => setStartHour(e.target.value)}

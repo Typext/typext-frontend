@@ -34,6 +34,8 @@ const SubjectModal = ({
   return (
     <Container>
       <div className="modal">
+        <h1>Descrição do Assunto</h1>
+
         <TextArea
           title="Assunto"
           cols={10}
@@ -42,26 +44,28 @@ const SubjectModal = ({
           onChange={(e: any) => setSubject(e.target.value)}
         />
 
-        <section className="inputs">
-          <Input
-            title="Prazo"
-            onChange={(e: any) => setDeadLine(e.target.value)}
-          />
-          <Input
-            title="Responsável"
-            onChange={(e: any) => setResponsible(e.target.value)}
-          />
-        </section>
+        <div className="Complements">
+          <section className="inputs">
+            <Input
+              title="Prazo"
+              onChange={(e: any) => setDeadLine(e.target.value)}
+            />
+            <Input
+              title="Responsável"
+              onChange={(e: any) => setResponsible(e.target.value)}
+            />
+          </section>
 
-        <section className="options">
-          <Button color="#F60846" onClick={handleCloseModal}>
-            Cancelar
-          </Button>
+          <section className="options">
+            <Button color="#F60846" onClick={handleCloseModal}>
+              Cancelar
+            </Button>
 
-          <Button color="#0AAD74" onClick={handleSaveSubject}>
-            Salvar
-          </Button>
-        </section>
+            <Button color="#0AAD74" onClick={handleSaveSubject}>
+              Salvar
+            </Button>
+          </section>
+        </div>
       </div>
     </Container>
   );
