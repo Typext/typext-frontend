@@ -27,7 +27,7 @@ export interface InviteUserCredentials {
 }
 
 export interface SignUpCredentials {
-  token: string;
+  email: string;
   name: string;
   password: string;
   password_confirmation: string;
