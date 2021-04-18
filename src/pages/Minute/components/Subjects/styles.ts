@@ -7,9 +7,7 @@ const StyledSubjects = styled.div`
   align-items: left;
   justify-content: center;
 
-  max-width: 102.125rem;
-
-  width: 100%;
+  width: 102.125rem;
 
   background-color: #ffffff;
   border-radius: 20px;
@@ -17,7 +15,7 @@ const StyledSubjects = styled.div`
   padding: 3rem;
 
   h1 {
-    color: var(--gray);
+    color: var(--black);
     font-size: 3rem;
     font-weight: bold;
   }
@@ -115,6 +113,10 @@ const StyledSubjects = styled.div`
         }
       }
     }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
   }
 `;
 

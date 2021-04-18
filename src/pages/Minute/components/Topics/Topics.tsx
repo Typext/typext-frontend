@@ -51,7 +51,7 @@ const Topics = () => {
         <div className="AddTopic">
           <Input
             title="Pauta"
-            styleWidth="49.375rem"
+            styleWidth="100%"
             value={topicName}
             onChange={(e: any) => setTopicName(e.target.value)}
           />
@@ -68,6 +68,7 @@ const Topics = () => {
         </div>
 
         <div className="TopicList">
+          <h3>Pautas adicionadas:</h3>
           <ScrollBox>
             {topics?.map(topic => (
               <BoxInformation

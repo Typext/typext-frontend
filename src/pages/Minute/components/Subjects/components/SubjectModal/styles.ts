@@ -75,4 +75,17 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 960px) {
+    .modal {
+      max-width: 100vw;
+      textarea {
+        height: 40rem;
+      }
+
+      button {
+        font-size: 80%;
+      }
+    }
+  }
 `;

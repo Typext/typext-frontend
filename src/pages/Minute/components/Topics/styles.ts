@@ -2,9 +2,7 @@
 import styled from 'styled-components';
 
 const StyledTopics = styled.div`
-  max-width: 102.125rem;
-
-  width: 100%;
+  width: 102.125rem;
 
   border-radius: 20px;
 
@@ -13,7 +11,7 @@ const StyledTopics = styled.div`
   background-color: #ffffff;
 
   h1 {
-    color: var(--gray);
+    color: var(--black);
     font-size: 3rem;
     font-weight: bold;
 
@@ -38,6 +36,23 @@ const StyledTopics = styled.div`
     margin-top: -2rem;
 
     gap: 1.8rem;
+  }
+
+  .TopicList {
+    h3 {
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--black);
+      margin-bottom: 5px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+    .Topic {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
 

@@ -85,7 +85,7 @@ const ProjectInformation = () => {
         <Input
           title="Nome do Projeto"
           Size="2.375rem"
-          color="var(--gray)"
+          color="var(--black)"
           styleWidth="102.1rem"
           onChange={(e: any) => setProjectName(e.target.value)}
         />
@@ -96,17 +96,17 @@ const ProjectInformation = () => {
 
             <div className="NameTitle">
               <Input
-                title="Nome completo do Participante"
-                color="var(--gray)"
-                styleWidth="49.375rem"
+                title="Nome completo"
+                color="var(--black)"
+                styleWidth="100%"
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 title="Título / Cargo"
-                color="var(--gray)"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={role}
                 onChange={(e: any) => setRole(e.target.value)}
               />
@@ -115,24 +115,24 @@ const ProjectInformation = () => {
             <div className="CompanyPhoneEmail">
               <Input
                 title="Empresa"
-                color="var(--gray)"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={enterprise}
                 onChange={(e: any) => setEnterprise(e.target.value)}
               />
 
               <Input
-                color="var(--gray)"
+                color="var(--black)"
                 title="Telefone"
-                styleWidth="23.75rem"
+                styleWidth="100%"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
 
               <Input
                 title="E-mail"
-                color="var(--gray)"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
@@ -150,7 +150,7 @@ const ProjectInformation = () => {
           </div>
 
           <div className="Users">
-            <h2>Participantes</h2>
+            <h2>Participantes Adicionados:</h2>
 
             <ScrollBox>
               {members.map(member => (

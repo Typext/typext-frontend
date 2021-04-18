@@ -5,8 +5,7 @@ const StyledDistributions = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  max-width: 102.125rem;
+  width: 102.125rem;
 
   background-color: #ffffff;
   border-radius: 20px;
@@ -23,21 +22,45 @@ const StyledDistributions = styled.div`
     width: 100%;
 
     h1 {
-      color: var(--gray);
-      font-size: 2.25rem;
+      color: var(--black);
+      font-size: 3rem;
       font-weight: bold;
-
-      margin-bottom: 4rem;
+      width: 100%;
+      text-align: left;
     }
 
     .SectionDistributions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3.3rem;
+      gap: 2.5rem;
+
+      width: 100%;
 
       .DataDepartments {
-        Button {
-          margin: 3.438rem 0 0 25.625rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        gap: 2rem;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+    .SectionDistributions {
+      display: flex !important;
+      flex-direction: column;
+
+      width: 100%;
+
+      .Departments {
+        h3 {
+          font-weight: 500;
+          font-size: 1.5rem;
+          color: var(--black);
+          margin-bottom: 5px;
         }
       }
     }
