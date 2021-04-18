@@ -10,7 +10,7 @@ IMPORTANTE: Antes de iniciarmos a execução do app referente ao front-end da ap
 
 Após isso, basta clonar o repositório e inserir o comando no terminal na pasta raiz do projeto
 
-Passo 1 - clonar o repositório, via terminal, na pasta desejada:
+Passo 1 - Clonar o repositório, via terminal, na pasta desejada:
 
 ```git clone https://github.com/Typext/typext-frontend.git```
 
