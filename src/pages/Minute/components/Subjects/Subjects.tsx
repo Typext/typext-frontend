@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
-import { MainContext } from 'contexts/main';
+import { useMinute } from 'contexts/minute';
 
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 import Button from 'components/Button/Button';
@@ -9,7 +9,7 @@ import StyledSubjects from './styles';
 import SubjectModal from './components/SubjectModal';
 
 const Subjects = () => {
-  const { subjects, setSubjects } = useContext(MainContext);
+  const { subjects, setSubjects } = useMinute();
 
   const [openSubjectModal, setOpenSubjectModal] = useState(false);
 

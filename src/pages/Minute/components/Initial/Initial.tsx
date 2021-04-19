@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { MainContext } from 'contexts/main';
+import { useMinute } from 'contexts/minute';
 
 import Input from 'components/Input/Input';
 import { StyledInitial } from './styles';
 
 const Initial = () => {
-  const { setAddressAndHour } = useContext(MainContext);
+  const { setAddressAndHour } = useMinute();
 
   const [local, setLocal] = useState<string>('');
   const [startHour, setStartHour] = useState<string>('');
