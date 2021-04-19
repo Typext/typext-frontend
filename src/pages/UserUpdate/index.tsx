@@ -11,7 +11,7 @@ import { useUsers } from 'contexts/user';
 import { IUser } from 'DTOs/User';
 
 import getValidationErrors from 'utils/getValidationErrors';
-import updateSchemaValidation from 'utils/updateSchemaValidation copy';
+import updateSchemaValidation from 'utils/updateSchemaValidation';
 
 import ModalUpdateUser from './ModalUpdateUser';
 
@@ -62,6 +62,7 @@ function UserUpdate() {
           inviteInfo={inviteInfo}
           handleSubmit={handleSubmit}
           user={user}
+          emailIsNotAllowed
         />
       </Container>
     </>

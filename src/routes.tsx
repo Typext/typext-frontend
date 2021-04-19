@@ -1,9 +1,7 @@
 import React from 'react';
-import { Switch, BrowserRouter } from 'react-router-dom';
+import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
 import Route from 'components/Route';
-
-import { useAuth } from 'contexts/auth';
 
 import Recovery from 'pages/Recovery';
 import UserUpdate from 'pages/UserUpdate';
@@ -17,9 +15,6 @@ import NotFound from 'pages/NotFound';
 import Users from 'pages/Users';
 
 export default function Routes() {
-  const { user } = useAuth();
-  const userIsAdmin = user?.type === 'Admin';
-
   return (
     <BrowserRouter>
       <Switch>
@@ -33,12 +28,10 @@ export default function Routes() {
         <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
 
-        {userIsAdmin && (
-          <>
-            <Route path="/invite" exact isPrivate component={Invite} />
-            <Route path="/users" isPrivate component={Users} />
-          </>
-        )}
+        <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
+        <Route path="/users" isPrivate onlyAdmin component={Users} />
+
+        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );
