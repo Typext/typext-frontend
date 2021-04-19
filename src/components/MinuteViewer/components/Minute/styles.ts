@@ -23,7 +23,7 @@ export const Container = styled.div`
     font-weight: bolder;
   }
 
-  @media (max-width: 960px) {
+  /* @media (max-width: 960px) {
     zoom: 30%;
-  }
+  } */
 `;

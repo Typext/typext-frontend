@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { message } from 'antd';
 
-import { MainContext } from 'contexts/main';
+import { useMinute } from 'contexts/minute';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -16,7 +16,7 @@ import addIcon from '../../../../assets/add_icon.svg';
 import StyledTopics from './styles';
 
 const Topics = () => {
-  const { topics, setTopics } = useContext(MainContext);
+  const { topics, setTopics } = useMinute();
 
   const [topicName, setTopicName] = useState<string>('');
 

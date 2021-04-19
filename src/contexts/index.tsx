@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AuthProvider } from './auth';
-import { MainProvider } from './main';
+import { MinuteProvider } from './minute';
 import { UsersProvider } from './user';
 
 interface ContextProps {
@@ -11,7 +11,7 @@ interface ContextProps {
 const ContextProvider = ({ children }: ContextProps) => (
   <AuthProvider>
     <UsersProvider>
-      <MainProvider>{children}</MainProvider>
+      <MinuteProvider>{children}</MinuteProvider>
     </UsersProvider>
   </AuthProvider>
 );

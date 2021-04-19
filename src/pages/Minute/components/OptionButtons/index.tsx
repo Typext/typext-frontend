@@ -9,20 +9,17 @@ import { Container } from './styles';
 interface OptionButtonsProps {
   setShowMinute: Function;
   setShowSchedule: Function;
-  handleGenerateMinute: Function;
 }
 
 const OptionButtons: React.FC<OptionButtonsProps> = ({
   setShowMinute,
   setShowSchedule,
-  handleGenerateMinute,
 }: OptionButtonsProps) => {
   const isNotProduction = getMode();
 
   const handleOpenMinuteModal = useCallback(() => {
-    if (handleGenerateMinute) handleGenerateMinute(true);
     if (setShowMinute) setShowMinute(true);
-  }, [setShowMinute, handleGenerateMinute]);
+  }, [setShowMinute]);
 
   const handleOpenSchedule = useCallback(() => {
     if (setShowSchedule) setShowSchedule(true);

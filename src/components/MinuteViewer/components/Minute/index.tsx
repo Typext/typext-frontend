@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 
 import { IMinute } from 'DTOs';
+
 import GeneralInfo from './components/GeneralInfo';
 import Project from './components/Project';
 import Topics from './components/Topics';
