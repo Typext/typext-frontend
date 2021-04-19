@@ -1,8 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
-import { MainContext, MainProvider } from 'contexts/main';
-
-import { IMinute } from 'DTOs';
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
@@ -11,59 +8,34 @@ import Subjects from './components/Subjects/Subjects';
 import Distributions from './components/Distributions/Distributions';
 
 // eslint-disable-next-line
-import MinuteViewer from './components/MinuteViewer';
+import MinuteViewer from 'components/MinuteViewer';
 import ScheduleModal from './components/ScheduleModal';
 
 import Container from './styles';
 
 const Main = () => {
-  const {
-    topics,
-    addressAndHour,
-    projectInfo,
-    subjects,
-    distributions,
-  } = useContext(MainContext);
-
   const [showMinute, setShowMinute] = useState(false);
   const [showSchedule, setShowSchedule] = useState(false);
 
-  const [minute, setMinute] = useState<IMinute>();
-
-  const handleGenerateMinute = () => {
-    setMinute({
-      addressAndHour,
-      projectInfo,
-      topics,
-      subjects,
-      distributions,
-    });
-  };
-
   return (
     <>
-      <MainProvider>
-        {showMinute && (
-          <MinuteViewer setShowMinute={setShowMinute} minute={minute} />
-        )}
+      {showMinute && <MinuteViewer setShowMinute={setShowMinute} />}
 
-        {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
+      {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
 
-        <Container>
-          <Initial />
-          <ProjectInformation />
+      <Container>
+        <Initial />
+        <ProjectInformation />
 
-          <Topics />
+        <Topics />
 
-          <Subjects />
-          <Distributions />
-          <OptionButtons
-            setShowSchedule={setShowSchedule}
-            setShowMinute={setShowMinute}
-            handleGenerateMinute={handleGenerateMinute}
-          />
-        </Container>
-      </MainProvider>
+        <Subjects />
+        <Distributions />
+        <OptionButtons
+          setShowSchedule={setShowSchedule}
+          setShowMinute={setShowMinute}
+        />
+      </Container>
     </>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { MainContext } from 'contexts/main';
+import { useMinute } from 'contexts/minute';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
@@ -22,7 +22,7 @@ interface IMembers {
 }
 
 const ProjectInformation = () => {
-  const { setProjectInfo } = useContext(MainContext);
+  const { setProjectInfo } = useMinute();
 
   const [members, setMembers] = useState<IMembers[]>([]);
 

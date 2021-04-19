@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { message } from 'antd';
 
-import { MainContext } from 'contexts/main';
+import { useMinute } from 'contexts/minute';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -13,7 +13,7 @@ import BoxInformation from 'components/BoxInformation/BoxInformation';
 import StyledDistributions from './styles';
 
 const Distributions = () => {
-  const { distributions, setDistributions } = useContext(MainContext);
+  const { distributions, setDistributions } = useMinute();
 
   const [distribution, setDistribution] = useState<string>('');
 
