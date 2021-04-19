@@ -4,6 +4,7 @@ import { StyledInput } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   title: string;
   color?: string;
+  weight?: string;
   Size?: string;
   styleWidth?: string;
   Type?: string;
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
   color,
   Size,
   styleWidth,
+  weight,
   Type,
   ...rest
 }: InputProps) => {
@@ -22,6 +24,7 @@ const Input: React.FC<InputProps> = ({
       InputWidth={styleWidth || '23.75rem'}
       Color={color || 'var(--black)'}
       Size={Size || '1.5rem'}
+      weight={weight}
       className="input-styled"
     >
       <h3>{title}</h3>
@@ -34,8 +37,9 @@ const Input: React.FC<InputProps> = ({
 Input.defaultProps = {
   Type: '',
   Size: '',
+  weight: '',
   styleWidth: '23.75rem',
-  color: '',
+  color: 'var(--black)',
 };
 
 export default Input;

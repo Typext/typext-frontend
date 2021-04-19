@@ -28,4 +28,14 @@ export const Container = styled.div`
       margin-left: 10px;
     }
   }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+
+    .minuteButtons {
+      zoom: 70%;
+      justify-content: center !important;
+      margin: 3rem !important;
+    }
+  }
 `;

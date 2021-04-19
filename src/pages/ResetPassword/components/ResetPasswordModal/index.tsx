@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useAuth } from 'contexts/auth';
 
@@ -17,9 +18,19 @@ interface IResetPasswordModalProps {
 const ResetPasswordModal: React.FC<IResetPasswordModalProps> = ({
   onClose,
 }: IResetPasswordModalProps) => {
+  const history = useHistory();
+
   const {
-    reset: { error, loader },
+    reset: { error, loader, success },
   } = useAuth();
+
+  useEffect(() => {
+    if (!loader && !error && success) {
+      setTimeout(() => {
+        history.push('/login');
+      }, 1500);
+    }
+  }, [success, error, loader, history]);
 
   return (
     <StyledResetPasswordModal>
@@ -35,8 +46,8 @@ const ResetPasswordModal: React.FC<IResetPasswordModalProps> = ({
         ) : (
           <StyledResetPasswordContent>
             <img src={WarnIcon} alt="" />
-            <h1>SENHA INVÁLIDA!</h1>
-            <h3>VERIFIQUE SE A DIGITOU CORRETAMENTE</h3>
+            <h1>OCORREU UM PROBLEMA</h1>
+            <h3>{error.toUpperCase()}</h3>
           </StyledResetPasswordContent>
         )}
       </DefaultModal>

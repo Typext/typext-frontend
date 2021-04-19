@@ -2,44 +2,58 @@
 import styled from 'styled-components';
 
 const StyledTopics = styled.div`
-  margin-top: 3.75rem;
-  display: flex;
+  width: 102.125rem;
 
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-radius: 20px;
+
+  padding: 3rem;
+
+  background-color: #ffffff;
 
   h1 {
-    color: var(--gray);
-    font-size: 2.25rem;
+    color: var(--black);
+    font-size: 3rem;
     font-weight: bold;
 
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   .Topic {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
 
-    justify-content: space-between;
+    gap: 2rem;
 
-    padding-bottom: 4.5rem;
-    border-bottom: 2px solid var(--red-pink);
-
+    width: 100%;
   }
 
   .AddTopic {
     display: flex;
     flex-direction: column;
-    
+    align-items: flex-end;
+    justify-content: top;
+
+    margin-top: -2rem;
+
     gap: 1.8rem;
+  }
 
-    Button {
-      margin-left: 25.5rem;
+  .TopicList {
+    h3 {
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--black);
+      margin-bottom: 5px;
     }
-  } 
+  }
 
+  @media (max-width: 960px) {
+    max-width: 100vw;
+    .Topic {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `;
 
 export default StyledTopics;

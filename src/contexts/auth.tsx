@@ -19,6 +19,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [resetError, setResetError] = useState<string>('');
   const [resetLoader, setResetLoader] = useState<boolean>(false);
+  const [resetSuccess, setResetSuccess] = useState<boolean>(false);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Typext:token');
@@ -130,23 +131,28 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setRecoveryLoader(false);
   }, []);
 
-  const resetPassword = useCallback(async ({ password, confirmPassword }) => {
-    setResetLoader(true);
+  const resetPassword = useCallback(
+    async ({ email, password, password_confirmation }) => {
+      setResetLoader(true);
 
-    try {
-      setRecoveryError('');
+      try {
+        setResetError('');
 
-      await api.post('/password/reset', { password, confirmPassword });
-    } catch (err) {
-      const errorStatus = err.response?.status;
+        await api.post('/password/reset', {
+          email,
+          password,
+          password_confirmation,
+        });
 
-      if (errorStatus === 401) {
-        setResetError(err.response?.data.message);
+        setResetLoader(false);
+        setResetSuccess(true);
+      } catch (err) {
+        setResetLoader(false);
+        setResetError(err.response?.data.validation.body.message);
       }
-
-      setResetLoader(false);
-    }
-  }, []);
+    },
+    [],
+  );
 
   return (
     <AuthContext.Provider
@@ -168,6 +174,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         reset: {
           error: resetError,
           loader: resetLoader,
+          success: resetSuccess,
         },
         signIn,
         signUp,
@@ -193,6 +200,3 @@ function useAuth(): AuthContextData {
 }
 
 export { AuthProvider, useAuth };
-function async(arg0: { email: any }): any {
-  throw new Error('Function not implemented.');
-}

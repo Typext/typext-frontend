@@ -24,28 +24,31 @@ const Initial = () => {
       <div className="Initial">
         <h1>ATA DE REUNIÃO</h1>
         <form action="">
-          <Input
-            title="Local"
-            color="var(--black)"
-            styleWidth="49.375rem"
-            onChange={(e: any) => setLocal(e.target.value)}
-          />
+          <div className="Local">
+            <Input
+              title="Local"
+              color="var(--black)"
+              styleWidth="100%"
+              onChange={(e: any) => setLocal(e.target.value)}
+            />
+          </div>
+          <div className="HorarioData">
+            <Input
+              title="Data de Inicio"
+              color="var(--black)"
+              styleWidth="100%"
+              type="date"
+              onChange={(e: any) => setStartDate(e.target.value)}
+            />
 
-          <Input
-            title="Data de Inicio"
-            color="var(--black)"
-            styleWidth="23.75rem"
-            type="date"
-            onChange={(e: any) => setStartDate(e.target.value)}
-          />
-
-          <Input
-            title="Horário de Inicio"
-            color="var(--black)"
-            styleWidth="23.75rem"
-            type="time"
-            onChange={(e: any) => setStartHour(e.target.value)}
-          />
+            <Input
+              title="Horário"
+              color="var(--black)"
+              styleWidth="100%"
+              type="time"
+              onChange={(e: any) => setStartHour(e.target.value)}
+            />
+          </div>
         </form>
       </div>
     </StyledInitial>

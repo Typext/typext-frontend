@@ -6,17 +6,20 @@ export const Container = styled.div`
 
   .buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
 
-    width: 100%;
+    gap: 2rem;
+
+    width: 100vw;
     max-width: 102.125rem;
 
-    margin: 200px 0;
+    margin-bottom: 5rem;
+  }
 
-    button {
-      margin: 10px;
+  @media (max-width: 960px) {
+    .buttons {
+      zoom: 100%;
     }
   }
 `;

@@ -3,7 +3,9 @@ import styled from 'styled-components';
 const StyledProjectInformation = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 3rem;
+  align-items: center;
+
+  width: 100%;
 
   .ProjectInformation {
     display: flex;
@@ -14,21 +16,24 @@ const StyledProjectInformation = styled.div`
     max-width: 102.125rem;
     width: 100%;
 
-    padding-bottom: 6.25rem;
-    border-bottom: 2px solid var(--red-pink);
+    background-color: #ffffff;
+    border-radius: 20px;
+
+    padding: 3rem;
 
     h1 {
-      color: var(--gray);
-      font-size: 2.25rem;
+      color: var(--black);
+      font-size: 3rem;
       font-weight: bold;
 
-      margin-bottom: 6.25rem;
+      width: 100%;
+      text-align: left;
     }
 
     .AddUsers {
       display: grid;
-      grid-template-columns: 75rem 25.625rem;
-      gap: 1.875rem;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
 
       width: 100%;
 
@@ -37,28 +42,28 @@ const StyledProjectInformation = styled.div`
       .DataUser {
         display: flex;
         flex-direction: column;
+        gap: 1.5rem;
 
         h1 {
-          color: var(--red-pink);
-          font-size: 2rem;
+          color: var(--black);
+          font-size: 2.375rem;
+          font-weight: 500;
 
           margin-bottom: 2.5rem;
         }
 
         .NameTitle {
           display: flex;
+          gap: 1.5rem;
           justify-content: space-between;
         }
 
         .CompanyPhoneEmail {
           display: flex;
           justify-content: space-between;
+          gap: 1.5rem;
 
           margin-top: 0.75rem;
-        }
-
-        Button {
-          margin: 3rem 0 0 51.25rem;
         }
       }
 
@@ -70,12 +75,21 @@ const StyledProjectInformation = styled.div`
 
         h2 {
           color: var(--black);
-          font-size: 1.5ren;
+          font-size: 1.5rem;
           font-weight: bold;
 
           margin-bottom: 0.875rem;
         }
       }
+    }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+
+    .AddUsers {
+      display: flex !important;
+      flex-direction: column;
     }
   }
 `;

@@ -40,9 +40,7 @@ const Topics = () => {
   };
 
   const deleteTopics = (topicValue: ITopic) => {
-    setTopics(topics.filter(
-      topic => topic !== topicValue,
-    ));
+    setTopics(topics.filter(topic => topic !== topicValue));
   };
 
   return (
@@ -53,7 +51,7 @@ const Topics = () => {
         <div className="AddTopic">
           <Input
             title="Pauta"
-            styleWidth="49.375rem"
+            styleWidth="100%"
             value={topicName}
             onChange={(e: any) => setTopicName(e.target.value)}
           />
@@ -70,9 +68,13 @@ const Topics = () => {
         </div>
 
         <div className="TopicList">
+          <h3>Pautas adicionadas:</h3>
           <ScrollBox>
             {topics?.map(topic => (
-              <BoxInformation key={topic.topic} deleteComponent={() => deleteTopics(topic)}>
+              <BoxInformation
+                key={topic.topic}
+                deleteComponent={() => deleteTopics(topic)}
+              >
                 <h4>{topic.topic}</h4>
               </BoxInformation>
             ))}

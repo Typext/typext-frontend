@@ -4,6 +4,7 @@ interface Props {
   InputWidth: string;
   Color: string;
   Size: string;
+  weight?: string;
 }
 
 export const StyledInput = styled.div<Props>`
@@ -16,7 +17,7 @@ export const StyledInput = styled.div<Props>`
   margin: 0;
 
   h3 {
-    font-weight: bold;
+    font-weight: 500;
     font-size: ${props => props.Size || '1.5rem'};
     color: ${props => props.Color || 'var(--black)'};
 
@@ -33,12 +34,13 @@ export const StyledInput = styled.div<Props>`
     font-family: Roboto;
     font-size: 1.3rem;
     font-style: normal;
-    font-weight: bold;
+    font-weight: ${props => props.weight || '400'};
 
     outline: none;
     border: 0;
     border-radius: 1.25rem;
 
+    color: ${props => props.Color || 'var(--black)'};
     max-width: ${props => props.InputWidth || '23.75rem'};
     width: 100%;
   }

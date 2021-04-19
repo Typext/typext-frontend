@@ -61,4 +61,13 @@ export const StyledHeader = styled.header`
     border: none;
     background: none;
   }
+
+  @media (max-width: 960px) {
+    zoom: 70%;
+    height: 6rem;
+
+    img {
+      zoom: 135%;
+    }
+  }
 `;

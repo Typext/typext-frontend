@@ -4,17 +4,20 @@ import styled from 'styled-components';
 const StyledSubjects = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
+
+  width: 102.125rem;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+
   padding: 3rem;
 
-
   h1 {
-    color: var(--gray);
-    font-size: 2.25rem;
+    color: var(--black);
+    font-size: 3rem;
     font-weight: bold;
-
-    margin-bottom: 6.25rem;
   }
 
   .subjects {
@@ -23,9 +26,6 @@ const StyledSubjects = styled.div`
 
     max-width: 102.125rem;
     width: 100%;
-
-    padding-bottom: 5rem;
-    border-bottom: 2px solid var(--red-pink);
 
     button {
       margin: 0.625rem 0;
@@ -113,6 +113,10 @@ const StyledSubjects = styled.div`
         }
       }
     }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
   }
 `;
 

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: absolute;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -13,8 +14,14 @@ export const Container = styled.div`
   backdrop-filter: blur(6px);
 
   .modal {
+    h1 {
+      width: 100%;
+
+      font-size: 1.5rem;
+      text-align: left;
+    }
+
     width: 90rem;
-    height: 55rem;
     background: #ffffff;
     border-radius: 1.25rem;
 
@@ -22,7 +29,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    padding: 1.875rem 1.25rem;
+    padding: 3rem;
 
     textarea {
       padding: 1.25rem;
@@ -31,29 +38,54 @@ export const Container = styled.div`
     .textArea,
     textarea {
       width: 100%;
-      height: 100%;
 
       font-family: Roboto;
       font-size: 1.3rem;
       font-style: normal;
       font-weight: bold;
-
     }
 
-    .inputs {
+    .Complements {
       display: flex;
-      width: 100%;
-      margin: 1.875rem 0;
+      align-items: center;
+      justify-content: center;
 
-      div {
-        margin-right: 1.875rem;
+      margin-top: 1.75rem;
+
+      width: 100%;
+      gap: 2rem;
+
+      .inputs {
+        display: flex;
+        width: 100%;
+        gap: 2rem;
+      }
+
+      .options {
+        margin-top: 2rem;
+
+        width: 100%;
+        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          width: 100%;
+        }
       }
     }
+  }
 
-    .options {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
+  @media (max-width: 960px) {
+    .modal {
+      max-width: 100vw;
+      textarea {
+        height: 40rem;
+      }
+
+      button {
+        font-size: 80%;
+      }
     }
   }
 `;

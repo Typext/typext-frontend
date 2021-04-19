@@ -5,10 +5,12 @@ import { Form } from '@unform/web';
 
 import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
+import Input from 'components/Input/Input';
 
 import { Container } from './styles';
 
 interface FormUpdateProps {
+  emailIsNotAllowed?: boolean;
   handleSubmit: any;
   formRef: any;
   hasPasswordField?: boolean;
@@ -30,6 +32,7 @@ interface ParamsProps {
   email: string;
 }
 function FormUpdate({
+  emailIsNotAllowed,
   handleSubmit,
   formRef,
   inviteInfo,
@@ -64,12 +67,24 @@ function FormUpdate({
             title="Empresa"
           />
 
-          <InputForm
-            name="email"
-            title="E-mail"
-            defaultValue={paramsEmail || user?.email || ''}
-            readOnly={!!paramsEmail}
-          />
+          {emailIsNotAllowed ? (
+            <Input
+              name="email"
+              title="E-mail"
+              styleWidth="40rem"
+              color="var(--black);"
+              weight="bold"
+              defaultValue={paramsEmail || user?.email || ''}
+              readOnly={!!paramsEmail}
+            />
+          ) : (
+            <InputForm
+              name="email"
+              title="E-mail"
+              defaultValue={paramsEmail || user?.email || ''}
+              readOnly={!!paramsEmail}
+            />
+          )}
 
           <InputForm defaultValue={user?.phone} name="phone" title="Telefone" />
 
@@ -98,6 +113,7 @@ function FormUpdate({
 }
 
 FormUpdate.defaultProps = {
+  emailIsNotAllowed: false,
   hasPasswordField: false,
   user: {
     name: '',

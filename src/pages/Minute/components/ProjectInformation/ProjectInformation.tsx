@@ -70,9 +70,7 @@ const ProjectInformation = () => {
   };
 
   const deleteMember = (member: string) => {
-    setMembers(members.filter(
-      user => user.name !== member,
-    ));
+    setMembers(members.filter(user => user.name !== member));
   };
 
   useEffect(() => {
@@ -86,27 +84,29 @@ const ProjectInformation = () => {
 
         <Input
           title="Nome do Projeto"
-          Size="2rem"
-          color="var(--red-pink)"
+          Size="2.375rem"
+          color="var(--black)"
           styleWidth="102.1rem"
           onChange={(e: any) => setProjectName(e.target.value)}
         />
 
         <div className="AddUsers">
           <div className="DataUser">
-            <h1>Adicionar Participantes</h1>
+            <h1>Lista de Participantes</h1>
 
             <div className="NameTitle">
               <Input
-                title="Nome completo do Participante"
-                styleWidth="49.375rem"
+                title="Nome completo"
+                color="var(--black)"
+                styleWidth="100%"
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 title="Título / Cargo"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={role}
                 onChange={(e: any) => setRole(e.target.value)}
               />
@@ -115,21 +115,24 @@ const ProjectInformation = () => {
             <div className="CompanyPhoneEmail">
               <Input
                 title="Empresa"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={enterprise}
                 onChange={(e: any) => setEnterprise(e.target.value)}
               />
 
               <Input
+                color="var(--black)"
                 title="Telefone"
-                styleWidth="23.75rem"
+                styleWidth="100%"
                 value={phone}
                 onChange={(e: any) => setPhone(e.target.value)}
               />
 
               <Input
                 title="E-mail"
-                styleWidth="23.75rem"
+                color="var(--black)"
+                styleWidth="100%"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
@@ -147,11 +150,13 @@ const ProjectInformation = () => {
           </div>
 
           <div className="Users">
-            <h2>Participantes</h2>
+            <h2>Participantes Adicionados:</h2>
 
             <ScrollBox>
               {members.map(member => (
-                <BoxInformation deleteComponent={() => deleteMember(member.name)}>
+                <BoxInformation
+                  deleteComponent={() => deleteMember(member.name)}
+                >
                   <h4>{member.name}</h4>
                 </BoxInformation>
               ))}
