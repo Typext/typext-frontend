@@ -31,6 +31,10 @@ const Header = () => {
     history.push('/minute');
   }, [history]);
 
+  const handleNavigateToUserUpdate = useCallback(() => {
+    history.push('/user/update');
+  }, [history]);
+
   return (
     <StyledHeader>
       <section className="shortOptions">
@@ -48,7 +52,9 @@ const Header = () => {
       </figure>
 
       <section className="usernameAndLogout">
-        <h1>{user?.name || 'Nome do usuário'}</h1>
+        <button type="button" onClick={handleNavigateToUserUpdate}>
+          <h1>{user?.name || 'Nome do usuário'}</h1>
+        </button>
 
         <button type="button" onClick={handleLogout}>
           <img src={logoutIcon} alt="logout" />
