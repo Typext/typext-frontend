@@ -1,7 +1,20 @@
 import axios from 'axios';
 import { getUserToken } from './auth';
 
-const token = getUserToken();
+// eslint-disable-next-line consistent-return
+const tryGetUserToken = (count = 1) => {
+  if (count >= 100) return '';
+
+  const token = getUserToken();
+
+  if (token) return token;
+
+  setTimeout(() => {
+    tryGetUserToken(count + 1);
+  }, 500 * count);
+};
+
+const token = tryGetUserToken();
 
 const api = axios.create({
   baseURL: 'http://localhost:3333',

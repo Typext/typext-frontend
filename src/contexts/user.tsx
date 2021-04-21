@@ -30,8 +30,11 @@ const UsersProvider = ({ children }: UserProviderProps) => {
     setUpdateUserInfoLoader(true);
     try {
       await api.put('/users/logged', data);
-    } catch (error) {
-      setUpdateUserInfoError(error?.response?.data?.validation.body.message);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setUpdateUserInfoError(celebrateError || errorData?.message);
     }
     setUpdateUserInfoLoader(false);
   }, []);
@@ -41,7 +44,7 @@ const UsersProvider = ({ children }: UserProviderProps) => {
       await api.patch(`/users/${id}`, { type: userType });
       setUpdateUserTypeSuccess(true);
     } catch (error) {
-      setUpdateUserTypeSuccess(true);
+      setUpdateUserTypeSuccess(false);
     }
   }, []);
 
@@ -49,8 +52,11 @@ const UsersProvider = ({ children }: UserProviderProps) => {
     setDeleteUserLoader(true);
     try {
       await api.delete(`/users/${id}`);
-    } catch (error) {
-      setDeleteUserError(error?.response?.data?.message);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setDeleteUserError(celebrateError || errorData?.message);
     }
     setDeleteUserLoader(false);
   }, []);
