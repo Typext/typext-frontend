@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 41.875rem;
+  max-width: 40rem;
   position: relative;
 
   .inputSelect {
@@ -24,6 +24,7 @@ export const Container = styled.div<ContainerProps>`
       font-style: normal;
       font-weight: 500;
       font-size: 2rem;
+      color: var(--black);
 
       width: 100%;
       display: flex;
@@ -39,6 +40,7 @@ export const Container = styled.div<ContainerProps>`
     background-color: var(--soft-gray);
     border-radius: 1.25rem;
     width: 100%;
+    max-width: 40rem;
     height: 4.063rem;
 
     display: flex;
@@ -73,7 +75,7 @@ export const SelectContainer = styled.ul`
   position: absolute;
   list-style: none;
   width: 100%;
-  max-width: 41.875rem;
+  max-width: 40rem;
   margin-top: 6rem;
   background: #f5f5f6;
   border-radius: 0 0 12px 12px;

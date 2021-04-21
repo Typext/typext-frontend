@@ -36,3 +36,17 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const SectionButton = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  max-width: 90rem;
+  padding: 0 35px;
+
+  button:nth-child(1) {
+    margin-right: 2rem;
+  }
+`;

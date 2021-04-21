@@ -1,9 +1,12 @@
-import React, { useState, useCallback } from 'react';
-import { message } from 'antd';
+import React, { useRef, useState, useCallback } from 'react';
+import * as Yup from 'yup';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
 import { useAuth } from 'contexts/auth';
+import getValidationErrors from 'utils/getValidationErrors';
 
-import Input from 'components/Input/Input';
+import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
 import Select from './components/Select';
 
@@ -14,31 +17,40 @@ import InviteConfirmationModal from './components/InviteConfirmationModal';
 function InviteUsers() {
   const { inviteUser } = useAuth();
 
+  const formRef = useRef<FormHandles>(null);
+
   const [openInvitationModal, setOpenInvitationModal] = useState<boolean>(
     false,
   );
 
   const [userPermission, setUserPermission] = useState<string>('Usuário');
-  const [userName, setUserName] = useState<string>('');
-  const [userEmail, setUserEmail] = useState<string>('');
 
   const handleInviteUser = useCallback(
-    e => {
-      e.preventDefault();
+    async (data: { name: string; email: string }) => {
+      try {
+        formRef.current?.setErrors({});
 
-      if (!userName || !userEmail) {
-        message.error('Todos os campos devem estar preenchidos');
-        return;
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('O email é obrigatório')
+            .email('Digite um email valído'),
+          name: Yup.string().required('O nome é obrigatório'),
+        });
+
+        await schema.validate(data, { abortEarly: false });
+
+        setOpenInvitationModal(true);
+        inviteUser({
+          name: data.name,
+          email: data.email,
+          type: userPermission,
+        });
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
       }
-
-      setOpenInvitationModal(true);
-      inviteUser({
-        name: userName,
-        email: userEmail,
-        type: userPermission,
-      });
     },
-    [inviteUser, userName, userEmail, userPermission],
+    [inviteUser, userPermission],
   );
 
   return (
@@ -50,22 +62,14 @@ function InviteUsers() {
       <StyleInviteUsers>
         <h1>Convidar Participante</h1>
 
-        <form className="emailAndPermission" onSubmit={handleInviteUser}>
-          <Input
-            title="Nome"
-            color="black"
-            Size="large"
-            styleWidth="41.875rem"
-            onChange={event => setUserName(event.target.value)}
-          />
+        <Form
+          ref={formRef}
+          className="emailAndPermission"
+          onSubmit={handleInviteUser}
+        >
+          <InputForm title="Nome" name="name" color="black" />
 
-          <Input
-            title="E-mail"
-            color="black"
-            Size="large"
-            styleWidth="41.875rem"
-            onChange={event => setUserEmail(event.target.value)}
-          />
+          <InputForm title="E-mail" name="email" color="black" />
 
           <Select
             title="Nível de permissão"
@@ -81,7 +85,7 @@ function InviteUsers() {
           >
             Convidar
           </Button>
-        </form>
+        </Form>
       </StyleInviteUsers>
     </>
   );

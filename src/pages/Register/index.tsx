@@ -7,11 +7,10 @@ import { useAuth } from 'contexts/auth';
 import { getInviteInfo } from 'services/auth';
 import FormUpdate from 'components/FormUpdate';
 
-import LogoIcon from 'assets/logo.svg';
-
 import getValidationErrors from 'utils/getValidationErrors';
 import registerSchemaValidation from 'utils/registerSchemaValidation';
 
+import TypextLogo from 'components/Logo';
 import RegisterModal from './components/RegisterModal';
 
 import StyledRegisterNewUser from './styles';
@@ -58,9 +57,7 @@ const RegisterNewUser = () => {
       {openRegisterModal && <RegisterModal onClose={setOpenRegisterModal} />}
 
       <StyledRegisterNewUser>
-        <a href="/recovery-password">
-          <img src={LogoIcon} alt="Typext" />
-        </a>
+        <TypextLogo />
 
         <div className="RegisterNewUser">
           <FormUpdate

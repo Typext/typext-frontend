@@ -1,10 +1,13 @@
-import React, { useCallback, useState } from 'react';
-import { message } from 'antd';
+import React, { useRef, useState, useCallback } from 'react';
+import * as Yup from 'yup';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
+import getValidationErrors from 'utils/getValidationErrors';
+
+import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
-
-import LogoIcon from 'assets/logo.svg';
+import TypextLogo from 'components/Logo';
 
 import { useAuth } from 'contexts/auth';
 import StyledRecoveryPassword from './styles';
@@ -12,26 +15,38 @@ import RecoveryModal from './components/RecoveryModal';
 
 const RecoveryPassword = () => {
   const { recoveryPassword } = useAuth();
+  const formRef = useRef<FormHandles>(null);
 
   const [showRecoveryModal, setShowRecoveryModal] = useState<boolean>(false);
-
-  const [userEmail, setUserEmail] = useState<string>('');
 
   const handleCloseRecoveryModal = useCallback(() => {
     setShowRecoveryModal(false);
   }, []);
 
-  const handleRecoveryPassword = useCallback(() => {
-    if (!userEmail) {
-      message.error('Todos os campos devem estar preenchidos');
-      return;
-    }
+  const handleRecoveryPassword = useCallback(
+    async (data: { email: string }) => {
+      try {
+        formRef.current?.setErrors({});
 
-    setShowRecoveryModal(true);
-    recoveryPassword({
-      email: userEmail,
-    });
-  }, [recoveryPassword, userEmail]);
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('O email é obrigatório')
+            .email('Digite um email valído'),
+        });
+
+        await schema.validate(data, { abortEarly: false });
+
+        setShowRecoveryModal(true);
+        await recoveryPassword({
+          email: data.email,
+        });
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [recoveryPassword],
+  );
 
   return (
     <>
@@ -41,23 +56,23 @@ const RecoveryPassword = () => {
 
       <StyledRecoveryPassword>
         <div className="RecoveryPassword">
-          <a href="/recovery-password">
-            <img src={LogoIcon} alt="Typext" />
-          </a>
+          <TypextLogo />
 
-          <div className="Email">
-            <Input
+          <Form
+            onSubmit={handleRecoveryPassword}
+            ref={formRef}
+            className="Email"
+          >
+            <InputForm
+              name="email"
               title="Confirme seu e-mail"
               color="var(--black)"
-              styleWidth="41.875rem"
-              Type="text"
-              onChange={event => setUserEmail(event.target.value)}
             />
 
-            <Button color="var(--black)" onClick={handleRecoveryPassword}>
+            <Button color="var(--black)" type="submit">
               Próximo
             </Button>
-          </div>
+          </Form>
         </div>
       </StyledRecoveryPassword>
     </>
