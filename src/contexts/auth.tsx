@@ -50,12 +50,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setData({ token, user });
       return true;
     } catch (err) {
-      const errorStatus = err.response?.status;
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
 
-      if (errorStatus === 401) {
-        setInviteError(err.response?.data.message);
-      }
-
+      setInviteError(celebrateError || errorData?.message);
       return false;
     }
   }, []);
@@ -72,9 +70,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setSignUpSuccess(true);
     } catch (err) {
       const errorData = err.response?.data;
-      const validationError = errorData?.validation?.body?.message;
+      const celebrateError = errorData?.validation?.body?.message;
 
-      setSignUpError(validationError || err.response.validation?.body?.message);
+      setSignUpError(celebrateError || errorData?.message);
       setSignUpLoader(false);
       setSignUpSuccess(false);
     }
@@ -89,9 +87,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const inviteUser = useCallback(async ({ name, email, type }) => {
     setInviteLoader(true);
+    setInviteError('');
 
     try {
-      setInviteError('');
       const response = await api.post('/invite-users', {
         name,
         email,
@@ -105,11 +103,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         JSON.stringify({ name: inviteData.name, email: inviteData.email }),
       );
     } catch (err) {
-      const errorStatus = err.response?.status;
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
 
-      if (errorStatus === 401) {
-        setInviteError(err.response?.data.message);
-      }
+      setInviteError(celebrateError || errorData?.message);
     }
 
     setInviteLoader(false);
@@ -117,15 +114,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const recoveryPassword = useCallback(async ({ email }) => {
     setRecoveryLoader(true);
+    setRecoveryError('');
 
     try {
-      setRecoveryError('');
-
       await api.post('/password/forgot', {
         email,
       });
     } catch (err) {
-      setRecoveryError(err.response?.data.message);
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setRecoveryError(celebrateError || errorData?.message);
     }
 
     setRecoveryLoader(false);
@@ -134,22 +133,24 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const resetPassword = useCallback(
     async ({ email, password, password_confirmation }) => {
       setResetLoader(true);
+      setResetError('');
 
       try {
-        setResetError('');
-
         await api.post('/password/reset', {
           email,
           password,
           password_confirmation,
         });
 
-        setResetLoader(false);
         setResetSuccess(true);
       } catch (err) {
-        setResetLoader(false);
-        setResetError(err.response?.data.validation.body.message);
+        const errorData = err.response?.data;
+        const celebrateError = errorData?.validation?.body?.message;
+
+        setResetError(celebrateError || errorData?.message);
       }
+
+      setResetLoader(false);
     },
     [],
   );
