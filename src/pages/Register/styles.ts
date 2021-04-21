@@ -7,18 +7,8 @@ const StyledRegisterNewUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4rem;
 
-  padding: 30px;
-
-  a {
-    width: 18.125rem;
-    height: 3.125rem;
-
-    img {
-      width: 18.125rem;
-      height: 3.125rem;
-    }
-  }
 
   .RegisterNewUser {
     width: 100%;

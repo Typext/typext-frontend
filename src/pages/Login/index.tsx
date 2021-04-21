@@ -7,10 +7,9 @@ import { FormHandles } from '@unform/core';
 
 import { useAuth } from 'contexts/auth';
 import getValidationErrors from 'utils/getValidationErrors';
-
 import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
-import Logo from 'assets/logo.svg';
+import TypextLogo from 'components/Logo';
 import { getUserToken } from 'services/auth';
 
 import loginSchema from './loginSchema';
@@ -93,9 +92,7 @@ function Login() {
     <>
       <Content>
         <Form onSubmit={handleSubmit} ref={formRef} className="Login">
-          <a href="/#">
-            <img src={Logo} alt="Logo" />
-          </a>
+          <TypextLogo />
 
           <div className="EmailPassword">
             <InputForm name="email" title="E-mail" />

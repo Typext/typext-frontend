@@ -34,14 +34,14 @@ export const Container = styled.div<ContainerProps>`
     background-color: var(--soft-gray);
 
     border-radius: 1.25rem;
-    border: 2px solid rgba(206, 207, 208, 0.2);
+    border: 2px solid rgb(245 245 246);
 
-    transition: border-color .3s;
+    transition: border-color 0.3s;
 
     ${props =>
       props.isErrored &&
       css`
-        transition: border-color .3s;
+        transition: border-color 0.3s;
         border-color: #c53030;
       `}
 
@@ -52,7 +52,7 @@ export const Container = styled.div<ContainerProps>`
       font-family: Roboto;
       font-size: 1.3rem;
       font-style: normal;
-      font-weight: bold;
+      font-weight: normal;
 
       width: 100%;
 

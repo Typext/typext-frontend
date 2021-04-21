@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { Form } from '@unform/web';
 
@@ -7,13 +7,15 @@ import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 
-import { Container } from './styles';
+import { Container, SectionButton } from './styles';
 
 interface FormUpdateProps {
   emailIsNotAllowed?: boolean;
   handleSubmit: any;
   formRef: any;
   hasPasswordField?: boolean;
+  goBackEnabled?: boolean;
+  buttonText?: string;
   inviteInfo: { name: string; email: string };
   user?: {
     id: string;
@@ -37,11 +39,18 @@ function FormUpdate({
   formRef,
   inviteInfo,
   hasPasswordField,
+  goBackEnabled,
+  buttonText,
   user,
 }: FormUpdateProps) {
+  const history = useHistory();
   const params = useParams<ParamsProps>();
 
   const paramsEmail = params.email;
+
+  const handleGoBack = useCallback(() => {
+    history.goBack();
+  }, [history]);
 
   return (
     <Container>
@@ -106,7 +115,14 @@ function FormUpdate({
           )}
         </div>
 
-        <Button color="var(--green)">Cadastrar</Button>
+        <SectionButton>
+          {goBackEnabled && (
+            <Button color="var(--gray)" onClick={handleGoBack}>
+              Voltar
+            </Button>
+          )}
+          <Button color="var(--green)">{buttonText || 'Cadastrar'}</Button>
+        </SectionButton>
       </Form>
     </Container>
   );
@@ -115,6 +131,8 @@ function FormUpdate({
 FormUpdate.defaultProps = {
   emailIsNotAllowed: false,
   hasPasswordField: false,
+  goBackEnabled: false,
+  buttonText: '',
   user: {
     name: '',
     email: '',

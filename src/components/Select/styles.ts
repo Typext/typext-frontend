@@ -34,5 +34,4 @@ export const StyledSelect = styled.div<Props>`
     max-width: ${props => props.SelectWidth || '23.75rem'};
     width: 100%;
   }
-
 `;

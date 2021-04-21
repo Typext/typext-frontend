@@ -5,8 +5,7 @@ export const StyledNewPassword = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  margin-top: 4.375rem;
+  padding: 4rem;
 
   .NewPassword {
     display: flex;
@@ -21,11 +20,7 @@ export const StyledNewPassword = styled.div`
 
     align-items: flex-end;
 
-    Input {
-      margin-bottom: 2rem;
-    }
-
-    Button {
+    button {
       margin-top: 4rem;
       width: 14.063rem;
     }
