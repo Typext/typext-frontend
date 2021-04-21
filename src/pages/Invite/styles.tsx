@@ -47,8 +47,8 @@ export const StyleInviteUsers = styled.div`
 
     margin: 6rem 0;
 
-    input {
-      margin-bottom: 2rem;
+    > div {
+      margin: 1rem 0;
     }
 
     .input-styled h3 {

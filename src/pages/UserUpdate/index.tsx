@@ -63,6 +63,8 @@ function UserUpdate() {
           handleSubmit={handleSubmit}
           user={user}
           emailIsNotAllowed
+          buttonText="Atualizar"
+          goBackEnabled
         />
       </Container>
     </>

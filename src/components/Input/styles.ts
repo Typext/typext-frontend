@@ -17,8 +17,8 @@ export const StyledInput = styled.div<Props>`
   margin: 0;
 
   h3 {
-    font-weight: 500;
-    font-size: ${props => props.Size || '1.5rem'};
+    font-weight: bold;
+    font-size: ${props => props.Size};
     color: ${props => props.Color || 'var(--black)'};
 
     margin-bottom: 5px;
@@ -37,7 +37,7 @@ export const StyledInput = styled.div<Props>`
     font-weight: ${props => props.weight || '400'};
 
     outline: none;
-    border: 0;
+    border: none;
     border-radius: 1.25rem;
 
     color: ${props => props.Color || 'var(--black)'};

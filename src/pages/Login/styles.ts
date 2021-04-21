@@ -6,33 +6,24 @@ const Content = styled.div`
 
   width: 100%;
   height: 100%;
-  padding: 30px;
+  padding: 4rem;
 
   .Login {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 
-    &,
+    width: 100%;
+    height: 100%;
+
     .EmailPassword,
     .LoginPassForgot {
       width: 100%;
       max-width: 40rem;
     }
 
-    a {
-      width: 18.125rem;
-      height: 3.125rem;
-
-      img {
-        width: 18.125rem;
-        height: 3.125rem;
-      }
-    }
-
     .EmailPassword {
-      margin: 10rem;
+      margin: 14rem 0 2rem 0;
 
       display: flex;
       flex-direction: column;
@@ -53,6 +44,7 @@ const Content = styled.div`
 
       Button {
         width: 14.063rem;
+        margin: 2rem 0;
       }
 
       a {
