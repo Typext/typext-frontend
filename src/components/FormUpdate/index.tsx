@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import { Form } from '@unform/web';
@@ -45,6 +45,8 @@ function FormUpdate({
 }: FormUpdateProps) {
   const history = useHistory();
   const params = useParams<ParamsProps>();
+
+  const [userPhone, setUserPhone] = useState('');
 
   const paramsEmail = params.email;
 
@@ -95,7 +97,13 @@ function FormUpdate({
             />
           )}
 
-          <InputForm defaultValue={user?.phone} name="phone" title="Telefone" />
+          <InputForm
+            defaultValue={user?.phone}
+            value={userPhone.replace(/[^0-9' ']/g, '')}
+            onChange={e => setUserPhone(e.target.value)}
+            name="phone"
+            title="Telefone"
+          />
 
           {hasPasswordField && (
             <>
