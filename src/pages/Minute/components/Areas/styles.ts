@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDistributions = styled.div`
+const StyledAreas = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@ const StyledDistributions = styled.div`
 
   padding: 3rem;
 
-  .Distributions {
+  .Areas {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@ const StyledDistributions = styled.div`
       text-align: left;
     }
 
-    .SectionDistributions {
+    .SectionAreas {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
@@ -49,7 +49,7 @@ const StyledDistributions = styled.div`
 
   @media (max-width: 960px) {
     max-width: 100vw;
-    .SectionDistributions {
+    .SectionAreas {
       display: flex !important;
       flex-direction: column;
 
@@ -67,4 +67,4 @@ const StyledDistributions = styled.div`
   }
 `;
 
-export default StyledDistributions;
+export default StyledAreas;

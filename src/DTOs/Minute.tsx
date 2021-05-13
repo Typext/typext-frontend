@@ -1,36 +1,33 @@
 export interface ITopic {
-  topic: string;
+  id: number;
+  name: string;
+  responsible: string;
+  deadline: string;
 }
 
-export interface ISubject {
-  subject: String;
-  responsible: String;
-  deadLine: String;
+export interface IParticipant {
+  name: string;
+  email: string;
+  title: string;
+  company: string;
+  phone: string;
 }
 
-export interface IMember {
-  name: String;
-  role: String;
-  enterprise: String;
-  phone: String;
-  email: String;
-}
-
-export interface IProjectInfo {
-  projectName: String;
-  members: Array<IMember>;
-}
-
-export interface IAddressAndHour {
-  local: String;
-  startDate: String;
-  startHour: String;
+export interface IDate {
+  start_date: string;
+  end_date: string;
 }
 
 export interface IMinute {
-  addressAndHour: IAddressAndHour;
-  projectInfo: IProjectInfo;
-  subjects: Array<ISubject>;
-  topics: Array<ITopic>;
-  distributions: Array<String>;
+  minute: {
+    start_date: string;
+    end_date: string;
+    place: string;
+    project: string;
+    schedules: Array<string>;
+    areas: Array<string>;
+    minute_number?: string;
+  };
+  participant: Array<IParticipant>;
+  topic: Array<ITopic>;
 }

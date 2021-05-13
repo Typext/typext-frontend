@@ -1,45 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useMinute } from 'contexts/minute';
 
-import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
 
 import { message } from 'antd';
 
-import StyledProjectInformation from './styles';
+import { StyledProjectInformation, Button } from './styles';
 
 import addIcon from '../../../../assets/add_icon.svg';
 
-interface IMembers {
-  name: string;
-  phone: string;
-  email: string;
-  role: string;
-  enterprise: string;
-}
-
 const ProjectInformation = () => {
-  const { setProjectInfo } = useMinute();
-
-  const [members, setMembers] = useState<IMembers[]>([]);
-
-  const [projectName, setProjectName] = useState<string>('');
+  const {
+    minute,
+    setProject,
+    setParticipants,
+    handleSetParticipants,
+  } = useMinute();
 
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [enterprise, setEnterprise] = useState<string>('');
-  const [role, setRole] = useState<string>('');
+  const [company, setCompany] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
 
   const handleCleanFields = () => {
     setName('');
     setPhone('');
     setEmail('');
-    setEnterprise('');
-    setRole('');
+    setCompany('');
+    setTitle('');
   };
 
   // eslint-disable-next-line consistent-return
@@ -51,31 +43,15 @@ const ProjectInformation = () => {
       return null;
     }
 
-    if (!name || !phone || !email || !role || !enterprise) {
-      message.error('Todas os campos devem estar preenchidos');
-    } else {
-      setMembers([
-        ...members,
-        {
-          name,
-          phone,
-          email,
-          role,
-          enterprise,
-        },
-      ]);
-
-      handleCleanFields();
-    }
+    handleSetParticipants({ name, phone, email, company, title });
+    handleCleanFields();
   };
 
-  const deleteMember = (member: string) => {
-    setMembers(members.filter(user => user.name !== member));
+  const deleteMember = (participant: string) => {
+    setParticipants(
+      minute.participant.filter(user => user.name !== participant),
+    );
   };
-
-  useEffect(() => {
-    if (setProjectInfo) setProjectInfo({ projectName, members });
-  }, [members, projectName, setProjectInfo]);
 
   return (
     <StyledProjectInformation>
@@ -87,7 +63,7 @@ const ProjectInformation = () => {
           Size="2.375rem"
           color="var(--black)"
           styleWidth="102.1rem"
-          onChange={(e: any) => setProjectName(e.target.value)}
+          onChange={(e: any) => setProject(e.target.value)}
         />
 
         <div className="AddUsers">
@@ -107,8 +83,8 @@ const ProjectInformation = () => {
                 title="Título / Cargo"
                 color="var(--black)"
                 styleWidth="100%"
-                value={role}
-                onChange={(e: any) => setRole(e.target.value)}
+                value={title}
+                onChange={(e: any) => setTitle(e.target.value)}
               />
             </div>
 
@@ -117,8 +93,8 @@ const ProjectInformation = () => {
                 title="Empresa"
                 color="var(--black)"
                 styleWidth="100%"
-                value={enterprise}
-                onChange={(e: any) => setEnterprise(e.target.value)}
+                value={company}
+                onChange={(e: any) => setCompany(e.target.value)}
               />
 
               <Input
@@ -153,7 +129,7 @@ const ProjectInformation = () => {
             <h2>Participantes Adicionados:</h2>
 
             <ScrollBox>
-              {members.map(member => (
+              {minute.participant.map(member => (
                 <BoxInformation
                   deleteComponent={() => deleteMember(member.name)}
                 >

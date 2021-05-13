@@ -1,22 +1,45 @@
 import React from 'react';
+import { Table } from 'antd';
 
-import { ITopic } from 'DTOs';
+import { useMinute } from 'contexts/minute';
+
 import { Container } from './styles';
 
-interface ITopicsProps {
-  topics: Array<ITopic>;
-}
+const Topics = () => {
+  const { minute } = useMinute();
 
-const Topics = ({ topics }: ITopicsProps) => {
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+    },
+    {
+      title: 'ASSUNTO',
+      dataIndex: 'name',
+    },
+    {
+      title: 'RESPONSÁVEL',
+      dataIndex: 'responsible',
+    },
+    {
+      title: 'PRAZO',
+      dataIndex: 'deadline',
+    },
+  ];
+
   return (
     <Container>
-      <h3>PAUTA</h3>
-
-      <section className="description">
-        {topics?.map(topic => (
-          <span>{topic.topic}</span>
+      <Table dataSource={minute.topic} columns={columns} />
+      <h4>
+        <span>DISTRIBUIÇÃO:</span>
+        {' '}
+        {minute.minute.areas.map(area => (
+          <>
+            <p>{area}</p>
+            <span>,</span>
+          </>
         ))}
-      </section>
+      </h4>
     </Container>
   );
 };
