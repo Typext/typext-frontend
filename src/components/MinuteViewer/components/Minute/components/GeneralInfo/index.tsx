@@ -1,40 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 
 import iacitLogo from 'assets/iacit_logo.jpg';
 
-import { IAddressAndHour } from 'DTOs';
+import { useMinute } from 'contexts/minute';
+
 import { Container } from './styles';
 
-interface IGeneralInfoProps {
-  addressAndHour: IAddressAndHour;
-}
-
-const GeneralInfo = ({ addressAndHour }: IGeneralInfoProps) => {
-  const [minuteId, setMinuteId] = useState(1);
-
-  useEffect(() => {
-    const minutesGenerated = localStorage.getItem('minuteID');
-
-    if (minutesGenerated) {
-      setMinuteId(Number(minutesGenerated) + 1);
-    }
-  }, []);
+const GeneralInfo = () => {
+  const { minute } = useMinute();
 
   return (
     <Container>
-      <div className="minuteID">
-        ATA N°
-        {' '}
-        {minuteId}
-        2021
-      </div>
+      <div className="minuteID">ATA N° 012021</div>
       <div className="dateAndLocateInfo">
         <section className="date">
           <h4>Data:&nbsp;</h4>
           INICIO
           {' '}
-          {addressAndHour.startDate}
+          {minute.minute.start_date}
           {' '}
           - FIM &nbsp;
           {moment().format('l')}
@@ -43,7 +27,7 @@ const GeneralInfo = ({ addressAndHour }: IGeneralInfoProps) => {
         <section className="hour">
           <div className="startHour">
             <h4>Inicio:&nbsp;</h4>
-            {addressAndHour.startHour}
+            {minute.minute.start_date}
           </div>
 
           <div>
@@ -54,7 +38,7 @@ const GeneralInfo = ({ addressAndHour }: IGeneralInfoProps) => {
 
         <section className="meetingLocate">
           <h4>Local:&nbsp;</h4>
-          {addressAndHour.local}
+          {minute.minute.place}
         </section>
       </div>
       <div className="logo">

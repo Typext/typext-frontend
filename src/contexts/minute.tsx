@@ -1,24 +1,24 @@
-import React, { createContext, useContext, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
-import { ITopic, IAddressAndHour, IProjectInfo, ISubject } from 'DTOs';
+import { ITopic, IDate, IParticipant, IMinute } from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
 }
 
 interface IMinuteContextData {
-  topics: Array<ITopic>;
-  setTopics: Function;
-  showSchedule: Boolean;
-  setShowSchedule: Function;
-  addressAndHour: IAddressAndHour;
-  setAddressAndHour: Function;
-  projectInfo: IProjectInfo;
-  setProjectInfo: Function;
-  subjects: ISubject[];
-  setSubjects: Function;
-  distributions: string[];
-  setDistributions: Function;
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  setDate: (date: IDate) => void;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setProject: Function;
+  setPlace: Function;
+  minute: IMinute;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -27,34 +27,70 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   children,
 }: IMinuteProvider) => {
   const [topics, setTopics] = useState<ITopic[]>([]);
-  const [showSchedule, setShowSchedule] = useState(false);
-  const [addressAndHour, setAddressAndHour] = useState<IAddressAndHour>({
-    local: '',
-    startDate: '',
-    startHour: '',
-  });
-  const [projectInfo, setProjectInfo] = useState<IProjectInfo>({
-    projectName: '',
-    members: [],
-  });
-  const [subjects, setSubjects] = useState<ISubject[]>([]);
-  const [distributions, setDistributions] = useState<string[]>([]);
+  const [participants, setParticipants] = useState<IParticipant[]>([]);
+  const [date, setDate] = useState<IDate>({} as IDate);
+  const [schedules, setSchedules] = useState<string[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
+  const [project, setProject] = useState<string>('');
+  const [place, setPlace] = useState<string>('');
+
+  const minute: IMinute = {
+    minute: {
+      ...date,
+      minute_number: '1',
+      place,
+      project,
+      schedules,
+      areas,
+    },
+    participant: participants,
+    topic: topics,
+  };
+
+  const handleSetTopics = useCallback(
+    newTopic => {
+      if (newTopic) {
+        setTopics([...topics, { ...newTopic, id: topics.length + 1 }]);
+      }
+    },
+    [topics],
+  );
+
+  const handleSetParticipants = useCallback(
+    participant => {
+      if (participant) setParticipants([...participants, participant]);
+    },
+    [participants],
+  );
+
+  const handleSetAreas = useCallback(
+    area => {
+      if (area) setAreas([...areas, area]);
+    },
+    [areas],
+  );
+
+  const handleSetSchedules = useCallback(
+    schedule => {
+      if (schedule) setSchedules([...schedules, schedule]);
+    },
+    [schedules],
+  );
 
   return (
     <MinuteContext.Provider
       value={{
-        topics,
-        setTopics,
-        showSchedule,
-        setShowSchedule,
-        addressAndHour,
-        setAddressAndHour,
-        projectInfo,
-        setProjectInfo,
-        subjects,
-        setSubjects,
-        distributions,
-        setDistributions,
+        handleSetTopics,
+        handleSetParticipants,
+        handleSetSchedules,
+        handleSetAreas,
+        setParticipants,
+        setSchedules,
+        setProject,
+        setAreas,
+        setPlace,
+        setDate,
+        minute,
       }}
     >
       {children}
