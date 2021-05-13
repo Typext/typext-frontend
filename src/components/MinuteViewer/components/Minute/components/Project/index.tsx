@@ -1,18 +1,17 @@
 import React from 'react';
 
-import { IProjectInfo } from 'DTOs';
+import { useMinute } from 'contexts/minute';
+
 import { Container } from './styles';
 
-interface IProjectProps {
-  projectInfo: IProjectInfo;
-}
+const Project = () => {
+  const { minute } = useMinute();
 
-const Project = ({ projectInfo }: IProjectProps) => {
   return (
     <Container>
       <section className="projectName">
         <h4>Projeto:&nbsp;</h4>
-        {projectInfo.projectName}
+        {minute.minute.project}
       </section>
 
       <section className="meetingMembers">
@@ -23,12 +22,12 @@ const Project = ({ projectInfo }: IProjectProps) => {
           <h4>Telefone</h4>
         </div>
 
-        {projectInfo.members.map(member => (
+        {minute.participant.map(participant => (
           <div className="member">
-            <span>{member.name}</span>
-            <span>{member.role}</span>
-            <span>{member.email}</span>
-            <span>{member.phone}</span>
+            <span>{participant.name}</span>
+            <span>{participant.title}</span>
+            <span>{participant.email}</span>
+            <span>{participant.phone}</span>
           </div>
         ))}
       </section>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import Initial from './components/Initial/Initial';
-import ProjectInformation from './components/ProjectInformation/ProjectInformation';
+import ProjectInformation from './components/ProjectInformation';
 import OptionButtons from './components/OptionButtons';
-import Topics from './components/Topics/Topics';
-import Subjects from './components/Subjects/Subjects';
-import Distributions from './components/Distributions/Distributions';
+import Topics from './components/Topics';
+import Schedules from './components/Schedules';
+import Areas from './components/Areas';
 
 // eslint-disable-next-line
 import MinuteViewer from 'components/MinuteViewer';
@@ -26,11 +26,9 @@ const Main = () => {
       <Container>
         <Initial />
         <ProjectInformation />
-
         <Topics />
-
-        <Subjects />
-        <Distributions />
+        <Schedules />
+        <Areas />
         <OptionButtons
           setShowSchedule={setShowSchedule}
           setShowMinute={setShowMinute}

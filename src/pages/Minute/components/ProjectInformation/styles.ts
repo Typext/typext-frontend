@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import DefaultButton from 'components/Button/styles';
 
-const StyledProjectInformation = styled.div`
+export const StyledProjectInformation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,4 +95,6 @@ const StyledProjectInformation = styled.div`
   }
 `;
 
-export default StyledProjectInformation;
+export const Button = styled(DefaultButton)`
+  align-self: flex-end;
+`;

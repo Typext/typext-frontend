@@ -7,17 +7,16 @@ import Input from 'components/Input/Input';
 import { StyledInitial } from './styles';
 
 const Initial = () => {
-  const { setAddressAndHour } = useMinute();
+  const { setDate, setPlace } = useMinute();
 
-  const [local, setLocal] = useState<string>('');
   const [startHour, setStartHour] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
 
   useEffect(() => {
-    if (local || startDate || startHour) {
-      setAddressAndHour({ local, startHour, startDate });
+    if (startDate || startHour) {
+      setDate({ start_date: `${startDate}T${startHour}:00.007Z`, end_date: '' });
     }
-  }, [local, startHour, startDate, setAddressAndHour]);
+  }, [startHour, startDate, setDate]);
 
   return (
     <StyledInitial>
@@ -29,7 +28,7 @@ const Initial = () => {
               title="Local"
               color="var(--black)"
               styleWidth="100%"
-              onChange={(e: any) => setLocal(e.target.value)}
+              onChange={(e: any) => setPlace(e.target.value)}
             />
           </div>
           <div className="HorarioData">
