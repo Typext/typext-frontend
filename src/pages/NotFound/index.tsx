@@ -2,7 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'components/Button/Button';
 
-import astronaut from 'assets/astronaut.png';
+import logoSVG from 'assets/logo.svg';
+import notFoundSVG from 'assets/404-not-found.svg';
 
 import { Container } from './styles';
 
@@ -15,12 +16,11 @@ const NotFound = () => {
 
   return (
     <Container>
+      <img className="logo" src={logoSVG} alt="typext" />
 
-      <h1>404</h1>
-      <h2>Oopss !</h2>
-      <p>Page not found</p>
-
-      <img src={astronaut} alt="astronaut" />
+      <h1>Ops...</h1>
+      <img src={notFoundSVG} alt="astronaut" />
+      <p>Página não encontrada</p>
 
       <Button onClick={handleGoBack}>Voltar</Button>
     </Container>
