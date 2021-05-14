@@ -18,7 +18,7 @@ const GeneralInfo = () => {
           <h4>Data:&nbsp;</h4>
           INICIO
           {' '}
-          {date.start.date.split('-').reverse().join('/')}
+          {date?.start?.date.split('-').reverse().join('/')}
           {' '}
           - FIM &nbsp;
           {moment().format('l')}
@@ -27,7 +27,7 @@ const GeneralInfo = () => {
         <section className="hour">
           <div className="startHour">
             <h4>Inicio:&nbsp;</h4>
-            {date.start.hour}
+            {date?.start?.hour}
           </div>
 
           <div>

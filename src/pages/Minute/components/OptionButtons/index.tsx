@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
+import { useMinute } from 'contexts/minute';
 import Button from 'components/Button/Button';
-
 import { getMode } from 'services/api';
 
 import { Container } from './styles';
@@ -15,6 +15,7 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   setShowMinute,
   setShowSchedule,
 }: OptionButtonsProps) => {
+  const { createMinute } = useMinute();
   const isNotProduction = getMode();
 
   const handleOpenMinuteModal = useCallback(() => {
@@ -24,6 +25,10 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   const handleOpenSchedule = useCallback(() => {
     if (setShowSchedule) setShowSchedule(true);
   }, [setShowSchedule]);
+
+  const handleCreateMinute = useCallback(() => {
+    createMinute();
+  }, [createMinute]);
 
   return (
     <Container>
@@ -35,7 +40,11 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
         <Button color="var(--red-pink)" onClick={handleOpenMinuteModal}>
           Visualizar Ata
         </Button>
-        {isNotProduction && <Button color="#0AAD74">Gerar Ata</Button>}
+        {isNotProduction && (
+          <Button color="#0AAD74" onClick={handleCreateMinute}>
+            Gerar Ata
+          </Button>
+        )}
       </div>
     </Container>
   );
