@@ -2,14 +2,13 @@ import styled, { css } from 'styled-components';
 import Tooltip from '../Tooltip';
 
 interface ContainerProps {
-  isFocused?: boolean;
-  isFilled?: boolean;
   isErrored?: boolean;
+  maxSize?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
   width: 100%;
-  max-width: 40rem;
+  max-width: ${props => props.maxSize || '40rem'};
 
   display: flex;
   flex-direction: column;
@@ -26,7 +25,7 @@ export const Container = styled.div<ContainerProps>`
   section {
     display: flex;
     align-items: center;
-    max-width: 40rem;
+    max-width: ${props => props.maxSize || '40rem'};
     width: 100%;
 
     padding: 0.2rem 1rem;

@@ -1,12 +1,16 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
+import { FormHandles } from '@unform/core';
 
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
-import TextArea from 'components/TextArea/TextArea';
+import InputForm from 'components/InputForm';
+import TextArea from 'components/TextArea';
 
 import { useMinute } from 'contexts/minute';
+import { ITopic } from 'DTOs/Minute';
+import getValidationErrors from 'utils/getValidationErrors';
 
-import { Container } from './styles';
+import { schema } from './validation';
+import { Container, Form } from './styles';
 
 interface ITopicModalProps {
   onClose: Function;
@@ -15,62 +19,67 @@ interface ITopicModalProps {
 const TopicModal = ({ onClose }: ITopicModalProps) => {
   const { handleSetTopics } = useMinute();
 
-  const [name, setName] = useState('');
-  const [responsible, setResponsible] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [name, setName] = useState<string>('');
+
+  const formRef = useRef<FormHandles>(null);
+
+  const handleTextareaChange = useCallback((e: any) => {
+    setName(e.target.value);
+  }, []);
 
   const handleCloseModal = useCallback(() => {
     if (onClose) onClose(false);
   }, [onClose]);
 
-  const handleAddTopic = useCallback(() => {
-    if (handleSetTopics) handleSetTopics({ name, responsible, deadline });
+  const handleAddTopic = useCallback(
+    async (data: Omit<ITopic, 'id'>) => {
+      try {
+        formRef.current?.setErrors({});
 
-    setName('');
-    setDeadline('');
-    setResponsible('');
+        await schema.validate({ ...data, name }, { abortEarly: false });
 
-    handleCloseModal();
-  }, [name, responsible, deadline, handleSetTopics, handleCloseModal]);
+        handleSetTopics({ ...data, name });
+        handleCloseModal();
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [handleSetTopics, handleCloseModal, name],
+  );
 
   return (
     <Container>
       <div className="modal">
         <h1>Descrição do Assunto</h1>
 
-        <TextArea
-          title="Assunto"
-          cols={10}
-          rows={10}
-          divClass="textArea"
-          value={name}
-          onChange={(e: any) => setName(e.target.value)}
-        />
+        <Form ref={formRef} onSubmit={handleAddTopic}>
+          <TextArea
+            title="Assunto"
+            divClass="textarea"
+            name="name"
+            cols={10}
+            rows={10}
+            onChange={handleTextareaChange}
+          />
 
-        <div className="Complements">
-          <section className="inputs">
-            <Input
-              title="Prazo"
-              value={deadline}
-              onChange={(e: any) => setDeadline(e.target.value)}
-            />
-            <Input
-              title="Responsável"
-              value={responsible}
-              onChange={(e: any) => setResponsible(e.target.value)}
-            />
-          </section>
+          <div className="inputsAndOptions">
+            <section className="inputs">
+              <InputForm title="Prazo" name="deadline" />
+              <InputForm title="Responsável" name="responsible" />
+            </section>
 
-          <section className="options">
-            <Button color="#F60846" onClick={handleCloseModal}>
-              Cancelar
-            </Button>
+            <section className="options">
+              <Button color="#F60846" onClick={handleCloseModal}>
+                Cancelar
+              </Button>
 
-            <Button color="#0AAD74" onClick={handleAddTopic}>
-              Salvar
-            </Button>
-          </section>
-        </div>
+              <Button color="#0AAD74" type="submit">
+                Salvar
+              </Button>
+            </section>
+          </div>
+        </Form>
       </div>
     </Container>
   );

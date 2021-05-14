@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Form as DefaultForm } from '@unform/web';
 
-const StyledAreas = styled.div`
+export const StyledAreas = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +11,7 @@ const StyledAreas = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
 
-  padding: 3rem;
+  padding: 3rem 3rem 6rem 3rem;
 
   .Areas {
     display: flex;
@@ -35,15 +36,6 @@ const StyledAreas = styled.div`
       gap: 2.5rem;
 
       width: 100%;
-
-      .DataDepartments {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-
-        gap: 2rem;
-        width: 100%;
-      }
     }
   }
 
@@ -67,4 +59,11 @@ const StyledAreas = styled.div`
   }
 `;
 
-export default StyledAreas;
+export const Form = styled(DefaultForm)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 2rem;
+  width: 100%;
+`;

@@ -14,7 +14,10 @@ const Initial = () => {
 
   useEffect(() => {
     if (startDate || startHour) {
-      setDate({ start_date: `${startDate}T${startHour}:00.007Z`, end_date: '' });
+      setDate({
+        start_date: `${startDate}T${startHour}:00.007Z`,
+        start: { hour: startHour, date: startDate },
+      });
     }
   }, [startHour, startDate, setDate]);
 

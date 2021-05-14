@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as DefaultForm } from '@unform/web';
 
 export const Container = styled.div`
   position: absolute;
@@ -44,36 +45,6 @@ export const Container = styled.div`
       font-style: normal;
       font-weight: bold;
     }
-
-    .Complements {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-top: 1.75rem;
-
-      width: 100%;
-      gap: 2rem;
-
-      .inputs {
-        display: flex;
-        width: 100%;
-        gap: 2rem;
-      }
-
-      .options {
-        margin-top: 2rem;
-
-        width: 100%;
-        gap: 2rem;
-        display: flex;
-        justify-content: space-between;
-
-        button {
-          width: 100%;
-        }
-      }
-    }
   }
 
   @media (max-width: 960px) {
@@ -85,6 +56,48 @@ export const Container = styled.div`
 
       button {
         font-size: 80%;
+      }
+    }
+  }
+`;
+
+export const Form = styled(DefaultForm)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin-top: 1.75rem;
+
+  width: 100%;
+  gap: 2rem;
+
+  .textarea {
+    width: 100%;
+  }
+
+  .inputsAndOptions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 20px;
+
+    .inputs {
+      display: flex;
+      width: 100%;
+      gap: 2rem;
+    }
+
+    .options {
+      width: 100%;
+      height: 100%;
+      gap: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      button {
+        width: 100%;
       }
     }
   }
