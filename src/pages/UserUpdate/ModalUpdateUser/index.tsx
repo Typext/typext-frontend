@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DefaultModal from 'components/DefaultModal';
-import Loader from 'components/Loader';
+import DefaultModal from 'components/organisms/DefaultModal';
+import Loader from 'components/molecules/Loader';
 import { ReactComponent as LikeIcon } from 'assets/like.svg';
 import { ReactComponent as DislikeIcon } from 'assets/dislike.svg';
 import { useUsers } from 'contexts/user';

@@ -6,8 +6,8 @@ import { useAuth } from 'contexts/auth';
 import { ReactComponent as Like } from 'assets/like.svg';
 import { ReactComponent as Dislike } from 'assets/dislike.svg';
 
-import DefaultModal from 'components/DefaultModal';
-import Loader from 'components/Loader';
+import DefaultModal from 'components/organisms/DefaultModal';
+import Loader from 'components/molecules/Loader';
 
 import { Container, Content } from './styles';
 

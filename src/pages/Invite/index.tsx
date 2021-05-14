@@ -6,8 +6,8 @@ import { FormHandles } from '@unform/core';
 import { useAuth } from 'contexts/auth';
 import getValidationErrors from 'utils/getValidationErrors';
 
-import InputForm from 'components/InputForm';
-import Button from 'components/Button/Button';
+import InputForm from 'components/atoms/InputForm';
+import Button from 'components/atoms/Button';
 import Select from './components/Select';
 
 import { StyleInviteUsers } from './styles';

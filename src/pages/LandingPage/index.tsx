@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as WorkInProgress } from 'assets/workInProgress.svg';
 
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 import { Container } from './styles';
 
 const LandingPage = () => {

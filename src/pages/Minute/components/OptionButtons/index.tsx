@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { useMinute } from 'contexts/minute';
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 import { getMode } from 'services/api';
 
 import { Container } from './styles';
