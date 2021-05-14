@@ -8,9 +8,10 @@ import { Container, Error } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   title: string;
+  maxSize?: string;
 }
 
-const Input = ({ name, title, ...rest }: InputProps) => {
+const Input = ({ name, title, maxSize, ...rest }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputError, setInputError] = useState<string | undefined>('');
 
@@ -29,7 +30,7 @@ const Input = ({ name, title, ...rest }: InputProps) => {
   }, [error]);
 
   return (
-    <Container isErrored={!!inputError}>
+    <Container isErrored={!!inputError} maxSize={maxSize}>
       <h3>{title}</h3>
 
       <section>
@@ -48,6 +49,10 @@ const Input = ({ name, title, ...rest }: InputProps) => {
       </section>
     </Container>
   );
+};
+
+Input.defaultProps = {
+  maxSize: '',
 };
 
 export default Input;

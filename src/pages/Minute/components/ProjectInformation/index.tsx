@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { FormHandles } from '@unform/core';
 
+import InputForm from 'components/InputForm';
 import { useMinute } from 'contexts/minute';
-
 import Input from 'components/Input/Input';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
+import addIcon from 'assets/add_icon.svg';
 
-import { message } from 'antd';
+import getValidationErrors from 'utils/getValidationErrors';
+import { IParticipant } from 'DTOs/Minute';
 
-import { StyledProjectInformation, Button } from './styles';
-
-import addIcon from '../../../../assets/add_icon.svg';
+import { schema } from './validation';
+import { StyledProjectInformation, Button, Form } from './styles';
 
 const ProjectInformation = () => {
   const {
@@ -20,38 +22,30 @@ const ProjectInformation = () => {
     handleSetParticipants,
   } = useMinute();
 
-  const [name, setName] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [company, setCompany] = useState<string>('');
-  const [title, setTitle] = useState<string>('');
-
-  const handleCleanFields = () => {
-    setName('');
-    setPhone('');
-    setEmail('');
-    setCompany('');
-    setTitle('');
-  };
-
-  // eslint-disable-next-line consistent-return
-  const handleCreateMember = () => {
-    const pattern = /\S+@\S+\.\S+/;
-
-    if (!pattern.test(email)) {
-      message.error('Insira um email valido');
-      return null;
-    }
-
-    handleSetParticipants({ name, phone, email, company, title });
-    handleCleanFields();
-  };
+  const formRef = useRef<FormHandles>(null);
 
   const deleteMember = (participant: string) => {
     setParticipants(
       minute.participant.filter(user => user.name !== participant),
     );
   };
+
+  const handleCreateMember = useCallback(
+    async (data: IParticipant, { reset }) => {
+      try {
+        formRef.current?.setErrors({});
+
+        await schema.validate(data, { abortEarly: false });
+
+        handleSetParticipants(data);
+        reset();
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [handleSetParticipants],
+  );
 
   return (
     <StyledProjectInformation>
@@ -70,59 +64,54 @@ const ProjectInformation = () => {
           <div className="DataUser">
             <h1>Lista de Participantes</h1>
 
-            <div className="NameTitle">
-              <Input
-                title="Nome completo"
-                color="var(--black)"
-                styleWidth="100%"
-                value={name}
-                onChange={(e: any) => setName(e.target.value)}
-              />
+            <Form ref={formRef} onSubmit={handleCreateMember}>
+              <section className="inputs">
+                <InputForm
+                  title="Nome completo"
+                  name="name"
+                  color="var(--black)"
+                  maxSize="38rem"
+                />
 
-              <Input
-                title="Título / Cargo"
-                color="var(--black)"
-                styleWidth="100%"
-                value={title}
-                onChange={(e: any) => setTitle(e.target.value)}
-              />
-            </div>
+                <InputForm
+                  title="Título / Cargo"
+                  name="title"
+                  color="var(--black)"
+                  maxSize="20rem"
+                />
 
-            <div className="CompanyPhoneEmail">
-              <Input
-                title="Empresa"
-                color="var(--black)"
-                styleWidth="100%"
-                value={company}
-                onChange={(e: any) => setCompany(e.target.value)}
-              />
+                <InputForm
+                  title="Empresa"
+                  name="company"
+                  color="var(--black)"
+                  maxSize="20rem"
+                />
 
-              <Input
-                color="var(--black)"
-                title="Telefone"
-                styleWidth="100%"
-                value={phone}
-                onChange={(e: any) => setPhone(e.target.value)}
-              />
+                <InputForm
+                  color="var(--black)"
+                  name="phone"
+                  title="Telefone"
+                  maxSize="18rem"
+                />
 
-              <Input
-                title="E-mail"
-                color="var(--black)"
-                styleWidth="100%"
-                value={email}
-                onChange={(e: any) => setEmail(e.target.value)}
-              />
-            </div>
+                <InputForm
+                  title="E-mail"
+                  name="email"
+                  color="var(--black)"
+                  maxSize="20rem"
+                />
+              </section>
 
-            <Button
-              color="var(--soft-pink)"
-              colorText="var(--red-pink)"
-              size="23.75rem"
-              onClick={handleCreateMember}
-            >
-              Adicionar
-              <img src={addIcon} alt="" />
-            </Button>
+              <Button
+                color="var(--soft-pink)"
+                colorText="var(--red-pink)"
+                size="23.75rem"
+                type="submit"
+              >
+                Adicionar
+                <img src={addIcon} alt="" />
+              </Button>
+            </Form>
           </div>
 
           <div className="Users">

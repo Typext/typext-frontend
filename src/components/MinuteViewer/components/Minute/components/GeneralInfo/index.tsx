@@ -8,7 +8,7 @@ import { useMinute } from 'contexts/minute';
 import { Container } from './styles';
 
 const GeneralInfo = () => {
-  const { minute } = useMinute();
+  const { minute, date } = useMinute();
 
   return (
     <Container>
@@ -18,7 +18,7 @@ const GeneralInfo = () => {
           <h4>Data:&nbsp;</h4>
           INICIO
           {' '}
-          {minute.minute.start_date}
+          {date.start.date.split('-').reverse().join('/')}
           {' '}
           - FIM &nbsp;
           {moment().format('l')}
@@ -27,7 +27,7 @@ const GeneralInfo = () => {
         <section className="hour">
           <div className="startHour">
             <h4>Inicio:&nbsp;</h4>
-            {minute.minute.start_date}
+            {date.start.hour}
           </div>
 
           <div>

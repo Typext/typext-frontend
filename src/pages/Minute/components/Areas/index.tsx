@@ -1,29 +1,43 @@
-import React, { useState } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { FormHandles } from '@unform/core';
 
 import { useMinute } from 'contexts/minute';
 
-import Input from 'components/Input/Input';
+import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
-
-import AddIcon from 'assets/add_icon.svg';
-
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
-import StyledAreas from './styles';
+import getValidationErrors from 'utils/getValidationErrors';
+import AddIcon from 'assets/add_icon.svg';
+
+import { schema } from './validation';
+import { StyledAreas, Form } from './styles';
 
 const Areas = () => {
+  const formRef = useRef<FormHandles>(null);
+
   const { minute, handleSetAreas, setAreas } = useMinute();
-
-  const [area, setArea] = useState('');
-
-  const handleInsertArea = () => {
-    handleSetAreas(area);
-    setArea('');
-  };
 
   const deleteAreas = (value: string) => {
     setAreas(minute.minute.areas.filter(eachArea => eachArea !== value));
   };
+
+  const handleInsertArea = useCallback(
+    async (data: { area: string }, { reset }) => {
+      try {
+        formRef.current?.setErrors({});
+
+        await schema.validate(data, { abortEarly: false });
+
+        handleSetAreas(data.area);
+        reset();
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [handleSetAreas],
+  );
 
   return (
     <StyledAreas>
@@ -31,24 +45,18 @@ const Areas = () => {
         <h1>Distribuições</h1>
 
         <div className="SectionAreas">
-          <div className="DataDepartments">
-            <Input
-              title="Área"
-              styleWidth="100%"
-              value={area}
-              onChange={(e: any) => setArea(e.target.value)}
-            />
+          <Form ref={formRef} onSubmit={handleInsertArea}>
+            <InputForm title="Área" maxSize="100%" name="area" />
 
             <Button
               color="var(--soft-pink)"
               colorText="var(--red-pink)"
               size="23.75rem"
-              onClick={handleInsertArea}
             >
               Adicionar
               <img src={AddIcon} alt="" />
             </Button>
-          </div>
+          </Form>
 
           <div className="Departments">
             <h3>Distribuições adicionadas:</h3>

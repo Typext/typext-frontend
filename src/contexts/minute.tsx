@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useCallback, useContext, useState } from 'react';
+import moment from 'moment';
 
-import { ITopic, IDate, IParticipant, IMinute } from 'DTOs/Minute';
+import { ITopic, IDateState, IParticipant, IMinute } from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
@@ -12,12 +13,13 @@ interface IMinuteContextData {
   handleSetParticipants: (participant: IParticipant) => void;
   handleSetSchedules: (schedule: string) => void;
   handleSetAreas: (area: string) => void;
-  setDate: (date: IDate) => void;
+  setDate: (date: IDateState) => void;
   setParticipants: Function;
   setSchedules: Function;
   setAreas: Function;
   setProject: Function;
   setPlace: Function;
+  date: IDateState;
   minute: IMinute;
 }
 
@@ -28,7 +30,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
 }: IMinuteProvider) => {
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
-  const [date, setDate] = useState<IDate>({} as IDate);
+  const [date, setDate] = useState<IDateState>({} as IDateState);
   const [schedules, setSchedules] = useState<string[]>([]);
   const [areas, setAreas] = useState<string[]>([]);
   const [project, setProject] = useState<string>('');
@@ -36,7 +38,8 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
 
   const minute: IMinute = {
     minute: {
-      ...date,
+      start_date: date.start_date,
+      end_date: moment().format(),
       minute_number: '1',
       place,
       project,
@@ -90,6 +93,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         setAreas,
         setPlace,
         setDate,
+        date,
         minute,
       }}
     >

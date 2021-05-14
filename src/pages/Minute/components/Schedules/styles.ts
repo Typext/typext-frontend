@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components';
+import { Form as DefaultForm } from '@unform/web';
 
 export const StyledSchedules = styled.div`
   width: 102.125rem;
@@ -27,17 +28,6 @@ export const StyledSchedules = styled.div`
     width: 100%;
   }
 
-  .addSchedule {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: top;
-
-    margin-top: -2rem;
-
-    gap: 1.8rem;
-  }
-
   .scheduleList {
     h3 {
       font-weight: 500;
@@ -56,4 +46,13 @@ export const StyledSchedules = styled.div`
   }
 `;
 
-export default StyledSchedules;
+export const Form = styled(DefaultForm)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: top;
+
+  margin-top: -2rem;
+
+  gap: 1.8rem;
+`;

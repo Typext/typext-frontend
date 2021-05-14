@@ -1,26 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
-
+import React, { useRef, useCallback } from 'react';
+import { FormHandles } from '@unform/core';
 import { useMinute } from 'contexts/minute';
 
-import Input from 'components/Input/Input';
+import InputForm from 'components/InputForm';
 import Button from 'components/Button/Button';
 import BoxInformation from 'components/BoxInformation/BoxInformation';
 import ScrollBox from 'components/ScrollBox/ScrollBox';
 
-import addIcon from '../../../../assets/add_icon.svg';
+import getValidationErrors from 'utils/getValidationErrors';
+import addIcon from 'assets/add_icon.svg';
 
-import { StyledSchedules } from './styles';
+import { schema } from './validation';
+import { StyledSchedules, Form } from './styles';
 
 const Schedules = () => {
+  const formRef = useRef<FormHandles>(null);
+
   const { minute, handleSetSchedules, setSchedules } = useMinute();
-
-  const [scheduleName, setScheduleName] = useState<string>('');
-
-  const handleInsertSchedule = () => {
-    handleSetSchedules(scheduleName);
-    setScheduleName('');
-  };
 
   const deleteSchedules = (value: string) => {
     setSchedules(
@@ -28,29 +25,41 @@ const Schedules = () => {
     );
   };
 
+  const handleInsertSchedule = useCallback(
+    async (data: { schedule: string }, { reset }) => {
+      try {
+        formRef.current?.setErrors({});
+
+        await schema.validate(data, { abortEarly: false });
+
+        handleSetSchedules(data.schedule);
+        reset();
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [handleSetSchedules],
+  );
+
   return (
     <StyledSchedules>
       <h1>Pauta</h1>
 
       <div className="schedule">
-        <div className="addSchedule">
-          <Input
-            title="Pauta"
-            styleWidth="100%"
-            value={scheduleName}
-            onChange={(e: any) => setScheduleName(e.target.value)}
-          />
+        <Form ref={formRef} onSubmit={handleInsertSchedule}>
+          <InputForm title="Pauta" maxSize="100%" name="schedule" />
 
           <Button
             color="var(--soft-pink)"
             colorText="var(--red-pink)"
             size="23.75rem"
-            onClick={handleInsertSchedule}
+            type="submit"
           >
             Adicionar
             <img src={addIcon} alt="" />
           </Button>
-        </div>
+        </Form>
 
         <div className="scheduleList">
           <h3>Pautas adicionadas:</h3>

@@ -5,6 +5,11 @@ export interface ITopic {
   deadline: string;
 }
 
+export interface IDateState {
+  start_date: string;
+  start: { hour: string; date: string };
+}
+
 export interface IParticipant {
   name: string;
   email: string;
