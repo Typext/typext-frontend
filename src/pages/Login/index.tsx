@@ -7,9 +7,9 @@ import { FormHandles } from '@unform/core';
 
 import { useAuth } from 'contexts/auth';
 import getValidationErrors from 'utils/getValidationErrors';
-import InputForm from 'components/InputForm';
-import Button from 'components/Button/Button';
-import TypextLogo from 'components/Logo';
+import InputForm from 'components/atoms/InputForm';
+import Button from 'components/atoms/Button';
+import TypextLogo from 'components/atoms/Logo';
 import { getUserToken } from 'services/auth';
 
 import loginSchema from './loginSchema';

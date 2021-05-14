@@ -5,7 +5,13 @@ import { notification } from 'antd';
 
 import api from 'services/api';
 
-import { ITopic, IDateState, IParticipant, IMinute } from 'DTOs/Minute';
+import {
+  ITopic,
+  IDateState,
+  IParticipant,
+  IMinute,
+  GeneratedMinute,
+} from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
@@ -18,6 +24,9 @@ interface IMinuteContextData {
   handleSetAreas: (area: string) => void;
   setDate: (date: IDateState) => void;
   createMinute: () => void;
+  getMinute: (minuteId: string) => Promise<void>;
+  setReviewEnable: (reviewEnable: boolean) => void;
+  reviewEnable: boolean;
   setParticipants: Function;
   setSchedules: Function;
   setAreas: Function;
@@ -25,7 +34,8 @@ interface IMinuteContextData {
   setPlace: Function;
   date: IDateState;
   minute: IMinute;
-  generatedMinute: any;
+  minuteForReview: GeneratedMinute | undefined;
+  generatedMinute: GeneratedMinute | undefined;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -33,7 +43,12 @@ export const MinuteContext = createContext({} as IMinuteContextData);
 const MinuteProvider: React.FC<IMinuteProvider> = ({
   children,
 }: IMinuteProvider) => {
-  const [generatedMinute, setGeneratedMinute] = useState<IMinute>();
+  const [minuteForReview, setMinuteForReview] = useState<
+    GeneratedMinute | undefined
+  >();
+  const [generatedMinute, setGeneratedMinute] = useState<
+    GeneratedMinute | undefined
+  >();
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
   const [date, setDate] = useState<IDateState>({} as IDateState);
@@ -41,6 +56,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const [areas, setAreas] = useState<string[]>([]);
   const [project, setProject] = useState<string>('');
   const [place, setPlace] = useState<string>('');
+  const [reviewEnable, setReviewEnable] = useState<boolean>(false);
 
   const minute: IMinute = {
     minute: {
@@ -108,6 +124,19 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   };
 
+  const getMinute = useCallback(async (minuteID: string) => {
+    try {
+      const response = await api.get(`minutes/${minuteID}`);
+
+      setMinuteForReview(response.data);
+    } catch (error) {
+      notification.error({
+        message: 'Erro',
+        description: 'Ata não encontrada',
+      });
+    }
+  }, []);
+
   return (
     <MinuteContext.Provider
       value={{
@@ -125,6 +154,10 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         date,
         minute,
         generatedMinute,
+        minuteForReview,
+        reviewEnable,
+        getMinute,
+        setReviewEnable,
       }}
     >
       {children}

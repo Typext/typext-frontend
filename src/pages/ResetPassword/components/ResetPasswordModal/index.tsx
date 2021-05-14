@@ -6,8 +6,8 @@ import { useAuth } from 'contexts/auth';
 import ShieldIcon from 'assets/shield-icon.svg';
 import WarnIcon from 'assets/warn.svg';
 
-import Loader from 'components/Loader';
-import DefaultModal from 'components/DefaultModal';
+import Loader from 'components/molecules/Loader';
+import DefaultModal from 'components/organisms/DefaultModal';
 
 import { StyledResetPasswordModal, StyledResetPasswordContent } from './styles';
 

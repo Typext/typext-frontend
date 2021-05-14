@@ -3,9 +3,9 @@ import { useAuth } from 'contexts/auth';
 
 import EmailIcon from 'assets/email.svg';
 import EmailErrorIcon from 'assets/email_error.svg';
-import Loader from 'components/Loader';
+import Loader from 'components/molecules/Loader';
 
-import DefaultModal from 'components/DefaultModal';
+import DefaultModal from 'components/organisms/DefaultModal';
 import { StyledRecoveryModal, StyledRecoveryModalContent } from './styles';
 
 interface IRecoveryModalProps {

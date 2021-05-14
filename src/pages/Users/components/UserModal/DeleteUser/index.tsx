@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { ReactComponent as WarnIcon } from 'assets/warn.svg';
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 
 import { useUsers } from 'contexts/user';
 import { Container, RemoveWarnSuccess } from './styles';
