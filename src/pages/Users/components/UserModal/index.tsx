@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { useUsers } from 'contexts/user';
-import DefaultModal from 'components/DefaultModal';
+import DefaultModal from 'components/organisms/DefaultModal';
 
 import UpdateSuccess from './UpdateSuccess';
 import UserContent from './UserContent';

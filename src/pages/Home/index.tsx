@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import { getUser } from 'services/auth';
 
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 import { Container } from './styles';
 
 const Home = () => {

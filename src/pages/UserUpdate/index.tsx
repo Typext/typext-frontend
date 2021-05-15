@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { FormHandles } from '@unform/core';
 import { getInviteInfo } from 'services/auth';
-import FormUpdate from 'components/FormUpdate';
+import FormUpdate from 'components/organisms/FormUpdate';
 
 import { useAuth } from 'contexts/auth';
 import { useUsers } from 'contexts/user';

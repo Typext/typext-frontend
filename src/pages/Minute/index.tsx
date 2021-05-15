@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 
-import Initial from './components/Initial/Initial';
-import ProjectInformation from './components/ProjectInformation';
-import OptionButtons from './components/OptionButtons';
-import Topics from './components/Topics';
-import Schedules from './components/Schedules';
-import Areas from './components/Areas';
-
 // eslint-disable-next-line
-import MinuteViewer from 'components/MinuteViewer';
+import MinuteViewer from 'components/organisms/MinuteViewer';
+import MinuteFields from 'components/templates/MinuteFields';
 import ScheduleModal from './components/ScheduleModal';
-
-import Container from './styles';
+import OptionButtons from './components/OptionButtons';
 
 const Main = () => {
   const [showMinute, setShowMinute] = useState(false);
@@ -23,17 +16,11 @@ const Main = () => {
 
       {showSchedule && <ScheduleModal setShowSchedule={setShowSchedule} />}
 
-      <Container>
-        <Initial />
-        <ProjectInformation />
-        <Topics />
-        <Schedules />
-        <Areas />
-        <OptionButtons
-          setShowSchedule={setShowSchedule}
-          setShowMinute={setShowMinute}
-        />
-      </Container>
+      <MinuteFields />
+      <OptionButtons
+        setShowSchedule={setShowSchedule}
+        setShowMinute={setShowMinute}
+      />
     </>
   );
 };

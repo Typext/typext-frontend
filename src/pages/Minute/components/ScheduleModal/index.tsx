@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultModal from 'components/DefaultModal';
+import DefaultModal from 'components/organisms/DefaultModal';
 
 import scheduleImage from 'assets/calendar.svg';
 

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { useUsers } from 'contexts/user';
 import { ReactComponent as UserIcon } from 'assets/userIcon.svg';
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 
 import { Container } from './styles';
 

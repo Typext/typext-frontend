@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from 'components/Button/Button';
+import Button from 'components/atoms/Button';
 
 import logoSVG from 'assets/logo.svg';
 import notFoundSVG from 'assets/404-not-found.svg';

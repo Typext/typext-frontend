@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
-import Route from 'components/Route';
+import Route from 'components/molecules/Route';
 
 import Recovery from 'pages/Recovery';
 import UserUpdate from 'pages/UserUpdate';
@@ -13,6 +13,7 @@ import Login from 'pages/Login';
 import Invite from 'pages/Invite';
 import NotFound from 'pages/NotFound';
 import Users from 'pages/Users';
+import Review from 'pages/Review';
 
 export default function Routes() {
   return (
@@ -30,6 +31,7 @@ export default function Routes() {
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
         <Route path="/users" isPrivate onlyAdmin component={Users} />
+        <Route path="/review/:id" isPrivate component={Review} />
 
         <Redirect to="/404" />
       </Switch>

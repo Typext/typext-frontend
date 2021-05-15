@@ -7,11 +7,11 @@ import getValidationErrors from 'utils/getValidationErrors';
 
 import { useAuth } from 'contexts/auth';
 
-import InputForm from 'components/InputForm';
-import Button from 'components/Button/Button';
+import InputForm from 'components/atoms/InputForm';
+import Button from 'components/atoms/Button';
 
 import { useParams } from 'react-router-dom';
-import TypextLogo from 'components/Logo';
+import TypextLogo from 'components/atoms/Logo';
 import ResetPasswordModal from './components/ResetPasswordModal';
 import StyledNewPassword from './styles';
 
