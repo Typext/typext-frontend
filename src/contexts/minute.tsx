@@ -10,6 +10,7 @@ import {
   IDateState,
   IParticipant,
   IMinute,
+  IMinutes,
   GeneratedMinute,
 } from 'DTOs/Minute';
 
@@ -24,8 +25,9 @@ interface IMinuteContextData {
   handleSetAreas: (area: string) => void;
   setDate: (date: IDateState) => void;
   createMinute: () => void;
-  getMinute: (minuteId: string) => Promise<void>;
+  getSingleMinute: (minuteId: string) => Promise<void>;
   setReviewEnable: (reviewEnable: boolean) => void;
+  getMinutes: () => void;
   reviewEnable: boolean;
   setParticipants: Function;
   setSchedules: Function;
@@ -36,6 +38,9 @@ interface IMinuteContextData {
   minute: IMinute;
   minuteForReview: GeneratedMinute | undefined;
   generatedMinute: GeneratedMinute | undefined;
+  minutes: Array<IMinutes | undefined>;
+  minutesError: string;
+  minutesLoader: boolean;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -49,6 +54,11 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const [generatedMinute, setGeneratedMinute] = useState<
     GeneratedMinute | undefined
   >();
+
+  const [minutes, setMinutes] = useState<Array<IMinutes | undefined>>([]);
+  const [minutesError, setMinutesError] = useState('');
+  const [minutesLoader, setMinutesLoader] = useState(false);
+
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
   const [date, setDate] = useState<IDateState>({} as IDateState);
@@ -124,7 +134,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   };
 
-  const getMinute = useCallback(async (minuteID: string) => {
+  const getSingleMinute = useCallback(async (minuteID: string) => {
     try {
       const response = await api.get(`minutes/${minuteID}`);
 
@@ -134,6 +144,22 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         message: 'Erro',
         description: 'Ata não encontrada',
       });
+    }
+  }, []);
+
+  const getMinutes = useCallback(async () => {
+    try {
+      setMinutesLoader(true);
+      const response = await api.get('minutes');
+
+      setMinutes(response.data);
+      setMinutesLoader(false);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setMinutesError(celebrateError || errorData?.message);
+      setMinutesLoader(false);
     }
   }, []);
 
@@ -155,9 +181,13 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         minute,
         generatedMinute,
         minuteForReview,
+        minutes,
+        minutesError,
+        minutesLoader,
         reviewEnable,
-        getMinute,
+        getSingleMinute,
         setReviewEnable,
+        getMinutes,
       }}
     >
       {children}

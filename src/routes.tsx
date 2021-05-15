@@ -9,6 +9,7 @@ import ResetPassword from 'pages/ResetPassword';
 import Register from 'pages/Register';
 import Home from 'pages/Home';
 import Minute from 'pages/Minute';
+import MinutesList from 'pages/MinutesList';
 import Login from 'pages/Login';
 import Invite from 'pages/Invite';
 import NotFound from 'pages/NotFound';
@@ -28,6 +29,7 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
+        <Route path="/minutes" component={MinutesList} />
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
         <Route path="/users" isPrivate onlyAdmin component={Users} />
