@@ -77,12 +77,7 @@ function InviteUsers() {
             getValue={setUserPermission}
           />
 
-          <Button
-            color="var(--black)"
-            colorText="white"
-            size="23.75rem"
-            type="submit"
-          >
+          <Button styleComponent="black" sizeComponent="normal" type="submit">
             Convidar
           </Button>
         </Form>

@@ -50,12 +50,7 @@ const Schedules = () => {
         <Form ref={formRef} onSubmit={handleInsertSchedule}>
           <InputForm title="Pauta" maxSize="100%" name="schedule" />
 
-          <Button
-            color="var(--soft-pink)"
-            colorText="var(--red-pink)"
-            size="23.75rem"
-            type="submit"
-          >
+          <Button styleComponent="add" sizeComponent="normal" type="submit">
             Adicionar
             <img src={addIcon} alt="" />
           </Button>

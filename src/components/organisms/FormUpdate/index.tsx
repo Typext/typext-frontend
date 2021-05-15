@@ -125,11 +125,17 @@ function FormUpdate({
 
         <SectionButton>
           {goBackEnabled && (
-            <Button color="var(--gray)" onClick={handleGoBack}>
+            <Button
+              styleComponent="gray"
+              sizeComponent="normal"
+              onClick={handleGoBack}
+            >
               Voltar
             </Button>
           )}
-          <Button color="var(--green)">{buttonText || 'Cadastrar'}</Button>
+          <Button styleComponent="gray" sizeComponent="normal">
+            {buttonText || 'Cadastrar'}
+          </Button>
         </SectionButton>
       </Form>
     </Container>

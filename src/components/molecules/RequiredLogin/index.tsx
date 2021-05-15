@@ -25,7 +25,11 @@ function RequiredLogin() {
         <h2>Faça login para acessar essa tela</h2>
       </section>
 
-      <Button color="#F60846" onClick={handleNavigateToLogin}>
+      <Button
+        sizeComponent="normal"
+        styleComponent="red"
+        onClick={handleNavigateToLogin}
+      >
         Fazer login
       </Button>
     </Container>

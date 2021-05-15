@@ -48,10 +48,18 @@ const DeleteUser = ({ setShowDeleteUser, user }: DeleteUserProps) => {
             <p>ESTA AÇÃO NÃO PODERÁ SER DEFEITA.</p>
           </section>
           <section className="buttons">
-            <Button color="var(--gray)" onClick={handleGoBack}>
+            <Button
+              styleComponent="gray"
+              sizeComponent="normal"
+              onClick={handleGoBack}
+            >
               Voltar
             </Button>
-            <Button color="var(--red-pink)" onClick={handleDeleteUser}>
+            <Button
+              styleComponent="red"
+              sizeComponent="normal"
+              onClick={handleDeleteUser}
+            >
               Excluir
             </Button>
           </section>

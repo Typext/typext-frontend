@@ -33,15 +33,29 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   return (
     <Container>
       <div className="buttons">
-        <Button color="#CECFD0">Voltar</Button>
-        <Button color="#373435" onClick={handleOpenSchedule}>
+        <Button styleComponent="gray" sizeComponent="normal">
+          Voltar
+        </Button>
+        <Button
+          styleComponent="black"
+          sizeComponent="normal"
+          onClick={handleOpenSchedule}
+        >
           Agendar
         </Button>
-        <Button color="var(--red-pink)" onClick={handleOpenMinuteModal}>
+        <Button
+          styleComponent="red"
+          sizeComponent="normal"
+          onClick={handleOpenMinuteModal}
+        >
           Visualizar Ata
         </Button>
         {isNotProduction && (
-          <Button color="#0AAD74" onClick={handleCreateMinute}>
+          <Button
+            styleComponent="green"
+            sizeComponent="normal"
+            onClick={handleCreateMinute}
+          >
             Gerar Ata
           </Button>
         )}

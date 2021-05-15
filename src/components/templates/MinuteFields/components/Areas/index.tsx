@@ -48,11 +48,7 @@ const Areas = () => {
           <Form ref={formRef} onSubmit={handleInsertArea}>
             <InputForm title="Área" maxSize="100%" name="area" />
 
-            <Button
-              color="var(--soft-pink)"
-              colorText="var(--red-pink)"
-              size="23.75rem"
-            >
+            <Button styleComponent="add" sizeComponent="normal">
               Adicionar
               <img src={AddIcon} alt="" />
             </Button>

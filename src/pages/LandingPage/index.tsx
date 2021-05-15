@@ -17,7 +17,11 @@ const LandingPage = () => {
     <Container>
       <h1>LandingPage</h1>
       <p>Working in progress</p>
-      <Button color="#ff1100" onClick={handleNavigateToHome}>
+      <Button
+        styleComponent="red"
+        sizeComponent="normal"
+        onClick={handleNavigateToHome}
+      >
         HOME
       </Button>
       <WorkInProgress />

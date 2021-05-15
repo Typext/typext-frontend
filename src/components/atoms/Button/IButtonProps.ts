@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-export interface IButtonProps {
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   margin?: string;
-  styleComponent?: 'gray' | 'black' | 'red' | 'green';
-  sizeComponent?: 'normal' | 'large';
+  styleComponent: 'gray' | 'black' | 'red' | 'green' | 'add';
+  sizeComponent: 'normal' | 'large';
+  onClick?: () => void;
 }
