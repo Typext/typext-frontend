@@ -9,7 +9,6 @@ import BoxInformation from 'components/molecules/BoxInformation/BoxInformation';
 import ScrollBox from 'components/atoms/ScrollBox';
 
 import getValidationErrors from 'utils/getValidationErrors';
-import addIcon from 'assets/add_icon.svg';
 
 import { schema } from './validation';
 import { StyledSchedules, Form } from './styles';
@@ -52,7 +51,6 @@ const Schedules = () => {
 
           <Button styleComponent="add" sizeComponent="normal" type="submit">
             Adicionar
-            <img src={addIcon} alt="" />
           </Button>
         </Form>
 

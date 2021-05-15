@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export const getSize = (size: string) => {
   const sizes: any = {
     normal: css`
-      width: 14rem;
+      width: 17.3rem;
       height: 4rem;
     `,
     large: css`

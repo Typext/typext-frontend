@@ -83,6 +83,7 @@ const UserModal = ({
 
       <section className="buttons">
         <Button
+          type="button"
           styleComponent="gray"
           sizeComponent="normal"
           onClick={handleClose}
@@ -93,6 +94,7 @@ const UserModal = ({
         {!userIsAdmin && (
           <>
             <Button
+              type="button"
               styleComponent="red"
               sizeComponent="normal"
               onClick={handleDeleteUser}
@@ -100,6 +102,7 @@ const UserModal = ({
               Excluir
             </Button>
             <Button
+              type="button"
               styleComponent="green"
               sizeComponent="normal"
               onClick={handleUpdateUserType}

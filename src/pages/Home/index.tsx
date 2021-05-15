@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback } from 'react';
 
 import { Calendar } from 'antd';
@@ -7,7 +8,10 @@ import { useHistory } from 'react-router-dom';
 import { getUser } from 'services/auth';
 
 import Button from 'components/atoms/Button';
+
 import { Container } from './styles';
+
+import CalendarIcon from '../../assets/calendar-gray.svg';
 
 const Home = () => {
   const user = getUser();
@@ -36,22 +40,26 @@ const Home = () => {
     <Container>
       <div className="Home">
         <div className="Calendar">
-          <h1>Agenda</h1>
+          <h1>
+            Agenda <img src={CalendarIcon} alt="" />
+          </h1>
           <Calendar />
         </div>
 
         <div className="Buttons">
           <Button
+            type="button"
             styleComponent="red"
-            sizeComponent="normal"
+            sizeComponent="large"
             onClick={handleNavigateToMinute}
           >
             Criar ATA
           </Button>
 
           <Button
+            type="button"
             styleComponent="gray"
-            sizeComponent="normal"
+            sizeComponent="large"
             onClick={handleNavigateToSearchMinutes}
           >
             Buscar ATAS
@@ -60,16 +68,18 @@ const Home = () => {
           {!userIsNotAdmin && (
             <>
               <Button
+                type="button"
                 styleComponent="gray"
-                sizeComponent="normal"
+                sizeComponent="large"
                 onClick={handleNavigateToInvite}
               >
                 Convidar
               </Button>
 
               <Button
+                type="button"
                 styleComponent="gray"
-                sizeComponent="normal"
+                sizeComponent="large"
                 onClick={handleNavigateToListUsers}
               >
                 Lista de Usuários

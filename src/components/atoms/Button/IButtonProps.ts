@@ -5,5 +5,6 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   margin?: string;
   styleComponent: 'gray' | 'black' | 'red' | 'green' | 'add';
   sizeComponent: 'normal' | 'large';
+  type: 'submit' | 'reset' | 'button';
   onClick?: () => void;
 }

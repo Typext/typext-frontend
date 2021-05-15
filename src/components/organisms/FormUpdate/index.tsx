@@ -126,6 +126,7 @@ function FormUpdate({
         <SectionButton>
           {goBackEnabled && (
             <Button
+              type="button"
               styleComponent="gray"
               sizeComponent="normal"
               onClick={handleGoBack}
@@ -133,7 +134,7 @@ function FormUpdate({
               Voltar
             </Button>
           )}
-          <Button styleComponent="gray" sizeComponent="normal">
+          <Button type="button" styleComponent="green" sizeComponent="normal">
             {buttonText || 'Cadastrar'}
           </Button>
         </SectionButton>

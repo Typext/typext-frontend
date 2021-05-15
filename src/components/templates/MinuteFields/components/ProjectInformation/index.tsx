@@ -7,7 +7,6 @@ import { useMinute } from 'contexts/minute';
 import Input from 'components/atoms/Input';
 import ScrollBox from 'components/atoms/ScrollBox';
 import BoxInformation from 'components/molecules/BoxInformation/BoxInformation';
-import addIcon from 'assets/add_icon.svg';
 
 import getValidationErrors from 'utils/getValidationErrors';
 import { IParticipant } from 'DTOs/Minute';
@@ -109,7 +108,6 @@ const ProjectInformation = () => {
 
               <Button styleComponent="add" sizeComponent="normal" type="submit">
                 Adicionar
-                <img src={addIcon} alt="" />
               </Button>
             </Form>
           </div>

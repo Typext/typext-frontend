@@ -14,20 +14,35 @@ export const Container = styled.div`
     width: 100%;
 
     .Calendar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
       h1 {
         font-family: Roboto;
         font-size: 1.875rem;
         font-style: normal;
         font-weight: 900;
-        color: var(--black);
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        img {
+          width: 2.6rem;
+          height: 2.6rem;
+        }
       }
 
       .ant-picker-calendar.ant-picker-calendar-full {
-        width: 100%;
+        width: 90%;
+        margin: 10px;
 
         padding: 0.5rem;
 
-        border: solid 1rem var(--gray);
+        border: solid 0.25rem var(--gray);
         border-radius: 1.25rem;
 
         .ant-picker-calendar-header {
@@ -41,7 +56,7 @@ export const Container = styled.div`
     }
 
     .Buttons {
-      margin-top: 3.125rem;
+      margin-top: 2rem;
       width: 100%;
       display: flex;
       flex-wrap: wrap;

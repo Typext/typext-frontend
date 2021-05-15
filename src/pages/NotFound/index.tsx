@@ -23,6 +23,7 @@ const NotFound = () => {
       <p>Página não encontrada</p>
 
       <Button
+        type="button"
         styleComponent="gray"
         sizeComponent="normal"
         onClick={handleGoBack}

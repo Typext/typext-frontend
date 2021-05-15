@@ -62,6 +62,11 @@ export const StyledHeader = styled.header`
     background: none;
   }
 
+  button:hover {
+    transition: 0.4s;
+    transform: perspective(1px) scale(1.15);
+  }
+
   @media (max-width: 960px) {
     zoom: 70%;
     height: 6rem;
