@@ -26,6 +26,7 @@ function RequiredLogin() {
       </section>
 
       <Button
+        type="button"
         sizeComponent="normal"
         styleComponent="red"
         onClick={handleNavigateToLogin}

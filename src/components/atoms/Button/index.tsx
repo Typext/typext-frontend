@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
@@ -11,16 +12,18 @@ const Button: React.FC<IButtonProps> = ({
   styleComponent,
   sizeComponent,
   onClick,
+  type,
   ...rest
 }: IButtonProps) => {
   return (
     <Container
+      type={type}
       margin={margin}
       styleComponent={styleComponent}
       sizeComponent={sizeComponent}
       onClick={onClick}
     >
-      <button type="button" className="button" onClick={onClick}>
+      <button className="button" onClick={onClick}>
         {children}
       </button>
     </Container>

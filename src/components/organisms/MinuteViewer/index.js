@@ -27,10 +27,19 @@ const MinuteViewer = ({ setShowMinute }) => {
     <Container>
       <Minute ref={componentRef} />
       <div className="minuteButtons">
-        <Button color="#e02041" onClick={handleCloseModal}>
+        <Button
+          sizeComponent="normal"
+          styleComponent="gray"
+          onClick={handleCloseModal}
+        >
           Voltar
         </Button>
-        <Button color="#373435" onClick={handleGenerateMinute}>
+        <Button
+          type="button"
+          sizeComponent="normal"
+          styleComponent="green"
+          onClick={handleGenerateMinute}
+        >
           Baixar PDF
         </Button>
       </div>

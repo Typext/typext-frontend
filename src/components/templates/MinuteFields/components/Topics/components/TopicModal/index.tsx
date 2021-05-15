@@ -71,6 +71,7 @@ const TopicModal = ({ onClose }: ITopicModalProps) => {
 
             <section className="options">
               <Button
+                type="button"
                 styleComponent="red"
                 sizeComponent="normal"
                 onClick={handleCloseModal}

@@ -25,13 +25,16 @@ const Topics = () => {
         <h1>Assuntos</h1>
 
         <div className="topics">
-          <Button
-            styleComponent="add"
-            sizeComponent="normal"
-            onClick={handleOpenTopicModal}
-          >
-            Adicionar
-          </Button>
+          <div className="btn">
+            <Button
+              type="button"
+              styleComponent="add"
+              sizeComponent="normal"
+              onClick={handleOpenTopicModal}
+            >
+              Adicionar
+            </Button>
+          </div>
 
           <ScrollBox>
             <div className="content">

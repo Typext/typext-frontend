@@ -8,9 +8,10 @@ export const getTheme = (theme: string) => {
       color: var(--gray);
       background-color: transparent;
       :hover {
-        transition: 0.3ms;
+        transition: 0.5s;
         border: 0;
         background-color: var(--gray);
+        color: white;
       }
     `,
 
@@ -20,9 +21,10 @@ export const getTheme = (theme: string) => {
       color: var(--black);
       background-color: transparent;
       :hover {
-        transition: 0.3ms;
+        transition: 0.5s;
         border: 0;
         background-color: var(--black);
+        color: white;
       }
     `,
 
@@ -32,9 +34,10 @@ export const getTheme = (theme: string) => {
       color: var(--green);
       background-color: transparent;
       :hover {
-        transition: 0.3ms;
+        transition: 0.5s;
         border: 0;
         background-color: var(--green);
+        color: white;
       }
     `,
 
@@ -43,10 +46,14 @@ export const getTheme = (theme: string) => {
       border-radius: 1.25rem;
       color: var(--red-pink);
       background-color: transparent;
+
       :hover {
-        transition: 0.3ms;
+        transition: 0.5s;
         border: 0;
         background-color: var(--red-pink);
+        color: white;
+        transform: perspective(1px) scale(1.03);
+        box-shadow: 1px 1px 30px rgba(246, 8, 70, 0.4);
       }
     `,
 
@@ -54,11 +61,15 @@ export const getTheme = (theme: string) => {
       border: 0;
       border-radius: 1.25rem;
       color: var(--red-pink);
-      background-color: transparent;
+      background: rgba(246, 8, 70, 0.1);
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 2rem;
+      width: 25rem;
       :hover {
-        transition: 0.3ms;
-        border: 0;
-        background-color: var(--red-pink);
+        transition: 0.5s;
+        background: rgba(246, 8, 70, 0.2);
       }
     `,
   };

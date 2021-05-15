@@ -16,7 +16,7 @@ export const Container = styled.div<IButtonProps>`
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     ${(props: IButtonProps) => getSize(props.sizeComponent)}
     ${(props: IButtonProps) => getTheme(props.styleComponent)}
@@ -24,8 +24,7 @@ export const Container = styled.div<IButtonProps>`
 
   img {
     height: 1.875rem;
-    padding-left: 5rem;
-    margin-right: -5rem;
+    margin-left: 2rem;
   }
 `;
 

@@ -3,23 +3,25 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: #f5f5f6;
+  width: 100%;
 
   .buttons {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-
-    gap: 2rem;
-
-    width: 100vw;
-    max-width: 102.125rem;
-
-    margin-bottom: 5rem;
+    justify-content: center;
+    padding: 3rem;
+    width: 92rem;
   }
 
   @media (max-width: 960px) {
     .buttons {
-      zoom: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
     }
   }
 `;

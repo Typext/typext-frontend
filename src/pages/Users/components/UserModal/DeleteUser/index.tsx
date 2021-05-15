@@ -49,6 +49,7 @@ const DeleteUser = ({ setShowDeleteUser, user }: DeleteUserProps) => {
           </section>
           <section className="buttons">
             <Button
+              type="button"
               styleComponent="gray"
               sizeComponent="normal"
               onClick={handleGoBack}
@@ -56,6 +57,7 @@ const DeleteUser = ({ setShowDeleteUser, user }: DeleteUserProps) => {
               Voltar
             </Button>
             <Button
+              type="button"
               styleComponent="red"
               sizeComponent="normal"
               onClick={handleDeleteUser}
