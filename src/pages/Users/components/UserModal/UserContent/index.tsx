@@ -82,16 +82,31 @@ const UserModal = ({
       </section>
 
       <section className="buttons">
-        <Button color="var(--gray)" onClick={handleClose}>
+        <Button
+          type="button"
+          styleComponent="gray"
+          sizeComponent="normal"
+          onClick={handleClose}
+        >
           Voltar
         </Button>
 
         {!userIsAdmin && (
           <>
-            <Button color="var(--red-pink)" onClick={handleDeleteUser}>
+            <Button
+              type="button"
+              styleComponent="red"
+              sizeComponent="normal"
+              onClick={handleDeleteUser}
+            >
               Excluir
             </Button>
-            <Button color="var(--green)" onClick={handleUpdateUserType}>
+            <Button
+              type="button"
+              styleComponent="green"
+              sizeComponent="normal"
+              onClick={handleUpdateUserType}
+            >
               Atualizar
             </Button>
           </>

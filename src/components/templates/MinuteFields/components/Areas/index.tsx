@@ -8,7 +8,6 @@ import Button from 'components/atoms/Button';
 import ScrollBox from 'components/atoms/ScrollBox';
 import BoxInformation from 'components/molecules/BoxInformation/BoxInformation';
 import getValidationErrors from 'utils/getValidationErrors';
-import AddIcon from 'assets/add_icon.svg';
 
 import { schema } from './validation';
 import { StyledAreas, Form } from './styles';
@@ -48,13 +47,8 @@ const Areas = () => {
           <Form ref={formRef} onSubmit={handleInsertArea}>
             <InputForm title="Área" maxSize="100%" name="area" />
 
-            <Button
-              color="var(--soft-pink)"
-              colorText="var(--red-pink)"
-              size="23.75rem"
-            >
+            <Button type="button" styleComponent="add" sizeComponent="normal">
               Adicionar
-              <img src={AddIcon} alt="" />
             </Button>
           </Form>
 

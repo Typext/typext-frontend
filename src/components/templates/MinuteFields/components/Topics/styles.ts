@@ -22,13 +22,20 @@ const StyledTopic = styled.div`
 
   .topics {
     display: flex;
+    justify-content: flex-start;
     flex-direction: column;
-
     max-width: 102.125rem;
     width: 100%;
 
-    button {
-      margin: 0.625rem 0;
+    .btn {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+
+      button {
+        margin: 0.625rem 0;
+      }
     }
 
     .content {

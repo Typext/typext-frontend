@@ -1,35 +1,31 @@
 import styled from 'styled-components';
+import { getTheme, getSize } from './Themes/index';
+import { IButtonProps } from './IButtonProps';
 
-interface StyledButtonProps {
-  color?: string;
-  colorText?: string;
-  size?: string;
-}
-
-const StyledButton = styled.button<StyledButtonProps>`
+export const Container = styled.div<IButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: ${(props: IButtonProps) => props.margin || '0'};
 
-  width: ${props => props.size || '17.313rem'};
-  height: 4.063rem;
-  border-radius: 1.25rem;
-  border: 0.063rem;
-  outline: 0.063rem;
+  .button {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.2s;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
 
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 2rem;
-
-  color: ${props => props.colorText || '#fff'};
-  background: ${props => props.color || '#F60846'};
+    ${(props: IButtonProps) => getSize(props.sizeComponent)}
+    ${(props: IButtonProps) => getTheme(props.styleComponent)}
+  }
 
   img {
     height: 1.875rem;
-    padding-left: 5rem;
-    margin-right: -5rem;
+    margin-left: 2rem;
   }
 `;
 
-export default StyledButton;
+export default IButtonProps;

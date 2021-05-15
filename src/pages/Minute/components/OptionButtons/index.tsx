@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useMinute } from 'contexts/minute';
 import Button from 'components/atoms/Button';
-import { getMode } from 'services/api';
 
 import { Container } from './styles';
 
@@ -16,7 +16,6 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   setShowSchedule,
 }: OptionButtonsProps) => {
   const { createMinute } = useMinute();
-  const isNotProduction = getMode();
 
   const handleOpenMinuteModal = useCallback(() => {
     if (setShowMinute) setShowMinute(true);
@@ -30,21 +29,47 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
     createMinute();
   }, [createMinute]);
 
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
     <Container>
       <div className="buttons">
-        <Button color="#CECFD0">Voltar</Button>
-        <Button color="#373435" onClick={handleOpenSchedule}>
+        <Button
+          type="button"
+          styleComponent="gray"
+          sizeComponent="normal"
+          onClick={handleGoBack}
+        >
+          Voltar
+        </Button>
+        <Button
+          type="button"
+          styleComponent="black"
+          sizeComponent="normal"
+          onClick={handleOpenSchedule}
+        >
           Agendar
         </Button>
-        <Button color="var(--red-pink)" onClick={handleOpenMinuteModal}>
+        <Button
+          type="button"
+          styleComponent="red"
+          sizeComponent="normal"
+          onClick={handleOpenMinuteModal}
+        >
           Visualizar Ata
         </Button>
-        {isNotProduction && (
-          <Button color="#0AAD74" onClick={handleCreateMinute}>
-            Gerar Ata
-          </Button>
-        )}
+        <Button
+          type="button"
+          styleComponent="green"
+          sizeComponent="normal"
+          onClick={handleCreateMinute}
+        >
+          Gerar Ata
+        </Button>
       </div>
     </Container>
   );

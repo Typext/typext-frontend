@@ -101,7 +101,7 @@ function Login() {
           </div>
 
           <div className="LoginPassForgot">
-            <Button color="var(--black)" colorText="white" size="23.75rem">
+            <Button styleComponent="black" sizeComponent="normal" type="submit">
               Login
             </Button>
 

@@ -70,11 +70,20 @@ const TopicModal = ({ onClose }: ITopicModalProps) => {
             </section>
 
             <section className="options">
-              <Button color="#F60846" onClick={handleCloseModal}>
+              <Button
+                type="button"
+                styleComponent="red"
+                sizeComponent="normal"
+                onClick={handleCloseModal}
+              >
                 Cancelar
               </Button>
 
-              <Button color="#0AAD74" type="submit">
+              <Button
+                styleComponent="green"
+                sizeComponent="normal"
+                type="submit"
+              >
                 Salvar
               </Button>
             </section>
