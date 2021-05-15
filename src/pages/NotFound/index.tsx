@@ -22,7 +22,13 @@ const NotFound = () => {
       <img src={notFoundSVG} alt="astronaut" />
       <p>Página não encontrada</p>
 
-      <Button onClick={handleGoBack}>Voltar</Button>
+      <Button
+        styleComponent="gray"
+        sizeComponent="normal"
+        onClick={handleGoBack}
+      >
+        Voltar
+      </Button>
     </Container>
   );
 };

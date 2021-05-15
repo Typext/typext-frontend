@@ -26,8 +26,8 @@ const Topics = () => {
 
         <div className="topics">
           <Button
-            color="var(--soft-pink)"
-            colorText="var(--red-pink)"
+            styleComponent="add"
+            sizeComponent="normal"
             onClick={handleOpenTopicModal}
           >
             Adicionar

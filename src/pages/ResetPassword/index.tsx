@@ -85,7 +85,7 @@ const NewPassword = () => {
             color="var(--black)"
           />
 
-          <Button color="var(--green)" type="submit">
+          <Button styleComponent="green" sizeComponent="normal" type="submit">
             Atualizar
           </Button>
         </Form>

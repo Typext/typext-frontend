@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React, { useRef, useCallback } from 'react';
 import { FormHandles } from '@unform/core';
 
@@ -12,7 +13,8 @@ import getValidationErrors from 'utils/getValidationErrors';
 import { IParticipant } from 'DTOs/Minute';
 
 import { schema } from './validation';
-import { StyledProjectInformation, Button, Form } from './styles';
+import { StyledProjectInformation, Form } from './styles';
+import Button from '../../../../atoms/Button';
 
 const ProjectInformation = () => {
   const {
@@ -105,12 +107,7 @@ const ProjectInformation = () => {
                 />
               </section>
 
-              <Button
-                color="var(--soft-pink)"
-                colorText="var(--red-pink)"
-                size="23.75rem"
-                type="submit"
-              >
+              <Button styleComponent="add" sizeComponent="normal" type="submit">
                 Adicionar
                 <img src={addIcon} alt="" />
               </Button>
@@ -123,18 +120,18 @@ const ProjectInformation = () => {
             <ScrollBox>
               {reviewEnable
                 ? minuteForReview?.participants?.map(member => (
-                  <BoxInformation
-                    deleteComponent={() => deleteMember(member.name)}
-                  >
-                    <h4>{member.name}</h4>
-                  </BoxInformation>
+                    <BoxInformation
+                      deleteComponent={() => deleteMember(member.name)}
+                    >
+                      <h4>{member.name}</h4>
+                    </BoxInformation>
                   ))
                 : minute.participant.map(member => (
-                  <BoxInformation
-                    deleteComponent={() => deleteMember(member.name)}
-                  >
-                    <h4>{member.name}</h4>
-                  </BoxInformation>
+                    <BoxInformation
+                      deleteComponent={() => deleteMember(member.name)}
+                    >
+                      <h4>{member.name}</h4>
+                    </BoxInformation>
                   ))}
             </ScrollBox>
           </div>

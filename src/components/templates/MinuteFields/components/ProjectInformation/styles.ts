@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Form as DefaultForm } from '@unform/web';
-import DefaultButton from 'components/atoms/Button/styles';
 
 export const StyledProjectInformation = styled.div`
   display: flex;
@@ -94,10 +93,6 @@ export const StyledProjectInformation = styled.div`
       flex-direction: column;
     }
   }
-`;
-
-export const Button = styled(DefaultButton)`
-  align-self: flex-end;
 `;
 
 export const Form = styled(DefaultForm)`

@@ -69,7 +69,7 @@ const RecoveryPassword = () => {
               color="var(--black)"
             />
 
-            <Button color="var(--black)" type="submit">
+            <Button styleComponent="black" sizeComponent="normal" type="submit">
               Próximo
             </Button>
           </Form>

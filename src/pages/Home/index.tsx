@@ -42,18 +42,16 @@ const Home = () => {
 
         <div className="Buttons">
           <Button
-            color="var(--red-pink)"
-            colorText="white"
-            size="33.75rem"
+            styleComponent="red"
+            sizeComponent="normal"
             onClick={handleNavigateToMinute}
           >
             Criar ATA
           </Button>
 
           <Button
-            color="var(--gray)"
-            colorText="var(--black)"
-            size="33.75rem"
+            styleComponent="gray"
+            sizeComponent="normal"
             onClick={handleNavigateToSearchMinutes}
           >
             Buscar ATAS
@@ -62,18 +60,16 @@ const Home = () => {
           {!userIsNotAdmin && (
             <>
               <Button
-                color="var(--gray)"
-                colorText="var(--black)"
-                size="33.75rem"
+                styleComponent="gray"
+                sizeComponent="normal"
                 onClick={handleNavigateToInvite}
               >
                 Convidar
               </Button>
 
               <Button
-                color="var(--gray)"
-                colorText="var(--black)"
-                size="33.75rem"
+                styleComponent="gray"
+                sizeComponent="normal"
                 onClick={handleNavigateToListUsers}
               >
                 Lista de Usuários
