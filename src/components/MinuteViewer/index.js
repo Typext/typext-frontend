@@ -31,7 +31,7 @@ const MinuteViewer = ({ setShowMinute }) => {
           Voltar
         </Button>
         <Button color="#373435" onClick={handleGenerateMinute}>
-          Gerar ATA
+          Baixar PDF
         </Button>
       </div>
     </Container>

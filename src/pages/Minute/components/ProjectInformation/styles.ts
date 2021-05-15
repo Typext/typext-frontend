@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as DefaultForm } from '@unform/web';
 import DefaultButton from 'components/Button/styles';
 
 export const StyledProjectInformation = styled.div`
@@ -97,4 +98,21 @@ export const StyledProjectInformation = styled.div`
 
 export const Button = styled(DefaultButton)`
   align-self: flex-end;
+`;
+
+export const Form = styled(DefaultForm)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  row-gap: 20px;
+
+  .inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    column-gap: 10px;
+    row-gap: 10px;
+  }
 `;

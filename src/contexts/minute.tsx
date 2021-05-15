@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useCallback, useContext, useState } from 'react';
+import moment from 'moment';
+import { notification } from 'antd';
 
-import { ITopic, IDate, IParticipant, IMinute } from 'DTOs/Minute';
+import api from 'services/api';
+
+import { ITopic, IDateState, IParticipant, IMinute } from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
@@ -12,13 +16,16 @@ interface IMinuteContextData {
   handleSetParticipants: (participant: IParticipant) => void;
   handleSetSchedules: (schedule: string) => void;
   handleSetAreas: (area: string) => void;
-  setDate: (date: IDate) => void;
+  setDate: (date: IDateState) => void;
+  createMinute: () => void;
   setParticipants: Function;
   setSchedules: Function;
   setAreas: Function;
   setProject: Function;
   setPlace: Function;
+  date: IDateState;
   minute: IMinute;
+  generatedMinute: any;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -26,9 +33,10 @@ export const MinuteContext = createContext({} as IMinuteContextData);
 const MinuteProvider: React.FC<IMinuteProvider> = ({
   children,
 }: IMinuteProvider) => {
+  const [generatedMinute, setGeneratedMinute] = useState<IMinute>();
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
-  const [date, setDate] = useState<IDate>({} as IDate);
+  const [date, setDate] = useState<IDateState>({} as IDateState);
   const [schedules, setSchedules] = useState<string[]>([]);
   const [areas, setAreas] = useState<string[]>([]);
   const [project, setProject] = useState<string>('');
@@ -36,7 +44,8 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
 
   const minute: IMinute = {
     minute: {
-      ...date,
+      start_date: date.start_date,
+      end_date: moment().format(),
       minute_number: '1',
       place,
       project,
@@ -77,6 +86,28 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     [schedules],
   );
 
+  const createMinute = async () => {
+    const btn = <a href="/minutes">Visualizar ata</a>;
+
+    try {
+      const response = await api.post('minutes', minute);
+
+      notification.success({
+        message: 'Sucesso',
+        description: 'Sua ata foi criada com sucesso',
+        btn,
+      });
+
+      setGeneratedMinute(response.data);
+    } catch (error) {
+      notification.error({
+        message: 'Erro gerar uma nova ata',
+        description:
+          'Verifique se todos os campos estão preenchidos, caso o problema persista consulte o adminsitrador',
+      });
+    }
+  };
+
   return (
     <MinuteContext.Provider
       value={{
@@ -85,12 +116,15 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         handleSetSchedules,
         handleSetAreas,
         setParticipants,
+        createMinute,
         setSchedules,
         setProject,
         setAreas,
         setPlace,
         setDate,
+        date,
         minute,
+        generatedMinute,
       }}
     >
       {children}
