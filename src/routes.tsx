@@ -30,7 +30,10 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
+<<<<<<< HEAD
         <Route path="/minutes" isPrivate component={MinutesList} />
+=======
+>>>>>>> develop
         <Route path="/landing-page" component={LandingPage} />
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
