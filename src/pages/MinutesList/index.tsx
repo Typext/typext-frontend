@@ -5,6 +5,7 @@ import warnIcon from 'assets/warn.svg';
 
 import Input from 'components/atoms/Input';
 import Loader from 'components/molecules/Loader';
+import Button from 'components/atoms/Button';
 import ListHeader from './components/ListHeader';
 import MinuteInfo from './components/MinuteInfo';
 
@@ -20,7 +21,12 @@ const MinutesList: React.FC = () => {
   return (
     <Container>
       <h1>Lista de Atas</h1>
-      <Input color="var(--black)" />
+      <div className="search-minute">
+        <Input color="var(--black)" styleWidth="38.75rem" />
+        <Button type="button" sizeComponent="normal" styleComponent="red">
+          Buscar
+        </Button>
+      </div>
 
       <ListHeader />
       <div className="list-content">
