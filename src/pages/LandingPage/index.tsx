@@ -20,19 +20,6 @@ const LandingPage = () => {
 
   return (
     <Container>
-<<<<<<< HEAD
-      <h1>LandingPage</h1>
-      <p>Working in progress</p>
-      <Button
-        type="button"
-        styleComponent="red"
-        sizeComponent="normal"
-        onClick={handleNavigateToHome}
-      >
-        HOME
-      </Button>
-      <WorkInProgress />
-=======
       <div className="content">
         <div className="head">
           <img src={Logo} alt="" />
@@ -72,7 +59,6 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
->>>>>>> develop
     </Container>
   );
 };
