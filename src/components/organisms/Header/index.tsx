@@ -9,6 +9,7 @@ import addIcon from 'assets/add_icon.svg';
 import homeIcon from 'assets/home_icon.svg';
 import shortLogo from 'assets/short_logo.svg';
 import logoutIcon from 'assets/logout_icon.svg';
+import UserIcons from 'assets/user_gray.svg';
 
 import { StyledHeader } from './styles';
 
@@ -48,11 +49,14 @@ const Header = () => {
       </section>
 
       <figure>
-        <img src={shortLogo} className="logo" alt="" />
+        <a href="/landing-page">
+          <img src={shortLogo} className="logo" alt="" />
+        </a>
       </figure>
 
       <section className="usernameAndLogout">
         <button type="button" onClick={handleNavigateToUserUpdate}>
+          <img src={UserIcons} alt="" />
           <h1>{user?.name || 'Nome do usuário'}</h1>
         </button>
 
