@@ -20,6 +20,13 @@ export const StyledHeader = styled.header`
     &:last-child {
       justify-content: flex-end;
     }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
   }
 
   figure {
@@ -64,7 +71,7 @@ export const StyledHeader = styled.header`
 
   button:hover {
     transition: 0.4s;
-    transform: perspective(1px) scale(1.15);
+    transform: perspective(1px) scale(1.05);
   }
 
   @media (max-width: 960px) {

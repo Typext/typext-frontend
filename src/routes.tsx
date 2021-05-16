@@ -15,6 +15,7 @@ import Invite from 'pages/Invite';
 import NotFound from 'pages/NotFound';
 import Users from 'pages/Users';
 import Review from 'pages/Review';
+import LandingPage from 'pages/LandingPage';
 
 export default function Routes() {
   return (
@@ -29,7 +30,11 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
+<<<<<<< HEAD
         <Route path="/minutes" component={MinutesList} />
+=======
+        <Route path="/landing-page" component={LandingPage} />
+>>>>>>> d7b07e6... feat(header): profile icon and landing page added
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
         <Route path="/users" isPrivate onlyAdmin component={Users} />
