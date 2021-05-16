@@ -6,6 +6,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  margin: 5rem 0 0 0;
+
   h1 {
     font-family: Roboto;
     font-size: 3.125rem;
