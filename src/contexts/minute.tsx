@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import { notification } from 'antd';
 
@@ -10,31 +9,11 @@ import {
   IParticipant,
   IMinute,
   GeneratedMinute,
+  IMinuteContextData,
 } from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
-}
-
-interface IMinuteContextData {
-  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
-  handleSetParticipants: (participant: IParticipant) => void;
-  handleSetSchedules: (schedule: string) => void;
-  handleSetAreas: (area: string) => void;
-  setDate: (date: IDateState) => void;
-  createMinute: () => void;
-  getMinute: (minuteId: string) => Promise<void>;
-  setReviewEnable: (reviewEnable: boolean) => void;
-  reviewEnable: boolean;
-  setParticipants: Function;
-  setSchedules: Function;
-  setAreas: Function;
-  setProject: Function;
-  setPlace: Function;
-  date: IDateState;
-  minute: IMinute;
-  minuteForReview: IMinute | undefined;
-  generatedMinute: GeneratedMinute | undefined;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -54,6 +33,9 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const [project, setProject] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [reviewEnable, setReviewEnable] = useState<boolean>(false);
+
+  const [scheduleError, setScheduleError] = useState(null);
+  const [scheduleLoading, setScheduleLoading] = useState<boolean>(true);
 
   const minute: IMinute = {
     minute: {
@@ -135,27 +117,58 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   }, []);
 
+  const scheduleMinute = async () => {
+    setScheduleError(null);
+    setScheduleLoading(true);
+
+    const minuteToSchedule: IMinute = {
+      minute: {
+        start_date: date.start_date,
+        place,
+        project,
+        schedules,
+        areas,
+      },
+      participant: participants,
+      topic: topics,
+    };
+
+    try {
+      await api.post('/schedule', minuteToSchedule);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setScheduleError(celebrateError || errorData?.message);
+    }
+
+    setScheduleLoading(false);
+  };
+
   return (
     <MinuteContext.Provider
       value={{
-        handleSetTopics,
-        handleSetParticipants,
-        handleSetSchedules,
-        handleSetAreas,
-        setParticipants,
-        createMinute,
-        setSchedules,
-        setProject,
+        setDate,
         setAreas,
         setPlace,
-        setDate,
-        date,
-        minute,
-        generatedMinute,
-        minuteForReview,
-        reviewEnable,
         getMinute,
+        setProject,
+        setSchedules,
+        createMinute,
+        handleSetAreas,
+        scheduleMinute,
         setReviewEnable,
+        handleSetTopics,
+        setParticipants,
+        handleSetSchedules,
+        handleSetParticipants,
+        scheduleLoading,
+        minuteForReview,
+        generatedMinute,
+        scheduleError,
+        reviewEnable,
+        minute,
+        date,
       }}
     >
       {children}
