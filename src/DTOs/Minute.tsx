@@ -72,8 +72,9 @@ export interface IMinuteContextData {
   handleSetAreas: (area: string) => void;
   setDate: (date: IDateState) => void;
   createMinute: () => void;
-  getMinute: (minuteId: string) => Promise<void>;
   setReviewEnable: (reviewEnable: boolean) => void;
+  getSingleMinute: (minuteId: string) => Promise<void>;
+  getMinutes: () => void;
   scheduleMinute: Function;
   scheduleLoading: boolean;
   scheduleError: any;
@@ -87,4 +88,20 @@ export interface IMinuteContextData {
   minute: IMinute;
   minuteForReview: IMinute | undefined;
   generatedMinute: GeneratedMinute | undefined;
+  minutes: Array<IMinutes | undefined>;
+  minutesError: string;
+  minutesLoader: boolean;
+}
+export interface IMinutes {
+  id: number;
+  start_date: string;
+  end_date: string;
+  minute_number: string;
+  place: string;
+  project: string;
+  schedules: Array<string>;
+  areas: Array<string>;
+  status: string;
+  created_at: string;
+  updated_at: string;
 }

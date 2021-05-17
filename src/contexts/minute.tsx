@@ -8,6 +8,7 @@ import {
   IDateState,
   IParticipant,
   IMinute,
+  IMinutes,
   GeneratedMinute,
   IMinuteContextData,
 } from 'DTOs/Minute';
@@ -25,6 +26,11 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const [generatedMinute, setGeneratedMinute] = useState<
     GeneratedMinute | undefined
   >();
+
+  const [minutes, setMinutes] = useState<Array<IMinutes | undefined>>([]);
+  const [minutesError, setMinutesError] = useState('');
+  const [minutesLoader, setMinutesLoader] = useState(false);
+
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
   const [date, setDate] = useState<IDateState>({} as IDateState);
@@ -104,7 +110,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   };
 
-  const getMinute = useCallback(async (minuteID: string) => {
+  const getSingleMinute = useCallback(async (minuteID: string) => {
     try {
       const response = await api.get(`minutes/${minuteID}`);
 
@@ -145,13 +151,28 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     setScheduleLoading(false);
   };
 
+  const getMinutes = useCallback(async () => {
+    try {
+      setMinutesLoader(true);
+      const response = await api.get('minutes');
+
+      setMinutes(response.data);
+      setMinutesLoader(false);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setMinutesError(celebrateError || errorData?.message);
+      setMinutesLoader(false);
+    }
+  }, []);
+
   return (
     <MinuteContext.Provider
       value={{
         setDate,
         setAreas,
         setPlace,
-        getMinute,
         setProject,
         setSchedules,
         createMinute,
@@ -169,6 +190,11 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         reviewEnable,
         minute,
         date,
+        minutes,
+        minutesError,
+        minutesLoader,
+        getSingleMinute,
+        getMinutes,
       }}
     >
       {children}
