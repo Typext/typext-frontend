@@ -18,7 +18,7 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
 
   return (
     <Container>
-      <Modal modalIsOpen={}>
+      {/* <Modal modalIsOpen={}>
         <header>
           <button type="button" onClick={}>
             <img src={exitIcon} alt="exit icon" />
@@ -30,7 +30,7 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
         </div>
 
         <div className="buttons" />
-      </Modal>
+      </Modal> */}
     </Container>
   );
 };

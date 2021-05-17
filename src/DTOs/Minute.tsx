@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export interface ITopic {
   name: string;
   responsible: string;
@@ -64,6 +65,33 @@ export interface GeneratedMinute {
   topics: Array<GeneratedTopic>;
 }
 
+export interface IMinuteContextData {
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  setDate: (date: IDateState) => void;
+  createMinute: () => void;
+  setReviewEnable: (reviewEnable: boolean) => void;
+  getSingleMinute: (minuteId: string) => Promise<void>;
+  getMinutes: () => void;
+  scheduleMinute: Function;
+  scheduleLoading: boolean;
+  scheduleError: any;
+  reviewEnable: boolean;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setProject: Function;
+  setPlace: Function;
+  date: IDateState;
+  minute: IMinute;
+  minuteForReview: IMinute | undefined;
+  generatedMinute: GeneratedMinute | undefined;
+  minutes: Array<IMinutes | undefined>;
+  minutesError: string;
+  minutesLoader: boolean;
+}
 export interface IMinutes {
   id: number;
   start_date: string;
