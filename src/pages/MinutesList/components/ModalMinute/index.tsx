@@ -9,14 +9,16 @@ import Button from 'components/atoms/Button';
 import { Container } from './styles';
 
 interface IModalMinute {
+  handleOpenMinuteViewer: () => void;
   onClose: Function;
-  id: number | undefined;
+  id: string | undefined;
   title: string | undefined;
   date: string | undefined;
   status: string | undefined;
 }
 
 const ModalMinute: React.FC<IModalMinute> = ({
+  handleOpenMinuteViewer,
   onClose,
   id,
   title,
@@ -52,7 +54,12 @@ const ModalMinute: React.FC<IModalMinute> = ({
               Revisar
             </Button>
 
-            <Button type="button" sizeComponent="normal" styleComponent="green">
+            <Button
+              type="button"
+              sizeComponent="normal"
+              styleComponent="green"
+              onClick={handleOpenMinuteViewer}
+            >
               Visualizar
             </Button>
           </div>

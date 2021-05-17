@@ -7,8 +7,8 @@ import Topics from './components/Topics';
 import Schedules from './components/Schedules';
 
 interface MinuteProps {
-  minute: IMinute;
-  title: string;
+  minute: IMinute | undefined;
+  title: string | undefined;
 }
 
 const Minute = ({ minute, title }: MinuteProps) => {

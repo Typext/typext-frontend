@@ -4,7 +4,7 @@ import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
 interface ProjectProps {
-  minute: IMinute;
+  minute: IMinute | undefined;
 }
 
 const Project = ({ minute }: ProjectProps) => {
@@ -12,7 +12,7 @@ const Project = ({ minute }: ProjectProps) => {
     <Container>
       <section className="projectName">
         <h4>Projeto:&nbsp;</h4>
-        {minute.minute.project}
+        {minute?.minute.project}
       </section>
 
       <section className="meetingMembers">

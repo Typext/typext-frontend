@@ -110,7 +110,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   };
 
-  const getSingleMinute = useCallback(async (minuteID: string) => {
+  const getSingleMinute = useCallback(async (minuteID: string | undefined) => {
     try {
       const response = await api.get(`minutes/${minuteID}`);
 

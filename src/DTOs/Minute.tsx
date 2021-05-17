@@ -93,7 +93,7 @@ export interface IMinuteContextData {
   minutesLoader: boolean;
 }
 export interface IMinutes {
-  id: number;
+  id: string | undefined;
   start_date: string;
   end_date: string;
   minute_number: string;
