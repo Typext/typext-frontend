@@ -21,7 +21,7 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
   const { minuteForReview, getSingleMinute } = useMinute();
 
   useEffect(() => {
-    getSingleMinute(id);
+    getSingleMinute(id || '');
   }, [id, getSingleMinute]);
 
   return (
