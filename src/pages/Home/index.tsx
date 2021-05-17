@@ -29,7 +29,7 @@ const Home = () => {
   }, [history]);
 
   const handleNavigateToSearchMinutes = useCallback(() => {
-    history.push('/search');
+    history.push('/minutes');
   }, [history]);
 
   const handleNavigateToListUsers = useCallback(() => {

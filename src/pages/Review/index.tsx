@@ -15,12 +15,12 @@ interface ParamsProps {
 
 const Review = () => {
   const params: ParamsProps = useParams();
-  const { minuteForReview, getMinute, setReviewEnable } = useMinute();
+  const { minuteForReview, getSingleMinute, setReviewEnable } = useMinute();
 
   useLayoutEffect(() => {
-    getMinute(params.id);
+    getSingleMinute(params.id);
     setReviewEnable(true);
-  }, [params, getMinute, setReviewEnable]);
+  }, [params, getSingleMinute, setReviewEnable]);
 
   return (
     <Container>

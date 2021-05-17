@@ -63,3 +63,17 @@ export interface GeneratedMinute {
   participants: Array<GeneratedParticipant>;
   topics: Array<GeneratedTopic>;
 }
+
+export interface IMinutes {
+  id: number;
+  start_date: string;
+  end_date: string;
+  minute_number: string;
+  place: string;
+  project: string;
+  schedules: Array<string>;
+  areas: Array<string>;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
