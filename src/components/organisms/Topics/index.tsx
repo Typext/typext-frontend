@@ -4,12 +4,19 @@ import { useMinute } from 'contexts/minute';
 
 import ScrollBox from 'components/atoms/ScrollBox';
 import Button from 'components/atoms/Button';
+import { IMinute } from 'DTOs';
 import StyledTopics from './styles';
 
 import TopicModal from './components/TopicModal';
 
-const Topics = () => {
-  const { minute, minuteForReview, reviewEnable } = useMinute();
+interface TopicProps {
+  minute: IMinute | undefined;
+}
+
+const Topics = ({ minute }: TopicProps) => {
+  const { reviewEnable } = useMinute();
+
+  const topics = reviewEnable ? minute?.topics : minute?.topic;
 
   const [openTopicModal, setOpenTopicModal] = useState(false);
 
@@ -44,27 +51,14 @@ const Topics = () => {
                 <span>Responsável</span>
               </div>
 
-              {minute.topic.length > 0 ||
-              (reviewEnable &&
-                minuteForReview &&
-                minuteForReview?.topics.length > 0) ? (
-                reviewEnable ? (
-                  minuteForReview?.topics?.map(topic => (
-                    <div className="topic">
-                      <span>{topic.name}</span>
-                      <span>{topic.deadline}</span>
-                      <span>{topic.responsible}</span>
-                    </div>
-                  ))
-                ) : (
-                  minute.topic.map(topic => (
-                    <div className="topic">
-                      <span>{topic.name}</span>
-                      <span>{topic.deadline}</span>
-                      <span>{topic.responsible}</span>
-                    </div>
-                  ))
-                )
+              {topics && topics?.length > 0 ? (
+                topics?.map(topic => (
+                  <div className="topic">
+                    <span>{topic.name}</span>
+                    <span>{topic.deadline}</span>
+                    <span>{topic.responsible}</span>
+                  </div>
+                ))
               ) : (
                 <div className="topic">
                   <span>Assunto</span>

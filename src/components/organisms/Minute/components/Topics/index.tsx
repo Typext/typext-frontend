@@ -1,13 +1,14 @@
 import React from 'react';
 import { Table } from 'antd';
 
-import { useMinute } from 'contexts/minute';
-
+import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
-const Topics = () => {
-  const { minute } = useMinute();
+interface TopicsProps {
+  minute: IMinute;
+}
 
+const Topics = ({ minute }: TopicsProps) => {
   const columns = [
     {
       title: 'ID',
@@ -28,7 +29,7 @@ const Topics = () => {
 
   return (
     <Container>
-      <Table dataSource={minute.topic} columns={columns} />
+      <Table dataSource={minute?.topic} columns={columns} />
       <h4>
         {minute.minute.areas.map(area => (
           <>

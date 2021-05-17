@@ -35,7 +35,7 @@ interface IMinuteContextData {
   setPlace: Function;
   date: IDateState;
   minute: IMinute;
-  minuteForReview: GeneratedMinute | undefined;
+  minuteForReview: IMinute | undefined;
   generatedMinute: GeneratedMinute | undefined;
   minutes: Array<IMinutes | undefined>;
   minutesError: string;
@@ -47,9 +47,7 @@ export const MinuteContext = createContext({} as IMinuteContextData);
 const MinuteProvider: React.FC<IMinuteProvider> = ({
   children,
 }: IMinuteProvider) => {
-  const [minuteForReview, setMinuteForReview] = useState<
-    GeneratedMinute | undefined
-  >();
+  const [minuteForReview, setMinuteForReview] = useState<IMinute | undefined>();
   const [generatedMinute, setGeneratedMinute] = useState<
     GeneratedMinute | undefined
   >();
@@ -82,7 +80,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const handleSetTopics = useCallback(
     newTopic => {
       if (newTopic) {
-        setTopics([...topics, ...newTopic]);
+        setTopics([...topics, newTopic]);
       }
     },
     [topics],
@@ -115,15 +113,13 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   );
 
   const createMinute = async () => {
-    const btn = <a href="/minutes">Visualizar ata</a>;
-
     try {
       const response = await api.post('minutes', minute);
 
       notification.success({
         message: 'Sucesso',
         description: 'Sua ata foi criada com sucesso',
-        btn,
+        btn: <a href="/minutes">Visualizar ata</a>,
       });
 
       setGeneratedMinute(response.data);

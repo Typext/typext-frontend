@@ -1,5 +1,4 @@
 export interface ITopic {
-  id: number;
   name: string;
   responsible: string;
   deadline: string;
@@ -16,26 +15,25 @@ export interface IParticipant {
   title: string;
   company: string;
   phone: string;
-  digital_signature?: boolean;
+  digital_signature: boolean;
 }
 
 export interface IDate {
   start_date: string;
-  end_date: string;
 }
 
 export interface IMinute {
   minute: {
     start_date: string;
-    end_date?: string;
     place: string;
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
-    minute_number?: string;
   };
-  participant: Array<IParticipant>;
-  topic: Array<ITopic>;
+  participant?: Array<IParticipant>;
+  topic?: Array<ITopic>;
+  participants?: Array<IParticipant>;
+  topics?: Array<ITopic>;
 }
 
 export interface GeneratedTopic extends ITopic {
@@ -57,12 +55,10 @@ export interface GeneratedMinute {
     updated_at: string;
     status: string;
     start_date: string;
-    end_date: string;
     place: string;
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
-    minute_number?: string;
   };
   participants: Array<GeneratedParticipant>;
   topics: Array<GeneratedTopic>;

@@ -10,17 +10,22 @@ import ScrollBox from 'components/atoms/ScrollBox';
 
 import getValidationErrors from 'utils/getValidationErrors';
 
+import { IMinute } from 'DTOs';
 import { schema } from './validation';
 import { StyledSchedules, Form } from './styles';
 
-const Schedules = () => {
+interface SchedulesProps {
+  minute: IMinute | undefined;
+}
+
+const Schedules = ({ minute }: SchedulesProps) => {
   const formRef = useRef<FormHandles>(null);
 
-  const { minute, handleSetSchedules, setSchedules } = useMinute();
+  const { handleSetSchedules, setSchedules } = useMinute();
 
   const deleteSchedules = (value: string) => {
     setSchedules(
-      minute.minute.schedules.filter(schedule => schedule !== value),
+      minute?.minute.schedules.filter(schedule => schedule !== value),
     );
   };
 
@@ -57,7 +62,7 @@ const Schedules = () => {
         <div className="scheduleList">
           <h3>Pautas adicionadas:</h3>
           <ScrollBox>
-            {minute.minute.schedules?.map(schedule => (
+            {minute?.minute.schedules?.map(schedule => (
               <BoxInformation
                 key={schedule}
                 deleteComponent={() => deleteSchedules(schedule)}

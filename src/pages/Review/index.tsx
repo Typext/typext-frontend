@@ -2,8 +2,11 @@ import React, { useLayoutEffect } from 'react';
 import { useMinute } from 'contexts/minute';
 import { useParams } from 'react-router-dom';
 
-import MinuteFields from 'components/templates/MinuteFields';
-
+import Initial from 'components/organisms/Initial/Initial';
+import ProjectInformation from 'components/organisms/ProjectInformation';
+import Topics from 'components/organisms/Topics';
+import Schedules from 'components/organisms/Schedules';
+import Areas from 'components/organisms/Areas';
 import { Container } from './styles';
 
 interface ParamsProps {
@@ -12,7 +15,7 @@ interface ParamsProps {
 
 const Review = () => {
   const params: ParamsProps = useParams();
-  const { getSingleMinute, setReviewEnable } = useMinute();
+  const { minuteForReview, getSingleMinute, setReviewEnable } = useMinute();
 
   useLayoutEffect(() => {
     getSingleMinute(params.id);
@@ -21,7 +24,11 @@ const Review = () => {
 
   return (
     <Container>
-      <MinuteFields />
+      <Initial minute={minuteForReview} />
+      <ProjectInformation minute={minuteForReview} />
+      <Topics minute={minuteForReview} />
+      <Schedules minute={minuteForReview} />
+      <Areas minute={minuteForReview} />
     </Container>
   );
 };
