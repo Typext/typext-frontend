@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { useMinute } from 'contexts/minute';
-
+import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
-const Project = () => {
-  const { minute } = useMinute();
+interface ProjectProps {
+  minute: IMinute;
+}
 
+const Project = ({ minute }: ProjectProps) => {
   return (
     <Container>
       <section className="projectName">
@@ -22,7 +23,7 @@ const Project = () => {
           <h4>Telefone</h4>
         </div>
 
-        {minute.participant.map(participant => (
+        {minute?.participant?.map(participant => (
           <div className="member">
             <span>{participant.name}</span>
             <span>{participant.title}</span>
