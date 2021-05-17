@@ -5,10 +5,15 @@ import iacitLogo from 'assets/iacit_logo.jpg';
 
 import { useMinute } from 'contexts/minute';
 
+import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
-const GeneralInfo = () => {
-  const { minute, date } = useMinute();
+interface GeneralInfoProps {
+  minute: IMinute;
+}
+
+const GeneralInfo = ({ minute }: GeneralInfoProps) => {
+  const { date } = useMinute();
 
   return (
     <Container>

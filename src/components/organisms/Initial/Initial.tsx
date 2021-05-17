@@ -4,10 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { useMinute } from 'contexts/minute';
 
 import Input from 'components/atoms/Input';
+import { IMinute } from 'DTOs';
 import { StyledInitial } from './styles';
 
-const Initial = () => {
-  const { setDate, setPlace, reviewEnable, minuteForReview } = useMinute();
+interface InitialProps {
+  minute: IMinute | undefined;
+}
+
+const Initial = ({ minute }: InitialProps) => {
+  const { setDate, setPlace, reviewEnable } = useMinute();
 
   const [startHour, setStartHour] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
@@ -31,7 +36,7 @@ const Initial = () => {
               title="Local"
               color="var(--black)"
               styleWidth="100%"
-              defaultValue={reviewEnable ? minuteForReview?.minute?.place : ''}
+              defaultValue={reviewEnable ? minute?.minute?.place : ''}
               onChange={(e: any) => setPlace(e.target.value)}
             />
           </div>

@@ -9,27 +9,33 @@ import ScrollBox from 'components/atoms/ScrollBox';
 import BoxInformation from 'components/molecules/BoxInformation/BoxInformation';
 
 import getValidationErrors from 'utils/getValidationErrors';
-import { IParticipant } from 'DTOs/Minute';
+import { IMinute, IParticipant } from 'DTOs/Minute';
 
+import Button from 'components/atoms/Button';
 import { schema } from './validation';
 import { StyledProjectInformation, Form } from './styles';
-import Button from '../../../../atoms/Button';
 
-const ProjectInformation = () => {
+interface ProjectInfoProps {
+  minute: IMinute | undefined;
+}
+
+const ProjectInformation = ({ minute }: ProjectInfoProps) => {
   const {
-    minute,
     setProject,
     setParticipants,
     handleSetParticipants,
     reviewEnable,
-    minuteForReview,
   } = useMinute();
+
+  const participants = reviewEnable
+    ? minute?.participants
+    : minute?.participant;
 
   const formRef = useRef<FormHandles>(null);
 
   const deleteMember = (participant: string) => {
     setParticipants(
-      minute.participant.filter(user => user.name !== participant),
+      minute?.participant?.filter(user => user.name !== participant),
     );
   };
 
@@ -60,7 +66,7 @@ const ProjectInformation = () => {
           Size="2.375rem"
           color="var(--black)"
           styleWidth="102.1rem"
-          defaultValue={reviewEnable ? minuteForReview?.minute.project : ''}
+          defaultValue={reviewEnable ? minute?.minute.project : ''}
           onChange={(e: any) => setProject(e.target.value)}
         />
 
@@ -116,21 +122,13 @@ const ProjectInformation = () => {
             <h2>Participantes Adicionados:</h2>
 
             <ScrollBox>
-              {reviewEnable
-                ? minuteForReview?.participants?.map(member => (
-                    <BoxInformation
-                      deleteComponent={() => deleteMember(member.name)}
-                    >
-                      <h4>{member.name}</h4>
-                    </BoxInformation>
-                  ))
-                : minute.participant.map(member => (
-                    <BoxInformation
-                      deleteComponent={() => deleteMember(member.name)}
-                    >
-                      <h4>{member.name}</h4>
-                    </BoxInformation>
-                  ))}
+              {participants?.map(member => (
+                <BoxInformation
+                  deleteComponent={() => deleteMember(member.name)}
+                >
+                  <h4>{member.name}</h4>
+                </BoxInformation>
+              ))}
             </ScrollBox>
           </div>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { useMinute } from 'contexts/minute';
+import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
-const Schedules = () => {
-  const { minute } = useMinute();
-
+interface SchedulesProps {
+  minute: IMinute;
+}
+const Schedules = ({ minute }: SchedulesProps) => {
   return (
     <Container>
       <h3>PAUTA</h3>

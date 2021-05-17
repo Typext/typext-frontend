@@ -11,6 +11,8 @@ import { Container } from './styles';
 const MinuteViewer = ({ setShowMinute }) => {
   const componentRef = React.forwardRef();
 
+  const { minute } = useMinute();
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
@@ -25,7 +27,7 @@ const MinuteViewer = ({ setShowMinute }) => {
 
   return (
     <Container>
-      <Minute ref={componentRef} />
+      <Minute ref={componentRef} minute={minute} />
       <div className="minuteButtons">
         <Button
           sizeComponent="normal"

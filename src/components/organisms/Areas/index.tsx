@@ -9,16 +9,21 @@ import ScrollBox from 'components/atoms/ScrollBox';
 import BoxInformation from 'components/molecules/BoxInformation/BoxInformation';
 import getValidationErrors from 'utils/getValidationErrors';
 
+import { IMinute } from 'DTOs';
 import { schema } from './validation';
 import { StyledAreas, Form } from './styles';
 
-const Areas = () => {
+interface AreasProps {
+  minute: IMinute | undefined;
+}
+
+const Areas = ({ minute }: AreasProps) => {
   const formRef = useRef<FormHandles>(null);
 
-  const { minute, handleSetAreas, setAreas } = useMinute();
+  const { handleSetAreas, setAreas } = useMinute();
 
   const deleteAreas = (value: string) => {
-    setAreas(minute.minute.areas.filter(eachArea => eachArea !== value));
+    setAreas(minute?.minute.areas.filter(eachArea => eachArea !== value));
   };
 
   const handleInsertArea = useCallback(
@@ -54,7 +59,7 @@ const Areas = () => {
 
           <div className="Departments">
             <h3>Distribuições adicionadas:</h3>
-            {minute.minute.areas.length > 0 && (
+            {minute && minute?.minute?.areas?.length > 0 && (
               <ScrollBox>
                 {minute?.minute?.areas?.map(eachArea => (
                   <BoxInformation
