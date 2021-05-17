@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import exitIcon from 'assets/exit_logo_red.svg';
 
@@ -14,11 +14,13 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
   children,
   onClose,
 }: IModalMinuteViewer) => {
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+
   return (
     <Container>
       <Modal modalIsOpen={}>
         <header>
-          <button type="button" onClick={onClose}>
+          <button type="button" onClick={}>
             <img src={exitIcon} alt="exit icon" />
           </button>
         </header>
