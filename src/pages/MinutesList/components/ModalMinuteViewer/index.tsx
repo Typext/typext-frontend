@@ -1,35 +1,58 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import exitIcon from 'assets/exit_logo_red.svg';
 
 import Minute from 'components/organisms/Minute';
+import Button from 'components/atoms/Button';
+import { useMinute } from 'contexts/minute';
 import { Container, Modal } from './styles';
 
 interface IModalMinuteViewer {
-  children: React.ReactNode;
-  onClose: Function;
+  onClose: () => void;
+  isOpen: boolean;
+  id: string | undefined;
 }
 
 const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
-  children,
   onClose,
+  isOpen,
+  id,
 }: IModalMinuteViewer) => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const { minuteForReview, getSingleMinute } = useMinute();
+
+  useEffect(() => {
+    getSingleMinute(id);
+  }, [id, getSingleMinute]);
 
   return (
     <Container>
-      <Modal modalIsOpen={}>
+      <Modal modalIsOpen={isOpen}>
         <header>
-          <button type="button" onClick={}>
+          <button type="button" onClick={onClose}>
             <img src={exitIcon} alt="exit icon" />
           </button>
         </header>
 
         <div className="content">
-          <Minute />
+          <Minute
+            title={minuteForReview?.minute.project}
+            minute={minuteForReview}
+          />
         </div>
 
-        <div className="buttons" />
+        <div className="buttons">
+          <Button type="button" sizeComponent="normal" styleComponent="black">
+            Baixar
+          </Button>
+
+          <Button type="button" sizeComponent="normal" styleComponent="red">
+            Corrigir
+          </Button>
+
+          <Button type="button" sizeComponent="normal" styleComponent="green">
+            Revisado
+          </Button>
+        </div>
       </Modal>
     </Container>
   );

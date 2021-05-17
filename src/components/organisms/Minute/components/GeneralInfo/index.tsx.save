@@ -1,8 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import moment from 'moment';
 
@@ -18,21 +13,12 @@ interface GeneralInfoProps {
 }
 
 const GeneralInfo = ({ minute }: GeneralInfoProps) => {
-  const { date } = useMinute();
+  const { date } = useMinute
 
   return (
     <Container>
       <div className="minuteID">ATA N° 012021</div>
       <div className="dateAndLocateInfo">
-        <section className="date">
-          <h4>Data:&nbsp;</h4>
-          INICIO
-          {''}
-          {date?.start?.date.split('-').reverse().join('/')}
-          {''}- FIM &nbsp;
-          {moment().format('l')}
-        </section>
-
         <section className="hour">
           <div className="startHour">
             <h4>Inicio:&nbsp;</h4>

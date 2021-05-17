@@ -24,7 +24,7 @@ interface IMinuteContextData {
   handleSetAreas: (area: string) => void;
   setDate: (date: IDateState) => void;
   createMinute: () => void;
-  getSingleMinute: (minuteId: string) => Promise<void>;
+  getSingleMinute: (minuteId: string | undefined) => Promise<void>;
   setReviewEnable: (reviewEnable: boolean) => void;
   getMinutes: () => void;
   reviewEnable: boolean;
@@ -132,7 +132,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   };
 
-  const getSingleMinute = useCallback(async (minuteID: string) => {
+  const getSingleMinute = useCallback(async (minuteID: string | undefined) => {
     try {
       const response = await api.get(`minutes/${minuteID}`);
 

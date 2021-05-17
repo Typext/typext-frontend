@@ -5,7 +5,7 @@ import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
 interface TopicsProps {
-  minute: IMinute;
+  minute: IMinute | undefined;
 }
 
 const Topics = ({ minute }: TopicsProps) => {
@@ -31,7 +31,7 @@ const Topics = ({ minute }: TopicsProps) => {
     <Container>
       <Table dataSource={minute?.topic} columns={columns} />
       <h4>
-        {minute.minute.areas.map(area => (
+        {minute?.minute.areas.map(area => (
           <>
             <p>{area}</p>
             <span>,</span>

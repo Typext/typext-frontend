@@ -4,7 +4,7 @@ import { IMinute } from 'DTOs';
 import { Container } from './styles';
 
 interface SchedulesProps {
-  minute: IMinute;
+  minute: IMinute | undefined;
 }
 const Schedules = ({ minute }: SchedulesProps) => {
   return (
@@ -12,7 +12,7 @@ const Schedules = ({ minute }: SchedulesProps) => {
       <h3>PAUTA</h3>
 
       <section className="description">
-        {minute.minute.schedules?.map(topic => (
+        {minute?.minute.schedules?.map(topic => (
           <span>{topic}</span>
         ))}
       </section>

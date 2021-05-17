@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface IContainerProps {
+  isOpenMinuteViewer: boolean;
+}
+
+export const Container = styled.div<IContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +33,15 @@ export const Container = styled.div`
       margin: 0 0 0 1rem;
     }
   }
+
+  ${props =>
+    props.isOpenMinuteViewer &&
+    css`
+      .list-content {
+        display: flex;
+        justify-content: center;
+      }
+    `}
 
   .warn {
     display: flex;

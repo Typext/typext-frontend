@@ -11,13 +11,20 @@ import MinuteInfo from './components/MinuteInfo';
 
 import { Container } from './styles';
 import ModalMinute from './components/ModalMinute';
+import ModalMinuteViewer from './components/ModalMinuteViewer';
 
 const MinutesList: React.FC = () => {
   const { getMinutes, minutes, minutesError, minutesLoader } = useMinute();
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenMinuteViewer, setIsOpenMinuteViewer] = useState(false);
 
   const handleOpenModal = () => {
     setIsOpenModal(!isOpenModal);
+  };
+
+  const handleOpenMinuteViewer = () => {
+    handleOpenModal();
+    setIsOpenMinuteViewer(!isOpenMinuteViewer);
   };
 
   useEffect(() => {
@@ -25,7 +32,7 @@ const MinutesList: React.FC = () => {
   }, [getMinutes]);
 
   return (
-    <Container>
+    <Container isOpenMinuteViewer={isOpenMinuteViewer}>
       <h1>Lista de Atas</h1>
       <div className="search-minute">
         <Input color="var(--black)" styleWidth="38.75rem" />
@@ -43,6 +50,7 @@ const MinutesList: React.FC = () => {
             <>
               {isOpenModal && (
                 <ModalMinute
+                  handleOpenMinuteViewer={handleOpenMinuteViewer}
                   onClose={handleOpenModal}
                   id={minute?.id}
                   title={minute?.project}
@@ -54,6 +62,15 @@ const MinutesList: React.FC = () => {
                   status={minute?.status}
                 />
               )}
+
+              {isOpenMinuteViewer && (
+                <ModalMinuteViewer
+                  id={minute?.id}
+                  isOpen={isOpenMinuteViewer}
+                  onClose={handleOpenMinuteViewer}
+                />
+              )}
+
               <MinuteInfo
                 onClick={handleOpenModal}
                 key={minute?.project}
