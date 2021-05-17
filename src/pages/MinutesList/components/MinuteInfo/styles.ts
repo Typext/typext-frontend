@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
   display: grid;
   grid-template-columns: 22.063rem 16.5rem 16.5rem 26.25rem;
   align-items: center;
@@ -9,6 +10,7 @@ export const Container = styled.div`
   width: 81.375rem;
   height: 4.375rem;
   background: var(--soft-gray);
+  border: none;
   border-radius: 1.25rem;
 
   margin-bottom: 1.5rem;

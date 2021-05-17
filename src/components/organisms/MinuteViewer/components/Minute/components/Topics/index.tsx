@@ -11,7 +11,6 @@ const Topics = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id',
     },
     {
       title: 'ASSUNTO',
@@ -31,8 +30,6 @@ const Topics = () => {
     <Container>
       <Table dataSource={minute.topic} columns={columns} />
       <h4>
-        <span>DISTRIBUIÇÃO:</span>
-        {' '}
         {minute.minute.areas.map(area => (
           <>
             <p>{area}</p>

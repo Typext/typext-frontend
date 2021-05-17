@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMinute } from 'contexts/minute';
 
 import warnIcon from 'assets/warn.svg';
@@ -10,9 +10,15 @@ import ListHeader from './components/ListHeader';
 import MinuteInfo from './components/MinuteInfo';
 
 import { Container } from './styles';
+import ModalMinute from './components/ModalMinute';
 
 const MinutesList: React.FC = () => {
   const { getMinutes, minutes, minutesError, minutesLoader } = useMinute();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
 
   useEffect(() => {
     getMinutes();
@@ -34,17 +40,33 @@ const MinutesList: React.FC = () => {
           <Loader />
         ) : minutesError === '' ? (
           minutes.map(minute => (
-            <MinuteInfo
-              key={minute?.project}
-              title={minute?.project}
-              date={minute?.created_at
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('/')}
-              status={minute?.status}
-              schedule={minute?.schedules}
-            />
+            <>
+              {isOpenModal && (
+                <ModalMinute
+                  onClose={handleOpenModal}
+                  id={minute?.id}
+                  title={minute?.project}
+                  date={minute?.created_at
+                    .slice(0, 10)
+                    .split('-')
+                    .reverse()
+                    .join('/')}
+                  status={minute?.status}
+                />
+              )}
+              <MinuteInfo
+                onClick={handleOpenModal}
+                key={minute?.project}
+                title={minute?.project}
+                date={minute?.created_at
+                  .slice(0, 10)
+                  .split('-')
+                  .reverse()
+                  .join('/')}
+                status={minute?.status}
+                schedule={minute?.schedules}
+              />
+            </>
           ))
         ) : (
           <div className="warn">

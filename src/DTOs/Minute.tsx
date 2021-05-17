@@ -16,6 +16,7 @@ export interface IParticipant {
   title: string;
   company: string;
   phone: string;
+  digital_signature?: boolean;
 }
 
 export interface IDate {
@@ -26,7 +27,7 @@ export interface IDate {
 export interface IMinute {
   minute: {
     start_date: string;
-    end_date: string;
+    end_date?: string;
     place: string;
     project: string;
     schedules: Array<string>;

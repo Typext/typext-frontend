@@ -8,9 +8,10 @@ const MinuteInfo: React.FC<IMinuteInfoProps> = ({
   date,
   status,
   schedule,
+  ...rest
 }: IMinuteInfoProps) => {
   return (
-    <Container>
+    <Container {...rest}>
       <div className="title">
         <strong>{title}</strong>
       </div>

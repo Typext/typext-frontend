@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import moment from 'moment';
 import { notification } from 'antd';
 
 import api from 'services/api';
@@ -71,8 +70,6 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const minute: IMinute = {
     minute: {
       start_date: date.start_date,
-      end_date: moment().format(),
-      minute_number: '1',
       place,
       project,
       schedules,
@@ -85,7 +82,7 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const handleSetTopics = useCallback(
     newTopic => {
       if (newTopic) {
-        setTopics([...topics, { ...newTopic, id: topics.length + 1 }]);
+        setTopics([...topics, ...newTopic]);
       }
     },
     [topics],
@@ -93,7 +90,12 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
 
   const handleSetParticipants = useCallback(
     participant => {
-      if (participant) setParticipants([...participants, participant]);
+      if (participant) {
+        setParticipants([
+          ...participants,
+          { ...participant, digital_signature: false },
+        ]);
+      }
     },
     [participants],
   );
