@@ -6,11 +6,12 @@ interface ModalProps {
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
 
-  width: 100vw;
-  height: 100vh;
+  overflow-x: scroll;
+  width: 100%;
+  height: 100%;
+  padding: 100px 0;
 
   position: absolute;
   top: 0;
@@ -22,8 +23,10 @@ export const Container = styled.div`
 
 export const Modal = styled.div<ModalProps>`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
 
   width: 85rem;
   z-index: 998;

@@ -17,13 +17,16 @@ const MinutesList: React.FC = () => {
   const { getMinutes, minutes, minutesError, minutesLoader } = useMinute();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenMinuteViewer, setIsOpenMinuteViewer] = useState(false);
+  const [selectedMinute, setSeletedMinute] = useState<any>();
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (minute: any) => {
     setIsOpenModal(!isOpenModal);
+
+    if (minute) setSeletedMinute(minute);
   };
 
   const handleOpenMinuteViewer = () => {
-    handleOpenModal();
+    handleOpenModal(null);
     setIsOpenMinuteViewer(!isOpenMinuteViewer);
   };
 
@@ -41,6 +44,29 @@ const MinutesList: React.FC = () => {
         </Button>
       </div>
 
+      {isOpenModal && (
+        <ModalMinute
+          handleOpenMinuteViewer={handleOpenMinuteViewer}
+          onClose={handleOpenModal}
+          id={selectedMinute?.id}
+          title={selectedMinute?.project}
+          date={selectedMinute?.created_at
+            .slice(0, 10)
+            .split('-')
+            .reverse()
+            .join('/')}
+          status={selectedMinute?.status}
+        />
+      )}
+
+      {isOpenMinuteViewer && (
+        <ModalMinuteViewer
+          id={selectedMinute?.id}
+          isOpen={isOpenMinuteViewer}
+          onClose={handleOpenMinuteViewer}
+        />
+      )}
+
       <ListHeader />
       <div className="list-content">
         {minutesLoader ? (
@@ -48,31 +74,8 @@ const MinutesList: React.FC = () => {
         ) : minutesError === '' ? (
           minutes.map(minute => (
             <>
-              {isOpenModal && (
-                <ModalMinute
-                  handleOpenMinuteViewer={handleOpenMinuteViewer}
-                  onClose={handleOpenModal}
-                  id={minute?.id}
-                  title={minute?.project}
-                  date={minute?.created_at
-                    .slice(0, 10)
-                    .split('-')
-                    .reverse()
-                    .join('/')}
-                  status={minute?.status}
-                />
-              )}
-
-              {isOpenMinuteViewer && (
-                <ModalMinuteViewer
-                  id={minute?.id}
-                  isOpen={isOpenMinuteViewer}
-                  onClose={handleOpenMinuteViewer}
-                />
-              )}
-
               <MinuteInfo
-                onClick={handleOpenModal}
+                onClick={() => handleOpenModal(minute)}
                 key={minute?.project}
                 title={minute?.project}
                 date={minute?.created_at
