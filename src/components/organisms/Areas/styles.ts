@@ -5,7 +5,7 @@ export const StyledAreas = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin: 20px 0;
   width: 102.125rem;
 
   background-color: #ffffff;

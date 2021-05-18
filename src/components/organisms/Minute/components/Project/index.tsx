@@ -8,6 +8,8 @@ interface ProjectProps {
 }
 
 const Project = ({ minute }: ProjectProps) => {
+  const participants = minute?.participant || minute?.participants;
+
   return (
     <Container>
       <section className="projectName">
@@ -23,7 +25,7 @@ const Project = ({ minute }: ProjectProps) => {
           <h4>Telefone</h4>
         </div>
 
-        {minute?.participant?.map(participant => (
+        {participants?.map(participant => (
           <div className="member">
             <span>{participant.name}</span>
             <span>{participant.title}</span>

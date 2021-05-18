@@ -4,7 +4,7 @@ import { Form as DefaultForm } from '@unform/web';
 
 export const StyledSchedules = styled.div`
   width: 102.125rem;
-
+  margin: 20px 0;
   border-radius: 20px;
 
   padding: 3rem;

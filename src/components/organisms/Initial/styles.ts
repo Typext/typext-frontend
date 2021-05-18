@@ -4,7 +4,7 @@ export const StyledInitial = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin: 20px 0;
   width: 100%;
 
   .Initial {

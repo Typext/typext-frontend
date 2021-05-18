@@ -16,6 +16,7 @@ import NotFound from 'pages/NotFound';
 import Users from 'pages/Users';
 import Review from 'pages/Review';
 import LandingPage from 'pages/LandingPage';
+import SignMinute from 'pages/SignMinute';
 
 export default function Routes() {
   return (
@@ -32,6 +33,7 @@ export default function Routes() {
         <Route path="/404" component={NotFound} />
         <Route path="/minutes" isPrivate component={MinutesList} />
         <Route path="/landing-page" component={LandingPage} />
+        <Route path="/sign-minute/:minute_id/:user_email" component={SignMinute} />
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
         <Route path="/users" isPrivate onlyAdmin component={Users} />

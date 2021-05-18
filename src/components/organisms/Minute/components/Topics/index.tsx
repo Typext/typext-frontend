@@ -9,6 +9,8 @@ interface TopicsProps {
 }
 
 const Topics = ({ minute }: TopicsProps) => {
+  const topics = minute?.topic || minute?.topics;
+
   const columns = [
     {
       title: 'ID',
@@ -29,7 +31,7 @@ const Topics = ({ minute }: TopicsProps) => {
 
   return (
     <Container>
-      <Table dataSource={minute?.topic} columns={columns} />
+      <Table dataSource={topics} columns={columns} />
       <h4>
         {minute?.minute.areas.map(area => (
           <>

@@ -19,6 +19,7 @@ const ScheduleModal = ({ setShowSchedule }: ScheduleModalProps) => {
     if (scheduleMinute) {
       scheduleMinute();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

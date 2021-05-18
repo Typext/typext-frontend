@@ -6,7 +6,7 @@ const StyledTopic = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: center;
-
+  margin: 20px 0;
   width: 102.125rem;
 
   background-color: #ffffff;

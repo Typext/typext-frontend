@@ -5,6 +5,8 @@ export const Container = styled.div`
   min-height: 80px;
   height: max-content;
 
+  margin: 20px 0;
+
   border: 1px solid #1a1a1a;
 
   h3 {
