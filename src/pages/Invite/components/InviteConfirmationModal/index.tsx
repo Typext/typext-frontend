@@ -4,9 +4,8 @@ import { useAuth } from 'contexts/auth';
 
 import { ReactComponent as Email } from 'assets/email.svg';
 import { ReactComponent as EmailError } from 'assets/email_error.svg';
-
-import DefaultModal from 'components/DefaultModal';
-import Loader from 'components/Loader';
+import DefaultModal from 'components/organisms/DefaultModal';
+import Loader from 'components/molecules/Loader';
 
 import { Container, Content } from './styles';
 

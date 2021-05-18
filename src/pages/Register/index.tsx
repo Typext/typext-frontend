@@ -5,12 +5,12 @@ import { FormHandles } from '@unform/core';
 
 import { useAuth } from 'contexts/auth';
 import { getInviteInfo } from 'services/auth';
-import FormUpdate from 'components/FormUpdate';
+import FormUpdate from 'components/organisms/FormUpdate';
 
 import getValidationErrors from 'utils/getValidationErrors';
 import registerSchemaValidation from 'utils/registerSchemaValidation';
 
-import TypextLogo from 'components/Logo';
+import TypextLogo from 'components/atoms/Logo';
 import RegisterModal from './components/RegisterModal';
 
 import StyledRegisterNewUser from './styles';

@@ -1,24 +1,20 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
+import { notification } from 'antd';
 
-import { ITopic, IAddressAndHour, IProjectInfo, ISubject } from 'DTOs';
+import api from 'services/api';
+
+import {
+  ITopic,
+  IDateState,
+  IParticipant,
+  IMinute,
+  IMinutes,
+  GeneratedMinute,
+  IMinuteContextData,
+} from 'DTOs/Minute';
 
 interface IMinuteProvider {
   children: React.ReactNode;
-}
-
-interface IMinuteContextData {
-  topics: Array<ITopic>;
-  setTopics: Function;
-  showSchedule: Boolean;
-  setShowSchedule: Function;
-  addressAndHour: IAddressAndHour;
-  setAddressAndHour: Function;
-  projectInfo: IProjectInfo;
-  setProjectInfo: Function;
-  subjects: ISubject[];
-  setSubjects: Function;
-  distributions: string[];
-  setDistributions: Function;
 }
 
 export const MinuteContext = createContext({} as IMinuteContextData);
@@ -26,35 +22,179 @@ export const MinuteContext = createContext({} as IMinuteContextData);
 const MinuteProvider: React.FC<IMinuteProvider> = ({
   children,
 }: IMinuteProvider) => {
+  const [minuteForReview, setMinuteForReview] = useState<IMinute | undefined>();
+  const [generatedMinute, setGeneratedMinute] = useState<
+    GeneratedMinute | undefined
+  >();
+
+  const [minutes, setMinutes] = useState<Array<IMinutes | undefined>>([]);
+  const [minutesError, setMinutesError] = useState('');
+  const [minutesLoader, setMinutesLoader] = useState(false);
+
   const [topics, setTopics] = useState<ITopic[]>([]);
-  const [showSchedule, setShowSchedule] = useState(false);
-  const [addressAndHour, setAddressAndHour] = useState<IAddressAndHour>({
-    local: '',
-    startDate: '',
-    startHour: '',
-  });
-  const [projectInfo, setProjectInfo] = useState<IProjectInfo>({
-    projectName: '',
-    members: [],
-  });
-  const [subjects, setSubjects] = useState<ISubject[]>([]);
-  const [distributions, setDistributions] = useState<string[]>([]);
+  const [participants, setParticipants] = useState<IParticipant[]>([]);
+  const [date, setDate] = useState<IDateState>({} as IDateState);
+  const [schedules, setSchedules] = useState<string[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
+  const [project, setProject] = useState<string>('');
+  const [place, setPlace] = useState<string>('');
+  const [reviewEnable, setReviewEnable] = useState<boolean>(false);
+
+  const [scheduleError, setScheduleError] = useState(null);
+  const [scheduleLoading, setScheduleLoading] = useState<boolean>(true);
+
+  const minute: IMinute = {
+    minute: {
+      start_date: date.start_date,
+      place,
+      project,
+      schedules,
+      areas,
+    },
+    participant: participants,
+    topic: topics,
+  };
+
+  const handleSetTopics = useCallback(
+    newTopic => {
+      if (newTopic) {
+        setTopics([...topics, newTopic]);
+      }
+    },
+    [topics],
+  );
+
+  const handleSetParticipants = useCallback(
+    participant => {
+      if (participant) {
+        setParticipants([
+          ...participants,
+          { ...participant, digital_signature: false },
+        ]);
+      }
+    },
+    [participants],
+  );
+
+  const handleSetAreas = useCallback(
+    area => {
+      if (area) setAreas([...areas, area]);
+    },
+    [areas],
+  );
+
+  const handleSetSchedules = useCallback(
+    schedule => {
+      if (schedule) setSchedules([...schedules, schedule]);
+    },
+    [schedules],
+  );
+
+  const createMinute = async () => {
+    try {
+      const response = await api.post('minutes', minute);
+
+      notification.success({
+        message: 'Sucesso',
+        description: 'Sua ata foi criada com sucesso',
+        btn: <a href="/minutes">Visualizar ata</a>,
+      });
+
+      setGeneratedMinute(response.data);
+    } catch (error) {
+      notification.error({
+        message: 'Erro gerar uma nova ata',
+        description:
+          'Verifique se todos os campos estão preenchidos, caso o problema persista consulte o adminsitrador',
+      });
+    }
+  };
+
+  const getSingleMinute = useCallback(async (minuteID: string | undefined) => {
+    try {
+      const response = await api.get(`minutes/${minuteID}`);
+
+      setMinuteForReview(response.data);
+    } catch (error) {
+      notification.error({
+        message: 'Erro',
+        description: 'Ata não encontrada',
+      });
+    }
+  }, []);
+
+  const scheduleMinute = async () => {
+    setScheduleError(null);
+    setScheduleLoading(true);
+
+    const minuteToSchedule: IMinute = {
+      minute: {
+        start_date: date.start_date,
+        place,
+        project,
+        schedules,
+        areas,
+      },
+      participant: participants,
+      topic: topics,
+    };
+
+    try {
+      await api.post('/schedule', minuteToSchedule);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setScheduleError(celebrateError || errorData?.message);
+    }
+
+    setScheduleLoading(false);
+  };
+
+  const getMinutes = useCallback(async () => {
+    try {
+      setMinutesLoader(true);
+      const response = await api.get('minutes');
+
+      setMinutes(response.data);
+      setMinutesLoader(false);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setMinutesError(celebrateError || errorData?.message);
+      setMinutesLoader(false);
+    }
+  }, []);
 
   return (
     <MinuteContext.Provider
       value={{
-        topics,
-        setTopics,
-        showSchedule,
-        setShowSchedule,
-        addressAndHour,
-        setAddressAndHour,
-        projectInfo,
-        setProjectInfo,
-        subjects,
-        setSubjects,
-        distributions,
-        setDistributions,
+        setDate,
+        setAreas,
+        setPlace,
+        setProject,
+        setSchedules,
+        createMinute,
+        handleSetAreas,
+        scheduleMinute,
+        setReviewEnable,
+        handleSetTopics,
+        setParticipants,
+        handleSetSchedules,
+        handleSetParticipants,
+        scheduleLoading,
+        minuteForReview,
+        generatedMinute,
+        scheduleError,
+        reviewEnable,
+        minute,
+        date,
+        minutes,
+        minutesError,
+        minutesLoader,
+        getSingleMinute,
+        getMinutes,
       }}
     >
       {children}

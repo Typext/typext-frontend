@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: #f5f5f6;
+  align-items: center;
 
-  gap: 3rem;
-
-  zoom: 85%;
+  background: #F5F5F6;
 `;
-
-export default Container;
