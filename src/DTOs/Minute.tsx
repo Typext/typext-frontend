@@ -105,3 +105,20 @@ export interface IMinutes {
   created_at: string;
   updated_at: string;
 }
+
+export interface IReviewContextData {
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  handleUpdateMinute: (id: string) => void;
+  setDate: (date: IDateState) => void;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setTopics: Function;
+  setProject: Function;
+  setPlace: Function;
+  minute: IMinute;
+  date: IDateState;
+}

@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 // eslint-disable-next-line
 import MinuteViewer from 'components/organisms/MinuteViewer';
 
-import Initial from 'components/organisms/Initial/Initial';
-import ProjectInformation from 'components/organisms/ProjectInformation';
-import Topics from 'components/organisms/Topics';
-import Schedules from 'components/organisms/Schedules';
-import Areas from 'components/organisms/Areas';
 import { useMinute } from 'contexts/minute';
+import Initial from './components/Initial/Initial';
+import ProjectInformation from './components/ProjectInformation';
+import Topics from './components/Topics';
+import Schedules from './components/Schedules';
+import Areas from './components/Areas';
+
 import OptionButtons from './components/OptionButtons';
 import ScheduleModal from './components/ScheduleModal';
 

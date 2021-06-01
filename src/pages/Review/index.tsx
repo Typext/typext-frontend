@@ -1,12 +1,14 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { useReview } from 'contexts/review';
 import { useMinute } from 'contexts/minute';
 import { useParams } from 'react-router-dom';
 
-import Initial from 'components/organisms/Initial/Initial';
-import ProjectInformation from 'components/organisms/ProjectInformation';
-import Topics from 'components/organisms/Topics';
-import Schedules from 'components/organisms/Schedules';
-import Areas from 'components/organisms/Areas';
+import Button from 'components/atoms/Button';
+import Initial from './components/Initial/Initial';
+import ProjectInformation from './components/ProjectInformation';
+import Topics from './components/Topics';
+import Schedules from './components/Schedules';
+import Areas from './components/Areas';
 import { Container } from './styles';
 
 interface ParamsProps {
@@ -15,20 +17,61 @@ interface ParamsProps {
 
 const Review = () => {
   const params: ParamsProps = useParams();
-  const { minuteForReview, getSingleMinute, setReviewEnable } = useMinute();
+  const {
+    minute,
+    setTopics,
+    setParticipants,
+    setSchedules,
+    setAreas,
+    setProject,
+    setPlace,
+    handleUpdateMinute,
+  } = useReview();
+
+  const { getSingleMinute, minuteForReview } = useMinute();
 
   useLayoutEffect(() => {
     getSingleMinute(params.id);
-    setReviewEnable(true);
-  }, [params, getSingleMinute, setReviewEnable]);
+  }, [params, getSingleMinute]);
+
+  useEffect(() => {
+    if (setTopics) setTopics(minuteForReview?.topics);
+    if (setParticipants) setParticipants(minuteForReview?.participants);
+    if (setSchedules) setSchedules(minuteForReview?.minute.schedules);
+    if (setAreas) setAreas(minuteForReview?.minute.areas);
+    if (setProject) setProject(minuteForReview?.minute.project);
+    if (setPlace) setPlace(minuteForReview?.minute.place);
+  }, [
+    minuteForReview,
+    setTopics,
+    setParticipants,
+    setSchedules,
+    setAreas,
+    setProject,
+    setPlace,
+  ]);
+
+  const handleCallUpdateMinute = () => {
+    handleUpdateMinute(params.id);
+  };
 
   return (
     <Container>
-      <Initial minute={minuteForReview} />
-      <ProjectInformation minute={minuteForReview} />
-      <Topics minute={minuteForReview} />
-      <Schedules minute={minuteForReview} />
-      <Areas minute={minuteForReview} />
+      <Initial minute={minute} />
+      <ProjectInformation minute={minute} />
+      <Topics minute={minute} />
+      <Schedules minute={minute} />
+      <Areas minute={minute} />
+      <section className="updateMinute">
+        <Button
+          type="button"
+          styleComponent="green"
+          sizeComponent="large"
+          onClick={handleCallUpdateMinute}
+        >
+          Atualizar
+        </Button>
+      </section>
     </Container>
   );
 };
