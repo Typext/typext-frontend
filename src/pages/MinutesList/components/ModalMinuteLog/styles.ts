@@ -25,9 +25,9 @@ export const Modal = styled.div<IModal>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  height: 54.813rem;
+  height: 80vh;
   max-width: 108rem;
   width: 100%;
 
@@ -51,7 +51,7 @@ export const Modal = styled.div<IModal>`
     width: 100%;
     padding: 0 1rem;
 
-    margin: 1rem 0 2rem 0;
+    margin: 2rem 2rem 2rem 0;
 
     button {
       background: none;
@@ -61,6 +61,10 @@ export const Modal = styled.div<IModal>`
         height: 2.625rem;
       }
     }
+  }
+
+  h1 {
+    font-size: 3.125rem;
   }
 
   @keyframes startModal {
@@ -86,4 +90,22 @@ export const Modal = styled.div<IModal>`
       opacity: 0;
     }
   }
+
+  @media (max-width: 740px) {
+    padding: 0 2rem;
+  }
+`;
+
+export const ListContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  max-width: 82rem;
+  width: 100%;
+  height: 70%;
+  row-gap: 1rem;
+
+  overflow: auto;
 `;

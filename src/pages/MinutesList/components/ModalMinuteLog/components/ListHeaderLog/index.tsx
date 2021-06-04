@@ -5,17 +5,17 @@ import { Container } from './styles';
 const ListHeaderLog: React.FC = () => {
   return (
     <Container>
-      <button type="button" className="modification">
-        Alteração
-      </button>
+      <div className="modification">
+        <strong>Alteração</strong>
+      </div>
 
-      <button type="button" className="date">
-        Data
-      </button>
+      <div className="date">
+        <strong>Data</strong>
+      </div>
 
-      <button type="button" className="modified-by">
-        Alterada por:
-      </button>
+      <div className="modified-by">
+        <strong>Alterada por:</strong>
+      </div>
     </Container>
   );
 };

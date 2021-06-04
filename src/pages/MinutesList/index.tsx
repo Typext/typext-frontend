@@ -84,6 +84,7 @@ const MinutesList: React.FC = () => {
       )}
 
       <ListHeader />
+
       <div className="list-content">
         {minutesLoader ? (
           <Loader />
