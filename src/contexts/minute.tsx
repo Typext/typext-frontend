@@ -11,6 +11,7 @@ import {
   IMinutes,
   GeneratedMinute,
   IMinuteContextData,
+  IMinuteLog,
 } from 'DTOs/Minute';
 
 interface IMinuteProvider {
@@ -30,6 +31,10 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
   const [minutes, setMinutes] = useState<Array<IMinutes | undefined>>([]);
   const [minutesError, setMinutesError] = useState('');
   const [minutesLoader, setMinutesLoader] = useState(false);
+
+  const [minuteLogs, setMinuteLogs] = useState<Array<IMinuteLog> | undefined>();
+  const [minuteLogsError, setMinuteLogsError] = useState('');
+  const [minuteLogsLoader, setMinuteLogsLoader] = useState(false);
 
   const [topics, setTopics] = useState<ITopic[]>([]);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
@@ -167,6 +172,23 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
     }
   }, []);
 
+  const getMinuteLogs = useCallback(async (id: number) => {
+    try {
+      setMinuteLogsLoader(true);
+
+      const response = await api.get(`/logs/${id}`);
+
+      setMinuteLogs(response.data);
+      setMinuteLogsLoader(false);
+    } catch (err) {
+      const errorData = err.response?.data;
+      const celebrateError = errorData?.validation?.body?.message;
+
+      setMinuteLogsError(celebrateError || errorData?.message);
+      setMinuteLogsLoader(false);
+    }
+  }, []);
+
   return (
     <MinuteContext.Provider
       value={{
@@ -195,6 +217,10 @@ const MinuteProvider: React.FC<IMinuteProvider> = ({
         minutesLoader,
         getSingleMinute,
         getMinutes,
+        minuteLogs,
+        minuteLogsError,
+        minuteLogsLoader,
+        getMinuteLogs,
       }}
     >
       {children}

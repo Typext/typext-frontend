@@ -65,6 +65,13 @@ export interface GeneratedMinute {
   topics: Array<GeneratedTopic>;
 }
 
+export interface IMinuteLog {
+  id: number;
+  registered_action: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface IMinuteContextData {
   handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
   handleSetParticipants: (participant: IParticipant) => void;
@@ -75,6 +82,7 @@ export interface IMinuteContextData {
   setReviewEnable: (reviewEnable: boolean) => void;
   getSingleMinute: (minuteId: string) => Promise<void>;
   getMinutes: () => void;
+  getMinuteLogs: (id: number) => void;
   scheduleMinute: Function;
   scheduleLoading: boolean;
   scheduleError: any;
@@ -91,6 +99,9 @@ export interface IMinuteContextData {
   minutes: Array<IMinutes | undefined>;
   minutesError: string;
   minutesLoader: boolean;
+  minuteLogs: Array<IMinuteLog> | undefined;
+  minuteLogsError: string;
+  minuteLogsLoader: boolean;
 }
 export interface IMinutes {
   id: string | undefined;
