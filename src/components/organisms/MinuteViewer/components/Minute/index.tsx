@@ -3,11 +3,7 @@ import React, { PureComponent } from 'react';
 
 import { IMinute } from 'DTOs';
 
-import GeneralInfo from './components/GeneralInfo';
-import Project from './components/Project';
-import Topics from './components/Topics';
-import Schedules from './components/Schedules';
-
+import Minute from 'components/organisms/Minute';
 import { Container } from './styles';
 
 interface IPrintProps {
@@ -16,15 +12,11 @@ interface IPrintProps {
 
 class ComponentToPrint extends PureComponent<IPrintProps> {
   render() {
+    const { minute } = this.props;
+
     return (
       <Container>
-        <GeneralInfo />
-
-        <h2>ATA DE REUNIÃO</h2>
-
-        <Project />
-        <Schedules />
-        <Topics />
+        <Minute minute={minute} title="ATA DE REUNIÂO" />
       </Container>
     );
   }

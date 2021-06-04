@@ -1,9 +1,14 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { useReview } from 'contexts/review';
 import { useMinute } from 'contexts/minute';
 import { useParams } from 'react-router-dom';
 
-import MinuteFields from 'components/templates/MinuteFields';
-
+import Button from 'components/atoms/Button';
+import Initial from './components/Initial/Initial';
+import ProjectInformation from './components/ProjectInformation';
+import Topics from './components/Topics';
+import Schedules from './components/Schedules';
+import Areas from './components/Areas';
 import { Container } from './styles';
 
 interface ParamsProps {
@@ -12,16 +17,61 @@ interface ParamsProps {
 
 const Review = () => {
   const params: ParamsProps = useParams();
-  const { getMinute, setReviewEnable } = useMinute();
+  const {
+    minute,
+    setTopics,
+    setParticipants,
+    setSchedules,
+    setAreas,
+    setProject,
+    setPlace,
+    handleUpdateMinute,
+  } = useReview();
+
+  const { getSingleMinute, minuteForReview } = useMinute();
 
   useLayoutEffect(() => {
-    getMinute(params.id);
-    setReviewEnable(true);
-  }, [params, getMinute, setReviewEnable]);
+    getSingleMinute(params.id);
+  }, [params, getSingleMinute]);
+
+  useEffect(() => {
+    if (setTopics) setTopics(minuteForReview?.topics);
+    if (setParticipants) setParticipants(minuteForReview?.participants);
+    if (setSchedules) setSchedules(minuteForReview?.minute.schedules);
+    if (setAreas) setAreas(minuteForReview?.minute.areas);
+    if (setProject) setProject(minuteForReview?.minute.project);
+    if (setPlace) setPlace(minuteForReview?.minute.place);
+  }, [
+    minuteForReview,
+    setTopics,
+    setParticipants,
+    setSchedules,
+    setAreas,
+    setProject,
+    setPlace,
+  ]);
+
+  const handleCallUpdateMinute = () => {
+    handleUpdateMinute(params.id);
+  };
 
   return (
     <Container>
-      <MinuteFields />
+      <Initial minute={minute} />
+      <ProjectInformation minute={minute} />
+      <Topics minute={minute} />
+      <Schedules minute={minute} />
+      <Areas minute={minute} />
+      <section className="updateMinute">
+        <Button
+          type="button"
+          styleComponent="green"
+          sizeComponent="large"
+          onClick={handleCallUpdateMinute}
+        >
+          Atualizar
+        </Button>
+      </section>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 export interface ITopic {
-  id: number;
   name: string;
   responsible: string;
   deadline: string;
@@ -16,25 +16,25 @@ export interface IParticipant {
   title: string;
   company: string;
   phone: string;
+  digital_signature: boolean;
 }
 
 export interface IDate {
   start_date: string;
-  end_date: string;
 }
 
 export interface IMinute {
   minute: {
     start_date: string;
-    end_date: string;
     place: string;
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
-    minute_number?: string;
   };
-  participant: Array<IParticipant>;
-  topic: Array<ITopic>;
+  participant?: Array<IParticipant>;
+  topic?: Array<ITopic>;
+  participants?: Array<IParticipant>;
+  topics?: Array<ITopic>;
 }
 
 export interface GeneratedTopic extends ITopic {
@@ -56,13 +56,69 @@ export interface GeneratedMinute {
     updated_at: string;
     status: string;
     start_date: string;
-    end_date: string;
     place: string;
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
-    minute_number?: string;
   };
   participants: Array<GeneratedParticipant>;
   topics: Array<GeneratedTopic>;
+}
+
+export interface IMinuteContextData {
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  setDate: (date: IDateState) => void;
+  createMinute: () => void;
+  setReviewEnable: (reviewEnable: boolean) => void;
+  getSingleMinute: (minuteId: string) => Promise<void>;
+  getMinutes: () => void;
+  scheduleMinute: Function;
+  scheduleLoading: boolean;
+  scheduleError: any;
+  reviewEnable: boolean;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setProject: Function;
+  setPlace: Function;
+  date: IDateState;
+  minute: IMinute;
+  minuteForReview: IMinute | undefined;
+  generatedMinute: GeneratedMinute | undefined;
+  minutes: Array<IMinutes | undefined>;
+  minutesError: string;
+  minutesLoader: boolean;
+}
+export interface IMinutes {
+  id: string | undefined;
+  start_date: string;
+  end_date: string;
+  minute_number: string;
+  place: string;
+  project: string;
+  schedules: Array<string>;
+  areas: Array<string>;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IReviewContextData {
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  handleUpdateMinute: (id: string) => void;
+  setDate: (date: IDateState) => void;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setTopics: Function;
+  setProject: Function;
+  setPlace: Function;
+  minute: IMinute;
+  date: IDateState;
 }
