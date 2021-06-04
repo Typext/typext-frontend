@@ -94,10 +94,18 @@ export const Form = styled(DefaultForm)`
       gap: 2rem;
       display: flex;
       align-items: flex-end;
-      justify-content: space-between;
+      justify-content: flex-end;
+    }
+  }
 
-      button {
-        width: 100%;
+  @media (max-width: 600px) {
+    .inputsAndOptions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      row-gap: 2rem;
+      .options {
+        justify-content: center;
       }
     }
   }
