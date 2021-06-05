@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-interface ModalProps {
-  modalIsOpen: boolean;
+interface IModal {
+  isOpen: boolean;
 }
 
 export const Container = styled.div`
@@ -11,7 +11,7 @@ export const Container = styled.div`
   overflow-x: scroll;
   width: 100%;
   height: 100%;
-  padding: 100px 0;
+  padding: 100px 2rem;
 
   position: absolute;
   top: 0;
@@ -21,21 +21,21 @@ export const Container = styled.div`
   backdrop-filter: blur(6px);
 `;
 
-export const Modal = styled.div<ModalProps>`
+export const Modal = styled.div<IModal>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: max-content;
+  justify-content: flex-start;
 
-  width: 85rem;
-  z-index: 998;
+  height: 80vh;
+  max-width: 108rem;
+  width: 100%;
 
   border-radius: 1.25rem;
   background: white;
 
   ${props =>
-    props.modalIsOpen
+    props.isOpen
       ? css`
           animation: startModal 0.5s normal;
         `
@@ -51,7 +51,7 @@ export const Modal = styled.div<ModalProps>`
     width: 100%;
     padding: 0 1rem;
 
-    margin: 1rem 0 2rem 0;
+    margin: 2rem 2rem 2rem 0;
 
     button {
       background: none;
@@ -63,22 +63,8 @@ export const Modal = styled.div<ModalProps>`
     }
   }
 
-  > h1 {
-    font-family: Roboto;
+  h1 {
     font-size: 3.125rem;
-    font-weight: 900;
-    line-height: 3.688rem;
-
-    margin: 0 0 3.125rem 0;
-  }
-
-  .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 1rem;
-
-    padding: 0 0 2rem 0;
   }
 
   @keyframes startModal {
@@ -104,4 +90,22 @@ export const Modal = styled.div<ModalProps>`
       opacity: 0;
     }
   }
+
+  @media (max-width: 740px) {
+    padding: 0 2rem;
+  }
+`;
+
+export const ListContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  max-width: 82rem;
+  width: 100%;
+  height: 70%;
+  row-gap: 1rem;
+
+  overflow: auto;
 `;

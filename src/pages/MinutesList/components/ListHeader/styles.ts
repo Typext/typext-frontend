@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 22.063rem 16.5rem 16.5rem 26.25rem;
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 81.375rem;
+  max-width: 81.375rem;
+  width: 100%;
   height: 4.375rem;
   margin-bottom: 3.375rem;
   border-radius: 1.25rem;
@@ -39,19 +39,23 @@ export const Container = styled.div`
   }
 
   .title {
+    width: 25%;
     background: var(--red-pink);
     border-radius: 1.25rem 0 0 1.25rem;
   }
 
   .date {
+    width: 20%;
     background: #fa6b90;
   }
 
   .status {
+    width: 20%;
     background: #fb9cb5;
   }
 
   .schedule {
+    width: 35%;
     background: var(--gray);
     border-radius: 0 1.25rem 1.25rem 0;
   }

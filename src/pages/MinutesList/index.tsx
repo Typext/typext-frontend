@@ -12,11 +12,13 @@ import MinuteInfo from './components/MinuteInfo';
 import { Container } from './styles';
 import ModalMinute from './components/ModalMinute';
 import ModalMinuteViewer from './components/ModalMinuteViewer';
+import ModalMinuteLog from './components/ModalMinuteLog';
 
 const MinutesList: React.FC = () => {
   const { getMinutes, minutes, minutesError, minutesLoader } = useMinute();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenMinuteViewer, setIsOpenMinuteViewer] = useState(false);
+  const [isOpenModalMinuteLog, setIsOpenModalMinuteLog] = useState(false);
   const [selectedMinute, setSeletedMinute] = useState<any>();
 
   const handleOpenModal = (minute: any) => {
@@ -28,6 +30,11 @@ const MinutesList: React.FC = () => {
   const handleOpenMinuteViewer = () => {
     handleOpenModal(null);
     setIsOpenMinuteViewer(!isOpenMinuteViewer);
+  };
+
+  const handleOpenModalMinuteLog = () => {
+    handleOpenModal(null);
+    setIsOpenModalMinuteLog(!isOpenModalMinuteLog);
   };
 
   useEffect(() => {
@@ -47,6 +54,7 @@ const MinutesList: React.FC = () => {
       {isOpenModal && (
         <ModalMinute
           handleOpenMinuteViewer={handleOpenMinuteViewer}
+          handleOpenMinuteLog={handleOpenModalMinuteLog}
           onClose={handleOpenModal}
           id={selectedMinute?.id}
           title={selectedMinute?.project}
@@ -67,7 +75,16 @@ const MinutesList: React.FC = () => {
         />
       )}
 
+      {isOpenModalMinuteLog && (
+        <ModalMinuteLog
+          id={selectedMinute?.id}
+          isOpen={isOpenModalMinuteLog}
+          onClose={handleOpenModalMinuteLog}
+        />
+      )}
+
       <ListHeader />
+
       <div className="list-content">
         {minutesLoader ? (
           <Loader />

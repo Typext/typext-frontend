@@ -26,7 +26,8 @@ export const Container = styled.div<IContainerProps>`
     display: flex;
     align-items: center;
 
-    width: 57.625rem;
+    max-width: 57.625rem;
+    width: 100%;
     margin-bottom: 3.375rem;
 
     button {
@@ -43,31 +44,40 @@ export const Container = styled.div<IContainerProps>`
       }
     `}
 
-  .warn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .list-content {
+    max-width: 81.375rem;
+    width: 100%;
 
-    img {
-      margin: 0 0 1rem 0;
-    }
+    .warn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    h1 {
-      font-family: Roboto;
-      font-size: 3.125rem;
-      font-weight: 700;
-      line-height: 3.688rem;
-      text-align: center;
-      color: var(--black);
-    }
+      img {
+        margin: 0 0 1rem 0;
+      }
 
-    h3 {
-      font-family: Roboto;
-      font-size: 1.5rem;
-      font-weight: 400;
-      line-height: 1.75rem;
-      text-align: center;
+      h1 {
+        font-family: Roboto;
+        font-size: 3.125rem;
+        font-weight: 700;
+        line-height: 3.688rem;
+        text-align: center;
+        color: var(--black);
+      }
+
+      h3 {
+        font-family: Roboto;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.75rem;
+        text-align: center;
+      }
     }
+  }
+
+  @media (max-width: 740px) {
+    padding: 0 2rem;
   }
 `;
