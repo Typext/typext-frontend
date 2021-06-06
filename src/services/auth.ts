@@ -30,7 +30,5 @@ export function getInviteInfo(): UserInfo {
 }
 
 export function getUserToken() {
-  const token = <string>localStorage.getItem('@Typext:token');
-
-  return token;
+  return localStorage.getItem('@Typext:token');
 }

@@ -12,7 +12,7 @@ export const Container = styled.div`
     height: 100%;
     margin-top: -30px;
 
-    h2 {
+    h1 {
       margin: 10px 0;
       font-size: 4rem;
     }

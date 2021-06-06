@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #f5f5f6;
   width: 100%;
+  background: none;
+  column-gap: 2rem;
+  max-width: 120rem;
+  justify-content: flex-end;
 
   .buttons {
     display: flex;
@@ -13,6 +15,7 @@ export const Container = styled.div`
     justify-content: center;
     padding: 3rem;
     width: 92rem;
+    column-gap: 20px;
   }
 
   @media (max-width: 960px) {

@@ -1,26 +1,28 @@
 import axios from 'axios';
 import { getUserToken } from './auth';
 
-// eslint-disable-next-line consistent-return
-const tryGetUserToken = (count = 1) => {
-  if (count >= 100) return '';
+const api = axios.create();
 
+api.interceptors.request.use(async config => {
   const token = getUserToken();
+  const apiConfig = config;
 
-  if (token) return token;
+  apiConfig.baseURL = 'http://localhost:3333';
 
-  setTimeout(() => {
-    tryGetUserToken(count + 1);
-  }, 500 * count);
-};
+  if (token) {
+    apiConfig.headers = {
+      Authorization: `Bearer ${getUserToken()}`,
+      'X-Requested-With': 'XMLHttpRequest',
+    };
+  } else {
+    apiConfig.headers = {
+      'X-Requested-With': 'XMLHttpRequest',
+    };
+  }
 
-const token = tryGetUserToken();
+  apiConfig.withCredentials = false;
 
-const api = axios.create({
-  baseURL: 'http://localhost:3333',
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
+  return apiConfig;
 });
 
 export default api;
