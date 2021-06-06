@@ -25,6 +25,7 @@ const Review = () => {
     setAreas,
     setProject,
     setPlace,
+    setDate,
     handleUpdateMinute,
   } = useReview();
 
@@ -35,6 +36,12 @@ const Review = () => {
   }, [params, getSingleMinute]);
 
   useEffect(() => {
+    if (setDate) {
+      setDate({
+        start_date: minuteForReview?.minute?.start_date || '',
+        start: { hour: '', date: minuteForReview?.minute.start_date || '' },
+      });
+    }
     if (setTopics) setTopics(minuteForReview?.topics);
     if (setParticipants) setParticipants(minuteForReview?.participants);
     if (setSchedules) setSchedules(minuteForReview?.minute.schedules);
@@ -49,6 +56,7 @@ const Review = () => {
     setAreas,
     setProject,
     setPlace,
+    setDate,
   ]);
 
   const handleCallUpdateMinute = () => {

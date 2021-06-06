@@ -26,6 +26,13 @@ const Initial = ({ minute }: InitialProps) => {
     }
   }, [startHour, startDate, setDate]);
 
+  const minuteDate = minute?.minute?.start_date?.split('T');
+  const minuteStartDate = minuteDate?.length ? minuteDate[0] : undefined;
+
+  const minuteStartHour = minuteDate?.length
+    ? minuteDate[1].slice(0, 8)
+    : undefined;
+
   return (
     <StyledInitial>
       <div className="Initial">
@@ -46,6 +53,7 @@ const Initial = ({ minute }: InitialProps) => {
               color="var(--black)"
               styleWidth="100%"
               type="date"
+              value={minuteStartDate}
               onChange={(e: any) => setStartDate(e.target.value)}
             />
 
@@ -54,6 +62,7 @@ const Initial = ({ minute }: InitialProps) => {
               color="var(--black)"
               styleWidth="100%"
               type="time"
+              value={minuteStartHour}
               onChange={(e: any) => setStartHour(e.target.value)}
             />
           </div>
