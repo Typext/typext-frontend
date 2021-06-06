@@ -28,7 +28,7 @@ export const Modal = styled.div<ModalProps>`
   justify-content: center;
   height: max-content;
 
-  width: 85rem;
+  width: max-content;
   z-index: 998;
 
   border-radius: 1.25rem;
