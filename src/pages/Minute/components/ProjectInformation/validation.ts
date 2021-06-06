@@ -6,7 +6,6 @@ export const schema = Yup.object().shape({
     .email('Digite um email valído'),
   name: Yup.string().required('O nome é obrigatório'),
   title: Yup.string()
-    .max(3, 'O titulo / cargo pode conter no maximo 3 caracteres')
     .required('O titulo / cargo é obrigatório'),
   company: Yup.string().required('A empresa é obrigatória'),
   phone: Yup.string()
