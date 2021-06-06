@@ -30,7 +30,7 @@ const Initial = ({ minute }: InitialProps) => {
   const minuteStartDate = minuteDate?.length ? minuteDate[0] : undefined;
 
   const minuteStartHour = minuteDate?.length
-    ? minuteDate[1].slice(0, 8)
+    ? minuteDate[1]?.slice(0, 8)
     : undefined;
 
   return (
