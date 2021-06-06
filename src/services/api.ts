@@ -1,11 +1,28 @@
 import axios from 'axios';
 import { getUserToken } from './auth';
 
-const api = axios.create({
-  baseURL: 'http://localhost:3333',
-  headers: {
-    Authorization: `Bearer ${getUserToken()}`,
-  },
+const api = axios.create();
+
+api.interceptors.request.use(async config => {
+  const token = getUserToken();
+  const apiConfig = config;
+
+  apiConfig.baseURL = 'http://localhost:3333';
+
+  if (token) {
+    apiConfig.headers = {
+      Authorization: `Bearer ${getUserToken()}`,
+      'X-Requested-With': 'XMLHttpRequest',
+    };
+  } else {
+    apiConfig.headers = {
+      'X-Requested-With': 'XMLHttpRequest',
+    };
+  }
+
+  apiConfig.withCredentials = false;
+
+  return apiConfig;
 });
 
 export default api;
