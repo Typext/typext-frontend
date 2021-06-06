@@ -77,6 +77,11 @@ const ReviewProvider: React.FC<IReviewProvider> = ({
   const handleUpdateMinute = async (id: string) => {
     try {
       await api.put('minutes', { minute_id: id, ...minute });
+      notification.success({
+        message: 'Successo',
+        description:
+          'Sua ata foi atualizada com sucesso !',
+      });
     } catch (error) {
       notification.error({
         message: 'Erro',

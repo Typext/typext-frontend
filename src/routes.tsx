@@ -22,7 +22,7 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Login} />
+        <Route path="/" exact component={LandingPage} />
         <Route path="/user/update" isPrivate component={UserUpdate} />
         <Route path="/home" exact isPrivate component={Home} />
         <Route path="/minute" isPrivate component={Minute} />
@@ -32,8 +32,10 @@ export default function Routes() {
         <Route path="/invite/:email" component={Register} />
         <Route path="/404" component={NotFound} />
         <Route path="/minutes" isPrivate component={MinutesList} />
-        <Route path="/landing-page" component={LandingPage} />
-        <Route path="/sign-minute/:minute_id/:user_email" component={SignMinute} />
+        <Route
+          path="/sign-minute/:minute_id/:user_email"
+          component={SignMinute}
+        />
 
         <Route path="/invite" exact isPrivate onlyAdmin component={Invite} />
         <Route path="/users" isPrivate onlyAdmin component={Users} />
