@@ -67,6 +67,12 @@ export interface GeneratedMinute {
 
 export interface IMinuteLog {
   id: number;
+  user: {
+    active: true;
+    id: string;
+    name: string;
+    type: string;
+  };
   registered_action: string;
   created_at: string;
   updated_at: string;

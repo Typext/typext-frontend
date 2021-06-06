@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 import { Container } from './styles';
 
@@ -25,7 +24,7 @@ const LogInfo: React.FC<ILogInfo> = ({
       </div>
 
       <div className="modified-by">
-        <strong>{moment(modifiedBy).format('DD/MM/YYYY')}</strong>
+        <strong>{modifiedBy}</strong>
       </div>
     </Container>
   );

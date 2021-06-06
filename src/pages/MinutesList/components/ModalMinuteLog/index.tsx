@@ -58,7 +58,7 @@ const ModalMinuteLog: React.FC<IModalMinuteLog> = ({
                     .split('-')
                     .reverse()
                     .join('/')}
-                  modifiedBy={log.created_at}
+                  modifiedBy={log.user.name}
                 />
               ))}
             </>
