@@ -10,6 +10,7 @@ import { Container } from './styles';
 
 interface IModalMinute {
   handleOpenMinuteViewer: () => void;
+  handleOpenMinuteLog: () => void;
   onClose: Function;
   id: string | undefined;
   title: string | undefined;
@@ -19,6 +20,7 @@ interface IModalMinute {
 
 const ModalMinute: React.FC<IModalMinute> = ({
   handleOpenMinuteViewer,
+  handleOpenMinuteLog,
   onClose,
   id,
   title,
@@ -41,7 +43,12 @@ const ModalMinute: React.FC<IModalMinute> = ({
           <strong>{status}</strong>
 
           <div className="buttons">
-            <Button type="button" sizeComponent="normal" styleComponent="gray">
+            <Button
+              type="button"
+              sizeComponent="normal"
+              styleComponent="gray"
+              onClick={handleOpenMinuteLog}
+            >
               Log
             </Button>
 

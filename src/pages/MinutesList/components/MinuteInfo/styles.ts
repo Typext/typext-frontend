@@ -2,13 +2,14 @@ import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 export const Container = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
-  display: grid;
-  grid-template-columns: 22.063rem 16.5rem 16.5rem 26.25rem;
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 81.375rem;
+  max-width: 81.375rem;
+  width: 100%;
   height: 4.375rem;
+
   background: var(--soft-gray);
   border: none;
   border-radius: 1.25rem;
@@ -33,5 +34,21 @@ export const Container = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
       letter-spacing: 0em;
       text-align: center;
     }
+  }
+
+  .title {
+    width: 25%;
+  }
+
+  .date {
+    width: 20%;
+  }
+
+  .status {
+    width: 20%;
+  }
+
+  .schedule {
+    width: 35%;
   }
 `;

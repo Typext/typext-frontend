@@ -44,6 +44,13 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
       const { token, user } = response.data;
 
+      api.interceptors.request.use(async config => {
+        const param = config;
+        param.headers.Authorization = `Bearer ${token}`;
+
+        return config;
+      });
+
       localStorage.setItem('@Typext:token', token);
       localStorage.setItem('@Typext:user', JSON.stringify(user));
 

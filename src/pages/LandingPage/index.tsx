@@ -15,7 +15,7 @@ const LandingPage = () => {
   const history = useHistory();
 
   const handleNavigateToHome = useCallback(() => {
-    history.push('/home');
+    history.push('/login');
   }, [history]);
 
   return (
