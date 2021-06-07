@@ -11,10 +11,10 @@ export const Container = styled.div`
   margin-bottom: 3.375rem;
   border-radius: 1.25rem;
 
-  button {
+  div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     height: 100%;
     border: none;
@@ -30,11 +30,6 @@ export const Container = styled.div`
 
     img {
       height: 1.875rem;
-    }
-
-    .spacing {
-      height: 1.875rem;
-      width: 1.875rem;
     }
   }
 
