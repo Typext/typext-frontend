@@ -5,6 +5,8 @@ import { useReview } from 'contexts/review';
 import { useMinute } from 'contexts/minute';
 
 import Button from 'components/atoms/Button';
+import api from 'services/api';
+import { notification } from 'antd';
 import Initial from './components/Initial/Initial';
 import ProjectInformation from './components/ProjectInformation';
 import Topics from './components/Topics';
@@ -68,6 +70,22 @@ const Review = () => {
     if (isSuccess) history.push('/home');
   };
 
+  const handleFinishMinute = async () => {
+    try {
+      await api.put(`schedule/${params.id}`, { minute });
+      history.push('/home');
+      notification.success({
+        message: 'Sucesso',
+        description: 'Sua ata foi finalizada com sucesso !',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Erro',
+        description: 'Não foi possível atualizar sua ata !',
+      });
+    }
+  };
+
   return (
     <Container>
       <Initial minute={minute} />
@@ -92,7 +110,7 @@ const Review = () => {
             type="button"
             styleComponent="black"
             sizeComponent="large"
-            onClick={handleCallUpdateMinute}
+            onClick={handleFinishMinute}
           >
             Finalizar ata
           </Button>
