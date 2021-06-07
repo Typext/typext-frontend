@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { useHistory } from 'react-router-dom';
+import api from 'services/api';
+import moment from 'moment';
 
 import exitIcon from 'assets/exit_logo_red.svg';
-
-import Minute from 'components/organisms/Minute';
 import Button from 'components/atoms/Button';
 import { useMinute } from 'contexts/minute';
-import api from 'services/api';
 import { getUser } from 'services/auth';
-import moment from 'moment';
+
+import MinuteToRender from './components/MinuteToRender';
 import { Container, Modal } from './styles';
 
-interface IModalMinuteViewer {
-  onClose: () => void;
-  isOpen: boolean;
-  id: string | undefined;
-}
-
-const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
-  onClose,
-  isOpen,
-  id,
-}: IModalMinuteViewer) => {
+const ModalMinuteViewer = ({ onClose, isOpen, id }) => {
+  const history = useHistory();
   const { minuteForReview, getSingleMinute } = useMinute();
 
-  const minute: any = minuteForReview?.minute;
+  const minute = minuteForReview?.minute;
 
   const [isMinuteReviewed, setIsMinuteReviewed] = useState(
     minute?.status === 'revisada',
@@ -51,6 +44,20 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
     }
   };
 
+  const handleCorrectMinute = () => {
+    history.push(`/review/${id}`);
+  };
+
+  const componentRef = React.forwardRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+  const handleGenerateMinute = () => {
+    handlePrint();
+  };
+
   return (
     <Container>
       <Modal modalIsOpen={isOpen}>
@@ -61,29 +68,42 @@ const ModalMinuteViewer: React.FC<IModalMinuteViewer> = ({
         </header>
 
         <div className="content">
-          <Minute
+          <MinuteToRender
             title={minuteForReview?.minute.project}
             minute={minuteForReview}
+            ref={componentRef}
           />
         </div>
 
         <div className="buttons">
-          <Button type="button" sizeComponent="normal" styleComponent="black">
+          <Button
+            type="button"
+            sizeComponent="normal"
+            styleComponent="black"
+            onClick={handleGenerateMinute}
+          >
             Baixar
-          </Button>
-
-          <Button type="button" sizeComponent="normal" styleComponent="red">
-            Corrigir
           </Button>
 
           <Button
             type="button"
             sizeComponent="normal"
-            styleComponent="green"
-            onClick={handleReviewMinute}
+            styleComponent="red"
+            onClick={handleCorrectMinute}
           >
-            {isMinuteReviewed ? 'Revisado' : 'Revisar'}
+            Corrigir
           </Button>
+
+          {minute.status === 'nova' && (
+            <Button
+              type="button"
+              sizeComponent="normal"
+              styleComponent="green"
+              onClick={handleReviewMinute}
+            >
+              {isMinuteReviewed ? 'Revisado' : 'Revisar'}
+            </Button>
+          )}
         </div>
       </Modal>
     </Container>

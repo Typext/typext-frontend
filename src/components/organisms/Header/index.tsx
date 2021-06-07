@@ -49,7 +49,7 @@ const Header = () => {
       </section>
 
       <figure>
-        <a href="/landing-page">
+        <a href={user ? '/home' : '/'}>
           <img src={shortLogo} className="logo" alt="" />
         </a>
       </figure>

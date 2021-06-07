@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 export interface ITopic {
+  id?: number;
   name: string;
   responsible: string;
   deadline: string;
@@ -11,6 +12,7 @@ export interface IDateState {
 }
 
 export interface IParticipant {
+  id: number;
   name: string;
   email: string;
   title: string;
@@ -30,6 +32,7 @@ export interface IMinute {
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
+    status?: string;
   };
   participant?: Array<IParticipant>;
   topic?: Array<ITopic>;
@@ -65,6 +68,19 @@ export interface GeneratedMinute {
   topics: Array<GeneratedTopic>;
 }
 
+export interface IMinuteLog {
+  id: number;
+  user: {
+    active: true;
+    id: string;
+    name: string;
+    type: string;
+  };
+  registered_action: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface IMinuteContextData {
   handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
   handleSetParticipants: (participant: IParticipant) => void;
@@ -75,6 +91,7 @@ export interface IMinuteContextData {
   setReviewEnable: (reviewEnable: boolean) => void;
   getSingleMinute: (minuteId: string) => Promise<void>;
   getMinutes: () => void;
+  getMinuteLogs: (id: number) => void;
   scheduleMinute: Function;
   scheduleLoading: boolean;
   scheduleError: any;
@@ -91,6 +108,9 @@ export interface IMinuteContextData {
   minutes: Array<IMinutes | undefined>;
   minutesError: string;
   minutesLoader: boolean;
+  minuteLogs: Array<IMinuteLog> | undefined;
+  minuteLogsError: string;
+  minuteLogsLoader: boolean;
 }
 export interface IMinutes {
   id: string | undefined;
@@ -104,4 +124,21 @@ export interface IMinutes {
   status: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface IReviewContextData {
+  handleSetTopics: (topic: Omit<ITopic, 'id'>) => void;
+  handleSetParticipants: (participant: IParticipant) => void;
+  handleSetSchedules: (schedule: string) => void;
+  handleSetAreas: (area: string) => void;
+  handleUpdateMinute: (id: string) => Promise<boolean>;
+  setDate: (date: IDateState) => void;
+  setParticipants: Function;
+  setSchedules: Function;
+  setAreas: Function;
+  setTopics: Function;
+  setProject: Function;
+  setPlace: Function;
+  minute: IMinute;
+  date: IDateState;
 }

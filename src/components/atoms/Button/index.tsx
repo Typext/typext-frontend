@@ -11,7 +11,6 @@ const Button: React.FC<IButtonProps> = ({
   margin,
   styleComponent,
   sizeComponent,
-  onClick,
   type,
   ...rest
 }: IButtonProps) => {
@@ -21,9 +20,8 @@ const Button: React.FC<IButtonProps> = ({
       margin={margin}
       styleComponent={styleComponent}
       sizeComponent={sizeComponent}
-      onClick={onClick}
     >
-      <button className="button" onClick={onClick}>
+      <button className="button" {...rest}>
         {children}
       </button>
     </Container>
