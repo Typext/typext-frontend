@@ -62,7 +62,7 @@ const Topics = ({ minute }: TopicProps) => {
               ) : (
                 <div className="topic">
                   <span>Assunto</span>
-                  <span>XX/XX/XXX</span>
+                  <span>DD/MM/YYYY</span>
                   <span>Responsável</span>
                 </div>
               )}

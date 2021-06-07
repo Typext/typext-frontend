@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 export interface ITopic {
+  id?: number;
   name: string;
   responsible: string;
   deadline: string;
@@ -11,6 +12,7 @@ export interface IDateState {
 }
 
 export interface IParticipant {
+  id: number;
   name: string;
   email: string;
   title: string;
@@ -30,6 +32,7 @@ export interface IMinute {
     project: string;
     schedules: Array<string>;
     areas: Array<string>;
+    status?: string;
   };
   participant?: Array<IParticipant>;
   topic?: Array<ITopic>;
@@ -128,7 +131,7 @@ export interface IReviewContextData {
   handleSetParticipants: (participant: IParticipant) => void;
   handleSetSchedules: (schedule: string) => void;
   handleSetAreas: (area: string) => void;
-  handleUpdateMinute: (id: string) => void;
+  handleUpdateMinute: (id: string) => Promise<boolean>;
   setDate: (date: IDateState) => void;
   setParticipants: Function;
   setSchedules: Function;

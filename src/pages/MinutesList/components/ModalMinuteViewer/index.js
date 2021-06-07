@@ -94,14 +94,16 @@ const ModalMinuteViewer = ({ onClose, isOpen, id }) => {
             Corrigir
           </Button>
 
-          <Button
-            type="button"
-            sizeComponent="normal"
-            styleComponent="green"
-            onClick={handleReviewMinute}
-          >
-            {isMinuteReviewed ? 'Revisado' : 'Revisar'}
-          </Button>
+          {minute.status === 'nova' && (
+            <Button
+              type="button"
+              sizeComponent="normal"
+              styleComponent="green"
+              onClick={handleReviewMinute}
+            >
+              {isMinuteReviewed ? 'Revisado' : 'Revisar'}
+            </Button>
+          )}
         </div>
       </Modal>
     </Container>

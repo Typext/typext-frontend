@@ -49,6 +49,7 @@ const StyledTopic = styled.div`
       }
 
       .topic {
+        position: relative;
         background: #f8f8f8;
         padding: 1rem 0;
 
@@ -57,6 +58,20 @@ const StyledTopic = styled.div`
         font-size: 1.3rem;
 
         color: #373435;
+
+        button {
+          position: absolute;
+          right: 25px;
+          background: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+
+          svg {
+            width: 1.875rem;
+            height: 1.875rem;
+          }
+        }
 
         span {
           display: -webkit-box;

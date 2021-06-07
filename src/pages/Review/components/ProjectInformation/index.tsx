@@ -26,10 +26,8 @@ const ProjectInformation = ({ minute }: ProjectInfoProps) => {
 
   const formRef = useRef<FormHandles>(null);
 
-  const deleteMember = (participant: string) => {
-    setParticipants(
-      minute?.participant?.filter(user => user.name !== participant),
-    );
+  const deleteMember = (id: number) => {
+    setParticipants(minute?.participant?.filter(user => user.id !== id));
   };
 
   const handleCreateMember = useCallback(
@@ -117,7 +115,7 @@ const ProjectInformation = ({ minute }: ProjectInfoProps) => {
             <ScrollBox>
               {participants?.map(member => (
                 <BoxInformation
-                  deleteComponent={() => deleteMember(member.name)}
+                  deleteComponent={() => deleteMember(member?.id)}
                 >
                   <h4>{member.name}</h4>
                 </BoxInformation>

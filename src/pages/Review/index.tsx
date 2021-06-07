@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
 import { useReview } from 'contexts/review';
 import { useMinute } from 'contexts/minute';
-import { useParams } from 'react-router-dom';
 
 import Button from 'components/atoms/Button';
 import Initial from './components/Initial/Initial';
@@ -17,6 +18,8 @@ interface ParamsProps {
 
 const Review = () => {
   const params: ParamsProps = useParams();
+  const history = useHistory();
+
   const {
     minute,
     setTopics,
@@ -60,7 +63,9 @@ const Review = () => {
   ]);
 
   const handleCallUpdateMinute = () => {
-    handleUpdateMinute(params.id);
+    const isSuccess = handleUpdateMinute(params.id);
+
+    if (isSuccess) history.push('/home');
   };
 
   return (
@@ -78,7 +83,20 @@ const Review = () => {
           onClick={handleCallUpdateMinute}
         >
           Atualizar
+          {' '}
+          {minuteForReview?.minute.status === 'agendado' && 'agendamento'}
         </Button>
+
+        {minuteForReview?.minute.status === 'agendado' && (
+          <Button
+            type="button"
+            styleComponent="black"
+            sizeComponent="large"
+            onClick={handleCallUpdateMinute}
+          >
+            Finalizar ata
+          </Button>
+        )}
       </section>
     </Container>
   );

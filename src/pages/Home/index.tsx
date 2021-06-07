@@ -1,14 +1,12 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback, useEffect, useState } from 'react';
-
+import moment from 'moment';
 import { Calendar } from 'antd';
-
 import { useHistory } from 'react-router-dom';
 
 import { getUser } from 'services/auth';
 
 import Button from 'components/atoms/Button';
-
 import { useMinute } from 'contexts/minute';
 import { IMinutes } from 'DTOs';
 import { Container } from './styles';
@@ -37,13 +35,20 @@ const Home = () => {
     history.push('/minutes');
   }, [history]);
 
+  const handleAccessScheduledMinute = useCallback(
+    (id: number | string) => {
+      history.push(`/review/${id}`);
+    },
+    [history],
+  );
+
   const handleNavigateToListUsers = useCallback(() => {
     history.push('/users');
   }, [history]);
 
   useEffect(() => {
     getMinutes();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -54,47 +59,27 @@ const Home = () => {
     }
   }, [minutes]);
 
-  function getListData(value: any) {
-    let listData: string[] = [];
-
-    scheduledMinutes?.forEach(minute => {
-      if (Number(minute?.start_date.slice(8, 10)) === value.date()) {
-        listData = [minute?.project || ''];
-      }
-    });
-
-    return listData;
-  }
-
   function dateCellRender(value: any) {
-    const listData = getListData(value);
+    const listData = scheduledMinutes || [];
+
     return (
       <ul className="events">
         {listData.map(item => (
-          // eslint-disable-next-line
-          <li key={item} onClick={handleNavigateToSearchMinutes}>
-            ATA: {item || 'Sem nome'}
-          </li>
+          <>
+            {moment(item?.start_date).format('MM/DD/YYYY') ===
+              moment(value.toString()).format('MM/DD/YYYY') && (
+              // eslint-disable-next-line
+              <li
+                key={item?.id}
+                onClick={() => handleAccessScheduledMinute(item?.id || 0)}
+              >
+                Ata: {item?.project || 'Sem nome'}
+              </li>
+            )}
+          </>
         ))}
       </ul>
     );
-  }
-
-  // eslint-disable-next-line consistent-return
-  function getMonthData(value: any) {
-    if (value.month() === 8) {
-      return 1394;
-    }
-  }
-
-  function monthCellRender(value: any) {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
   }
 
   return (
@@ -104,10 +89,7 @@ const Home = () => {
           <h1>
             Agenda <img src={CalendarIcon} alt="" />
           </h1>
-          <Calendar
-            dateCellRender={dateCellRender}
-            monthCellRender={monthCellRender}
-          />
+          <Calendar dateCellRender={dateCellRender} />
         </div>
 
         <div className="Buttons">

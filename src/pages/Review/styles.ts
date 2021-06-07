@@ -5,4 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 120px;
+
+  .updateMinute {
+    display: flex;
+    gap: 20px;
+  }
 `;

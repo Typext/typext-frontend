@@ -27,6 +27,7 @@ const ReviewProvider: React.FC<IReviewProvider> = ({
   const [project, setProject] = useState<string>('');
   const [place, setPlace] = useState<string>('');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const minute: IMinute = {
     minute: {
       start_date: date.start_date,
@@ -74,22 +75,28 @@ const ReviewProvider: React.FC<IReviewProvider> = ({
     [schedules],
   );
 
-  const handleUpdateMinute = async (id: string) => {
-    try {
-      await api.put('minutes', { minute_id: id, ...minute });
-      notification.success({
-        message: 'Successo',
-        description:
-          'Sua ata foi atualizada com sucesso !',
-      });
-    } catch (error) {
-      notification.error({
-        message: 'Erro',
-        description:
-          'Verifique os campos novamente, caso o problema persista contacte os administradores',
-      });
-    }
-  };
+  const handleUpdateMinute = useCallback(
+    async (id: string) => {
+      try {
+        await api.put('minutes', { minute_id: id, ...minute });
+        notification.success({
+          message: 'Successo',
+          description: 'Sua ata foi atualizada com sucesso !',
+        });
+
+        return true;
+      } catch (error) {
+        notification.error({
+          message: 'Erro',
+          description:
+            'Verifique os campos novamente, caso o problema persista contacte os administradores',
+        });
+
+        return false;
+      }
+    },
+    [minute],
+  );
 
   return (
     <ReviewContext.Provider

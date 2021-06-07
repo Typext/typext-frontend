@@ -20,8 +20,6 @@ api.interceptors.request.use(async config => {
     };
   }
 
-  apiConfig.withCredentials = false;
-
   return apiConfig;
 });
 
