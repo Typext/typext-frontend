@@ -94,7 +94,7 @@ const ModalMinuteViewer = ({ onClose, isOpen, id }) => {
             Corrigir
           </Button>
 
-          {minute.status === 'nova' && (
+          {minute?.status === 'nova' && (
             <Button
               type="button"
               sizeComponent="normal"
